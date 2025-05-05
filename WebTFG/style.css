@@ -26,28 +26,40 @@ body {
 }
 
 .sidebar.collapsed {
-    transform: translateX(-220px);
-}
+    transform: translateX(-250px);
+  }
+  
 
+/* Botón del toggle */
 .toggle-btn {
-    position: absolute;
+    position: fixed;
     top: 50%;
-    right: -15px;
+    left: 0;
     transform: translateY(-50%);
     width: 30px;
     height: 60px;
     background: #4CAF50;
-    border-top-right-radius: 30px;
-    border-bottom-right-radius: 30px;
+    border-radius: 0; /* Rectángulo */
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     color: white;
     font-size: 18px;
-    transition: transform 0.3s, background 0.3s;
-    z-index: 10;
+    z-index: 200;
+    transition: left 0.3s ease;
 }
+
+/* Cuando la sidebar está abierta, empujamos el botón hacia la derecha */
+.sidebar:not(.collapsed) ~ .toggle-btn {
+    left: 250px; /* Ancho de la sidebar */
+}
+
+/* Girar flecha al abrir la sidebar */
+.sidebar:not(.collapsed) ~ .toggle-btn .arrow {
+    transform: rotate(180deg);
+}
+  
 
 .menu {
     list-style: none;
@@ -83,12 +95,17 @@ body {
     transition: transform 0.3s;
 }
 
-/* Carrusel de Imágenes */
+/* Estilos del carrusel */
+.carousel-wrapper {
+    display: flex;
+    justify-content: space-between; /* Alinea el carrusel y el texto */
+    align-items: center;
+    width: 100%;
+}
+
 .carousel-container {
     position: relative;
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto 40px auto;
+    width: 60%; /* Ajusta el tamaño del carrusel */
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
@@ -96,26 +113,126 @@ body {
 
 .carousel {
     display: flex;
-    width: 100%;
     transition: transform 0.5s ease-in-out;
 }
 
-.carousel img {
+.carousel-item {
+    position: relative;
+    flex-shrink: 0;
+    width: 100%;
+}
+
+.carousel-item img {
     width: 100%;
     height: 400px;
     object-fit: cover;
-    flex-shrink: 0;
+    transition: filter 0.3s ease; /* Para el efecto blur */
 }
 
+.carousel-item:hover img {
+    filter: blur(8px); /* Aplica el blur cuando pasas el ratón */
+}
+
+.carousel-caption {
+    position: absolute;
+    top : 90%;
+    left: 50%; /* Centra horizontalmente */
+    transform: translate(-50%, -50%); /* Ajusta para que el centro de la leyenda esté en el centro de la imagen */
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semitransparente */
+    color: white;
+    padding: 5px 10px; /* Añadimos algo de espacio alrededor del texto */
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+/* Superposición con texto y botón */
+/* Superposición que se activa al hacer hover en la imagen */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Fondo oscuro */
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease;
+    z-index: 1; /* Asegura que esté por debajo de los botones */
+}
+
+.carousel-item:hover .overlay {
+    opacity: 1; /* Muestra la superposición cuando pasas el ratón */
+}
+
+.overlay-text {
+    text-align: center;
+    color: white;
+    font-size: 18px;
+}
+
+.overlay-text p {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.overlay-btn {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.overlay-btn:hover {
+    background-color: #45a049; /* Cambio de color del botón al pasar el ratón */
+}
+
+/* Texto al lado del carrusel */
+.carousel-text {
+    width: 35%; /* Ajusta el tamaño del contenedor de texto */
+    color: white;
+    font-size: 1.2rem;
+}
+
+.carousel-text h2 {
+    font-size: 2rem;
+    margin-bottom: 25px;
+    color: #021d13;
+    font-family: 'Cinzel', serif; /* Título con la fuente Cinzel */
+}
+
+.carousel-text h1 {
+    font-size: 1.5rem;
+    color: #021d13; /* Color para el subtítulo */
+    margin-bottom: 30px;
+    font-family: 'Cinzel', serif; /* Subtítulo con la fuente Cinzel */
+}
+
+.carousel-text p {
+    font-size: 1rem;
+    color: #010701;
+    font-family: 'Poppins', sans-serif; /* Texto normal con fuente Poppins */
+    margin-bottom: 20px;
+}
+
+/* Botones de navegación del carrusel */
 .carousel-buttons {
     position: absolute;
-    top: 50%;
-    width: 100%;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%); /* Centrado horizontalmente */
+    z-index: 2; /* Asegura que los botones estén encima de la imagen */
     display: flex;
     justify-content: space-between;
-    transform: translateY(-50%);
+    width: 100%;
+    max-width: 100px; /* Limita el ancho de los botones */
 }
-
+/* Botones de navegación */
 .carousel-buttons button {
     background-color: rgba(0, 0, 0, 0.5);
     border: none;
@@ -126,9 +243,8 @@ body {
     border-radius: 50%;
     transition: background 0.3s;
 }
-
 .carousel-buttons button:hover {
-    background-color: rgba(76, 175, 80, 0.8);
+    background-color: rgba(76, 175, 80, 0.8); /* Color del botón al pasar el ratón */
 }
 
 /* Texto Central */
@@ -153,7 +269,7 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-image: url('img/campo_futbol.jpg');
+    background-color: white;
     background-size: cover;
     background-position: center;
     filter: blur(8px);
@@ -169,7 +285,7 @@ body {
 /* Estilo para el Escudo */
 .escudo {
     position: fixed;
-    top: 20px;
+    top: 50px;
     left: 60px;
     z-index: 99;
 }
@@ -177,4 +293,105 @@ body {
 .escudo img {
     width: 60px;
     height: auto;
+}
+/* Redes sociales en la parte inferior de la sidebar */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+/* Contenedor de las redes sociales en la parte inferior */
+.sidebar-social {
+    width: 100%;
+    background-color: #4CAF50;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    box-sizing: border-box;
+    gap: 10px;
+    position: absolute; /* Fijamos la posición */
+    bottom: 0; /* Colocamos el contenedor en la parte inferior */
+    left: 0; /* Alineamos con el lado izquierdo */
+}
+
+/* Información de contacto arriba del contenedor de redes sociales */
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 5px;
+    width: 100%;
+}
+
+/* Iconos de contacto */
+.contact-info i {
+    margin-right: 8px;
+}
+
+/* Redes sociales en la parte inferior */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.social-links a {
+    color: white;
+    font-size: 18px;
+    transition: color 0.3s;
+    max-width: 100%;
+}
+
+.social-links a:hover {
+    color: #dfffe0;
+}
+/* Banner de Bienvenida */
+.banner {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    margin-bottom: 50px;
+}
+
+/* Fondo con la imagen y el blur */
+.banner-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('img/foto-banner-fondo.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: blur(1.65px); 
+    z-index: -1; /* Asegura que el fondo esté detrás del texto */
+}
+
+/* Contenido del Banner (Texto) */
+.contenido {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 1; /* Asegura que el texto esté por encima del fondo */
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* Título y texto dentro del banner */
+.banner h1 {
+    font-size: 3rem;
+    color: white;
+}
+
+.banner p {
+    font-size: 1.2rem;
+    color: #ccc;
 }

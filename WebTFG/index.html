@@ -6,7 +6,11 @@
   <link rel="stylesheet" href="style.css">
   <script defer src="script.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Merriweather:wght@400;700&family=Cormorant+Garamond:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <div class="background-blur"></div>
@@ -15,9 +19,7 @@
     </div>
     <!-- Sidebar -->
     <div class="sidebar collapsed" id="sidebar">
-        <div class="toggle-btn" id="toggleBtn">
-            <span class="arrow">&#x25B6;</span>
-        </div>
+
         <ul class="menu">
             <li><a href="#">Inicio</a></li>
             <li><a href="#">Noticias</a></li>
@@ -25,28 +27,92 @@
             <li><a href="#">Calendario</a></li>
             <li><a href="#">Contacto</a></li>
         </ul>
+<!-- Redes sociales al fondo de la sidebar -->
+<div class="sidebar-social">
+    <div class="contact-info">
+        <span><i class="fas fa-phone"></i> 633 244 011</span>
+        <span><i class="fas fa-envelope"></i> info@cdeamistad.com</span>
     </div>
+    <div class="social-links">
+        <a href="https://www.facebook.com/CDEAmistad" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://twitter.com/cdeamistad" target="_blank"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://www.instagram.com/cdeamistad/" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+</div>
+    </div>
+    <div class="toggle-btn" id="toggleBtn">
+        <span class="arrow">&#x25B6;</span>
+      </div>
 
     <!-- Contenido Principal -->
     <div class="content">
         <!-- Banner Principal -->
         <header class="banner">
-            <h1>Banner de bienvenida</h1>
-            <p>texto ejemplo</p>
+            <div class="banner-background"></div> <!-- Fondo con imagen y blur -->
+            <div class="contenido"> <!-- Texto sin blur -->
+                <h1>Bienvenido a Nuestra Página</h1>
+                <p>Disfruta de todo lo que ofrecemos</p>
+            </div>
         </header>
 
-        <!-- Carrusel de Imágenes -->
-        <div class="carousel-container">
-            <div class="carousel" id="carousel">
-                <img src="img/gato1.jpg" alt="Imagen 1">
-                <img src="img/gato2.jpg" alt="Imagen 2">
-                <img src="img/gato3.jpg" alt="Imagen 3">
+<!-- Contenedor del carrusel y texto al lado -->
+<div class="carousel-wrapper">
+    <!-- Carrusel de Imágenes -->
+    <div class="carousel-container">
+        <div class="carousel" id="carousel">
+            <div class="carousel-item">
+                <img src="img/cde-femenino.jpg" alt="Imagen 1">
+                <div class="carousel-caption">Equipos Femeninos</div>
+                <div class="overlay">
+                    <div class="overlay-text">
+                        <p>Descubre nuestros equipos femeninos</p>
+                        <button class="overlay-btn">¡Únete a nosotros!</button>
+                    </div>
+                </div>
             </div>
-            <div class="carousel-buttons">
-                <button id="prevBtn">&#10094;</button>
-                <button id="nextBtn">&#10095;</button>
+            <div class="carousel-item">
+                <img src="img/cde-f7.jpg" alt="Imagen 2">
+                <div class="carousel-caption">Equipos Futbol 7</div>
+                <div class="overlay">
+                    <div class="overlay-text">
+                        <p>Explora nuestros equipos de fútbol 7</p>
+                        <button class="overlay-btn">¡Haz tu equipo!</button>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="img/cde-f11.jpg" alt="Imagen 3">
+                <div class="carousel-caption">Equipos Futbol 11</div>
+                <div class="overlay">
+                    <div class="overlay-text">
+                        <p>Únete a los equipos de fútbol 11</p>
+                        <button class="overlay-btn">¡Inicia tu carrera!</button>
+                    </div>
+                </div>
             </div>
         </div>
+        <div class="carousel-buttons">
+            <button id="prevBtn">&#10094;</button>
+            <button id="nextBtn">&#10095;</button>
+        </div>
+    </div>
+
+
+
+    <!-- Texto al lado del carrusel -->
+    <div class="carousel-text">
+        <h2>Conquista el juego. Únete.</h2>
+        <h1>¿Te interesa? Ven a conocernos y probar sin compromiso en el C.D.E. Amistad.</h1>
+        <p>En el C.D.E. Amistad te ofrecemos una formación deportiva de calidad, impartida por profesionales con una amplia experiencia.</p>
+        <p>Contamos con entrenadores titulados, preparador físico, fisioterapia, nutrición y psicología deportiva, para ofrecerte una experiencia integral.</p>
+        <p>Además de profesionalismo y compromiso, disfrutarás de un ambiente cercano y acogedor, ideal para tu desarrollo como deportista y persona.</p>
+        <p>Actualmente, somos el único club en Alcorcón con equipos (femeninos y masculinos) en todas las categorías.</p>
+        <p>¡Te esperamos!</p>
+        </p>
+    </div>
+</div>
+
+
         
         <!-- Texto Central -->
         <div class="texto-central">
