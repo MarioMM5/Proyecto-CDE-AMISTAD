@@ -1,8 +1,9 @@
+import 'package:cde_amistad/pages/equiposPage.dart';
 import 'package:flutter/material.dart';
-import 'package:cde_amistad/pages/partidosPage.dart';
 import 'package:cde_amistad/pages/inicioPage.dart';
 import 'package:cde_amistad/pages/noticiasPage.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -47,7 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final List<Widget> _paginas = [
     InicioPage(),
     NoticiasPage(),
-    PartidosPage(),
+    EquiposPage(),
     Center(child: Text('Perfil')),
   ];
 
