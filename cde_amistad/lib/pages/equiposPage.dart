@@ -75,7 +75,53 @@ class _EquiposPageState extends State<EquiposPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Equipos')),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(80),
+        child: Container(
+          decoration: const BoxDecoration(
+            color: Color(0xFF388E3C),
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(24),
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black26,
+                blurRadius: 8,
+                offset: Offset(0, 4),
+              ),
+            ],
+          ),
+          padding: const EdgeInsets.only(top: 45, left: 20, right: 20),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Image.asset(
+                    'assets/icono.png', // Ruta de la imagen
+                    height: 30,
+                  ),
+                  const SizedBox(width: 10),
+                  const Text(
+                    'Inicio',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              ),
+              IconButton(
+                icon: const Icon(Icons.notifications, color: Colors.white),
+                onPressed: () {
+                  // Acción futura: mostrar notificaciones
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
       body: cargando
           ? const Center(child: CircularProgressIndicator())
           : equiposOrganizados.isEmpty
@@ -96,7 +142,7 @@ class _EquiposPageState extends State<EquiposPage> {
               final letras = generoEntry.value;
 
               return ExpansionTile(
-                title: Text('Género: $genero'),
+                title: Text('$genero'),
                 children: letras.map((letra) {
                   return ListTile(
                     title: Text('Equipo $letra'),

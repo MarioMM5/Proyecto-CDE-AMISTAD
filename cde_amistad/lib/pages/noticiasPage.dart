@@ -22,7 +22,7 @@ class NoticiasPage extends StatelessWidget {
         preferredSize: const Size.fromHeight(80),
         child: Container(
           decoration: const BoxDecoration(
-            color: Color(0xFF388E3C), // Un verde más estilizado
+            color: Color(0xFF388E3C),
             borderRadius: BorderRadius.vertical(
               bottom: Radius.circular(24),
             ),
@@ -38,20 +38,29 @@ class NoticiasPage extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text(
-                '📰 Noticias',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.white,
-                ),
+              Row(
+                children: [
+                  Image.asset(
+                    'assets/icono.png', // Ruta de la imagen
+                    height: 30,
+                  ),
+                  const SizedBox(width: 10),
+                  const Text(
+                    'Noticias',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
               ),
               IconButton(
                 icon: const Icon(Icons.notifications, color: Colors.white),
                 onPressed: () {
                   // Acción futura: mostrar notificaciones
                 },
-              )
+              ),
             ],
           ),
         ),
