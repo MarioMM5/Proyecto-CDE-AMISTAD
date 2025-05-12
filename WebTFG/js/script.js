@@ -1,12 +1,16 @@
 const sidebar = document.getElementById("sidebar");
 const toggleBtn = document.getElementById("toggleBtn");
 const arrow = toggleBtn.querySelector(".arrow");
+const icon = toggleBtn.querySelector('i');
 
 // Funcionalidad para el menú lateral
 toggleBtn.addEventListener("click", () => {
   sidebar.classList.toggle("collapsed");
+  icon.classList.toggle('fa-arrow-right');
+  icon.classList.toggle('fa-xmark'); // o cualquier otra transformación
   // Cambia la flecha dependiendo de si el menú está colapsado o no
   arrow.innerHTML = sidebar.classList.contains("collapsed") ? "&#x25C0;" : "&#x25B6;";
+
 });
 
 // Carrusel de imágenes
@@ -32,3 +36,5 @@ function updateCarousel() {
   const offset = -currentIndex * 100; // El ancho de las imágenes es 100% del contenedor
   carousel.style.transform = `translateX(${offset}%)`; // Usamos % para mantener la adaptabilidad
 }
+
+
