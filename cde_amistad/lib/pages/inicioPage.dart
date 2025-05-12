@@ -2,13 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:cde_amistad/entity/noticiaEntity.dart';
 import 'package:add_2_calendar/add_2_calendar.dart';
+import 'package:cde_amistad/main.dart';
 
 
 
 
 
 class InicioPage extends StatefulWidget {
-  const InicioPage({Key? key}) : super(key: key);
+  final VoidCallback? onVerNoticias;
+
+  const InicioPage({Key? key, this.onVerNoticias}) : super(key: key);
 
   @override
   State<InicioPage> createState() => _InicioPageState();
@@ -80,7 +83,7 @@ class _InicioPageState extends State<InicioPage> {
         preferredSize: const Size.fromHeight(80),
         child: Container(
           decoration: const BoxDecoration(
-            color: Color(0xFF388E3C), // Un verde más estilizado
+            color: Color(0xFF388E3C),
             borderRadius: BorderRadius.vertical(
               bottom: Radius.circular(24),
             ),
@@ -96,24 +99,34 @@ class _InicioPageState extends State<InicioPage> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text(
-                '🏟️ Inicio',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.white,
-                ),
+              Row(
+                children: [
+                  Image.asset(
+                    'assets/icono.png', // Ruta de la imagen
+                    height: 30,
+                  ),
+                  const SizedBox(width: 10),
+                  const Text(
+                    'Inicio',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
               ),
               IconButton(
                 icon: const Icon(Icons.notifications, color: Colors.white),
                 onPressed: () {
                   // Acción futura: mostrar notificaciones
                 },
-              )
+              ),
             ],
           ),
         ),
       ),
+
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: FutureBuilder<List<Map<String, dynamic>>>(
@@ -211,7 +224,7 @@ class _InicioPageState extends State<InicioPage> {
                       foregroundColor: Colors.white,
                     ),
                     onPressed: () {
-                      Navigator.pushNamed(context, '/noticias');
+                      myHomePageKey.currentState?.cambiarIndice(1); //
                     },
                     icon: Icon(Icons.arrow_forward),
                     label: Text('Ver todas las noticias'),

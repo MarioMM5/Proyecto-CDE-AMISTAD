@@ -1,8 +1,10 @@
+import 'package:cde_amistad/pages/equiposPage.dart';
 import 'package:flutter/material.dart';
-import 'package:cde_amistad/pages/partidosPage.dart';
 import 'package:cde_amistad/pages/inicioPage.dart';
 import 'package:cde_amistad/pages/noticiasPage.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+
+final GlobalKey<_MyHomePageState> myHomePageKey = GlobalKey<_MyHomePageState>();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,7 +26,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
       ),
-      home: const MyHomePage(title: 'CDE AMISTAD'),
+      home: MyHomePage(key: myHomePageKey, title: 'CDE AMISTAD'),
       routes: {
         '/noticias': (context) => const NoticiasPage(),
       },
@@ -47,11 +49,11 @@ class _MyHomePageState extends State<MyHomePage> {
   final List<Widget> _paginas = [
     InicioPage(),
     NoticiasPage(),
-    PartidosPage(),
+    EquiposPage(),
     Center(child: Text('Perfil')),
   ];
 
-  void _cambiarIndice(int nuevoIndice) {
+  void cambiarIndice(int nuevoIndice) {
     setState(() {
       _indiceActual = nuevoIndice;
     });
@@ -63,7 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: _paginas[_indiceActual],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _indiceActual,
-        onTap: _cambiarIndice,
+        onTap: cambiarIndice,
         backgroundColor: Colors.green,
         // 🎨 Aquí cambias el color de fondo
         selectedItemColor: Colors.grey,
