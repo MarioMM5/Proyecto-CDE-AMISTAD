@@ -1,82 +1,76 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TFG - Noticias</title>
   <link rel="stylesheet" href="../css/noticias.css" />
   <script defer src="../js/noticias.js"></script>
- <!-- Fuentes -->
- <link rel="preconnect" href="https://fonts.googleapis.com">
- <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Merriweather:wght@300;400;700&family=Cormorant+Garamond:wght@400;700&family=Montserrat:wght@300;400;600&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
- 
- <!-- Iconos -->
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-</head>
-<body>
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Merriweather:wght@300;400;700&family=Cormorant+Garamond:wght@400;700&family=Montserrat:wght@300;400;600&family=Poppins:wght@400;700&display=swap"
+    rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
- <!-- Sidebar -->
- <div class="sidebar collapsed" id="sidebar">
-   <div class="menu">
-     <li><a href="index.html">Inicio</a></li>
-     <li><a href="noticias.html">Noticias</a></li>
-     <li><a href="#">Merchandising</a></li>
-     <li><a href="#">Calendario</a></li>
-     <li><a href="#">Contacto</a></li>
-   </div>
+  <!-- Iconos -->
+<header id="fixedHeader">
+  <div class="header-content">
+    <span class="epic-phrase">⚽ CDE Amistad</span>
+    <div class="social-icons">
+      <a href="https://www.facebook.com/CDEAmistad" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://twitter.com/cdeamistad" target="_blank"><i class="fab fa-x-twitter"></i></a>
+      <a href="https://www.instagram.com/cdeamistad/" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+  </div>
+</header>
 
-   <!-- Redes sociales -->
-   <div class="sidebar-social">
-     <div class="contact-info">
-       <span><i class="fas fa-phone"></i> 633 244 011</span>
-       <span><i class="fas fa-envelope"></i> info@cdeamistad.com</span>
-     </div>
-     <div class="social-links">
-       <a href="https://www.facebook.com/CDEAmistad" target="_blank"><i class="fab fa-facebook-f"></i></a>
-       <a href="https://twitter.com/cdeamistad" target="_blank"><i class="fab fa-x-twitter"></i></a>
-       <a href="https://www.instagram.com/cdeamistad/" target="_blank"><i class="fab fa-instagram"></i></a>
-     </div>
-   </div>
- </div>
 
-<!-- Recuerda tener Font Awesome cargado -->
-<div class="toggle-btn" id="toggleBtn">
-   <i class="fas fa-arrow-right"></i>
- </div>
+  <!-- Sidebar -->
+  <div class="sidebar collapsed" id="sidebar">
+    <div class="menu">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="noticias.html">Noticias</a></li>
+      <li><a href="mercha.html">Merchandising</a></li>
+      <li><a href="#">Calendario</a></li>
+      <li><a href="#">Contacto</a></li>
+    </div>
 
- <!-- Noticias -->
-<main class="news-container">
+    <!-- Redes sociales -->
+    <div class="sidebar-social">
+      <div class="contact-info">
+        <span><i class="fas fa-phone"></i> 633 244 011</span>
+        <span><i class="fas fa-envelope"></i> info@cdeamistad.com</span>
+      </div>
+      <div class="social-links">
+        <a href="https://www.facebook.com/CDEAmistad" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://twitter.com/cdeamistad" target="_blank"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://www.instagram.com/cdeamistad/" target="_blank"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recuerda tener Font Awesome cargado -->
+  <div class="toggle-btn" id="toggleBtn">
+    <i class="fas fa-arrow-right"></i>
+  </div>
+
+  <!-- Noticias -->
+  <main class="news-container">
     <h1>Últimas Noticias</h1>
-    <input type="text" id="newsSearch" placeholder="Buscar noticias..." class="search-input">
-
+<div style="position: relative;  margin: 30px;">
+  <input type="text" id="newsSearch" placeholder="Buscar noticias..." />
+  <span style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: #27ae60; font-size: 1.2rem; pointer-events: none;">
+    🔍
+  </span>
+</div>
+    <div id="noResultsMessage" style="display:none; font-weight:bold; margin-top: 20px; text-align:center;">
+      No se encontraron resultados.
+    </div>
     <section class="news-grid">
-  
-        <article class="news-card">
-            <img src="../img/cde-femenino.jpg" alt="Partido Épico">
-            <div class="card-content">
-              <h2>¡Victoria Épica 4-1!</h2>
-              <p>El CDE Amistad arrasa en casa con un espectáculo de goles y ovaciones.</p>
-              <span class="date">12 de mayo de 2025</span>
-            </div>
-          </article>
-      
-          <article class="news-card">
-            <img src="../img/cde-f11.jpg" alt="Nuevo Fichaje">
-            <div class="card-content">
-              <h2>Llega una Nueva Estrella</h2>
-              <p>Se une al equipo un delantero que promete romper redes en cada partido.</p>
-              <span class="date">10 de mayo de 2025</span>
-            </div>
-          </article>
-      
-          <article class="news-card">
-            <img src="../img/cde-f7.jpg" alt="Entrenamiento">
-            <div class="card-content">
-              <h2>Entrenamientos de Alto Nivel</h2>
-              <p>El equipo intensifica su preparación para la recta final de la temporada.</p>
-              <span class="date">9 de mayo de 2025</span>
-            </div>
-          </article>
+
+      <!-- 1 -->
       <article class="news-card">
         <img src="../img/cde-femenino.jpg" alt="Partido Épico">
         <div class="card-content">
@@ -85,7 +79,8 @@
           <span class="date">12 de mayo de 2025</span>
         </div>
       </article>
-  
+      <!-- 2 -->
+
       <article class="news-card">
         <img src="../img/cde-f11.jpg" alt="Nuevo Fichaje">
         <div class="card-content">
@@ -94,7 +89,8 @@
           <span class="date">10 de mayo de 2025</span>
         </div>
       </article>
-  
+      <!-- 3 -->
+
       <article class="news-card">
         <img src="../img/cde-f7.jpg" alt="Entrenamiento">
         <div class="card-content">
@@ -103,6 +99,8 @@
           <span class="date">9 de mayo de 2025</span>
         </div>
       </article>
+      <!-- 4 -->
+
       <article class="news-card">
         <img src="../img/cde-femenino.jpg" alt="Partido Épico">
         <div class="card-content">
@@ -111,7 +109,8 @@
           <span class="date">12 de mayo de 2025</span>
         </div>
       </article>
-  
+      <!-- 5 -->
+
       <article class="news-card">
         <img src="../img/cde-f11.jpg" alt="Nuevo Fichaje">
         <div class="card-content">
@@ -120,7 +119,8 @@
           <span class="date">10 de mayo de 2025</span>
         </div>
       </article>
-  
+      <!-- 6 -->
+
       <article class="news-card">
         <img src="../img/cde-f7.jpg" alt="Entrenamiento">
         <div class="card-content">
@@ -129,53 +129,270 @@
           <span class="date">9 de mayo de 2025</span>
         </div>
       </article>
-  
+      <!-- 7 -->
+
+      <article class="news-card">
+        <img src="../img/cde-femenino.jpg" alt="Partido Épico">
+        <div class="card-content">
+          <h2>¡Victoria Épica 4-1!</h2>
+          <p>El CDE Amistad arrasa en casa con un espectáculo de goles y ovaciones.</p>
+          <span class="date">12 de mayo de 2025</span>
+        </div>
+      </article>
+      <!-- 8 -->
+
+      <article class="news-card">
+        <img src="../img/cde-f11.jpg" alt="Nuevo Fichaje">
+        <div class="card-content">
+          <h2>Llega una Nueva Estrella</h2>
+          <p>Se une al equipo un delantero que promete romper redes en cada partido.</p>
+          <span class="date">10 de mayo de 2025</span>
+        </div>
+      </article>
+      <!-- 9 -->
+
+      <article class="news-card">
+        <img src="../img/cde-femenino.jpg" alt="Entrenamiento">
+        <div class="card-content">
+          <h2>Entrenamientos de Alto Nivel</h2>
+          <p>El equipo intensifica su preparación para la recta final de la temporada.</p>
+          <span class="date">9 de mayo de 2025</span>
+        </div>
+      </article>
+      <!-- 10 -->
+
+      <article class="news-card">
+        <img src="../img/cde-femenino.jpg" alt="Partido Épico">
+        <div class="card-content">
+          <h2>¡Victoria Épica 4-1!</h2>
+          <p>El CDE Amistad arrasa en casa con un espectáculo de goles y ovaciones.</p>
+          <span class="date">12 de mayo de 2025</span>
+        </div>
+      </article>
+      <!-- 11 -->
+
+      <article class="news-card">
+        <img src="../img/cde-femenino.jpg" alt="Nuevo Fichaje">
+        <div class="card-content">
+          <h2>Llega una Nueva Estrella</h2>
+          <p>Se une al equipo un delantero que promete romper redes en cada partido.</p>
+          <span class="date">10 de mayo de 2025</span>
+        </div>
+      </article>
+      <!-- 12 -->
+
+      <article class="news-card">
+        <img src="../img/cde-femenino.jpg" alt="Entrenamiento">
+        <div class="card-content">
+          <h2>Entrenamientos de Alto Nivel</h2>
+          <p>El equipo intensifica su preparación para la recta final de la temporada.</p>
+          <span class="date">9 de mayo de 2025</span>
+        </div>
+      </article>
+      <!-- 13 -->
+
+      <article class="news-card">
+        <img src="../img/cde-femenino.jpg" alt="Partido Épico">
+        <div class="card-content">
+          <h2>¡Victoria Épica 4-1!</h2>
+          <p>El CDE Amistad arrasa en casa con un espectáculo de goles y ovaciones.</p>
+          <span class="date">12 de mayo de 2025</span>
+        </div>
+      </article>
+      <!-- 14 -->
+
+      <article class="news-card">
+        <img src="../img/cde-f11.jpg" alt="Nuevo Fichaje">
+        <div class="card-content">
+          <h2>Llega una Nueva Estrella</h2>
+          <p>Se une al equipo un delantero que promete romper redes en cada partido.</p>
+          <span class="date">10 de mayo de 2025</span>
+        </div>
+      </article>
+      <!-- 15 -->
+
+      <article class="news-card">
+        <img src="../img/cde-f7.jpg" alt="Entrenamiento">
+        <div class="card-content">
+          <h2>Entrenamientos de Alto Nivel</h2>
+          <p>El equipo intensifica su preparación para la recta final de la temporada.</p>
+          <span class="date">9 de mayo de 2025</span>
+        </div>
+      </article>
+      <!-- 16 -->
+
+      <article class="news-card">
+        <img src="../img/cde-femenino.jpg" alt="Partido Épico">
+        <div class="card-content">
+          <h2>¡Victoria Épica 4-1!</h2>
+          <p>El CDE Amistad arrasa en casa con un espectáculo de goles y ovaciones.</p>
+          <span class="date">12 de mayo de 2025</span>
+        </div>
+      </article>
+      <!-- 17 -->
+
+      <article class="news-card">
+        <img src="../img/cde-f11.jpg" alt="Nuevo Fichaje">
+        <div class="card-content">
+          <h2>Llega una Nueva Estrella</h2>
+          <p>Se une al equipo un delantero que promete romper redes en cada partido.</p>
+          <span class="date">10 de mayo de 2025</span>
+        </div>
+      </article>
+      <!-- 18 -->
+
+      <article class="news-card">
+        <img src="../img/cde-f7.jpg" alt="Entrenamiento">
+        <div class="card-content">
+          <h2>Entrenamientos de Alto Nivel</h2>
+          <p>El equipo intensifica su preparación para la recta final de la temporada.</p>
+          <span class="date">9 de mayo de 2025</span>
+        </div>
+      </article>
+      <!-- 19 -->
+
+      <article class="news-card">
+        <img src="../img/cde-femenino.jpg" alt="Partido Épico">
+        <div class="card-content">
+          <h2>¡Victoria Épica 4-1!</h2>
+          <p>El CDE Amistad arrasa en casa con un espectáculo de goles y ovaciones.</p>
+          <span class="date">12 de mayo de 2025</span>
+        </div>
+      </article>
+      <!-- 20 -->
+
+      <article class="news-card">
+        <img src="../img/cde-f11.jpg" alt="Nuevo Fichaje">
+        <div class="card-content">
+          <h2>Llega una Nueva Estrella</h2>
+          <p>Se une al equipo un delantero que promete romper redes en cada partido.</p>
+          <span class="date">10 de mayo de 2025</span>
+        </div>
+      </article>
+      <!-- 21 -->
+
+      <article class="news-card">
+        <img src="../img/cde-f7.jpg" alt="Entrenamiento">
+        <div class="card-content">
+          <h2>Entrenamientos de Alto Nivel</h2>
+          <p>El equipo intensifica su preparación para la recta final de la temporada.</p>
+          <span class="date">9 de mayo de 2025</span>
+        </div>
+      </article>
+      <!-- 22 -->
+
+      <article class="news-card">
+        <img src="../img/cde-femenino.jpg" alt="Partido Épico">
+        <div class="card-content">
+          <h2>¡Victoria Épica 4-1!</h2>
+          <p>El CDE Amistad arrasa en casa con un espectáculo de goles y ovaciones.</p>
+          <span class="date">12 de mayo de 2025</span>
+        </div>
+      </article>
+      <!-- 23 -->
+
+      <article class="news-card">
+        <img src="../img/cde-f11.jpg" alt="Nuevo Fichaje">
+        <div class="card-content">
+          <h2>Llega una Nueva Estrella</h2>
+          <p>Se une al equipo un delantero que promete romper redes en cada partido.</p>
+          <span class="date">10 de mayo de 2025</span>
+        </div>
+      </article>
+      <!-- 24 -->
+
+      <article class="news-card">
+        <img src="../img/cde-f7.jpg" alt="Entrenamiento">
+        <div class="card-content">
+          <h2>Entrenamientos de Alto Nivel</h2>
+          <p>El equipo intensifica su preparación para la recta final de la temporada.</p>
+          <span class="date">9 de mayo de 2025</span>
+        </div>
+      </article>
+      <!-- 25 -->
+
+      <article class="news-card">
+        <img src="../img/cde-femenino.jpg" alt="Partido Épico">
+        <div class="card-content">
+          <h2>¡Victoria Épica 4-1!</h2>
+          <p>El CDE Amistad arrasa en casa con un espectáculo de goles y ovaciones.</p>
+          <span class="date">12 de mayo de 2025</span>
+        </div>
+      </article>
+      <!-- 26 -->
+
+      <article class="news-card">
+        <img src="../img/cde-f11.jpg" alt="Nuevo Fichaje">
+        <div class="card-content">
+          <h2>Llega una Nueva Estrella</h2>
+          <p>Se une al equipo un delantero que promete romper redes en cada partido.</p>
+          <span class="date">10 de mayo de 2025</span>
+        </div>
+      </article>
+      <!-- 27 -->
+
+      <article class="news-card">
+        <img src="../img/cde-f7.jpg" alt="Entrenamiento">
+        <div class="card-content">
+          <h2>Entrenamientos de Alto Nivel</h2>
+          <p>El equipo intensifica su preparación para la recta final de la temporada.</p>
+          <span class="date">9 de mayo de 2025</span>
+        </div>
+      </article>
+
+
+
     </section>
+    <div class="pagination">
+      <button class="pagination-btn" id="prevPage">« Anterior</button>
+      <button class="pagination-btn" id="nextPage" disabled>Siguiente »</button>
+    </div>
     <div class="news-ticker">
-        <marquee behavior="scroll" direction="left">
-          ⚽ El CDE Amistad aplasta al rival en el último minuto ⚔ ¡Victoria 3-2 inolvidable! ⚽ Próximo partido: Sábado 18:00
-        </marquee>
+      <marquee behavior="scroll" direction="left">
+        ⚽ El CDE Amistad aplasta al rival en el último minuto ⚔ ¡Victoria 3-2 inolvidable! ⚽ Próximo partido: Sábado
+        18:00
+      </marquee>
+    </div>
+    <div class="estadisticas-laterales">
+      <h3>Estadísticas Épicas</h3>
+      <div class="stat">
+        <h4 id="matches">0</h4>
+        <p>Partidos Ganados</p>
       </div>
-      <div class="estadisticas-laterales">
-        <h3>Estadísticas Épicas</h3>
-        <div class="stat">
-          <h4 id="matches">0</h4>
-          <p>Partidos Ganados</p>
-        </div>
-        <div class="stat">
-          <h4 id="fans">0</h4>
-          <p>Aficionados</p>
-        </div>
-        <div class="stat">
-          <h4 id="goals">0</h4>
-          <p>Goles Marcados</p>
-        </div>
+      <div class="stat">
+        <h4 id="fans">0</h4>
+        <p>Aficionados</p>
       </div>
-      <section class="epic-banner">
-        <div class="banner-content">
-          <h2>“Donde otros caen, nosotros luchamos.”</h2>
-          <a href="#" class="btn-epic">Ver Próximos Partidos</a>
-        </div>
-      </section>
-      <div class="highlights-carousel">
-        <img src="../img/cde-f11.jpg" alt="Golazo" />
-        <img src="../img/cde-f7.jpg" alt="Celebración" />
-        <img src="../img/cde-femenino.jpg" alt="Victoria" />
+      <div class="stat">
+        <h4 id="goals">0</h4>
+        <p>Goles Marcados</p>
       </div>
-      <div class="epic-quote" id="epicQuote"></div>
+    </div>
+    <section class="epic-banner">
+      <div class="banner-content">
+        <a href="#" class="btn-epic">Ver Próximos Partidos</a>
+      </div>
+    </section>
+    <div class="highlights-carousel">
+      <img src="../img/cde-f11.jpg" alt="Golazo" />
+      <img src="../img/cde-f7.jpg" alt="Celebración" />
+      <img src="../img/cde-femenino.jpg" alt="Victoria" />
+    </div>
+    <div class="epic-quote" id="epicQuote"></div>
 
   </main>
 </body>
 <footer class="footer-banner">
-    <div class="footer-images">
-      <img src="../img/escudo-ada-color.jpg" alt="Escudo 1">
-      <img src="../img/escudo-rffm.jpg" alt="Escudo 2">
-      <img src="../img/Logo-Concejalia.jpg" alt="Escudo 5" class="highlighted-image">
-      <img src="../img/cropped-escudo-nuevo-cantaros-verdeyblanco-1.jpg" alt="Escudo 3">
-      <img src="../img/logo-femaddi.jpg" alt="Escudo 4">
+  <div class="footer-images">
+    <img src="../img/escudo-ada-color.jpg" alt="Escudo 1">
+    <img src="../img/escudo-rffm.jpg" alt="Escudo 2">
+    <img src="../img/Logo-Concejalia.jpg" alt="Escudo 5" class="highlighted-image">
+    <img src="../img/cropped-escudo-nuevo-cantaros-verdeyblanco-1.jpg" alt="Escudo 3">
+    <img src="../img/logo-femaddi.jpg" alt="Escudo 4">
 
-    </div>
-    <p>© 2025 C.D.E. Amistad. Todos los derechos reservados.</p>
-    
+  </div>
+  <p>© 2025 C.D.E. Amistad. Todos los derechos reservados.</p>
+
 </footer>
+
 </html>

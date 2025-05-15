@@ -8,6 +8,7 @@ body {
     background: linear-gradient(90deg, #ffffff, #f5f5f5, #ffffff);
     background-size: 200% 200%;
     animation: shineFlow 10s ease infinite;
+    padding-top : 60px; /* Espacio para el header fijo */
   }
   
   @keyframes shineFlow {
@@ -28,14 +29,82 @@ body {
     top: 0;
     left: 0;
     height: 100vh;
-    z-index: 100;
+    z-index: 10000;
     background: white;
   }
   
 .sidebar.collapsed {
     transform: translateX(-250px);
   }
-  
+  @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@600&display=swap');
+
+#fixedHeader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(90deg, #11998e, #38ef7d);
+  color: white;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.5rem;
+  text-align: center;
+  padding: 20px 0;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px rgba(0,0,0,0.2);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  z-index: 1000;
+  animation: fadeDown 1s ease-out;
+}
+#fixedHeader.scrolled {
+  background: linear-gradient(90deg, #11998e, #38ef7d);
+  font-size: 1.2rem;
+  padding: 10px 0;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6);
+  transition: all 0.3s ease;
+  text-shadow: 0 0 5px rgba(0,255,180,0.4);
+  letter-spacing: 1px;
+}
+
+.header-content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.epic-phrase {
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-shadow: 0 0 5px rgba(0,255,180,0.4);
+}
+
+.social-icons {
+  position: absolute;
+  right: 30px;
+  display: flex;
+  gap: 15px;
+}
+
+.social-icons a {
+  color: white;
+  font-size: 1.3rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #00ffb3;
+  transform: scale(1.2);
+}
+@keyframes fadeDown {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
 
   .toggle-btn {
     position: fixed;

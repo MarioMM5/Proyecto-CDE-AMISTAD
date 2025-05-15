@@ -38,3 +38,11 @@ function updateCarousel() {
 }
 
 
+window.addEventListener("scroll", () => {
+  const header = document.getElementById("fixedHeader");
+  if (window.scrollY > 50) {
+    header.classList.add("scrolled");
+  } else {
+    header.classList.remove("scrolled");
+  }
+});
