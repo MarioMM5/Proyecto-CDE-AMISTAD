@@ -86,7 +86,8 @@ class NoticiasPage extends StatelessWidget {
 
               return NoticiaCard(
                 titulo: noticia['titulo'],
-                descripcion: noticia['descripcion'],
+                // Quitar descripcion porque no existe:
+                // descripcion: noticia['descripcion'],
                 imagenUrl: noticia['imagen'],
                 fecha: fecha,
                 onTap: () {
@@ -102,10 +103,7 @@ class NoticiasPage extends StatelessWidget {
                     ),
                   );
                 },
-
               );
-
-
             },
           );
         },

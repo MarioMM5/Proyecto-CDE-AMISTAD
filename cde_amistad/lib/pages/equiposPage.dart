@@ -103,7 +103,7 @@ class _EquiposPageState extends State<EquiposPage> {
                   ),
                   const SizedBox(width: 10),
                   const Text(
-                    'Inicio',
+                    'Equipos',
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.w600,
