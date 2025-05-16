@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TFG - Noticias</title>
+  <link rel="stylesheet" href="../css/mercha.css" />
+  <script defer src="../js/mercha.js"></script>
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Merriweather:wght@300;400;700&family=Cormorant+Garamond:wght@400;700&family=Montserrat:wght@300;400;600&family=Poppins:wght@400;700&display=swap"
+    rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Iconos -->
+<header id="fixedHeader">
+  <div class="header-content">
+    <span class="epic-phrase">⚽ CDE Amistad</span>
+    <div class="social-icons">
+      <a href="https://www.facebook.com/CDEAmistad" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://twitter.com/cdeamistad" target="_blank"><i class="fab fa-x-twitter"></i></a>
+      <a href="https://www.instagram.com/cdeamistad/" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+  </div>
+</header>
+
+
+  <!-- Sidebar -->
+  <div class="sidebar collapsed" id="sidebar">
+    <div class="menu">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="noticias.html">Noticias</a></li>
+      <li><a href="mercha.html">Merchandising</a></li>
+      <li><a href="#">Calendario</a></li>
+      <li><a href="#">Contacto</a></li>
+    </div>
+
+    <!-- Redes sociales -->
+    <div class="sidebar-social">
+      <div class="contact-info">
+        <span><i class="fas fa-phone"></i> 633 244 011</span>
+        <span><i class="fas fa-envelope"></i> info@cdeamistad.com</span>
+      </div>
+      <div class="social-links">
+        <a href="https://www.facebook.com/CDEAmistad" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://twitter.com/cdeamistad" target="_blank"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://www.instagram.com/cdeamistad/" target="_blank"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recuerda tener Font Awesome cargado -->
+  <div class="toggle-btn" id="toggleBtn">
+    <i class="fas fa-arrow-right"></i>
+  </div>
+
+  <body>
+    <div id="cart">
+  <h3>Carrito</h3>
+  <ul id="cart-items">
+    <!-- Aquí irán los productos añadidos -->
+  </ul>
+  <button id="checkout-btn">Pagar</button>
+</div>
+   <section id="merch-section">
+  <h2 class="section-title">Productos Oficiales</h2>
+  <div class="product-grid">
+
+    <div class="product-card">
+      <img src="../img/camiseta.png" alt="Camiseta Oficial">
+      <h3>Camiseta Oficial</h3>
+      <p class="price">25,00 €</p>
+      <a href="detalle-producto.html?id=413844533" class="buy-btn">Ver detalles</a>
+    </div>
+
+    <div class="product-card">
+      <img src="../img/sudadera.jpg" alt="Sudadera del Equipo">
+      <h3>Sudadera del Equipo</h3>
+      <p class="price">15,00 €</p>
+      <a href="detalle-producto.html?id=413844534" class="buy-btn">Ver detalles</a>
+    </div>
+
+    <div class="product-card">
+      <img src="../img/abrigo.jpg" alt="Abrigo del Equipo">
+      <h3>Abrigo del Equipo</h3>
+      <p class="price">25,00 €</p>
+      <a href="detalle-producto.html?id=413844535" class="buy-btn">Ver detalles</a>
+    </div>
+
+    <div class="product-card">
+      <img src="../img/chubasquero.jpg" alt="Chubasquero del Equipo">
+      <h3>Chubasquero del Equipo</h3>
+      <p class="price">15,00 €</p>
+      <a href="detalle-producto.html?id=413844536" class="buy-btn">Ver detalles</a>
+    </div>
+
+    <div class="product-card">
+      <img src="../img/mochila.jpg" alt="Mochila del Equipo">
+      <h3>Mochila del Equipo</h3>
+      <p class="price">25,00 €</p>
+      <a href="detalle-producto.html?id=413844537" class="buy-btn">Ver detalles</a>
+    </div>
+
+    <div class="product-card">
+      <img src="../img/chandal.jpg" alt="Chandal Oficial">
+      <h3>Chandal Oficial</h3>
+      <p class="price">25,00 €</p>
+      <a href="detalle-producto.html?id=413844538" class="buy-btn">Ver detalles</a>
+    </div>
+
+    <div class="product-card">
+      <img src="../img/conjunto_entero.jpg" alt="Conjunto del Equipo">
+      <h3>Conjunto del Equipo</h3>
+      <p class="price">15,00 €</p>
+      <a href="detalle-producto.html?id=413844539" class="buy-btn">Ver detalles</a>
+    </div>
+
+    <div class="product-card">
+      <img src="../img/calcetines.jpg" alt="Calcetines del Equipo">
+      <h3>Calcetines del Equipo</h3>
+      <p class="price">25,00 €</p>
+      <a href="detalle-producto.html?id=413844520" class="buy-btn">Ver detalles</a>
+    </div>
+
+        <div class="product-card">
+      <img src="../img/polo.jpg" alt="Polo del Equipo">
+      <h3>Polo del Equipo</h3>
+      <p class="price">25,00 €</p>
+      <a href="detalle-producto.html?id=413844521" class="buy-btn">Ver detalles</a>
+    </div>
+    
+
+        <div class="product-card">
+      <img src="../img/pack.jpg" alt="Pack del Equipo">
+      <h3>Pack del Equipo</h3>
+      <p class="price">25,00 €</p>
+      <a href="detalle-producto.html?id=413844522" class="buy-btn">Ver detalles</a>
+    </div>
+    
+    
+
+    <!-- Añade más productos aquí -->
+  </div>
+</section>
+
+  </body>
+
+<footer class="footer-banner">
+  <div class="footer-images">
+    <img src="../img/escudo-ada-color.jpg" alt="Escudo 1">
+    <img src="../img/escudo-rffm.jpg" alt="Escudo 2">
+    <img src="../img/Logo-Concejalia.jpg" alt="Escudo 5" class="highlighted-image">
+    <img src="../img/cropped-escudo-nuevo-cantaros-verdeyblanco-1.jpg" alt="Escudo 3">
+    <img src="../img/logo-femaddi.jpg" alt="Escudo 4">
+
+  </div>
+  <p>© 2025 C.D.E. Amistad. Todos los derechos reservados.</p>
+
+</footer>
+
+</html>
