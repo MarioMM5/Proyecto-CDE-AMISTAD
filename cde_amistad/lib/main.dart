@@ -1,4 +1,5 @@
 import 'package:cde_amistad/pages/equiposPage.dart';
+import 'package:cde_amistad/pages/masPage.dart';
 import 'package:flutter/material.dart';
 import 'package:cde_amistad/pages/inicioPage.dart';
 import 'package:cde_amistad/pages/noticiasPage.dart';
@@ -50,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
     InicioPage(),
     NoticiasPage(),
     EquiposPage(),
-    Center(child: Text('Perfil')),
+    MasPage(),
   ];
 
   void cambiarIndice(int nuevoIndice) {
