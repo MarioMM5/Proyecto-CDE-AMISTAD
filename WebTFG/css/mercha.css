@@ -30,7 +30,7 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  background: linear-gradient(90deg, #11998e, #38ef7d);
+  background: linear-gradient(90deg, #6fdc9b, #38ef7d);
   color: white;
   font-family: 'Rajdhani', sans-serif;
   font-size: 1.5rem;
@@ -42,8 +42,9 @@ body {
   z-index: 1000;
   animation: fadeDown 1s ease-out;
 }
+
 #fixedHeader.scrolled {
-  background: linear-gradient(90deg, #11998e, #38ef7d);
+  background: linear-gradient(90deg, #6fdc9b, #38ef7d);
   font-size: 1.2rem;
   padding: 10px 0;
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6);
@@ -51,6 +52,7 @@ body {
   text-shadow: 0 0 5px rgba(0,255,180,0.4);
   letter-spacing: 1px;
 }
+
 
 .header-content {
   position: relative;
@@ -383,11 +385,11 @@ body {
   background: linear-gradient(135deg, #2ecc71, #27ae60);
 }
 #cart {
-  position: fixed;
-  top: 80px;          /* Para que no se solape con el header fijo */
+  position: absolute;
+  top: 180px;          /* Para que no se solape con el header fijo */
   right: 0;
   width: 300px;
-  height: calc(100vh - 80px);
+  height: calc(200vh - 80px);
   background: #f7f7f7;
   box-shadow: -3px 0 10px rgba(0,0,0,0.2);
   padding: 20px;
@@ -395,7 +397,6 @@ body {
   overflow-y: auto;
   border-radius: 12px 0 0 12px;
   font-family: 'Rajdhani', sans-serif;
-  z-index: 11000;
 }
 
 #cart h3 {

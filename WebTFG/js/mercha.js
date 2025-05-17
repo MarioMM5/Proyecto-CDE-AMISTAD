@@ -26,3 +26,33 @@ document.querySelectorAll('.buy-btn').forEach((btn) => {
     window.location.href = 'detalle-producto.html?id=413844533';
   });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const cartItemsUl = document.getElementById("cart-items");
+  const checkoutBtn = document.getElementById("checkout-btn");
+
+  // Cargar carrito desde localStorage
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  if (cart.length === 0) {
+    cartItemsUl.innerHTML = "<li>El carrito está vacío.</li>";
+  } else {
+    cartItemsUl.innerHTML = ""; // limpiar
+
+    cart.forEach((item, index) => {
+      const li = document.createElement("li");
+      li.textContent = `${item.nombre} - Talla: ${item.talla || "—"} - Cantidad: ${item.cantidad}`;
+      cartItemsUl.appendChild(li);
+    });
+  }
+
+  checkoutBtn.addEventListener("click", () => {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  if (cart.length === 0) {
+    alert("El carrito está vacío.");
+    return;
+  }
+  window.location.href = "checkout.html"; // Redirige a la página de pago
+});
+
+});

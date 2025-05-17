@@ -4,8 +4,7 @@ const productos = {
   413844533: {
     nombre: "Camiseta Oficial",
     precio: 25.0,
-    tallas: ["S", "M", "L", "XL"],
-    colores: ["Blanco", "Negro", "Rojo"],
+    tallas: ["4", "6", "8", "10", "12", "14", "XS", "S", "M", "L", "XL", "XXL"],
     imagen: "../img/camiseta.png",
     info: `
     <strong>Camisetas con diseño exclusivo para el CDE Amistad</strong><br><br>
@@ -24,9 +23,8 @@ const productos = {
   },
   413844534: {
     nombre: "Sudadera del Equipo",
-    precio: 15.0,
-    tallas: ["M", "L", "XL"],
-    colores: ["Gris", "Negro"],
+    precio: 25.0,
+    tallas: ["4", "6", "8", "10", "12", "14", "XS", "S", "M", "L", "XL", "XXL"],
     imagen: "../img/sudadera.jpg",
     info: `
     <strong>Marca:</strong> Gañafote<br><br>
@@ -44,9 +42,8 @@ const productos = {
   },
   413844535: {
     nombre: "Abrigo del Equipo",
-    precio: 25.0,
-    tallas: ["L", "XL"],
-    colores: ["Negro", "Azul"],
+    precio: 36.0,
+    tallas: ["4", "6", "8", "10", "12", "14", "XS", "S", "M", "L", "XL", "XXL"],
     imagen: "../img/abrigo.jpg",
     info: `
     <strong>Abrigo color negro fabricado en Poliéster</strong>.<br><br>
@@ -64,9 +61,8 @@ const productos = {
   },
   413844536: {
     nombre: "Chubasquero del Equipo",
-    precio: 15.0,
-    tallas: ["S", "M", "L"],
-    colores: ["Azul", "Negro"],
+    precio: 18.0,
+    tallas: ["4", "6", "8", "10", "12", "14", "XS", "S", "M", "L", "XL", "XXL"],
     imagen: "../img/chubasquero.jpg",
     info: `
     <strong>Marca:</strong> Gañafote<br><br>
@@ -87,9 +83,8 @@ const productos = {
   },
   413844537: {
     nombre: "Mochila del Equipo",
-    precio: 25.0,
+    precio: 18.0,
     tallas: [], // Sin tallas porque es mochila
-    colores: ["Negro"],
     imagen: "../img/mochila.jpg",
     info: `
     Mochila de color <strong>negro</strong> fabricada en <strong>poliéster</strong>, diseñada para resistir las batallas del día a día con estilo y funcionalidad:<br><br>
@@ -102,9 +97,8 @@ const productos = {
   },
   413844538: {
     nombre: "Chandal Oficial",
-    precio: 25.0,
-    tallas: ["S", "M", "L", "XL"],
-    colores: ["Rojo", "Negro"],
+    precio: 45.0,
+    tallas: ["4", "6", "8", "10", "12", "14", "XS", "S", "M", "L", "XL", "XXL"],
     imagen: "../img/chandal.jpg",
     info: `
     <strong>El chándal del C.D.E. Amistad</strong> se compone de chaqueta y pantalón.<br><br>
@@ -122,9 +116,9 @@ const productos = {
   },
   413844539: {
     nombre: "Conjunto del Equipo",
-    precio: 15.0,
-    tallas: ["M", "L"],
-    colores: ["Blanco", "Azul"],
+    precio: 30.0,
+    tallas: ["4", "6", "8", "10", "12", "14", "XS", "S", "M", "L", "XL", "XXL"],
+    medias: ["NO", "25-28", "29-32", "33-36", "27-40", "41-44"],
     imagen: "../img/conjunto_entero.jpg",
     info: `
     <strong>Marca:</strong> Gañafote<br><br>
@@ -140,7 +134,7 @@ const productos = {
     <strong>Color camiseta y pantalón:</strong> Verde con detalles en blanco<br>
     <strong>Color medias:</strong> Blanco<br><br>
 
-     Las prendas son fabricadas según se realiza el pedido, por lo que <strong>NO se aceptan cambios de talla</strong>. Por favor, tenga en cuenta el siguiente documento para elegir correctamente la talla: 
+    Las prendas son fabricadas según se realiza el pedido, por lo que <strong>NO se aceptan cambios de talla</strong>. Por favor, tenga en cuenta el siguiente documento para elegir correctamente la talla: 
     <a href="https://cdeamistad.com/wp-content/uploads/2022/09/Medidas-Ropa-cdeamistad-2022.pdf" target="_blank" style="color: #007bff; text-decoration: underline;">ver guía de tallas</a>.<br><br>
 
     El artículo tarda alrededor de 3 semanas desde que se realiza el pedido.
@@ -148,9 +142,8 @@ const productos = {
   },
   413844520: {
     nombre: "Medias del Equipo",
-    precio: 25.0,
-    tallas: [], // Sin tallas
-    colores: ["Blanco", "Negro"],
+    precio: 6.50,
+    tallas: ["25-28", "29-32", "33-36", "27-40", "41-44"],
     imagen: "../img/calcetines.jpg",
     info: `
     <strong>Medias personalizadas C.D.E. Amistad</strong><br><br>
@@ -166,8 +159,7 @@ const productos = {
   413844521: {
     nombre: "Polo del Equipo",
     precio: 25.0,
-    tallas: ["S", "M", "L", "XL"],
-    colores: ["Blanco", "Azul"],
+    tallas: ["4", "6", "8", "10", "12", "14", "XS", "S", "M", "L", "XL", "XXL"],
     imagen: "../img/polo.jpg",
     info: `
     <strong>Marca:</strong> Gañafote<br><br>
@@ -184,10 +176,11 @@ const productos = {
   },
   413844522: {
     nombre: "Pack del Equipo",
-    precio: 25.0,
-    tallas: [], // Sin tallas
-    colores: [], // Sin colores
+    precio: 200.0,
+    medias: ["25-28", "29-32", "33-36", "27-40", "41-44"],
+    tallas: ["4", "6", "8", "10", "12", "14", "XS", "S", "M", "L", "XL", "XXL"],
     imagen: "../img/pack.jpg",
+    opciones: ["SI (+35.00€)", "NO"],
     info: `
     <strong>Marca:</strong> Gañafote<br><br>
     Con el pack de ropa de entrenamiento del <strong>C.D.E. Amistad</strong> tendrás todas las prendas necesarias para desarrollar la actividad a un precio más económico.<br><br>
@@ -238,6 +231,8 @@ if (!productId || !productos[productId]) {
 } else {
   const p = productos[productId];
   const esCamiseta = productId === "413844533";
+  const esConjunto = productId === "413844539";
+  const esPack = productId === "413844522";
 
   // Generamos botones de talla
   const tallasButtons = p.tallas
@@ -248,179 +243,116 @@ if (!productId || !productos[productId]) {
     )
     .join("");
 
-  // Generamos botones de color (se ignorará en la camiseta)
-  const coloresButtons = p.colores
-    .map(
-      (c) => `
-    <button type="button" class="option-button color-option" data-value="${c.toLowerCase()}">${c}</button>
+  let optionsButtons = "";
+  if (productId === "413844522") {
+    optionsButtons = p.opciones
+      .map(
+        (t) => `
+    <button type="button" class="option-button size-option" data-value="${t}">${t}</button>
   `
-    )
-    .join("");
+      )
+      .join("");
+  }
 
-container.innerHTML = `
-  <div class="product-detail-container" style="display: flex; gap: 40px; max-width: 1000px; margin: 0 auto; font-family: Arial, sans-serif;">
-    
-    <!-- Lado izquierdo: imagen + info -->
-    <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
-      <img src="${p.imagen}" alt="${p.nombre}" style="max-width: 100%; max-height: 400px; object-fit: contain; border-radius: 10px;" />
-      <div class="product-note" style="
-        margin-top: 15px;
-        background-color: #f9f9f9;
-        border: 1px solid #ddd;
-        padding: 1rem;
-        border-radius: 8px;
-        font-size: 0.95rem;
-        color: #333;
-        text-align: center;
-        width: 100%;
-        max-width: 320px;
-      ">
-        <h3 style="
-          margin-top: 0;
-          margin-bottom: 0.5rem;
-          font-size: 1.1rem;
-          color: #222;
-        ">ℹ️ Información del producto</h3>
-        <p style="margin: 0;">${p.info || ""}</p>
+  let mediasButtons = "";
+  if (productId === "413844539" || productId === "413844522") {
+    mediasButtons = p.medias
+      .map(
+        (t) => `
+    <button type="button" class="option-button size-option" data-value="${t}">${t}</button>
+  `
+      )
+      .join("");
+  }
+  function render(label, buttons, id = "siu") {
+    return buttons.length
+      ? `
+        <label style="font-weight: bold;">${label}:</label>
+        <div class="option-group" id=${id} style="display: flex; gap: 10px;">
+          ${buttons}
+        </div>
+      `
+      : "";
+  }
+
+  container.innerHTML = `
+<a href="javascript:history.back()" class="back-link">
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="24" height="24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+  </svg>
+  Volver atrás
+</a>
+
+<div class="product-detail-container">
+  <div style="flex:1;display:flex;flex-direction:column;align-items:center;">
+    <img src="${p.imagen}" alt="${p.nombre}" class="product-image" />
+    <div class="product-info-box">
+      <h3 style="margin:0 0 0.5rem;font-size:1.1rem;color:#222;">ℹ️ Información del producto</h3>
+      <p style="margin:0;">${p.info || ""}</p>
+    </div>
+  </div>
+
+  <form id="product-options-form">
+    <div class="product-title-box">
+      <h2>${p.nombre}</h2>
+      <p>${p.precio || ""}€</p>
+    </div>
+
+    ${!esPack ? render("Talla", tallasButtons, "size-options") : ""}
+    ${
+      esCamiseta
+        ? `
+      <div>
+        <label for="name-input" style="display:block;font-weight:bold;margin-bottom:0.3rem;">Nombre (opcional):</label>
+        <input type="text" id="name-input" name="name" placeholder="Ej: Gutiérrez" />
+      </div>
+      <label for="number-input">Dorsal (opcional):</label>
+      <input type="number" id="number-input" name="dorsal" min="1" placeholder="Número" />
+    `
+        : ""
+    }
+
+    ${esConjunto ? render("Medias", mediasButtons, "medias") : ""}
+
+    ${
+      esPack
+        ? `
+      ${render("Conjunto de equipo", tallasButtons, "conjunto")}
+      ${render("Sudadera", tallasButtons, "sudadera")}
+      ${render("Chandal", tallasButtons, "chandal")}
+      ${render("Abrigo", tallasButtons, "abrigo")}
+      ${render("Chubasquero", tallasButtons, "chubasquero")}
+      ${render("Medias", mediasButtons, "medias")}
+      ${render(
+        "Ropa de juego (Obligatoria nuevos alumnos)",
+        optionsButtons,
+        "ropa-juego"
+      )}
+    `
+        : ""
+    }
+
+    <label for="quantity-input" style="font-weight:bold;">Cantidad:</label>
+    <input type="number" id="quantity-input" name="quantity" value="1" min="1" required />
+
+    <button type="submit" class="add-cart-btn">Añadir al carrito</button>
+<div id="message-container" style="position: fixed; top: 20px; right: 20px; z-index: 9999;"></div>
+
+    <div class="recommended-section">
+      <h3>Productos Relacionados</h3>
+      <div class="recommended-list">
+        ${obtenerRecomendados(productId, productos)}
       </div>
     </div>
-    
-    <!-- Lado derecho: formulario -->
-    <form id="product-options-form" style="flex: 1; display: flex; flex-direction: column; gap: 15px;">
-      
-      ${
-        p.tallas.length
-          ? `
-          <label style="font-weight: bold;">Talla:</label>
-          <div class="option-group" id="size-options" style="display: flex; gap: 10px;">
-            ${tallasButtons}
-          </div>`
-          : ""
-      }
-      
+  </form>
+</div>`;
 
-      
-              ${esCamiseta ? `
-          <div style="margin-top: 1rem;">
-  <label for="name-input" style="display: block; font-weight: bold; margin-bottom: 0.3rem;">Nombre (opcional):</label>
-  <input
-    type="text"
-    id="name-input"
-    name="name"
-    placeholder="Ej: Gutiérrez"
-    style="
-      width: 100%;
-      padding: 0.6rem 0.8rem;
-      border: 2px solid #ccc;
-      border-radius: 8px;
-      font-size: 1rem;
-      transition: border-color 0.3s, box-shadow 0.3s;
-    "
-    onfocus="this.style.borderColor='#007BFF'; this.style.boxShadow='0 0 0 3px rgba(0,123,255,0.2)'"
-    onblur="this.style.borderColor='#ccc'; this.style.boxShadow='none'"
-  />
-</div>
-          <label for="number-input">Dorsal (opcional):</label>
-          <input type="number" id="number-input" name="dorsal" min="1" placeholder="Número" />
-          ` : ''}
-                <label for="quantity-input" style="font-weight: bold;">Cantidad:</label>
-      <input type="number" id="quantity-input" name="quantity" value="1" min="1" required style="width: 80px; padding: 6px; font-size: 1rem;" />
-     
-      <button type="submit" class="add-cart-btn" style="
-        background-color: #2c7be5;
-        color: white;
-        border: none;
-        padding: 12px 0;
-        font-size: 1.1rem;
-        cursor: pointer;
-        border-radius: 6px;
-        transition: background-color 0.3s ease;
-        margin-top: 10px;
-      ">Añadir al carrito</button>
-      
-      <!-- Productos relacionados justo debajo del botón -->
-      <div class="recommended-section" style="margin-top: 30px;">
-        <h3 style="font-size: 1.3rem; color: #222; margin-bottom: 15px;">Productos Relacionados</h3>
-        <div class="recommended-list" style="display: flex; gap: 15px; flex-wrap: wrap;">
-          ${obtenerRecomendados(productId, productos)}
-        </div>
-      </div>
-    </form>
-    
-  </div>
-`;
-
-
-  // Y añade CSS para que quede presentable:
-  const style = document.createElement("style");
-  style.textContent = `
-  .recommended-section {
-    margin-top: 30px;
-  }
-  .recommended-section h3 {
-    font-size: 1.4em;
-    font-weight: 700;
-    margin-bottom: 15px;
-    border-bottom: 3px solid #2a9d8f;
-    padding-bottom: 6px;
-    color: #264653;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  .recommended-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 20px;
-  }
-  .recommended-card {
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    overflow: hidden;
-    cursor: pointer;
-  }
-  .recommended-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-  }
-  .recommended-card a {
-    color: inherit;
-    text-decoration: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 12px;
-  }
-  .img-wrapper {
-    width: 100%;
-    overflow: hidden;
-    border-radius: 12px;
-  }
-  .img-wrapper img {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-  }
-  .recommended-card:hover img {
-    transform: scale(1.1);
-  }
-  .recommended-title {
-    margin-top: 10px;
-    font-weight: 600;
-    font-size: 1em;
-    text-align: center;
-    color: #2a9d8f;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-`;
-  document.head.appendChild(style);
 }
 
 // --- lógica de selección de opciones ---
 function setupOptionGroup(groupId) {
   const group = document.getElementById(groupId);
-  if (!group) return () => ""; // si no existe, devuelve siempre vacío
+  if (!group) return () => "";
   const buttons = group.querySelectorAll(".option-button");
   let selectedValue = "";
 
@@ -435,8 +367,26 @@ function setupOptionGroup(groupId) {
   return () => selectedValue;
 }
 
+const getSelectedConf = setupOptionGroup("conjunto");
+const getSelectedSudadera = setupOptionGroup("sudadera");
+const getSelectedChandal = setupOptionGroup("chandal");
+const getSelectedAbrigo = setupOptionGroup("abrigo");
+const getSelectedChubasquero = setupOptionGroup("chubasquero");
+const getSelectedMedias = setupOptionGroup("medias");
+const getSelectedRopa_Juego = setupOptionGroup("ropa-juego");
+const selectedMedias = setupOptionGroup("medias-options");
 const getSelectedSize = setupOptionGroup("size-options");
-const getSelectedColor = setupOptionGroup("color-options");
+
+// Función para obtener carrito desde localStorage
+function getCart() {
+  const cartJSON = localStorage.getItem("cart");
+  return cartJSON ? JSON.parse(cartJSON) : [];
+}
+
+// Función para guardar carrito en localStorage
+function saveCart(cart) {
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
 
 // --- envío del formulario ---
 document
@@ -447,19 +397,31 @@ document
 
     // Recuperar valores
     const talla = getSelectedSize();
-    const color = p.colores.length ? getSelectedColor() : "";
     const cantidad = parseInt(
       document.getElementById("quantity-input").value,
       10
     );
 
     // Validaciones
-    if (p.tallas.length && !talla) {
-      alert("Por favor, selecciona una talla.");
-      return;
+    const requiredSelections = [
+      { label: "el conjunto", getter: getSelectedConf },
+      { label: "la sudadera", getter: getSelectedSudadera },
+      { label: "el chándal", getter: getSelectedChandal },
+      { label: "el abrigo", getter: getSelectedAbrigo },
+      { label: "el chubasquero", getter: getSelectedChubasquero },
+    ];
+
+    if (productId === "413844522") {
+      for (const { label, getter } of requiredSelections) {
+        if (!getter()) {
+          showMessage(`Por favor, selecciona una talla para ${label}.`);
+          return;
+        }
+      }
     }
-    if (p.colores.length && color === "") {
-      alert("Por favor, selecciona un color.");
+
+    if (p.tallas.length && !talla && productId !== "413844522") {
+      showMessage("Por favor, selecciona una talla.");
       return;
     }
 
@@ -469,18 +431,91 @@ document
     if (productId === "413844533") {
       nombreUsuario = document.getElementById("name-input").value.trim();
       dorsalUsuario = document.getElementById("number-input").value.trim();
+      if (!nombreUsuario || !dorsalUsuario) {
+        showMessage("Por favor, introduce un nombre y dorsal.");
+        return;
+      }
     }
 
-    // Aquí enviarías al carrito (por ahora un alert)
+    // Datos adicionales para el conjunto
+    if (productId === "413844539") {
+      if (!getSelectedMedias()) {
+        showMessage("Por favor, selecciona una talla de medias.");
+        return;
+      }
+    }
+
+    // Construir objeto del producto para añadir al carrito
+    const item = {
+      id: productId,
+      nombre: p.nombre,
+      talla: talla || null,
+      cantidad,
+      nombreUsuario: nombreUsuario || null,
+      dorsalUsuario: dorsalUsuario || null,
+      medias: getSelectedMedias() || null,
+      sudadera: getSelectedSudadera() || null,
+      chandal: getSelectedChandal() || null,
+      abrigo: getSelectedAbrigo() || null,
+      chubasquero: getSelectedChubasquero() || null,
+      ropaJuego: getSelectedRopa_Juego() || null,
+      precio: p.precio || 0,
+      imagen: p.imagen || "",
+    };
+
+    const cart = getCart();
+    cart.push(item);
+    saveCart(cart);
+
     alert(
       `Añadido al carrito:\n` +
-        `Producto: ${p.nombre}\n` +
-        `Talla: ${talla || "—"}\n` +
-        `${p.colores.length ? `Color: ${color}\n` : ""}` +
-        `Cantidad: ${cantidad}\n` +
-        `${nombreUsuario ? `Nombre: ${nombreUsuario}\n` : ""}` +
-        `${dorsalUsuario ? `Dorsal: ${dorsalUsuario}\n` : ""}`
+        `Producto: ${item.nombre}\n` +
+        `Talla: ${item.talla || "—"}\n` +
+        `${item.nombreUsuario ? `Nombre: ${item.nombreUsuario}\n` : ""}` +
+        `${item.dorsalUsuario ? `Dorsal: ${item.dorsalUsuario}\n` : ""}` +
+        `${item.medias ? `Medias: ${item.medias}\n` : ""}` +
+        `${item.sudadera ? `Sudadera: ${item.sudadera}\n` : ""}` +
+        `${item.chandal ? `Chandal: ${item.chandal}\n` : ""}` +
+        `${item.abrigo ? `Abrigo: ${item.abrigo}\n` : ""}` +
+        `${item.chubasquero ? `Chubasquero: ${item.chubasquero}\n` : ""}` +
+        `${item.ropaJuego ? `Ropa de juego: ${item.ropaJuego}\n` : ""}` +
+        `Cantidad: ${item.cantidad}\n`
     );
 
-    // TODO: guardar en localStorage o enviar a backend
+    // Redirigir al catálogo (cambia 'catalogo.html' por la ruta correcta)
+    window.location.href = "mercha.html";
   });
+  
+window.addEventListener("scroll", () => {
+  const header = document.getElementById("fixedHeader");
+  if (window.scrollY > 50) {
+    header.classList.add("scrolled");
+  } else {
+    header.classList.remove("scrolled");
+  }
+});
+
+function showMessage(text, type = "error", duration = 4000) {
+  const container = document.getElementById("message-container");
+  if (!container) return;
+
+  const message = document.createElement("div");
+  message.className = `message ${type}`;
+  message.textContent = text;
+
+  // Botón cerrar
+  const closeBtn = document.createElement("button");
+  closeBtn.textContent = "×";
+  closeBtn.className = "close-btn";
+  closeBtn.onclick = () => container.removeChild(message);
+  message.appendChild(closeBtn);
+
+  container.appendChild(message);
+
+  // Desaparece automáticamente
+  setTimeout(() => {
+    if (container.contains(message)) {
+      container.removeChild(message);
+    }
+  }, duration);
+}
