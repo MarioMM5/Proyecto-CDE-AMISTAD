@@ -414,9 +414,10 @@ document
     if (productId === "413844522") {
       for (const { label, getter } of requiredSelections) {
         if (!getter()) {
-          showMessage(`Por favor, selecciona una talla para ${label}.`);
-          return;
+          showMessage(`Por favor, selecciona todos los campos.`);
         }
+        return;
+
       }
     }
 
@@ -463,24 +464,21 @@ document
       imagen: p.imagen || "",
     };
 
+    let itemExists = false;
     const cart = getCart();
-    cart.push(item);
+    cart.forEach((product) => {
+      if (product.id === item.id && product.talla === item.talla) {
+        product.cantidad += cantidad;
+        itemExists = true;
+        return;
+      }
+    });
+    if (!itemExists) {
+      cart.push(item);
+    }
     saveCart(cart);
 
-    alert(
-      `Añadido al carrito:\n` +
-        `Producto: ${item.nombre}\n` +
-        `Talla: ${item.talla || "—"}\n` +
-        `${item.nombreUsuario ? `Nombre: ${item.nombreUsuario}\n` : ""}` +
-        `${item.dorsalUsuario ? `Dorsal: ${item.dorsalUsuario}\n` : ""}` +
-        `${item.medias ? `Medias: ${item.medias}\n` : ""}` +
-        `${item.sudadera ? `Sudadera: ${item.sudadera}\n` : ""}` +
-        `${item.chandal ? `Chandal: ${item.chandal}\n` : ""}` +
-        `${item.abrigo ? `Abrigo: ${item.abrigo}\n` : ""}` +
-        `${item.chubasquero ? `Chubasquero: ${item.chubasquero}\n` : ""}` +
-        `${item.ropaJuego ? `Ropa de juego: ${item.ropaJuego}\n` : ""}` +
-        `Cantidad: ${item.cantidad}\n`
-    );
+
 
     // Redirigir al catálogo (cambia 'catalogo.html' por la ruta correcta)
     window.location.href = "mercha.html";

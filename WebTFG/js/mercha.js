@@ -56,3 +56,22 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 });
+document.addEventListener("DOMContentLoaded", () => {
+  const clearCartBtn = document.getElementById("clear-cart-btn");
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  if (cart.length === 0) {
+    clearCartBtn.style.display = "none"; // Oculta el botón si el carrito está vacío
+  } else {
+    clearCartBtn.style.display = "block"; // Muestra el botón si hay productos en el carrito
+  }
+  if (clearCartBtn) {
+    clearCartBtn.addEventListener("click", () => {
+      const confirmClear = confirm("¿Estás seguro de que quieres vaciar el carrito?");
+      if (confirmClear) {
+        localStorage.removeItem("cart");
+        alert("Carrito vaciado.");
+        location.reload(); // recarga para que se actualice la vista
+      }
+    });
+  }
+});

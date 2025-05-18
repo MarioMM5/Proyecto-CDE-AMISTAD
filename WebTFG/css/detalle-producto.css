@@ -345,6 +345,7 @@ input[type="number"]:focus {
   color: #2a9d8f;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
+
 .message {
   background: rgba(255, 0, 0, 0.85);
   color: white;
