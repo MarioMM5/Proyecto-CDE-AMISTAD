@@ -1,0 +1,115 @@
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<link rel="stylesheet" href="../css/equipos.css">
+<body><header id="fixedHeader">
+        <div class="header-content">
+            <span class="epic-phrase">⚽ CDE Amistad</span>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/CDEAmistad" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com/cdeamistad" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                <a href="https://www.instagram.com/cdeamistad/" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- Sidebar -->
+    <div class="sidebar collapsed" id="sidebar">
+        <div class="menu">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="noticias.html">Noticias</a></li>
+            <li><a href="mercha.html">Merchandising</a></li>
+            <li><a href="contact.html">Contacto</a></li>
+        </div>
+
+        <!-- Redes sociales -->
+        <div class="sidebar-social">
+            <div class="contact-info">
+                <span><i class="fas fa-phone"></i> 633 244 011</span>
+                <span><i class="fas fa-envelope"></i> info@cdeamistad.com</span>
+            </div>
+            <div class="social-links">
+                <a href="https://www.facebook.com/CDEAmistad" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com/cdeamistad" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                <a href="https://www.instagram.com/cdeamistad/" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recuerda tener Font Awesome cargado -->
+    <div class="toggle-btn" id="toggleBtn">
+        <i class="fas fa-arrow-right"></i>
+    </div>
+
+
+
+    <!-- Contenido Principal -->
+    <div class="content">
+
+        <!-- Banner Principal -->
+        <div class="banner">
+            <div class="banner-background"></div>
+            <div class="contenido">
+                <img src="../img/cropped-escudo-nuevo-cantaros-verdeyblanco-1.jpg" alt="Escudo" class="moving-logo" />
+                <div class="text-content">
+                    <h1 class="titulo-inscripciones">Inscripciones</h1>
+                </div>
+            </div>
+        </div>
+  <div class="equipo-container">
+    <div id="contenido-dinamico" class="equipo-dinamico"></div>
+    <div class="boton-volver">
+      <a href="index.html">⬅ Volver al inicio</a>
+    </div>
+  </div>
+  
+
+</body>
+<div class="content" style="display: flex; gap: 40px; max-width: 900px; margin: 0 auto;">
+
+
+    <!-- Aquí el contenido que carga cargarEquipos.js -->
+    <script src="../js/cargarEquipos.js"></script>
+
+
+  <section class="formulario-inscripcion" style="flex: 1; border: 1px solid #ccc; padding: 20px;">
+    <h2>Inscríbete con Nosotros</h2>
+    <p>Rellena el formulario y nos pondremos en contacto contigo</p>
+    <form action="https://formsubmit.co/tu-correo@example.com" method="POST" class="formulario">
+      <input type="text" name="nombre" placeholder="Nombre completo" required />
+      <input type="date" name="fecha_nacimiento" required />
+      <input type="tel" name="telefono" placeholder="Teléfono de contacto" required />
+      <input type="email" name="correo" placeholder="Correo electrónico" required />
+      
+      <select name="categoria" required>
+        <option value="">Selecciona una Posición</option>
+        <option value="goalkeeper">Portero</option>
+        <option value="middle">Medio centro</option>
+        <option value="right">Banda derecha</option>
+        <option value="left">Banda izquierda</option>
+        <option value="defense">Defensa</option>
+        <option value="forward">Delantero</option>
+      </select>
+      
+      <textarea name="comentarios" placeholder="Comentarios adicionales..."></textarea>
+      
+      <input type="hidden" name="_captcha" value="false">
+      
+      <button type="submit">Enviar Inscripción</button>
+    </form>
+  </section>
+
+</div>
+
+
+    <footer class="footer-banner">
+      <div class="footer-images">
+        <img src="../img/escudo-ada-color.jpg" alt="Escudo 1">
+        <img src="../img/escudo-rffm.jpg" alt="Escudo 2">
+        <img src="../img/Logo-Concejalia.jpg" alt="Escudo 5" class="highlighted-image">
+        <img src="../img/cropped-escudo-nuevo-cantaros-verdeyblanco-1.jpg" alt="Escudo 3">
+        <img src="../img/logo-femaddi.jpg" alt="Escudo 4">
+
+      </div>
+      <p>© 2025 C.D.E. Amistad. Todos los derechos reservados.</p>
+    </footer>
