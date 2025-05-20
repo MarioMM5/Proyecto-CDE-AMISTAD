@@ -4,10 +4,21 @@ import 'package:url_launcher/url_launcher.dart';
 class MasPage extends StatelessWidget {
   const MasPage({Key? key}) : super(key: key);
 
-  void _launchURL(String url) async {
+  Future<void> _launchURL(String url) async {
     final uri = Uri.parse(url);
     if (await canLaunchUrl(uri)) {
       await launchUrl(uri, mode: LaunchMode.externalApplication);
+    } else {
+      debugPrint('No se pudo abrir la URL: $url');
+    }
+  }
+
+  Future<void> _openMaps(String query) async {
+    final googleMapsUrl = Uri.parse('https://www.google.com/maps/search/?api=1&query=$query');
+    if (await canLaunchUrl(googleMapsUrl)) {
+      await launchUrl(googleMapsUrl, mode: LaunchMode.externalApplication);
+    } else {
+      debugPrint('No se pudo abrir Google Maps');
     }
   }
 
@@ -37,7 +48,7 @@ class MasPage extends StatelessWidget {
               Row(
                 children: [
                   Image.asset(
-                    'assets/icono.png', // Ruta de la imagen
+                    'assets/icono.png',
                     height: 30,
                   ),
                   const SizedBox(width: 10),
@@ -68,11 +79,11 @@ class MasPage extends StatelessWidget {
             Container(
               height: 100,
               width: 100,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 shape: BoxShape.circle,
                 image: DecorationImage(
                   image: AssetImage('assets/icono.png'),
-                  fit: BoxFit.contain,  // cambia el fit aquí
+                  fit: BoxFit.contain,
                 ),
               ),
             ),
@@ -108,11 +119,10 @@ class MasPage extends StatelessWidget {
             ),
             ListTile(
               leading: Image.network(
-                'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/1200px-Instagram_logo_2016.svg.png',
+                'https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png',
                 width: 24,
                 height: 24,
                 fit: BoxFit.contain,
-                colorBlendMode: BlendMode.srcIn, // para que el color aplique bien
               ),
               title: const Text('Instagram'),
               onTap: () => _launchURL('https://instagram.com/cdeamistad'),
@@ -127,10 +137,6 @@ class MasPage extends StatelessWidget {
               title: const Text('X'),
               onTap: () => _launchURL('https://x.com/cdeamistad'),
             ),
-
-
-
-
 
             const SizedBox(height: 30),
 
@@ -155,9 +161,7 @@ class MasPage extends StatelessWidget {
             ListTile(
               leading: const Icon(Icons.location_on, color: Colors.red),
               title: const Text('Calle Falsa 123, Ciudad'),
-              onTap: () {
-                // Aquí podrías abrir Google Maps con la dirección si quieres
-              },
+              onTap: () => _openMaps('Calle Falsa 123, Ciudad'),
             ),
           ],
         ),

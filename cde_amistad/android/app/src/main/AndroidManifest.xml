@@ -4,7 +4,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:label="CDE AMISTAD"
-        android:icon="@drawable/icono">
+        android:icon="@drawable/icono"
+        android:enableOnBackInvokedCallback="true">
         <activity
             android:name=".MainActivity"
             android:exported="true"
