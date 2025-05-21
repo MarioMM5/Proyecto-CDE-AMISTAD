@@ -17,49 +17,15 @@ class InicioPage extends StatefulWidget {
 }
 
 class _InicioPageState extends State<InicioPage> {
-  final Map<DateTime, List<Map<String, String>>> _eventosPorDia = {};
+  final _meses = {
+    'enero': 1, 'febrero': 2, 'marzo': 3, 'abril': 4,
+    'mayo': 5, 'junio': 6, 'julio': 7, 'agosto': 8,
+    'septiembre': 9, 'octubre': 10, 'noviembre': 11, 'diciembre': 12,
+  };
+
   DateTime _focusedDay = DateTime.now();
   DateTime? _selectedDay;
-
-  @override
-  void initState() {
-    super.initState();
-    _inicializarEventos();
-  }
-
-  void _inicializarEventos() {
-    final mockEventos = [
-      {
-        "titulo": "Partido vs Dragones",
-        "fecha": "2025-06-05 18:00:00",
-        "lugar": "Estadio Principal",
-      },
-      {
-        "titulo": "Fiesta del Club",
-        "fecha": "2025-06-10 20:00:00",
-        "lugar": "Club Social",
-      },
-      {
-        "titulo": "Entrenamiento Especial",
-        "fecha": "2025-06-10 17:00:00",
-        "lugar": "Campo 2",
-      },
-    ];
-
-    for (final evento in mockEventos) {
-      final fecha = DateTime.parse(evento['fecha']!);
-      final key = DateTime(fecha.year, fecha.month, fecha.day);
-
-      if (_eventosPorDia[key] == null) {
-        _eventosPorDia[key] = [];
-      }
-      _eventosPorDia[key]!.add(evento);
-    }
-  }
-
-  List<Map<String, String>> _obtenerEventosDelDia(DateTime day) {
-    return _eventosPorDia[DateTime(day.year, day.month, day.day)] ?? [];
-  }
+  List<Map<String, dynamic>> _eventos = [];
 
   Future<List<Map<String, dynamic>>> cargarNoticias() async {
     try {
@@ -71,6 +37,65 @@ class _InicioPageState extends State<InicioPage> {
     } catch (e) {
       debugPrint('Error al cargar noticias: $e');
       return [];
+    }
+  }
+
+  Future<void> cargarEventos() async {
+    try {
+      final response = await Supabase.instance.client
+          .from('eventos')
+          .select();
+      setState(() {
+        _eventos = List<Map<String, dynamic>>.from(response);
+      });
+    } catch (e) {
+      debugPrint('Error al cargar eventos: $e');
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    cargarEventos();
+  }
+
+  Event buildEvent(String titulo, String lugar, DateTime fecha) {
+    return Event(
+      title: titulo,
+      description: 'Evento de CDE Amistad',
+      location: lugar,
+      startDate: fecha,
+      endDate: fecha.add(const Duration(hours: 1)),
+      iosParams: const IOSParams(reminder: Duration(minutes: 15)),
+      androidParams: const AndroidParams(emailInvites: []),
+    );
+  }
+
+  DateTime parseFecha(String fechaTexto) {
+    try {
+      final partes = fechaTexto.split(',');
+      final fechaPartes = partes[0].trim().split(' ');
+      final horaPartes = partes[1].trim().replaceAll('h', '').split(':');
+
+      final dia = int.parse(fechaPartes[0]);
+      final mes = _meses[fechaPartes[1].toLowerCase()] ?? 1;
+      final hora = int.parse(horaPartes[0]);
+      final minutos = int.parse(horaPartes[1]);
+
+      final ahora = DateTime.now();
+      return DateTime(ahora.year, mes, dia, hora, minutos);
+    } catch (e) {
+      debugPrint('Error parseando fecha: $e');
+      return DateTime.now();
+    }
+  }
+
+  DateTime parsearFechaSupabase(String fechaIso) {
+    try {
+      return DateTime.parse(fechaIso);
+    } catch (e) {
+      debugPrint('Error al parsear fecha de Supabase: $e');
+      return DateTime.now();
     }
   }
 
@@ -95,57 +120,14 @@ class _InicioPageState extends State<InicioPage> {
     );
   }
 
-  Event buildEvent(String titulo, String lugar, DateTime fecha) {
-    return Event(
-      title: titulo,
-      description: 'Evento de CDE Amistad',
-      location: lugar,
-      startDate: fecha,
-      endDate: fecha.add(const Duration(hours: 1)),
-      iosParams: const IOSParams(reminder: Duration(minutes: 15)),
-      androidParams: const AndroidParams(emailInvites: []),
-    );
-  }
-
-  void _mostrarEventosDelDia(DateTime dia) {
-    final eventos = _obtenerEventosDelDia(dia);
-
-    if (eventos.isEmpty) return;
-
-    showDialog(
-      context: context,
-      builder: (_) => AlertDialog(
-        title: Text('Eventos del ${DateFormat('dd/MM/yyyy').format(dia)}'),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: eventos.map((evento) {
-            final fechaEvento = DateTime.parse(evento['fecha']!);
-            final event = buildEvent(evento['titulo']!, evento['lugar']!, fechaEvento);
-            return ListTile(
-              title: Text(evento['titulo']!),
-              subtitle: Text('${evento['lugar']} - ${DateFormat.Hm().format(fechaEvento)}'),
-              trailing: IconButton(
-                icon: const Icon(Icons.event_available),
-                onPressed: () async {
-                  await solicitarPermisoYAgregar(event);
-                  Navigator.pop(context);
-                },
-              ),
-            );
-          }).toList(),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('Cerrar'),
-          ),
-        ],
-      ),
-    );
+  List<DateTime> obtenerFechasConEventos() {
+    return _eventos.map((evento) => parsearFechaSupabase(evento['fecha'])).toList();
   }
 
   @override
   Widget build(BuildContext context) {
+    final fechasConEventos = obtenerFechasConEventos();
+
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(80),
@@ -261,30 +243,77 @@ class _InicioPageState extends State<InicioPage> {
                   ),
                 ),
                 const SizedBox(height: 30),
-                const Text('Calendario de eventos:', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
+                const Text('Eventos en el calendario:', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
                 const SizedBox(height: 10),
                 TableCalendar(
                   firstDay: DateTime.utc(2020, 1, 1),
                   lastDay: DateTime.utc(2030, 12, 31),
                   focusedDay: _focusedDay,
                   selectedDayPredicate: (day) => isSameDay(_selectedDay, day),
-                  eventLoader: _obtenerEventosDelDia,
                   onDaySelected: (selectedDay, focusedDay) {
                     setState(() {
                       _selectedDay = selectedDay;
                       _focusedDay = focusedDay;
                     });
-                    _mostrarEventosDelDia(selectedDay);
+
+                    final eventosDia = _eventos.where((evento) {
+                      final fechaEvento = parsearFechaSupabase(evento['fecha']);
+                      return fechaEvento.year == selectedDay.year &&
+                          fechaEvento.month == selectedDay.month &&
+                          fechaEvento.day == selectedDay.day;
+                    }).toList();
+
+                    if (eventosDia.isNotEmpty) {
+                      showDialog(
+                        context: context,
+                        builder: (_) => AlertDialog(
+                          title: const Text('Eventos del día'),
+                          content: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: eventosDia.map((evento) {
+                              final fechaEvento = parsearFechaSupabase(evento['fecha']);
+                              final horaFormateada = DateFormat('HH:mm').format(fechaEvento);
+                              return Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  ListTile(
+                                    contentPadding: EdgeInsets.zero,
+                                    title: Text(evento['titulo'] ?? 'Evento'),
+                                    subtitle: Text('${evento['lugar']} - $horaFormateada'),
+                                  ),
+                                  Align(
+                                    alignment: Alignment.centerRight,
+                                    child: TextButton(
+                                      onPressed: () {
+                                        final event = buildEvent(
+                                          evento['titulo'] ?? 'Evento',
+                                          evento['lugar'] ?? '',
+                                          fechaEvento,
+                                        );
+                                        solicitarPermisoYAgregar(event);
+                                      },
+                                      child: const Text('Añadir al calendario'),
+                                    ),
+                                  ),
+                                ],
+                              );
+                            }).toList(),
+                          ),
+                          actions: [
+                            TextButton(
+                              onPressed: () => Navigator.pop(context),
+                              child: const Text('Cerrar'),
+                            ),
+                          ],
+                        ),
+                      );
+                    }
                   },
-                  calendarStyle: const CalendarStyle(
-                    markerDecoration: BoxDecoration(
-                      color: Colors.green,
-                      shape: BoxShape.circle,
-                    ),
-                  ),
                   calendarBuilders: CalendarBuilders(
                     markerBuilder: (context, day, events) {
-                      if (events.isNotEmpty) {
+                      final tieneEvento = fechasConEventos.any((fecha) =>
+                      fecha.year == day.year && fecha.month == day.month && fecha.day == day.day);
+                      if (tieneEvento) {
                         return Positioned(
                           bottom: 1,
                           child: Container(
