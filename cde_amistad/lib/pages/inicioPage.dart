@@ -100,7 +100,7 @@ class _InicioPageState extends State<InicioPage> {
   }
 
   Future<void> solicitarPermisoYAgregar(Event event) async {
-    final status = await Permission.calendar.request();
+    final status = await Permission.calendar.request();  // revisar esto
 
     if (status.isGranted) {
       try {
