@@ -5,6 +5,7 @@ import 'package:add_2_calendar/add_2_calendar.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:cde_amistad/main.dart';
 import 'package:intl/intl.dart';
+import 'package:table_calendar/table_calendar.dart';
 
 class InicioPage extends StatefulWidget {
   final VoidCallback? onVerNoticias;
@@ -16,11 +17,49 @@ class InicioPage extends StatefulWidget {
 }
 
 class _InicioPageState extends State<InicioPage> {
-  final _meses = {
-    'enero': 1, 'febrero': 2, 'marzo': 3, 'abril': 4,
-    'mayo': 5, 'junio': 6, 'julio': 7, 'agosto': 8,
-    'septiembre': 9, 'octubre': 10, 'noviembre': 11, 'diciembre': 12,
-  };
+  final Map<DateTime, List<Map<String, String>>> _eventosPorDia = {};
+  DateTime _focusedDay = DateTime.now();
+  DateTime? _selectedDay;
+
+  @override
+  void initState() {
+    super.initState();
+    _inicializarEventos();
+  }
+
+  void _inicializarEventos() {
+    final mockEventos = [
+      {
+        "titulo": "Partido vs Dragones",
+        "fecha": "2025-06-05 18:00:00",
+        "lugar": "Estadio Principal",
+      },
+      {
+        "titulo": "Fiesta del Club",
+        "fecha": "2025-06-10 20:00:00",
+        "lugar": "Club Social",
+      },
+      {
+        "titulo": "Entrenamiento Especial",
+        "fecha": "2025-06-10 17:00:00",
+        "lugar": "Campo 2",
+      },
+    ];
+
+    for (final evento in mockEventos) {
+      final fecha = DateTime.parse(evento['fecha']!);
+      final key = DateTime(fecha.year, fecha.month, fecha.day);
+
+      if (_eventosPorDia[key] == null) {
+        _eventosPorDia[key] = [];
+      }
+      _eventosPorDia[key]!.add(evento);
+    }
+  }
+
+  List<Map<String, String>> _obtenerEventosDelDia(DateTime day) {
+    return _eventosPorDia[DateTime(day.year, day.month, day.day)] ?? [];
+  }
 
   Future<List<Map<String, dynamic>>> cargarNoticias() async {
     try {
@@ -32,37 +71,6 @@ class _InicioPageState extends State<InicioPage> {
     } catch (e) {
       debugPrint('Error al cargar noticias: $e');
       return [];
-    }
-  }
-
-  Event buildEvent(String titulo, String lugar, DateTime fecha) {
-    return Event(
-      title: titulo,
-      description: 'Evento de CDE Amistad',
-      location: lugar,
-      startDate: fecha,
-      endDate: fecha.add(const Duration(hours: 1)),
-      iosParams: const IOSParams(reminder: Duration(minutes: 15)),
-      androidParams: const AndroidParams(emailInvites: []),
-    );
-  }
-
-  DateTime parseFecha(String fechaTexto) {
-    try {
-      final partes = fechaTexto.split(',');
-      final fechaPartes = partes[0].trim().split(' ');
-      final horaPartes = partes[1].trim().replaceAll('h', '').split(':');
-
-      final dia = int.parse(fechaPartes[0]);
-      final mes = _meses[fechaPartes[1].toLowerCase()] ?? 1;
-      final hora = int.parse(horaPartes[0]);
-      final minutos = int.parse(horaPartes[1]);
-
-      final ahora = DateTime.now();
-      return DateTime(ahora.year, mes, dia, hora, minutos);
-    } catch (e) {
-      debugPrint('Error parseando fecha: $e');
-      return DateTime.now();
     }
   }
 
@@ -87,26 +95,57 @@ class _InicioPageState extends State<InicioPage> {
     );
   }
 
+  Event buildEvent(String titulo, String lugar, DateTime fecha) {
+    return Event(
+      title: titulo,
+      description: 'Evento de CDE Amistad',
+      location: lugar,
+      startDate: fecha,
+      endDate: fecha.add(const Duration(hours: 1)),
+      iosParams: const IOSParams(reminder: Duration(minutes: 15)),
+      androidParams: const AndroidParams(emailInvites: []),
+    );
+  }
+
+  void _mostrarEventosDelDia(DateTime dia) {
+    final eventos = _obtenerEventosDelDia(dia);
+
+    if (eventos.isEmpty) return;
+
+    showDialog(
+      context: context,
+      builder: (_) => AlertDialog(
+        title: Text('Eventos del ${DateFormat('dd/MM/yyyy').format(dia)}'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: eventos.map((evento) {
+            final fechaEvento = DateTime.parse(evento['fecha']!);
+            final event = buildEvent(evento['titulo']!, evento['lugar']!, fechaEvento);
+            return ListTile(
+              title: Text(evento['titulo']!),
+              subtitle: Text('${evento['lugar']} - ${DateFormat.Hm().format(fechaEvento)}'),
+              trailing: IconButton(
+                icon: const Icon(Icons.event_available),
+                onPressed: () async {
+                  await solicitarPermisoYAgregar(event);
+                  Navigator.pop(context);
+                },
+              ),
+            );
+          }).toList(),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Cerrar'),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    final eventosMock = [
-      {
-        "titulo": "Partido vs Dragones",
-        "fecha": "5 junio, 18:00h",
-        "lugar": "Estadio Principal",
-      },
-      {
-        "titulo": "Fiesta del Club",
-        "fecha": "10 junio, 20:00h",
-        "lugar": "Club Social",
-      },
-      {
-        "titulo": "Entrenamiento Especial",
-        "fecha": "12 junio, 17:00h",
-        "lugar": "Campo 2",
-      },
-    ];
-
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(80),
@@ -222,69 +261,43 @@ class _InicioPageState extends State<InicioPage> {
                   ),
                 ),
                 const SizedBox(height: 30),
-                const Text('Eventos próximos:', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
+                const Text('Calendario de eventos:', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
                 const SizedBox(height: 10),
-                SizedBox(
-                  height: 130,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: eventosMock.length,
-                    itemBuilder: (context, index) {
-                      final evento = eventosMock[index];
-                      final fechaEvento = parseFecha(evento['fecha']!);
-
-                      return GestureDetector(
-                        onTap: () {
-                          if (fechaEvento.isBefore(DateTime.now())) {
-                            _mostrarSnackBar('Este evento ya ha pasado.');
-                            return;
-                          }
-
-                          final event = buildEvent(evento['titulo']!, evento['lugar']!, fechaEvento);
-
-                          showDialog(
-                            context: context,
-                            builder: (_) => AlertDialog(
-                              title: const Text('Añadir a calendario'),
-                              content: Text('¿Quieres añadir "${evento['titulo']}" a tu calendario?'),
-                              actions: [
-                                TextButton(
-                                  onPressed: () => Navigator.pop(context),
-                                  child: const Text('Cancelar'),
-                                ),
-                                ElevatedButton(
-                                  onPressed: () async {
-                                    Navigator.pop(context);
-                                    await solicitarPermisoYAgregar(event);
-                                  },
-                                  child: const Text('Añadir'),
-                                ),
-                              ],
+                TableCalendar(
+                  firstDay: DateTime.utc(2020, 1, 1),
+                  lastDay: DateTime.utc(2030, 12, 31),
+                  focusedDay: _focusedDay,
+                  selectedDayPredicate: (day) => isSameDay(_selectedDay, day),
+                  eventLoader: _obtenerEventosDelDia,
+                  onDaySelected: (selectedDay, focusedDay) {
+                    setState(() {
+                      _selectedDay = selectedDay;
+                      _focusedDay = focusedDay;
+                    });
+                    _mostrarEventosDelDia(selectedDay);
+                  },
+                  calendarStyle: const CalendarStyle(
+                    markerDecoration: BoxDecoration(
+                      color: Colors.green,
+                      shape: BoxShape.circle,
+                    ),
+                  ),
+                  calendarBuilders: CalendarBuilders(
+                    markerBuilder: (context, day, events) {
+                      if (events.isNotEmpty) {
+                        return Positioned(
+                          bottom: 1,
+                          child: Container(
+                            width: 6,
+                            height: 6,
+                            decoration: const BoxDecoration(
+                              color: Colors.green,
+                              shape: BoxShape.circle,
                             ),
-                          );
-                        },
-                        child: Container(
-                          width: 200,
-                          margin: const EdgeInsets.only(right: 12),
-                          decoration: BoxDecoration(
-                            color: Colors.green[100],
-                            borderRadius: BorderRadius.circular(16),
-                            boxShadow: const [BoxShadow(color: Colors.black26, blurRadius: 6, offset: Offset(0, 3))],
                           ),
-                          padding: const EdgeInsets.all(12),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Icon(Icons.event, size: 30, color: Colors.green),
-                              const SizedBox(height: 8),
-                              Text(evento['titulo']!, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-                              const SizedBox(height: 4),
-                              Text(evento['fecha']!, style: const TextStyle(fontSize: 14, color: Colors.black87)),
-                              Text(evento['lugar']!, style: const TextStyle(fontSize: 14, color: Colors.black54)),
-                            ],
-                          ),
-                        ),
-                      );
+                        );
+                      }
+                      return null;
                     },
                   ),
                 ),
