@@ -4,7 +4,7 @@ class NoticiaDetail extends StatelessWidget {
   final String titulo;
   final String contenido;
   final String imagen;
-  final DateTime fecha;
+  final DateTime? fecha;
 
   const NoticiaDetail({
     Key? key,
@@ -16,6 +16,8 @@ class NoticiaDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bool usarImagenDefault = imagen.isEmpty || imagen.startsWith('http') == false;
+
     return Scaffold(
       appBar: AppBar(
         title: Text(titulo),
@@ -27,10 +29,17 @@ class NoticiaDetail extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Imagen con borde redondeado y sombra
+            // Imagen
             ClipRRect(
               borderRadius: BorderRadius.circular(16),
-              child: Image.network(
+              child: usarImagenDefault
+                  ? Image.asset(
+                'assets/imagen_default.jpg',
+                width: double.infinity,
+                height: 250,
+                fit: BoxFit.cover,
+              )
+                  : Image.network(
                 imagen,
                 width: double.infinity,
                 height: 250,
@@ -39,7 +48,6 @@ class NoticiaDetail extends StatelessWidget {
             ),
             const SizedBox(height: 20),
 
-            // Título de la noticia con estilo más elegante
             Text(
               titulo,
               style: const TextStyle(
@@ -50,18 +58,17 @@ class NoticiaDetail extends StatelessWidget {
             ),
             const SizedBox(height: 8),
 
-            // Fecha en un estilo más sutil
-            Text(
-              "${fecha.day}/${fecha.month}/${fecha.year}",
-              style: const TextStyle(
-                fontSize: 14,
-                color: Colors.grey,
-                fontStyle: FontStyle.italic,
+            if (fecha != null)
+              Text(
+                "${fecha!.day}/${fecha!.month}/${fecha!.year}",
+                style: const TextStyle(
+                  fontSize: 14,
+                  color: Colors.grey,
+                  fontStyle: FontStyle.italic,
+                ),
               ),
-            ),
             const SizedBox(height: 20),
 
-            // Contenido de la noticia con un poco más de altura para facilitar la lectura
             Text(
               contenido,
               style: const TextStyle(

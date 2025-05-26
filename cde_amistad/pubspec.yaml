@@ -42,5 +42,6 @@ flutter:
   uses-material-design: true
 
   assets:
+    - assets/image_default.jpg
     - assets/icono.png
     - assets/logo_twitter.png

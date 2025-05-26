@@ -41,7 +41,7 @@ class NoticiasPage extends StatelessWidget {
               Row(
                 children: [
                   Image.asset(
-                    'assets/icono.png', // Ruta de la imagen
+                    'assets/icono.png',
                     height: 30,
                   ),
                   const SizedBox(width: 10),
@@ -58,7 +58,7 @@ class NoticiasPage extends StatelessWidget {
               IconButton(
                 icon: const Icon(Icons.notifications, color: Colors.white),
                 onPressed: () {
-                  // Acción futura: mostrar notificaciones
+                  // Acción futura
                 },
               ),
             ],
@@ -71,9 +71,9 @@ class NoticiasPage extends StatelessWidget {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
-            return Center(child: Text("Error al cargar noticias"));
+            return const Center(child: Text("Error al cargar noticias"));
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return Center(child: Text("No hay noticias disponibles"));
+            return const Center(child: Text("No hay noticias disponibles"));
           }
 
           final noticias = snapshot.data!;
@@ -82,22 +82,34 @@ class NoticiasPage extends StatelessWidget {
             itemCount: noticias.length,
             itemBuilder: (context, index) {
               final noticia = noticias[index];
-              final fecha = DateTime.parse(noticia['fecha']);
+
+              final String titulo = noticia['titulo'] ?? 'Sin título';
+              final String contenido = noticia['contenido'] ?? 'Sin contenido';
+              final String imagen = (noticia['imagen'] != null && noticia['imagen'].toString().isNotEmpty)
+                  ? noticia['imagen']
+                  : 'assets/image_default.jpg';
+
+              DateTime fecha;
+              try {
+                fecha = noticia['fecha'] != null
+                    ? DateTime.parse(noticia['fecha'])
+                    : DateTime.now();
+              } catch (e) {
+                fecha = DateTime.now();
+              }
 
               return NoticiaCard(
-                titulo: noticia['titulo'],
-                // Quitar descripcion porque no existe:
-                // descripcion: noticia['descripcion'],
-                imagenUrl: noticia['imagen'],
+                titulo: titulo,
+                imagenUrl: imagen,
                 fecha: fecha,
                 onTap: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => NoticiaDetail(
-                        titulo: noticia['titulo'],
-                        contenido: noticia['contenido'],
-                        imagen: noticia['imagen'],
+                        titulo: titulo,
+                        contenido: contenido,
+                        imagen: imagen,
                         fecha: fecha,
                       ),
                     ),

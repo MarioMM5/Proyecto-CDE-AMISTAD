@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class NoticiaCard extends StatelessWidget {
   final String titulo;
   final String imagenUrl;
-  final DateTime fecha;
+  final DateTime? fecha;
   final VoidCallback onTap;
 
   const NoticiaCard({
@@ -16,8 +16,10 @@ class NoticiaCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bool usarImagenDefault = imagenUrl.isEmpty || imagenUrl.startsWith('http') == false;
+
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8), // margen lateral agregado
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: Card(
         elevation: 4,
         shape: RoundedRectangleBorder(
@@ -32,7 +34,14 @@ class NoticiaCard extends StatelessWidget {
                 borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(12),
                     topRight: Radius.circular(12)),
-                child: Image.network(
+                child: usarImagenDefault
+                    ? Image.asset(
+                  'assets/imagen_default.jpg',
+                  height: 180,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                )
+                    : Image.network(
                   imagenUrl,
                   height: 180,
                   width: double.infinity,
@@ -52,14 +61,15 @@ class NoticiaCard extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 4),
-                    Text(
-                      '📅 ${fecha.day}/${fecha.month}/${fecha.year}',
-                      style: const TextStyle(
-                        fontSize: 12,
-                        fontStyle: FontStyle.italic,
-                        color: Colors.black54,
+                    if (fecha != null)
+                      Text(
+                        '📅 ${fecha!.day}/${fecha!.month}/${fecha!.year}',
+                        style: const TextStyle(
+                          fontSize: 12,
+                          fontStyle: FontStyle.italic,
+                          color: Colors.black54,
+                        ),
                       ),
-                    ),
                   ],
                 ),
               ),
