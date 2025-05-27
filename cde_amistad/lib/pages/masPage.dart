@@ -22,6 +22,15 @@ class MasPage extends StatelessWidget {
     }
   }
 
+  Future<void> _abrirWhatsApp(String numero, {String mensaje = ''}) async {
+    final whatsappUrl = Uri.parse("https://wa.me/$numero?text=${Uri.encodeComponent(mensaje)}");
+    if (await canLaunchUrl(whatsappUrl)) {
+      await launchUrl(whatsappUrl, mode: LaunchMode.externalApplication);
+    } else {
+      debugPrint('No se pudo abrir WhatsApp');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -150,18 +159,23 @@ class MasPage extends StatelessWidget {
             const Divider(),
             ListTile(
               leading: const Icon(Icons.email, color: Colors.redAccent),
-              title: const Text('contacto@cdeamistad.com'),
-              onTap: () => _launchURL('mailto:contacto@cdeamistad.com'),
+              title: const Text('info@cdeamistad.com'),
+              onTap: () => _launchURL('mailto:info@cdeamistad.com'),
             ),
             ListTile(
-              leading: const Icon(Icons.phone, color: Colors.green),
-              title: const Text('+34 600 123 456'),
-              onTap: () => _launchURL('tel:+34600123456'),
+                leading: Image.network(
+                  'https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png',
+                  width: 24,
+                  height: 24,
+                  fit: BoxFit.contain,
+                ),
+              title: const Text('Enviar mensaje por WhatsApp'),
+              onTap: () => _abrirWhatsApp('34633244011', mensaje: ''),
             ),
             ListTile(
               leading: const Icon(Icons.location_on, color: Colors.red),
-              title: const Text('Calle Falsa 123, Ciudad'),
-              onTap: () => _openMaps('Calle Falsa 123, Ciudad'),
+              title: const Text('Calle Polvoranca 80, Alcorcón'),
+              onTap: () => _openMaps('Calle Polvoranca 80, Alcorcón'),
             ),
           ],
         ),
