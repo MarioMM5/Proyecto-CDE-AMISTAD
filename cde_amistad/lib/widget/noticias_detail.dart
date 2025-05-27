@@ -16,20 +16,65 @@ class NoticiaDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bool usarImagenDefault = imagen.isEmpty || imagen.startsWith('http') == false;
+    final bool usarImagenDefault = imagen.isEmpty || !imagen.startsWith('http');
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(titulo),
-        backgroundColor: Colors.green[700],
-        elevation: 0,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(80),
+        child: Container(
+          decoration: const BoxDecoration(
+            color: Color(0xFF388E3C),
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(24),
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black26,
+                blurRadius: 8,
+                offset: Offset(0, 4),
+              ),
+            ],
+          ),
+          padding: const EdgeInsets.only(top: 45, left: 10, right: 20),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  BackButton(
+                    color: Colors.white,
+                    onPressed: () => Navigator.pop(context),
+                  ),
+                  const SizedBox(width: 5),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.6,
+                    child: Text(
+                      titulo,
+                      style: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white,
+                      ),
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                ],
+              ),
+              IconButton(
+                icon: const Icon(Icons.notifications, color: Colors.white),
+                onPressed: () {
+                  // Acción futura
+                },
+              ),
+            ],
+          ),
+        ),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Imagen
             ClipRRect(
               borderRadius: BorderRadius.circular(16),
               child: usarImagenDefault
@@ -47,7 +92,6 @@ class NoticiaDetail extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
-
             Text(
               titulo,
               style: const TextStyle(
@@ -57,7 +101,6 @@ class NoticiaDetail extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 8),
-
             if (fecha != null)
               Text(
                 "${fecha!.day}/${fecha!.month}/${fecha!.year}",
@@ -68,7 +111,6 @@ class NoticiaDetail extends StatelessWidget {
                 ),
               ),
             const SizedBox(height: 20),
-
             Text(
               contenido,
               style: const TextStyle(
