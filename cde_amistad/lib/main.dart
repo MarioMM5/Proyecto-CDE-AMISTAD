@@ -1,9 +1,10 @@
-import 'package:cde_amistad/pages/equiposPage.dart';
-import 'package:cde_amistad/pages/masPage.dart';
 import 'package:flutter/material.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:cde_amistad/pages/inicioPage.dart';
 import 'package:cde_amistad/pages/noticiasPage.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:cde_amistad/pages/tiendaPage.dart';
+import 'package:cde_amistad/pages/protocolosPage.dart';
+import 'package:cde_amistad/pages/masPage.dart';
 
 final GlobalKey<_MyHomePageState> myHomePageKey = GlobalKey<_MyHomePageState>();
 
@@ -19,7 +20,6 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -37,7 +37,6 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
-
   final String title;
 
   @override
@@ -50,7 +49,8 @@ class _MyHomePageState extends State<MyHomePage> {
   final List<Widget> _paginas = [
     InicioPage(),
     NoticiasPage(),
-    EquiposPage(),
+    TiendaPage(),
+    ProtocolosPage(),
     MasPage(),
   ];
 
@@ -67,12 +67,10 @@ class _MyHomePageState extends State<MyHomePage> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _indiceActual,
         onTap: cambiarIndice,
-        backgroundColor: Colors.green,
-        // 🎨 Aquí cambias el color de fondo
+        backgroundColor: Colors.white,
         selectedItemColor: Colors.grey,
-        // Color del ítem seleccionado
         unselectedItemColor: Colors.green,
-        // Color de los ítems no seleccionados
+        type: BottomNavigationBarType.fixed,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -83,8 +81,12 @@ class _MyHomePageState extends State<MyHomePage> {
             label: 'Noticias',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.sports_soccer),
-            label: 'Partidos',
+            icon: Icon(Icons.store),
+            label: 'Tienda',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shield),
+            label: 'Protocolos',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
