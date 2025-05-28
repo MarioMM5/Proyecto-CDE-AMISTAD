@@ -185,10 +185,45 @@ input[type="number"] {
   color: #2ecc71;
   font-weight: bold;
   font-size: 1.5rem;
-  margin-bottom: 20px;
-  margin-top: 20px;
-  transition: color 0.3s;
+  margin-top: 30px;      /* Más abajo */
+  margin-left: 25px;     /* Lo empuja hacia la derecha */
+  transition: color 0.3s, text-shadow 0.3s;
+  position: relative;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
+
+.back-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #2ecc71;
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+  margin: 0 auto;
+}
+
+.back-link:hover {
+  color: #27ae60;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.back-link:hover::after {
+  transform: scaleX(1);
+}
+
+.back-link svg {
+  transition: transform 0.3s ease;
+}
+
+.back-link:hover svg {
+  transform: translateX(-4px);
+}
+
 
 .product-detail-container {
   display: flex;
@@ -200,11 +235,69 @@ input[type="number"] {
 
 /* Imagen del producto */
 .product-image {
+  cursor: crosshair;
+  transition: transform 0.3s ease;
+  display: block;
   max-width: 100%;
-  max-height: 400px;
+  position: relative;
+}
+
+.zoom-lens {
+  position: absolute;
+  border: 3px solid #2ecc71;  
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: white; 
+  box-shadow: 0 0 10px rgba(46, 204, 113, 0.7); 
+  pointer-events: none;
+  display: none;
+  background-repeat: no-repeat;
+  background-size: 1000% 1000%; 
+  z-index: 1000;
+}
+
+.fullscreen-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.fullscreen-overlay img {
+  max-width: 90vw;
+  max-height: 90vh;
   object-fit: contain;
   border-radius: 10px;
+  box-shadow: 0 0 30px #2ecc71;
+  background-color: white;
 }
+
+.fullscreen-close-btn {
+  position: fixed;
+  top: 20px;
+  right: 30px;
+  font-size: 2.5rem;
+  color: #2ecc71;
+  cursor: pointer;
+  z-index: 2100;
+  user-select: none;
+  font-weight: bold;
+  background: transparent;
+  border: none;
+  transition: color 0.3s;
+}
+
+.fullscreen-close-btn:hover {
+  color: #27ae60;
+}
+
 
 /* Caja de info */
 .product-info-box {
