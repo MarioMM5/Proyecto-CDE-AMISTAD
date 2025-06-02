@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class MasPage extends StatelessWidget {
-  const MasPage({Key? key}) : super(key: key);
+class MasPage extends StatefulWidget {
+  final VoidCallback? onToggleTheme;
+
+  @override
+  State<MasPage> createState() => _MasPageState();
+  const MasPage({Key? key, this.onToggleTheme}) : super(key: key);
+}
+class _MasPageState extends State<MasPage> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
 
   Future<void> _launchURL(String url) async {
     final uri = Uri.parse(url);
@@ -12,7 +20,9 @@ class MasPage extends StatelessWidget {
       debugPrint('No se pudo abrir la URL: $url');
     }
   }
-
+  void _abrirAjustes() {
+    _scaffoldKey.currentState?.openEndDrawer();
+  }
   Future<void> _openMaps(String query) async {
     final googleMapsUrl = Uri.parse('https://www.google.com/maps/search/?api=1&query=$query');
     if (await canLaunchUrl(googleMapsUrl)) {
@@ -34,21 +44,14 @@ class MasPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(80),
         child: Container(
           decoration: const BoxDecoration(
             color: Color(0xFF388E3C),
-            borderRadius: BorderRadius.vertical(
-              bottom: Radius.circular(24),
-            ),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black26,
-                blurRadius: 8,
-                offset: Offset(0, 4),
-              ),
-            ],
+            borderRadius: BorderRadius.vertical(bottom: Radius.circular(24)),
+            boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 8, offset: Offset(0, 4))],
           ),
           padding: const EdgeInsets.only(top: 45, left: 20, right: 20),
           child: Row(
@@ -56,25 +59,38 @@ class MasPage extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Image.asset(
-                    'assets/icono.png',
-                    height: 30,
-                  ),
+                  Image.asset('assets/icono.png', height: 30),
                   const SizedBox(width: 10),
                   const Text(
                     'Sobre nosotros',
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white,
-                    ),
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600, color: Colors.white),
                   ),
                 ],
               ),
               IconButton(
-                icon: const Icon(Icons.notifications, color: Colors.white),
-                onPressed: () {
-                  // Acción futura: mostrar notificaciones
+                icon: const Icon(Icons.settings, color: Colors.white),
+                onPressed: _abrirAjustes,
+              ),
+            ],
+          ),
+        ),
+      ),
+      endDrawer: Drawer(
+        child: SafeArea(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Padding(
+                padding: EdgeInsets.all(16.0),
+                child: Text('Ajustes', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              ),
+              const Divider(),
+              ListTile(
+                leading: const Icon(Icons.brightness_6),
+                title: const Text('Cambiar tema'),
+                onTap: () {
+                  widget.onToggleTheme?.call();
+                  Navigator.of(context).pop(); // cierra el drawer
                 },
               ),
             ],
@@ -163,14 +179,14 @@ class MasPage extends StatelessWidget {
               onTap: () => _launchURL('mailto:info@cdeamistad.com'),
             ),
             ListTile(
-                leading: Image.network(
-                  'https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png',
-                  width: 24,
-                  height: 24,
-                  fit: BoxFit.contain,
-                ),
+              leading: Image.network(
+                'https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png',
+                width: 24,
+                height: 24,
+                fit: BoxFit.contain,
+              ),
               title: const Text('Enviar mensaje por WhatsApp'),
-              onTap: () => _abrirWhatsApp('34633244011', mensaje: ''),
+              onTap: () => _abrirWhatsApp('34633244011'),
             ),
             ListTile(
               leading: const Icon(Icons.location_on, color: Colors.red),

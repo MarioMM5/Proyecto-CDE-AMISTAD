@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 
-class TiendaPage extends StatelessWidget {
-  const TiendaPage({super.key});
-
+class TiendaPage extends StatefulWidget {
+  final VoidCallback? onToggleTheme;
+  const TiendaPage({super.key,this.onToggleTheme});
+  @override
+  State<TiendaPage> createState() => _TiendaPageState();
+}
+class _TiendaPageState extends State<TiendaPage> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   // Lista simulada de productos
   final List<Map<String, String>> _productos = const [
     {
@@ -26,25 +31,20 @@ class TiendaPage extends StatelessWidget {
       'imagen': 'https://via.placeholder.com/150x150.png?text=Chandal',
     },
   ];
-
+  void _abrirAjustes() {
+    _scaffoldKey.currentState?.openEndDrawer();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(80),
         child: Container(
           decoration: const BoxDecoration(
             color: Color(0xFF388E3C),
-            borderRadius: BorderRadius.vertical(
-              bottom: Radius.circular(24),
-            ),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black26,
-                blurRadius: 8,
-                offset: Offset(0, 4),
-              ),
-            ],
+            borderRadius: BorderRadius.vertical(bottom: Radius.circular(24)),
+            boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 8, offset: Offset(0, 4))],
           ),
           padding: const EdgeInsets.only(top: 45, left: 20, right: 20),
           child: Row(
@@ -52,25 +52,38 @@ class TiendaPage extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Image.asset(
-                    'assets/icono.png',
-                    height: 30,
-                  ),
+                  Image.asset('assets/icono.png', height: 30),
                   const SizedBox(width: 10),
                   const Text(
-                    'Tienda',
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white,
-                    ),
+                    'Sobre nosotros',
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600, color: Colors.white),
                   ),
                 ],
               ),
               IconButton(
-                icon: const Icon(Icons.notifications, color: Colors.white),
-                onPressed: () {
-                  // Acción futura: mostrar notificaciones
+                icon: const Icon(Icons.settings, color: Colors.white),
+                onPressed: _abrirAjustes,
+              ),
+            ],
+          ),
+        ),
+      ),
+      endDrawer: Drawer(
+        child: SafeArea(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Padding(
+                padding: EdgeInsets.all(16.0),
+                child: Text('Ajustes', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              ),
+              const Divider(),
+              ListTile(
+                leading: const Icon(Icons.brightness_6),
+                title: const Text('Cambiar tema'),
+                onTap: () {
+                  widget.onToggleTheme?.call();
+                  Navigator.of(context).pop(); // cierra el drawer
                 },
               ),
             ],

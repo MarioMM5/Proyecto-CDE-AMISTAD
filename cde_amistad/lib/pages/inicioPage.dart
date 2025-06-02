@@ -9,14 +9,17 @@ import 'package:table_calendar/table_calendar.dart';
 
 class InicioPage extends StatefulWidget {
   final VoidCallback? onVerNoticias;
+  final VoidCallback? onToggleTheme;
 
-  const InicioPage({Key? key, this.onVerNoticias}) : super(key: key);
+  const InicioPage({Key? key, this.onVerNoticias, this.onToggleTheme})
+      : super(key: key);
 
   @override
   State<InicioPage> createState() => _InicioPageState();
 }
 
 class _InicioPageState extends State<InicioPage> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final _meses = {
     'enero': 1, 'febrero': 2, 'marzo': 3, 'abril': 4,
     'mayo': 5, 'junio': 6, 'julio': 7, 'agosto': 8,
@@ -100,7 +103,7 @@ class _InicioPageState extends State<InicioPage> {
   }
 
   Future<void> solicitarPermisoYAgregar(Event event) async {
-    final status = await Permission.calendar.request();  // revisar esto
+    final status = await Permission.calendar.request(); // revisar esto
 
     if (status.isGranted) {
       try {
@@ -120,8 +123,13 @@ class _InicioPageState extends State<InicioPage> {
     );
   }
 
+  void _abrirAjustes() {
+    _scaffoldKey.currentState?.openEndDrawer();
+  }
+
   List<DateTime> obtenerFechasConEventos() {
-    return _eventos.map((evento) => parsearFechaSupabase(evento['fecha'])).toList();
+    return _eventos.map((evento) => parsearFechaSupabase(evento['fecha']))
+        .toList();
   }
 
   @override
@@ -129,13 +137,17 @@ class _InicioPageState extends State<InicioPage> {
     final fechasConEventos = obtenerFechasConEventos();
 
     return Scaffold(
+      key: _scaffoldKey,
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(80),
         child: Container(
           decoration: const BoxDecoration(
             color: Color(0xFF388E3C),
             borderRadius: BorderRadius.vertical(bottom: Radius.circular(24)),
-            boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 8, offset: Offset(0, 4))],
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.black26, blurRadius: 8, offset: Offset(0, 4))
+            ],
           ),
           padding: const EdgeInsets.only(top: 45, left: 20, right: 20),
           child: Row(
@@ -145,12 +157,37 @@ class _InicioPageState extends State<InicioPage> {
                 children: [
                   Image.asset('assets/icono.png', height: 30),
                   const SizedBox(width: 10),
-                  const Text('Inicio', style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600, color: Colors.white)),
+                  const Text('Inicio', style: TextStyle(fontSize: 24,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white)),
                 ],
               ),
               IconButton(
-                icon: const Icon(Icons.notifications, color: Colors.white),
-                onPressed: () {},
+                icon: const Icon(Icons.settings, color: Colors.white),
+                onPressed: _abrirAjustes,
+              ),
+            ],
+          ),
+        ),
+      ),
+      endDrawer: Drawer(
+        child: SafeArea(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: EdgeInsets.all(16.0),
+                child: Text('Ajustes', style: TextStyle(
+                    fontSize: 20, fontWeight: FontWeight.bold)),
+              ),
+              Divider(),
+              ListTile(
+                leading: Icon(Icons.brightness_6),
+                title: Text('Cambiar tema'),
+                onTap: () {
+                  widget.onToggleTheme?.call();
+                  Navigator.of(context).pop(); // cerrar el drawer
+                },
               ),
             ],
           ),
@@ -159,8 +196,10 @@ class _InicioPageState extends State<InicioPage> {
       body: FutureBuilder<List<Map<String, dynamic>>>(
         future: cargarNoticias(),
         builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) return const Center(child: CircularProgressIndicator());
-          if (snapshot.hasError || snapshot.data == null) return const Center(child: Text('Error al cargar noticias.'));
+          if (snapshot.connectionState == ConnectionState.waiting)
+            return const Center(child: CircularProgressIndicator());
+          if (snapshot.hasError || snapshot.data == null)
+            return const Center(child: Text('Error al cargar noticias.'));
 
           final noticias = snapshot.data!;
 
@@ -169,25 +208,29 @@ class _InicioPageState extends State<InicioPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text('Últimas noticias:', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
+                const Text('Últimas noticias:', style: TextStyle(
+                    fontSize: 20, fontWeight: FontWeight.w600)),
                 const SizedBox(height: 10),
                 ...noticias.take(3).map((noticia) {
-                  final fecha = DateTime.tryParse(noticia['fecha']) ?? DateTime.now();
+                  final fecha = DateTime.tryParse(noticia['fecha']) ??
+                      DateTime.now();
                   return Card(
                     margin: const EdgeInsets.symmetric(vertical: 6),
                     elevation: 2,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
                     child: ListTile(
                       onTap: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (_) => NoticiaEntity(
-                              titulo: noticia['titulo'],
-                              contenido: noticia['contenido'],
-                              imagen: noticia['imagen'],
-                              fecha: fecha,
-                            ),
+                            builder: (_) =>
+                                NoticiaEntity(
+                                  titulo: noticia['titulo'],
+                                  contenido: noticia['contenido'],
+                                  imagen: noticia['imagen'],
+                                  fecha: fecha,
+                                ),
                           ),
                         );
                       },
@@ -198,14 +241,16 @@ class _InicioPageState extends State<InicioPage> {
                           width: 50,
                           height: 50,
                           fit: BoxFit.cover,
-                          errorBuilder: (_, __, ___) => const Icon(Icons.image, size: 40),
+                          errorBuilder: (_, __, ___) =>
+                          const Icon(Icons.image, size: 40),
                         ),
                       ),
                       title: Text(
                         noticia['titulo'] ?? 'Sin título',
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 14),
                       ),
                       subtitle: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -219,12 +264,15 @@ class _InicioPageState extends State<InicioPage> {
                           const SizedBox(height: 4),
                           Text(
                             '📅 ${DateFormat('dd/MM/yyyy').format(fecha)}',
-                            style: const TextStyle(fontSize: 11, color: Colors.black54, fontStyle: FontStyle.italic),
+                            style: const TextStyle(fontSize: 11,
+                                color: Colors.black54,
+                                fontStyle: FontStyle.italic),
                           ),
                         ],
                       ),
                       trailing: const Icon(Icons.arrow_forward_ios, size: 14),
-                      contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                      contentPadding: const EdgeInsets.symmetric(horizontal: 12,
+                          vertical: 8),
                     ),
                   );
                 }),
@@ -243,7 +291,8 @@ class _InicioPageState extends State<InicioPage> {
                   ),
                 ),
                 const SizedBox(height: 30),
-                const Text('Eventos en el calendario:', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
+                const Text('Eventos en el calendario:', style: TextStyle(
+                    fontSize: 20, fontWeight: FontWeight.w600)),
                 const SizedBox(height: 10),
                 TableCalendar(
                   firstDay: DateTime.utc(2020, 1, 1),
@@ -266,53 +315,61 @@ class _InicioPageState extends State<InicioPage> {
                     if (eventosDia.isNotEmpty) {
                       showDialog(
                         context: context,
-                        builder: (_) => AlertDialog(
-                          title: const Text('Eventos del día'),
-                          content: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: eventosDia.map((evento) {
-                              final fechaEvento = parsearFechaSupabase(evento['fecha']);
-                              final horaFormateada = DateFormat('HH:mm').format(fechaEvento);
-                              return Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  ListTile(
-                                    contentPadding: EdgeInsets.zero,
-                                    title: Text(evento['titulo'] ?? 'Evento'),
-                                    subtitle: Text('${evento['lugar']} - $horaFormateada'),
-                                  ),
-                                  Align(
-                                    alignment: Alignment.centerRight,
-                                    child: TextButton(
-                                      onPressed: () {
-                                        final event = buildEvent(
-                                          evento['titulo'] ?? 'Evento',
-                                          evento['lugar'] ?? '',
-                                          fechaEvento,
-                                        );
-                                        solicitarPermisoYAgregar(event);
-                                      },
-                                      child: const Text('Añadir al calendario'),
-                                    ),
-                                  ),
-                                ],
-                              );
-                            }).toList(),
-                          ),
-                          actions: [
-                            TextButton(
-                              onPressed: () => Navigator.pop(context),
-                              child: const Text('Cerrar'),
+                        builder: (_) =>
+                            AlertDialog(
+                              title: const Text('Eventos del día'),
+                              content: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: eventosDia.map((evento) {
+                                  final fechaEvento = parsearFechaSupabase(
+                                      evento['fecha']);
+                                  final horaFormateada = DateFormat('HH:mm')
+                                      .format(fechaEvento);
+                                  return Column(
+                                    crossAxisAlignment: CrossAxisAlignment
+                                        .start,
+                                    children: [
+                                      ListTile(
+                                        contentPadding: EdgeInsets.zero,
+                                        title: Text(
+                                            evento['titulo'] ?? 'Evento'),
+                                        subtitle: Text(
+                                            '${evento['lugar']} - $horaFormateada'),
+                                      ),
+                                      Align(
+                                        alignment: Alignment.centerRight,
+                                        child: TextButton(
+                                          onPressed: () {
+                                            final event = buildEvent(
+                                              evento['titulo'] ?? 'Evento',
+                                              evento['lugar'] ?? '',
+                                              fechaEvento,
+                                            );
+                                            solicitarPermisoYAgregar(event);
+                                          },
+                                          child: const Text(
+                                              'Añadir al calendario'),
+                                        ),
+                                      ),
+                                    ],
+                                  );
+                                }).toList(),
+                              ),
+                              actions: [
+                                TextButton(
+                                  onPressed: () => Navigator.pop(context),
+                                  child: const Text('Cerrar'),
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
                       );
                     }
                   },
                   calendarBuilders: CalendarBuilders(
                     markerBuilder: (context, day, events) {
                       final tieneEvento = fechasConEventos.any((fecha) =>
-                      fecha.year == day.year && fecha.month == day.month && fecha.day == day.day);
+                      fecha.year == day.year && fecha.month == day.month &&
+                          fecha.day == day.day);
                       if (tieneEvento) {
                         return Positioned(
                           bottom: 1,

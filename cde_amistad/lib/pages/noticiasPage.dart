@@ -3,8 +3,14 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:cde_amistad/widget/noticia_card.dart';
 import 'package:cde_amistad/widget/noticias_detail.dart';
 
-class NoticiasPage extends StatelessWidget {
-  const NoticiasPage({Key? key}) : super(key: key);
+class NoticiasPage extends StatefulWidget {
+  final VoidCallback? onToggleTheme;
+  const NoticiasPage({Key? key,this.onToggleTheme}) : super(key: key);
+  @override
+  State<NoticiasPage> createState() => _NoticiasPageState();
+}
+class _NoticiasPageState extends State<NoticiasPage> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   Future<List<Map<String, dynamic>>> fetchNoticias() async {
     final response = await Supabase.instance.client
@@ -14,25 +20,20 @@ class NoticiasPage extends StatelessWidget {
 
     return List<Map<String, dynamic>>.from(response);
   }
-
+  void _abrirAjustes() {
+    _scaffoldKey.currentState?.openEndDrawer();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(80),
         child: Container(
           decoration: const BoxDecoration(
             color: Color(0xFF388E3C),
-            borderRadius: BorderRadius.vertical(
-              bottom: Radius.circular(24),
-            ),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black26,
-                blurRadius: 8,
-                offset: Offset(0, 4),
-              ),
-            ],
+            borderRadius: BorderRadius.vertical(bottom: Radius.circular(24)),
+            boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 8, offset: Offset(0, 4))],
           ),
           padding: const EdgeInsets.only(top: 45, left: 20, right: 20),
           child: Row(
@@ -40,25 +41,38 @@ class NoticiasPage extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Image.asset(
-                    'assets/icono.png',
-                    height: 30,
-                  ),
+                  Image.asset('assets/icono.png', height: 30),
                   const SizedBox(width: 10),
                   const Text(
-                    'Noticias',
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white,
-                    ),
+                    'Sobre nosotros',
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600, color: Colors.white),
                   ),
                 ],
               ),
               IconButton(
-                icon: const Icon(Icons.notifications, color: Colors.white),
-                onPressed: () {
-                  // Acción futura
+                icon: const Icon(Icons.settings, color: Colors.white),
+                onPressed: _abrirAjustes,
+              ),
+            ],
+          ),
+        ),
+      ),
+      endDrawer: Drawer(
+        child: SafeArea(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Padding(
+                padding: EdgeInsets.all(16.0),
+                child: Text('Ajustes', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              ),
+              const Divider(),
+              ListTile(
+                leading: const Icon(Icons.brightness_6),
+                title: const Text('Cambiar tema'),
+                onTap: () {
+                  widget.onToggleTheme?.call();
+                  Navigator.of(context).pop(); // cierra el drawer
                 },
               ),
             ],
