@@ -287,7 +287,6 @@ if (!productId || !productos[productId]) {
  <div style="flex:1;display:flex;flex-direction:column;align-items:center; position: relative;">
   <img src="${p.imagen[0]}" alt="${p.nombre}" class="product-image" id="carousel-image" />
   
-  <!-- Botones de navegación -->
   <button id="prev-btn" style="position:absolute; top:25%; left:5px; transform: translateY(-50%); font-size:2rem; background:none; border:none; color:#2ecc71; cursor:pointer;">&#10094;</button>
   <button id="next-btn" style="position:absolute; top:25%; right:5px; transform: translateY(-50%); font-size:2rem; background:none; border:none; color:#2ecc71; cursor:pointer;">&#10095;</button>
 

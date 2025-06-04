@@ -258,103 +258,110 @@ body {
   }
 }
 
-/* Cuando la sidebar está abierta, empujamos el botón hacia la derecha */
+/* === SIDEBAR MODERNA Y SERENA === */
+.sidebar {
+  background: url('https://www.transparenttextures.com/patterns/diamond-upholstery.png');
+  background-color: #f4f8f6;
+  border-right: 1px solid #d7e9e0;
+  transition: all 0.3s ease;
+}
+
+/* Empuje del botón cuando la sidebar está abierta */
 .sidebar:not(.collapsed) ~ .toggle-btn {
   left: 270px;
 }
 
-/* Girar flecha al abrir la sidebar */
 .sidebar:not(.collapsed) ~ .toggle-btn .arrow {
   transform: rotate(180deg);
 }
 
-/* Estilo base del texto del menú */
-.menu a {
-  font-family: "Arial", sans-serif;
-  font-size: 18px;
-  font-weight: bold;
-  color: black;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.8),
-    0 0 10px rgba(255, 255, 255, 0.6), 0 0 15px rgba(255, 255, 255, 0.4); /* Brillo estelar */
-  transition: all 0.3s ease;
-  text-align: center;
-}
-
-.menu li {
-  list-style: none;
-  margin: 90px 0;
-}
-
-/* Efecto cuando el enlace es hover (pasar el ratón por encima) */
-.menu a:hover {
-  color: #56d15a;
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.8),
-    0 0 30px rgba(255, 255, 255, 0.6), 0 0 40px rgba(86, 209, 90, 0.9),
-    0 0 50px rgba(86, 209, 90, 0.8); /* Brillo verde más fuerte */
-  transform: scale(1.1);
-}
-
-/* Añadir animación de destello */
-@keyframes cosmicPulse {
-  0% {
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8),
-      0 0 10px rgba(255, 255, 255, 0.6), 0 0 15px rgba(255, 255, 255, 0.4);
-  }
-  50% {
-    text-shadow: 0 0 30px rgba(255, 255, 255, 1), 0 0 40px rgba(86, 209, 90, 1);
-  }
-  100% {
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8),
-      0 0 10px rgba(255, 255, 255, 0.6), 0 0 15px rgba(255, 255, 255, 0.4);
-  }
-}
-
-.menu a {
-  animation: cosmicPulse 1.5s infinite alternate; /* Hace que el texto parpadee como una estrella */
+/* Flecha con tono verde jade */
+.arrow {
+  transition: transform 0.3s ease-in-out;
+  color: #3fae6e;
 }
 
 .sidebar.collapsed .arrow {
   transform: rotate(180deg);
 }
 
-.arrow {
-  transition: transform 0.3s;
+/* === MENÚ ESTILIZADO === */
+.menu li {
+  list-style: none;
+  margin: 60px 0;
 }
-/* Contenedor de las redes sociales en la parte inferior */
+
+.menu a {
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: #2e7d32;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  text-align: center;
+  padding: 10px 14px;
+  display: inline-block;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+/* Hover con fondo verde bruma */
+.menu a:hover {
+  background-color: #d8f5e5;
+  color: #1b5e20;
+  box-shadow: 0 4px 12px rgba(63, 174, 110, 0.2);
+  transform: scale(1.06);
+}
+
+/* Enfoque animado sutil */
+@keyframes elegantPulse {
+  0% {
+    box-shadow: 0 0 0 rgba(63, 174, 110, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 8px rgba(63, 174, 110, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 0 rgba(63, 174, 110, 0.1);
+  }
+}
+
+.menu a:focus {
+  animation: elegantPulse 1.5s infinite;
+  outline: none;
+}
+
+/* === PIE DE SIDEBAR === */
 .sidebar-social {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px 0;
-  box-sizing: border-box;
-  gap: 10px;
   position: absolute;
   bottom: 0;
   left: 0;
-  background: black;
-  transition: all 0.3s ease;
+  background: url('https://www.transparenttextures.com/patterns/diamond-upholstery.png');
+  background-color: #f4f8f6;
+  gap: 10px;
 }
 
-/* Información de contacto arriba del contenedor de redes sociales */
+/* Información de contacto */
 .contact-info {
-  color: white;
+  color: #2e7d32;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 10px;
-  gap: 5px;
-  width: 100%;
+  font-size: 13px;
+  gap: 4px;
 }
 
-/* Iconos de contacto */
 .contact-info i {
-  margin-right: 8px;
+  margin-right: 6px;
+  color: #3fae6e;
 }
 
-/* Redes sociales en la parte inferior */
+/* Redes sociales */
 .social-links {
   display: flex;
   justify-content: center;
@@ -364,15 +371,16 @@ body {
 }
 
 .social-links a {
-  color: white;
+  color: #2e7d32;
   font-size: 18px;
-  transition: color 0.3s;
-  max-width: 100%;
+  transition: color 0.3s, transform 0.3s;
 }
 
 .social-links a:hover {
-  color: #56d15a;
+  color: #1b5e20;
+  transform: translateY(-3px);
 }
+
 
 .footer-banner {
   background-color: #1e1e1e;
