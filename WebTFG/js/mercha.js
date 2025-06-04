@@ -9,21 +9,22 @@ window.addEventListener("scroll", () => {
 const sidebar = document.getElementById("sidebar");
 const toggleBtn = document.getElementById("toggleBtn");
 const arrow = toggleBtn.querySelector(".arrow");
-const icon = toggleBtn.querySelector('i');
+const icon = toggleBtn.querySelector("i");
 
 // Funcionalidad para el menú lateral
 toggleBtn.addEventListener("click", () => {
   sidebar.classList.toggle("collapsed");
-  icon.classList.toggle('fa-arrow-right');
-  icon.classList.toggle('fa-xmark'); // o cualquier otra transformación
+  icon.classList.toggle("fa-arrow-right");
+  icon.classList.toggle("fa-xmark"); // o cualquier otra transformación
   // Cambia la flecha dependiendo de si el menú está colapsado o no
-  arrow.innerHTML = sidebar.classList.contains("collapsed") ? "&#x25C0;" : "&#x25B6;";
-
+  arrow.innerHTML = sidebar.classList.contains("collapsed")
+    ? "&#x25C0;"
+    : "&#x25B6;";
 });
-document.querySelectorAll('.buy-btn').forEach((btn) => {
-  btn.addEventListener('click', () => {
+document.querySelectorAll(".buy-btn").forEach((btn) => {
+  btn.addEventListener("click", () => {
     // Aquí usas el id correspondiente de ese producto
-    window.location.href = 'detalle-producto.html?id=413844533';
+    window.location.href = "detalle-producto.html?id=413844533";
   });
 });
 
@@ -39,22 +40,44 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     cartItemsUl.innerHTML = ""; // limpiar
 
-    cart.forEach((item, index) => {
+    cart.forEach((item) => {
       const li = document.createElement("li");
-      li.textContent = `${item.nombre} - Talla: ${item.talla || "—"} - Cantidad: ${item.cantidad}`;
+      if (item.nombre === "Pack del Equipo") {
+        li.innerHTML = `
+          <div style="width: 150px; height: 150px; background-color: white; display: flex; align-items: center; justify-content: center; margin: 0 auto;">
+              <img src="${item.imagen[0]}" alt="${item.nombre}" style="max-height: 100%; max-width: 100%; object-fit: contain;">
+            </div>
+            <br>
+            <strong>${item.nombre}</strong><br>
+            Conjunto: ${item.conjunto}<br>
+            Sudadera: ${item.sudadera}<br>
+            Medias: ${item.medias}<br>
+            Chandal: ${item.chandal}<br>
+            Abrigo: ${item.abrigo}<br>
+            Chubasquero: ${item.chubasquero}<br>
+            Ropa de juego: ${item.ropaJuego}<br>
+            Cantidad: ${item.cantidad} <br>
+          `;
+      } else {
+        li.innerHTML = `
+          <div style="width: 150px; height: 150px; display: flex; align-items: center; justify-content: center; margin: 0 auto;">
+              <img src="${item.imagen[0]}" alt="${item.nombre}" style="max-height: 100%; max-width: 100%; object-fit: contain;">
+            </div>
+            <br>
+          <strong>${item.nombre}</strong> - Talla: ${item.talla || "—"} - Cantidad: ${item.cantidad}`;
+      }
       cartItemsUl.appendChild(li);
     });
   }
 
   checkoutBtn.addEventListener("click", () => {
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];
-  if (cart.length === 0) {
-    alert("El carrito está vacío.");
-    return;
-  }
-  window.location.href = "checkout.html"; // Redirige a la página de pago
-});
-
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    if (cart.length === 0) {
+      alert("El carrito está vacío.");
+      return;
+    }
+    window.location.href = "checkout.html"; // Redirige a la página de pago
+  });
 });
 document.addEventListener("DOMContentLoaded", () => {
   const clearCartBtn = document.getElementById("clear-cart-btn");
@@ -66,7 +89,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   if (clearCartBtn) {
     clearCartBtn.addEventListener("click", () => {
-      const confirmClear = confirm("¿Estás seguro de que quieres vaciar el carrito?");
+      const confirmClear = confirm(
+        "¿Estás seguro de que quieres vaciar el carrito?"
+      );
       if (confirmClear) {
         localStorage.removeItem("cart");
         alert("Carrito vaciado.");

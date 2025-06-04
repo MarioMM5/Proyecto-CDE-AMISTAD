@@ -1,10 +1,9 @@
-
 const productos = {
   413844533: {
     nombre: "Camiseta Oficial",
     precio: 25.0,
     tallas: ["4", "6", "8", "10", "12", "14", "XS", "S", "M", "L", "XL", "XXL"],
-    imagen: ["../img/camiseta.png","../img/camiseta_2.png"],
+    imagen: ["../img/camiseta.png", "../img/camiseta_2.png"],
     info: `
     <strong>Camisetas con diseño exclusivo para el CDE Amistad</strong><br><br>
 
@@ -24,7 +23,11 @@ const productos = {
     nombre: "Sudadera del Equipo",
     precio: 25.0,
     tallas: ["4", "6", "8", "10", "12", "14", "XS", "S", "M", "L", "XL", "XXL"],
-    imagen: ["../img/sudadera.jpg","../img/sudadera_2.jpg","../img/tallas_sudadera.jpg"],
+    imagen: [
+      "../img/sudadera.jpg",
+      "../img/sudadera_2.jpg",
+      "../img/tallas_sudadera.jpg",
+    ],
     info: `
     <strong>Marca:</strong> Gañafote<br><br>
     Sudadera diseñada en exclusiva para el <strong>C.D.E. Amistad</strong> en color verde con detalles en blanco.<br><br>
@@ -43,7 +46,12 @@ const productos = {
     nombre: "Abrigo del Equipo",
     precio: 36.0,
     tallas: ["4", "6", "8", "10", "12", "14", "XS", "S", "M", "L", "XL", "XXL"],
-    imagen: ["../img/abrigo.jpg","../img/abrigo_2.jpg","../img/abrigo_3.jpg","../img/tallas_abrigo.jpg"],
+    imagen: [
+      "../img/abrigo.jpg",
+      "../img/abrigo_2.jpg",
+      "../img/abrigo_3.jpg",
+      "../img/tallas_abrigo.jpg",
+    ],
     info: `
     <strong>Abrigo color negro fabricado en Poliéster</strong>.<br><br>
     <strong>Especificaciones:</strong><br>
@@ -62,8 +70,13 @@ const productos = {
     nombre: "Chubasquero del Equipo",
     precio: 18.0,
     tallas: ["4", "6", "8", "10", "12", "14", "XS", "S", "M", "L", "XL", "XXL"],
-    imagen: ["../img/chubasquero.jpg","../img/chubasquero_2.jpg","../img/chubasquero_3.jpg","../img/chubasquero_4.jpg",
-      "../img/chubasquero_5.jpg","../img/tallas_abrigo.jpg"
+    imagen: [
+      "../img/chubasquero.jpg",
+      "../img/chubasquero_2.jpg",
+      "../img/chubasquero_3.jpg",
+      "../img/chubasquero_4.jpg",
+      "../img/chubasquero_5.jpg",
+      "../img/tallas_abrigo.jpg",
     ],
     info: `
     <strong>Marca:</strong> Gañafote<br><br>
@@ -86,7 +99,11 @@ const productos = {
     nombre: "Mochila del Equipo",
     precio: 18.0,
     tallas: [], // Sin tallas porque es mochila
-    imagen: ["../img/mochila.jpg","../img/mochila_2.jpg","../img/mochila_3.jpg"],
+    imagen: [
+      "../img/mochila.jpg",
+      "../img/mochila_2.jpg",
+      "../img/mochila_3.jpg",
+    ],
     info: `
     Mochila de color <strong>negro</strong> fabricada en <strong>poliéster</strong>, diseñada para resistir las batallas del día a día con estilo y funcionalidad:<br><br>
 
@@ -100,7 +117,12 @@ const productos = {
     nombre: "Chandal Oficial",
     precio: 45.0,
     tallas: ["4", "6", "8", "10", "12", "14", "XS", "S", "M", "L", "XL", "XXL"],
-    imagen: ["../img/chandal.jpg","../img/chandal_2.jpg","../img/chandal_3.jpg","../img/tallas.jpg"],
+    imagen: [
+      "../img/chandal.jpg",
+      "../img/chandal_2.jpg",
+      "../img/chandal_3.jpg",
+      "../img/tallas.jpg",
+    ],
     info: `
     <strong>El chándal del C.D.E. Amistad</strong> se compone de chaqueta y pantalón.<br><br>
 
@@ -120,7 +142,12 @@ const productos = {
     precio: 30.0,
     tallas: ["4", "6", "8", "10", "12", "14", "XS", "S", "M", "L", "XL", "XXL"],
     medias: ["NO", "25-28", "29-32", "33-36", "27-40", "41-44"],
-    imagen: ["../img/conjunto_entero.jpg","../img/conjunto_entero_2.jpg","../img/calcetines.jpg","../img/tallas_conjunto.jpg"],
+    imagen: [
+      "../img/conjunto_entero.jpg",
+      "../img/conjunto_entero_2.jpg",
+      "../img/calcetines.jpg",
+      "../img/tallas_conjunto.jpg",
+    ],
     info: `
     <strong>Marca:</strong> Gañafote<br><br>
     El Conjunto de entrenamiento del C.D.E. Amistad está compuesto por camiseta, pantalón y medias (opcional).<br><br>
@@ -143,9 +170,14 @@ const productos = {
   },
   413844520: {
     nombre: "Medias del Equipo",
-    precio: 6.50,
+    precio: 6.5,
     tallas: ["25-28", "29-32", "33-36", "27-40", "41-44"],
-    imagen: ["../img/calcetines.jpg","../img/calcetines_2.jpg","../img/calcetines_3.jpg","../img/calcetines_4.jpg"],
+    imagen: [
+      "../img/calcetines.jpg",
+      "../img/calcetines_2.jpg",
+      "../img/calcetines_3.jpg",
+      "../img/calcetines_4.jpg",
+    ],
     info: `
     <strong>Medias personalizadas C.D.E. Amistad</strong><br><br>
 
@@ -161,7 +193,7 @@ const productos = {
     nombre: "Polo del Equipo",
     precio: 25.0,
     tallas: ["4", "6", "8", "10", "12", "14", "XS", "S", "M", "L", "XL", "XXL"],
-    imagen: ["../img/polo.jpg","../img/polo_2.jpg","../img/tallas_polo.jpg"],
+    imagen: ["../img/polo.jpg", "../img/polo_2.jpg", "../img/tallas_polo.jpg"],
     info: `
     <strong>Marca:</strong> Gañafote<br><br>
     Polo diseñado en <strong>exclusiva</strong> para el <strong>C.D.E. Amistad</strong>.<br><br>
@@ -180,7 +212,15 @@ const productos = {
     precio: 200.0,
     medias: ["25-28", "29-32", "33-36", "27-40", "41-44"],
     tallas: ["4", "6", "8", "10", "12", "14", "XS", "S", "M", "L", "XL", "XXL"],
-    imagen: ["../img/pack.jpg","../img/conjunto_entero.jpg","../img/camiseta.png","../img/chandal.jpg","../img/abrigo.jpg","../img/chubasquero.jpg","../img/mochila.jpg"],
+    imagen: [
+      "../img/pack.jpg",
+      "../img/conjunto_entero.jpg",
+      "../img/camiseta.png",
+      "../img/chandal.jpg",
+      "../img/abrigo.jpg",
+      "../img/chubasquero.jpg",
+      "../img/mochila.jpg",
+    ],
     opciones: ["SI (+35.00€)", "NO"],
     info: `
     <strong>Marca:</strong> Gañafote<br><br>
@@ -286,7 +326,9 @@ if (!productId || !productos[productId]) {
 
 <div class="product-detail-container">
  <div style="flex:1;display:flex;flex-direction:column;align-items:center; position: relative;">
-  <img src="${p.imagen[0]}" alt="${p.nombre}" class="product-image" id="carousel-image" />
+  <img src="${p.imagen[0]}" alt="${
+    p.nombre
+  }" class="product-image" id="carousel-image" />
   
   <button id="prev-btn" style="position:absolute; top:25%; left:0px; transform: translateY(-50%); font-size:2rem; background:none; border:none; color:#2ecc71; cursor:pointer;">&#10094;</button>
   <button id="next-btn" style="position:absolute; top:25%; right:0px; transform: translateY(-50%); font-size:2rem; background:none; border:none; color:#2ecc71; cursor:pointer;">&#10095;</button>
@@ -353,7 +395,6 @@ if (!productId || !productos[productId]) {
     </div>
   </form>
 </div>`;
-
 }
 
 // --- lógica de selección de opciones ---
@@ -416,15 +457,16 @@ document
       { label: "el chándal", getter: getSelectedChandal },
       { label: "el abrigo", getter: getSelectedAbrigo },
       { label: "el chubasquero", getter: getSelectedChubasquero },
+      { label: "las medias", getter: getSelectedMedias },
+      { label: "la ropa de juego", getter: getSelectedRopa_Juego },
     ];
 
     if (productId === "413844522") {
       for (const { label, getter } of requiredSelections) {
         if (!getter()) {
           showMessage(`Por favor, selecciona todos los campos.`);
+          return;
         }
-        return;
-
       }
     }
 
@@ -461,6 +503,7 @@ document
       cantidad,
       nombreUsuario: nombreUsuario || null,
       dorsalUsuario: dorsalUsuario || null,
+      conjunto: getSelectedConf() || null,
       medias: getSelectedMedias() || null,
       sudadera: getSelectedSudadera() || null,
       chandal: getSelectedChandal() || null,
@@ -485,12 +528,10 @@ document
     }
     saveCart(cart);
 
-
-
     // Redirigir al catálogo (cambia 'catalogo.html' por la ruta correcta)
     window.location.href = "mercha.html";
   });
-  
+
 window.addEventListener("scroll", () => {
   const header = document.getElementById("fixedHeader");
   if (window.scrollY > 50) {
@@ -525,18 +566,18 @@ function showMessage(text, type = "error", duration = 4000) {
   }, duration);
 }
 
-window.addEventListener('load', () => {
-  const img = document.querySelector('.product-image');
+window.addEventListener("load", () => {
+  const img = document.querySelector(".product-image");
   if (!img) return;
 
-  const lens = document.createElement('div');
-  lens.classList.add('zoom-lens');
+  const lens = document.createElement("div");
+  lens.classList.add("zoom-lens");
   document.body.appendChild(lens);
 
-  img.style.position = 'relative';
+  img.style.position = "relative";
 
-  img.addEventListener('mousemove', e => {
-    lens.style.display = 'block';
+  img.addEventListener("mousemove", (e) => {
+    lens.style.display = "block";
 
     // calcular posición relativa de cursor respecto a la imagen
     const rect = img.getBoundingClientRect();
@@ -550,7 +591,7 @@ window.addEventListener('load', () => {
     let lensY = e.pageY - lensHeight;
 
     if (x < 0 || y < 0 || x > rect.width || y > rect.height) {
-      lens.style.display = 'none';
+      lens.style.display = "none";
       return;
     }
 
@@ -567,58 +608,58 @@ window.addEventListener('load', () => {
     lens.style.backgroundPosition = `${bgX}% ${bgY}%`;
   });
 
-  img.addEventListener('mouseleave', () => {
-    lens.style.display = 'none';
+  img.addEventListener("mouseleave", () => {
+    lens.style.display = "none";
   });
 });
 
-window.addEventListener('load', () => {
-  const images = Array.from(document.querySelectorAll('.product-image'));
+window.addEventListener("load", () => {
+  const images = Array.from(document.querySelectorAll(".product-image"));
   if (images.length === 0) return;
 
   let currentIndex = 0;
 
-  const overlay = document.createElement('div');
-  overlay.classList.add('fullscreen-overlay');
-  overlay.style.display = 'none';
+  const overlay = document.createElement("div");
+  overlay.classList.add("fullscreen-overlay");
+  overlay.style.display = "none";
 
-  const fullscreenImg = document.createElement('img');
+  const fullscreenImg = document.createElement("img");
   overlay.appendChild(fullscreenImg);
 
-  const closeBtn = document.createElement('button');
-  closeBtn.classList.add('fullscreen-close-btn');
-  closeBtn.textContent = '×';
-  closeBtn.style.display = 'none';
+  const closeBtn = document.createElement("button");
+  closeBtn.classList.add("fullscreen-close-btn");
+  closeBtn.textContent = "×";
+  closeBtn.style.display = "none";
 
-  const prevBtn = document.createElement('button');
-  prevBtn.textContent = '←';
-  prevBtn.style.position = 'fixed';
-  prevBtn.style.top = '50%';
-  prevBtn.style.left = '20px';
-  prevBtn.style.transform = 'translateY(-50%)';
-  prevBtn.style.fontSize = '3rem';
-  prevBtn.style.color = '#2ecc71';
-  prevBtn.style.background = 'transparent';
-  prevBtn.style.border = 'none';
-  prevBtn.style.cursor = 'pointer';
+  const prevBtn = document.createElement("button");
+  prevBtn.textContent = "←";
+  prevBtn.style.position = "fixed";
+  prevBtn.style.top = "50%";
+  prevBtn.style.left = "20px";
+  prevBtn.style.transform = "translateY(-50%)";
+  prevBtn.style.fontSize = "3rem";
+  prevBtn.style.color = "#2ecc71";
+  prevBtn.style.background = "transparent";
+  prevBtn.style.border = "none";
+  prevBtn.style.cursor = "pointer";
   prevBtn.style.zIndex = 2100;
-  prevBtn.style.userSelect = 'none';
-  prevBtn.style.display = 'none';
+  prevBtn.style.userSelect = "none";
+  prevBtn.style.display = "none";
 
-  const nextBtn = document.createElement('button');
-  nextBtn.textContent = '→';
-  nextBtn.style.position = 'fixed';
-  nextBtn.style.top = '50%';
-  nextBtn.style.right = '20px';
-  nextBtn.style.transform = 'translateY(-50%)';
-  nextBtn.style.fontSize = '3rem';
-  nextBtn.style.color = '#2ecc71';
-  nextBtn.style.background = 'transparent';
-  nextBtn.style.border = 'none';
-  nextBtn.style.cursor = 'pointer';
+  const nextBtn = document.createElement("button");
+  nextBtn.textContent = "→";
+  nextBtn.style.position = "fixed";
+  nextBtn.style.top = "50%";
+  nextBtn.style.right = "20px";
+  nextBtn.style.transform = "translateY(-50%)";
+  nextBtn.style.fontSize = "3rem";
+  nextBtn.style.color = "#2ecc71";
+  nextBtn.style.background = "transparent";
+  nextBtn.style.border = "none";
+  nextBtn.style.cursor = "pointer";
   nextBtn.style.zIndex = 2100;
-  nextBtn.style.userSelect = 'none';
-  nextBtn.style.display = 'none';
+  nextBtn.style.userSelect = "none";
+  nextBtn.style.display = "none";
 
   // Añadir elementos al body
   document.body.appendChild(overlay);
@@ -633,28 +674,28 @@ window.addEventListener('load', () => {
 
   // Abrir fullscreen con imagen clicada
   images.forEach((img, i) => {
-    img.style.cursor = 'pointer';
-    img.addEventListener('click', () => {
+    img.style.cursor = "pointer";
+    img.addEventListener("click", () => {
       currentIndex = i;
       updateImage();
-      overlay.style.display = 'flex';
-      closeBtn.style.display = 'block';
-      prevBtn.style.display = 'block';
-      nextBtn.style.display = 'block';
-      document.body.style.overflow = 'hidden';
+      overlay.style.display = "flex";
+      closeBtn.style.display = "block";
+      prevBtn.style.display = "block";
+      nextBtn.style.display = "block";
+      document.body.style.overflow = "hidden";
     });
   });
 
   // Navegar atrás
-  prevBtn.addEventListener('click', () => {
+  prevBtn.addEventListener("click", () => {
     currentIndex--;
     if (currentIndex < 0) {
       currentIndex = images.length - 1; // ciclo al final
     }
     updateImage();
   });
-  
-  nextBtn.addEventListener('click', () => {
+
+  nextBtn.addEventListener("click", () => {
     currentIndex++;
     if (currentIndex >= images.length) {
       currentIndex = 0; // ciclo al inicio
@@ -663,26 +704,26 @@ window.addEventListener('load', () => {
   });
 
   // Cerrar fullscreen
-  closeBtn.addEventListener('click', () => {
-    overlay.style.display = 'none';
-    closeBtn.style.display = 'none';
-    prevBtn.style.display = 'none';
-    nextBtn.style.display = 'none';
-    document.body.style.overflow = '';
+  closeBtn.addEventListener("click", () => {
+    overlay.style.display = "none";
+    closeBtn.style.display = "none";
+    prevBtn.style.display = "none";
+    nextBtn.style.display = "none";
+    document.body.style.overflow = "";
   });
 
   // Cerrar clicando fuera de la imagen
-  overlay.addEventListener('click', (e) => {
+  overlay.addEventListener("click", (e) => {
     if (e.target === overlay) {
-      overlay.style.display = 'none';
-      closeBtn.style.display = 'none';
-      prevBtn.style.display = 'none';
-      nextBtn.style.display = 'none';
-      document.body.style.overflow = '';
+      overlay.style.display = "none";
+      closeBtn.style.display = "none";
+      prevBtn.style.display = "none";
+      nextBtn.style.display = "none";
+      document.body.style.overflow = "";
     }
   });
 });
- 
+
 const p = productos[productId];
 
 // Suponiendo que tienes acceso al array de imágenes p.imagen
@@ -702,7 +743,6 @@ nextBtn.addEventListener("click", () => {
   currentIndex = (currentIndex + 1) % images.length;
   carouselImage.src = images[currentIndex];
 });
-
 
 const otrasImagenes = document.getElementById("otrasImagenes");
 
@@ -727,15 +767,14 @@ for (let i = 0; i < p.imagen.length; i++) {
   otrasImagenes.appendChild(card);
 }
 
-
-document.addEventListener('DOMContentLoaded', () => {
-  const carouselImage = document.getElementById('carousel-image');
-  const photosCard = document.getElementById('otrasImagenes');
-  const prevBtn = document.getElementById('prev-btn');
-  const nextBtn = document.getElementById('next-btn');
+document.addEventListener("DOMContentLoaded", () => {
+  const carouselImage = document.getElementById("carousel-image");
+  const photosCard = document.getElementById("otrasImagenes");
+  const prevBtn = document.getElementById("prev-btn");
+  const nextBtn = document.getElementById("next-btn");
 
   // Obtener todas las cartas con clase .image-card (no las imágenes directamente)
-  const cards = Array.from(photosCard.querySelectorAll('.image-card'));
+  const cards = Array.from(photosCard.querySelectorAll(".image-card"));
 
   // Índice de la imagen seleccionada
   let currentIndex = 0;
@@ -746,20 +785,20 @@ document.addEventListener('DOMContentLoaded', () => {
     currentIndex = index;
 
     // Cambiar imagen grande (usamos la img dentro de la card)
-    const img = cards[currentIndex].querySelector('img');
+    const img = cards[currentIndex].querySelector("img");
     carouselImage.src = img.src;
-    carouselImage.alt = img.alt || '';
+    carouselImage.alt = img.alt || "";
 
     // Quitar clase selected de todas las cartas
-    cards.forEach(card => card.classList.remove('selected'));
+    cards.forEach((card) => card.classList.remove("selected"));
     // Añadir clase selected a la carta actual
-    cards[currentIndex].classList.add('selected');
+    cards[currentIndex].classList.add("selected");
   }
 
   // Click en cartas
-  photosCard.addEventListener('click', (e) => {
+  photosCard.addEventListener("click", (e) => {
     // Buscar el padre con clase image-card
-    const card = e.target.closest('.image-card');
+    const card = e.target.closest(".image-card");
     if (!card) return;
 
     const clickedIndex = cards.indexOf(card);
@@ -769,10 +808,9 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Botones flecha
-  prevBtn.addEventListener('click', () => updateCarousel(currentIndex - 1));
-  nextBtn.addEventListener('click', () => updateCarousel(currentIndex + 1));
+  prevBtn.addEventListener("click", () => updateCarousel(currentIndex - 1));
+  nextBtn.addEventListener("click", () => updateCarousel(currentIndex + 1));
 
   // Inicializar
   updateCarousel(0);
 });
-

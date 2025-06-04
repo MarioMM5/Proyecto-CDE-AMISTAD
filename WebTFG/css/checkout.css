@@ -82,6 +82,29 @@ body {
   padding: 1rem;
   flex-wrap: wrap; /* para que en móvil se apilen */
 }
+#main-container {
+  flex-direction: column; /* Esto asegura que los hijos se coloquen en columna */
+}
+#cart-total-container {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #f5f5f5;
+  border-top: 1px solid #ddd;
+  text-align: right;
+}
+
+.cart-total h4 {
+  margin: 0;
+  font-size: 1.2rem;
+  display: inline;
+}
+
+.cart-total p {
+  display: inline;
+  margin-left: 0.5rem;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
 
 #cart-preview {
   flex: 1 1 300px; /* crecer, encoger y base 300px */
@@ -90,6 +113,8 @@ body {
   padding: 1rem;
   border-radius: 8px;
   background: #f9f9f9;
+  max-height: 500px;
+  overflow-y: auto;
 }
 .message {
   background: rgba(255, 0, 0, 0.85);

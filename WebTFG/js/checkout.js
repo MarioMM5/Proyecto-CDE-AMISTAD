@@ -1,5 +1,3 @@
-
-
 document.addEventListener("submit", function (e) {
   e.preventDefault();
 
@@ -50,7 +48,6 @@ document.addEventListener("submit", function (e) {
   window.location.href = "mercha.html";
 });
 
-
 document.addEventListener("DOMContentLoaded", () => {
   const cartContainer = document.getElementById("cart-products");
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -61,30 +58,64 @@ document.addEventListener("DOMContentLoaded", () => {
     cartContainer.innerHTML = ""; // limpiamos antes
 
     let total = 0;
-    cart.forEach((product) => {
-      const item = document.createElement("div");
-      total += product.precio * product.cantidad;
-      item.className = "cart-item";
-      item.innerHTML = `
-        <img src="${product.imagen[0]}" alt="${product.nombre}">
-        <div class="cart-item-details">
-          <h4>${product.nombre}</h4>
-          <p><strong>Talla:</strong> ${product.talla || "N/A"}</p>
-          <p><strong>Cantidad:</strong> ${product.cantidad}</p>
-          <p><strong>Precio unidad:</strong> ${product.precio.toFixed(2)} €</p>
-          <p><strong>Subtotal:</strong> ${(
-            product.precio * product.cantidad
-          ).toFixed(2)} €</p>
-        </div>
-      `;
-      cartContainer.appendChild(item);
-    });
+cart.forEach((product) => {
+  const item = document.createElement("div");
+
+  // Calcular subtotal
+  let subtotal = product.precio * product.cantidad;
+
+  // Verificar si es el pack con ropa de juego
+  if (
+    product.nombre === "Pack del Equipo" &&
+    product.ropaJuego === "SI (+35.00€)"
+  ) {
+    subtotal += 35;
+  }
+
+  // Sumar al total
+  total += subtotal;
+
+  item.className = "cart-item";
+
+  if (product.nombre === "Pack del Equipo") {
+    item.innerHTML = `
+      <img src="${product.imagen[0]}" alt="${product.nombre}">
+      <div class="cart-item-details">
+        <h4>${product.nombre}</h4>
+        <p><strong>Cantidad:</strong> ${product.cantidad}</p>
+        <p><strong>Conjunto:</strong> ${product.conjunto}</p>
+        <p><strong>Sudadera:</strong> ${product.sudadera}</p>
+        <p><strong>Medias:</strong> ${product.medias}</p>
+        <p><strong>Chándal:</strong> ${product.chandal}</p>
+        <p><strong>Abrigo:</strong> ${product.abrigo}</p>
+        <p><strong>Chubasquero:</strong> ${product.chubasquero}</p>
+        <p><strong>Ropa de juego:</strong> ${product.ropaJuego}</p>
+        <p><strong>Subtotal:</strong> ${subtotal.toFixed(2)} €</p>
+      </div>
+    `;
+  } else {
+    item.innerHTML = `
+      <img src="${product.imagen[0]}" alt="${product.nombre}">
+      <div class="cart-item-details">
+        <h4>${product.nombre}</h4>
+        <p><strong>Talla:</strong> ${product.talla || "N/A"}</p>
+        <p><strong>Cantidad:</strong> ${product.cantidad}</p>
+        <p><strong>Precio unidad:</strong> ${product.precio.toFixed(2)} €</p>
+        <p><strong>Subtotal:</strong> ${subtotal.toFixed(2)} €</p>
+      </div>
+    `;
+  }
+
+  cartContainer.appendChild(item);
+});
 
     // Mostrar total
     const totalElement = document.createElement("div");
     totalElement.className = "cart-total";
     totalElement.innerHTML = `<h4>Total:</h4><p>${total.toFixed(2)} €</p>`;
-    cartContainer.appendChild(totalElement);
+    const totalContainer = document.getElementById("cart-total-container");
+    totalContainer.innerHTML = ""; // Limpia si se recarga el carrito
+    totalContainer.appendChild(totalElement);
   }
 });
 
@@ -97,32 +128,30 @@ window.addEventListener("scroll", () => {
   }
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+  const btnTarjeta = document.getElementById("btn-tarjeta");
+  const btnPaypal = document.getElementById("btn-paypal");
+  const formTarjeta = document.getElementById("form-tarjeta");
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const btnTarjeta = document.getElementById("btn-tarjeta");
-    const btnPaypal = document.getElementById("btn-paypal");
-    const formTarjeta = document.getElementById("form-tarjeta");
-
-    btnTarjeta.addEventListener("click", () => {
-      formTarjeta.style.display = "block";
-    });
-
-    btnPaypal.addEventListener("click", () => {
-      // Cambia esta URL por la real si tienes integración con PayPal
-      window.location.href = "https://www.paypal.com/checkoutnow";
-      formTarjeta.style.display = "none";
-
-    });
-
-    formTarjeta.addEventListener("submit", function (e) {
-      e.preventDefault();
-      alert("¡Pago con tarjeta procesado con éxito!");
-      localStorage.removeItem("cart");
-      window.location.href = "mercha.html";
-    });
+  btnTarjeta.addEventListener("click", () => {
+    formTarjeta.style.display = "block";
   });
 
-  function showMessage(text, type = "error", duration = 4000) {
+  btnPaypal.addEventListener("click", () => {
+    // Cambia esta URL por la real si tienes integración con PayPal
+    window.location.href = "https://www.paypal.com/checkoutnow";
+    formTarjeta.style.display = "none";
+  });
+
+  formTarjeta.addEventListener("submit", function (e) {
+    e.preventDefault();
+    alert("¡Pago con tarjeta procesado con éxito!");
+    localStorage.removeItem("cart");
+    window.location.href = "mercha.html";
+  });
+});
+
+function showMessage(text, type = "error", duration = 4000) {
   const container = document.getElementById("message-container");
   if (!container) return;
 
