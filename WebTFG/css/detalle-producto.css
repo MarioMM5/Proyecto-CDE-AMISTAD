@@ -51,11 +51,11 @@ body {
 }
 
 .product-image img {
-  width: 100%;
-  max-width: 400px;
-  border-radius: 10px;
-  object-fit: cover;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 400px;       
+  height: 400px;            
+  object-fit: contain;      
+  background-color: white;  
+  display: block;
 }
 
 .product-info {
@@ -101,14 +101,14 @@ form label {
   }
   
   .footer-images img {
-    width: 80px; /* Tamaño base de todas las imágenes */
+    width: 80px; 
     height: 80px;
-    max-width: 100%; /* Asegura que no se desborden */
+    max-width: 100%;
     transition: transform 0.3s ease;
 
   }
   
-  /* Tercer imagen más grande, sin que se haga enorme */
+
   .footer-images .highlighted-image {
     width: 120px; 
     height: 120px;
@@ -176,7 +176,6 @@ input[type="number"] {
   color: white;
   border-color: #27ae60;
 }
-/* Enlaces y botones */
 .back-link {
   display: inline-flex;
   align-items: center;
@@ -185,8 +184,8 @@ input[type="number"] {
   color: #2ecc71;
   font-weight: bold;
   font-size: 1.5rem;
-  margin-top: 30px;      /* Más abajo */
-  margin-left: 25px;     /* Lo empuja hacia la derecha */
+  margin-top: 30px;     
+  margin-left: 25px;     
   transition: color 0.3s, text-shadow 0.3s;
   position: relative;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
@@ -233,13 +232,12 @@ input[type="number"] {
   font-family: Arial, sans-serif;
 }
 
-/* Imagen del producto */
 .product-image {
-  cursor: crosshair;
-  transition: transform 0.3s ease;
+  width: 400px;    
+  height: 400px;            
+  object-fit: contain;      
+  background-color: white;
   display: block;
-  max-width: 100%;
-  position: relative;
 }
 
 .zoom-lens {
@@ -299,7 +297,6 @@ input[type="number"] {
 }
 
 
-/* Caja de info */
 .product-info-box {
   margin-top: 15px;
   background: #f9f9f9;
@@ -313,7 +310,6 @@ input[type="number"] {
   max-width: 320px;
 }
 
-/* Formulario */
 #product-options-form {
   flex: 1;
   display: flex;
@@ -321,7 +317,6 @@ input[type="number"] {
   gap: 15px;
 }
 
-/* Título y precio */
 .product-title-box {
   text-align: center;
   background: #f1f5f9;
@@ -345,7 +340,6 @@ input[type="number"] {
   margin: 0;
 }
 
-/* Inputs */
 input[type="text"],
 input[type="number"] {
   width: 100%;
@@ -368,7 +362,6 @@ input[type="number"]:focus {
   font-size: 1rem;
 }
 
-/* Sección recomendados */
 .recommended-section {
   margin-top: 30px;
 }
@@ -474,4 +467,41 @@ input[type="number"]:focus {
 @keyframes fadeIn {
   from {opacity: 0; transform: translateY(-10px);}
   to {opacity: 1; transform: translateY(0);}
+}
+.photos-card {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;       
+  overflow-y: hidden;    
+  padding: 1rem 0;
+  max-width: 400px;       
+}
+.image-card {
+  flex: 0 0 auto;  
+  width: 150px;
+  max-height: 100%;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  scroll-snap-align: start;
+  transition: transform 0.2s;
+  text-align: center;
+  overflow: hidden;
+  white-space: normal; 
+}
+
+.image-card:hover {
+  transform: scale(1.05);
+}
+
+.image-card img {
+  width: 100%;
+  height: 100%; 
+  object-fit: cover; 
+  border-radius: 8px;
+}
+.image-card.selected {
+  border: 3px solid black;
+  border-radius: 8px;
 }

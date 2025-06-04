@@ -1,11 +1,10 @@
-// detalle-producto.js
 
 const productos = {
   413844533: {
     nombre: "Camiseta Oficial",
     precio: 25.0,
     tallas: ["4", "6", "8", "10", "12", "14", "XS", "S", "M", "L", "XL", "XXL"],
-    imagen: ["../img/camiseta.png"],
+    imagen: ["../img/camiseta.png","../img/camiseta_2.png"],
     info: `
     <strong>Camisetas con diseño exclusivo para el CDE Amistad</strong><br><br>
 
@@ -25,7 +24,7 @@ const productos = {
     nombre: "Sudadera del Equipo",
     precio: 25.0,
     tallas: ["4", "6", "8", "10", "12", "14", "XS", "S", "M", "L", "XL", "XXL"],
-    imagen: ["../img/sudadera.jpg"],
+    imagen: ["../img/sudadera.jpg","../img/sudadera_2.jpg","../img/tallas_sudadera.jpg"],
     info: `
     <strong>Marca:</strong> Gañafote<br><br>
     Sudadera diseñada en exclusiva para el <strong>C.D.E. Amistad</strong> en color verde con detalles en blanco.<br><br>
@@ -44,7 +43,7 @@ const productos = {
     nombre: "Abrigo del Equipo",
     precio: 36.0,
     tallas: ["4", "6", "8", "10", "12", "14", "XS", "S", "M", "L", "XL", "XXL"],
-    imagen: ["../img/abrigo.jpg"],
+    imagen: ["../img/abrigo.jpg","../img/abrigo_2.jpg","../img/abrigo_3.jpg","../img/tallas_abrigo.jpg"],
     info: `
     <strong>Abrigo color negro fabricado en Poliéster</strong>.<br><br>
     <strong>Especificaciones:</strong><br>
@@ -63,7 +62,9 @@ const productos = {
     nombre: "Chubasquero del Equipo",
     precio: 18.0,
     tallas: ["4", "6", "8", "10", "12", "14", "XS", "S", "M", "L", "XL", "XXL"],
-    imagen: ["../img/chubasquero.jpg"],
+    imagen: ["../img/chubasquero.jpg","../img/chubasquero_2.jpg","../img/chubasquero_3.jpg","../img/chubasquero_4.jpg",
+      "../img/chubasquero_5.jpg","../img/tallas_abrigo.jpg"
+    ],
     info: `
     <strong>Marca:</strong> Gañafote<br><br>
     
@@ -85,7 +86,7 @@ const productos = {
     nombre: "Mochila del Equipo",
     precio: 18.0,
     tallas: [], // Sin tallas porque es mochila
-    imagen: ["../img/mochila.jpg"],
+    imagen: ["../img/mochila.jpg","../img/mochila_2.jpg","../img/mochila_3.jpg"],
     info: `
     Mochila de color <strong>negro</strong> fabricada en <strong>poliéster</strong>, diseñada para resistir las batallas del día a día con estilo y funcionalidad:<br><br>
 
@@ -99,7 +100,7 @@ const productos = {
     nombre: "Chandal Oficial",
     precio: 45.0,
     tallas: ["4", "6", "8", "10", "12", "14", "XS", "S", "M", "L", "XL", "XXL"],
-    imagen: ["../img/chandal.jpg","../img/chubasquero.jpg"],
+    imagen: ["../img/chandal.jpg","../img/chandal_2.jpg","../img/chandal_3.jpg","../img/tallas.jpg"],
     info: `
     <strong>El chándal del C.D.E. Amistad</strong> se compone de chaqueta y pantalón.<br><br>
 
@@ -119,7 +120,7 @@ const productos = {
     precio: 30.0,
     tallas: ["4", "6", "8", "10", "12", "14", "XS", "S", "M", "L", "XL", "XXL"],
     medias: ["NO", "25-28", "29-32", "33-36", "27-40", "41-44"],
-    imagen: ["../img/conjunto_entero.jpg"],
+    imagen: ["../img/conjunto_entero.jpg","../img/conjunto_entero_2.jpg","../img/calcetines.jpg","../img/tallas_conjunto.jpg"],
     info: `
     <strong>Marca:</strong> Gañafote<br><br>
     El Conjunto de entrenamiento del C.D.E. Amistad está compuesto por camiseta, pantalón y medias (opcional).<br><br>
@@ -144,7 +145,7 @@ const productos = {
     nombre: "Medias del Equipo",
     precio: 6.50,
     tallas: ["25-28", "29-32", "33-36", "27-40", "41-44"],
-    imagen: ["../img/calcetines.jpg"],
+    imagen: ["../img/calcetines.jpg","../img/calcetines_2.jpg","../img/calcetines_3.jpg","../img/calcetines_4.jpg"],
     info: `
     <strong>Medias personalizadas C.D.E. Amistad</strong><br><br>
 
@@ -160,7 +161,7 @@ const productos = {
     nombre: "Polo del Equipo",
     precio: 25.0,
     tallas: ["4", "6", "8", "10", "12", "14", "XS", "S", "M", "L", "XL", "XXL"],
-    imagen: ["../img/polo.jpg"],
+    imagen: ["../img/polo.jpg","../img/polo_2.jpg","../img/tallas_polo.jpg"],
     info: `
     <strong>Marca:</strong> Gañafote<br><br>
     Polo diseñado en <strong>exclusiva</strong> para el <strong>C.D.E. Amistad</strong>.<br><br>
@@ -179,7 +180,7 @@ const productos = {
     precio: 200.0,
     medias: ["25-28", "29-32", "33-36", "27-40", "41-44"],
     tallas: ["4", "6", "8", "10", "12", "14", "XS", "S", "M", "L", "XL", "XXL"],
-    imagen: ["../img/pack.jpg"],
+    imagen: ["../img/pack.jpg","../img/conjunto_entero.jpg","../img/camiseta.png","../img/chandal.jpg","../img/abrigo.jpg","../img/chubasquero.jpg","../img/mochila.jpg"],
     opciones: ["SI (+35.00€)", "NO"],
     info: `
     <strong>Marca:</strong> Gañafote<br><br>
@@ -217,7 +218,7 @@ function obtenerRecomendados(idActual, productos, cantidad = 3) {
     <div class="recommended-card">
       <a href="detalle-producto.html?id=${id}" title="${prod.nombre}">
         <div class="img-wrapper">
-          <img src="${prod.imagen}" alt="${prod.nombre}" />
+          <img src="${prod.imagen[0]}" alt="${prod.nombre}" />
         </div>
         <p class="recommended-title">${prod.nombre}</p>
       </a>
@@ -276,7 +277,7 @@ if (!productId || !productos[productId]) {
   }
 
   container.innerHTML = `
-<a href="javascript:history.back()" class="back-link">
+<a href="mercha.html" class="back-link">
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="24" height="24">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
   </svg>
@@ -287,8 +288,10 @@ if (!productId || !productos[productId]) {
  <div style="flex:1;display:flex;flex-direction:column;align-items:center; position: relative;">
   <img src="${p.imagen[0]}" alt="${p.nombre}" class="product-image" id="carousel-image" />
   
-  <button id="prev-btn" style="position:absolute; top:25%; left:5px; transform: translateY(-50%); font-size:2rem; background:none; border:none; color:#2ecc71; cursor:pointer;">&#10094;</button>
-  <button id="next-btn" style="position:absolute; top:25%; right:5px; transform: translateY(-50%); font-size:2rem; background:none; border:none; color:#2ecc71; cursor:pointer;">&#10095;</button>
+  <button id="prev-btn" style="position:absolute; top:25%; left:0px; transform: translateY(-50%); font-size:2rem; background:none; border:none; color:#2ecc71; cursor:pointer;">&#10094;</button>
+  <button id="next-btn" style="position:absolute; top:25%; right:0px; transform: translateY(-50%); font-size:2rem; background:none; border:none; color:#2ecc71; cursor:pointer;">&#10095;</button>
+  
+  <div id="otrasImagenes" class="photos-card" style="margin-top: 1rem;"></div>
 
   <div class="product-info-box">
     <h3 style="margin:0 0 0.5rem;font-size:1.1rem;color:#222;">ℹ️ Información del producto</h3>
@@ -644,13 +647,18 @@ window.addEventListener('load', () => {
 
   // Navegar atrás
   prevBtn.addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    currentIndex--;
+    if (currentIndex < 0) {
+      currentIndex = images.length - 1; // ciclo al final
+    }
     updateImage();
   });
-
-  // Navegar adelante
+  
   nextBtn.addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % images.length;
+    currentIndex++;
+    if (currentIndex >= images.length) {
+      currentIndex = 0; // ciclo al inicio
+    }
     updateImage();
   });
 
@@ -694,3 +702,77 @@ nextBtn.addEventListener("click", () => {
   currentIndex = (currentIndex + 1) % images.length;
   carouselImage.src = images[currentIndex];
 });
+
+
+const otrasImagenes = document.getElementById("otrasImagenes");
+
+for (let i = 0; i < p.imagen.length; i++) {
+  const card = document.createElement("div");
+  card.className = "image-card";
+
+  const img = document.createElement("img");
+  img.src = p.imagen[i];
+  img.alt = p.nombre;
+  img.style.width = "100%";
+  img.style.borderRadius = "8px";
+
+  const title = document.createElement("p");
+  title.style.textAlign = "center";
+  title.style.marginTop = "0.5rem";
+  title.style.fontSize = "0.9rem";
+  title.style.color = "#444";
+
+  card.appendChild(img);
+  card.appendChild(title);
+  otrasImagenes.appendChild(card);
+}
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const carouselImage = document.getElementById('carousel-image');
+  const photosCard = document.getElementById('otrasImagenes');
+  const prevBtn = document.getElementById('prev-btn');
+  const nextBtn = document.getElementById('next-btn');
+
+  // Obtener todas las cartas con clase .image-card (no las imágenes directamente)
+  const cards = Array.from(photosCard.querySelectorAll('.image-card'));
+
+  // Índice de la imagen seleccionada
+  let currentIndex = 0;
+
+  function updateCarousel(index) {
+    if (index < 0) index = cards.length - 1;
+    if (index >= cards.length) index = 0;
+    currentIndex = index;
+
+    // Cambiar imagen grande (usamos la img dentro de la card)
+    const img = cards[currentIndex].querySelector('img');
+    carouselImage.src = img.src;
+    carouselImage.alt = img.alt || '';
+
+    // Quitar clase selected de todas las cartas
+    cards.forEach(card => card.classList.remove('selected'));
+    // Añadir clase selected a la carta actual
+    cards[currentIndex].classList.add('selected');
+  }
+
+  // Click en cartas
+  photosCard.addEventListener('click', (e) => {
+    // Buscar el padre con clase image-card
+    const card = e.target.closest('.image-card');
+    if (!card) return;
+
+    const clickedIndex = cards.indexOf(card);
+    if (clickedIndex !== -1) {
+      updateCarousel(clickedIndex);
+    }
+  });
+
+  // Botones flecha
+  prevBtn.addEventListener('click', () => updateCarousel(currentIndex - 1));
+  nextBtn.addEventListener('click', () => updateCarousel(currentIndex + 1));
+
+  // Inicializar
+  updateCarousel(0);
+});
+

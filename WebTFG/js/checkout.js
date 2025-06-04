@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
       total += product.precio * product.cantidad;
       item.className = "cart-item";
       item.innerHTML = `
-        <img src="${product.imagen}" alt="${product.nombre}">
+        <img src="${product.imagen[0]}" alt="${product.nombre}">
         <div class="cart-item-details">
           <h4>${product.nombre}</h4>
           <p><strong>Talla:</strong> ${product.talla || "N/A"}</p>

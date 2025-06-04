@@ -1,4 +1,3 @@
-/* Estilos Generales */
 * {
   margin: 0;
   padding: 0;
@@ -215,7 +214,6 @@ h1 {
   }
 }
 
-/* === SIDEBAR MODERNA Y SERENA === */
 .sidebar {
   background: url('https://www.transparenttextures.com/patterns/diamond-upholstery.png');
   background-color: #f4f8f6;
@@ -223,7 +221,6 @@ h1 {
   transition: all 0.3s ease;
 }
 
-/* Empuje del botón cuando la sidebar está abierta */
 .sidebar:not(.collapsed) ~ .toggle-btn {
   left: 270px;
 }
@@ -232,7 +229,6 @@ h1 {
   transform: rotate(180deg);
 }
 
-/* Flecha con tono verde jade */
 .arrow {
   transition: transform 0.3s ease-in-out;
   color: #3fae6e;
@@ -242,7 +238,6 @@ h1 {
   transform: rotate(180deg);
 }
 
-/* === MENÚ ESTILIZADO === */
 .menu li {
   list-style: none;
   margin: 60px 0;
@@ -262,7 +257,6 @@ h1 {
   transition: all 0.3s ease;
 }
 
-/* Hover con fondo verde bruma */
 .menu a:hover {
   background-color: #d8f5e5;
   color: #1b5e20;
@@ -270,7 +264,6 @@ h1 {
   transform: scale(1.06);
 }
 
-/* Enfoque animado sutil */
 @keyframes elegantPulse {
   0% {
     box-shadow: 0 0 0 rgba(63, 174, 110, 0.1);
@@ -288,7 +281,6 @@ h1 {
   outline: none;
 }
 
-/* === PIE DE SIDEBAR === */
 .sidebar-social {
   width: 100%;
   display: flex;
@@ -303,7 +295,6 @@ h1 {
   gap: 10px;
 }
 
-/* Información de contacto */
 .contact-info {
   color: #2e7d32;
   display: flex;
@@ -318,7 +309,6 @@ h1 {
   color: #3fae6e;
 }
 
-/* Redes sociales */
 .social-links {
   display: flex;
   justify-content: center;
@@ -354,13 +344,13 @@ h1 {
 }
 
 .footer-images img {
-  width: 80px; /* Tamaño base de todas las imágenes */
+  width: 80px; 
   height: 80px;
-  max-width: 100%; /* Asegura que no se desborden */
+  max-width: 100%;
   transition: transform 0.3s ease;
 }
 
-/* Tercer imagen más grande, sin que se haga enorme */
+
 .footer-images .highlighted-image {
   width: 120px;
   height: 120px;
@@ -446,7 +436,6 @@ h1 {
   margin-top: 10px;
 }
 
-/* Animaciones legendarias */
 @keyframes escudoHeroico {
   0% {
     opacity: 0;

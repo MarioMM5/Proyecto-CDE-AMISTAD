@@ -181,3 +181,29 @@ function filterCards() {
 document.getElementById("newsSearch").addEventListener("input", filterCards);
 document.getElementById("prevPage").addEventListener("click", () => showPage(currentPage - 1));
 document.getElementById("nextPage").addEventListener("click", () => showPage(currentPage + 1));
+
+document.addEventListener("DOMContentLoaded", async () => {
+  // Épica sin clics: el calendario aparece solo, como por arte de magia
+  const { data, error } = await supabaseClient
+    .from('eventos') // ← Asegúrate que este sea el nombre correcto
+    .select('titulo, fecha')
+    .order('fecha', { ascending: true });
+
+  const contenedor = document.getElementById("listaFechas");
+  contenedor.innerHTML = ""; // Limpiar profecías anteriores
+
+  if (error || !data || data.length === 0) {
+    contenedor.innerHTML = `<li>❌ El oráculo no ve partidos por ahora.</li>`;
+  } else {
+    data.forEach((partido, i) => {
+      const li = document.createElement("li");
+      li.innerHTML = `🛡️ <strong>${formatearFecha(partido.fecha)}</strong> — <em>${partido.titulo}</em>`;
+      li.classList.add("partido-profetico");
+      li.style.animationDelay = `${i * 0.1}s`;
+      contenedor.appendChild(li);
+    });
+  }
+
+  document.getElementById("calendarioPartidos").style.display = "block";
+});
+

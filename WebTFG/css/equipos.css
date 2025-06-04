@@ -1,4 +1,3 @@
-/* Estilos Generales */
 * {
   margin: 0;
   padding: 0;
@@ -103,7 +102,6 @@ body {
   gap: 1rem;
 }
 
-/* Animaciones legendarias */
 @keyframes escudoHeroico {
   0% {
     opacity: 0;
@@ -132,14 +130,14 @@ body {
   padding: 2rem;
   background-color: #1b4332;
   border-radius: 20px;
-  box-shadow: 0 0 20px rgba(0, 255, 128, 0.1); /* Sombra verde muy sutil */
+  box-shadow: 0 0 20px rgba(0, 255, 128, 0.1); 
   backdrop-filter: blur(8px);
 }
 
 .equipo-dinamico h1 {
   font-size: 2.8rem;
   letter-spacing: 2px;
-  color: #00ff99; /* Verde acento */
+  color: #00ff99; 
   text-align: center;
   margin-bottom: 1rem;
 }
@@ -387,7 +385,6 @@ body {
   }
 }
 
-/* === SIDEBAR MODERNA Y SERENA === */
 .sidebar {
   background: url('https://www.transparenttextures.com/patterns/diamond-upholstery.png');
   background-color: #f4f8f6;
@@ -395,7 +392,6 @@ body {
   transition: all 0.3s ease;
 }
 
-/* Empuje del botón cuando la sidebar está abierta */
 .sidebar:not(.collapsed) ~ .toggle-btn {
   left: 270px;
 }
@@ -404,7 +400,6 @@ body {
   transform: rotate(180deg);
 }
 
-/* Flecha con tono verde jade */
 .arrow {
   transition: transform 0.3s ease-in-out;
   color: #3fae6e;
@@ -414,7 +409,6 @@ body {
   transform: rotate(180deg);
 }
 
-/* === MENÚ ESTILIZADO === */
 .menu li {
   list-style: none;
   margin: 60px 0;
@@ -434,7 +428,6 @@ body {
   transition: all 0.3s ease;
 }
 
-/* Hover con fondo verde bruma */
 .menu a:hover {
   background-color: #d8f5e5;
   color: #1b5e20;
@@ -442,7 +435,6 @@ body {
   transform: scale(1.06);
 }
 
-/* Enfoque animado sutil */
 @keyframes elegantPulse {
   0% {
     box-shadow: 0 0 0 rgba(63, 174, 110, 0.1);
@@ -460,7 +452,6 @@ body {
   outline: none;
 }
 
-/* === PIE DE SIDEBAR === */
 .sidebar-social {
   width: 100%;
   display: flex;
@@ -475,7 +466,6 @@ body {
   gap: 10px;
 }
 
-/* Información de contacto */
 .contact-info {
   color: #2e7d32;
   display: flex;
@@ -490,7 +480,6 @@ body {
   color: #3fae6e;
 }
 
-/* Redes sociales */
 .social-links {
   display: flex;
   justify-content: center;
@@ -525,13 +514,12 @@ body {
 }
 
 .footer-images img {
-  width: 80px; /* Tamaño base de todas las imágenes */
+  width: 80px; 
   height: 80px;
-  max-width: 100%; /* Asegura que no se desborden */
+  max-width: 100%; 
   transition: transform 0.3s ease;
 }
 
-/* Tercer imagen más grande, sin que se haga enorme */
 .footer-images .highlighted-image {
   width: 120px;
   height: 120px;
