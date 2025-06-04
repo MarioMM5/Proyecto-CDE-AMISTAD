@@ -48,17 +48,52 @@ def obtener_contenido_completo(url_detalle):
         entry_content = detalle_soup.find("div", class_="entry-content")
 
         if not entry_content:
-            return ""
+            return "", None
 
-        texto = "\n\n".join([
-            elem.get_text(strip=True)
-            for elem in entry_content.find_all(['p', 'li', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'])
-            if elem.get_text(strip=True)
-        ])
-        return texto
+        # 📷 Buscar imagen grande justo después del <p class="post-meta">
+        imagen_url = None
+        post_meta = entry_content.find("p", class_="post-meta")
+        if post_meta:
+            siguiente = post_meta.find_next_sibling()
+            while siguiente and siguiente.name != 'img':
+                siguiente = siguiente.find_next_sibling()
+            if siguiente and siguiente.name == 'img':
+                srcset = siguiente.get("srcset")
+            if srcset:
+                imagenes = []
+                for parte in srcset.split(","):
+                    try:
+                        url, size = parte.strip().rsplit(" ", 1)
+                        size = int(size.replace("w", ""))
+                        imagenes.append((size, url))
+                    except:
+                        continue
+                if imagenes:
+                    imagen_url = max(imagenes)[1]
+            else:
+                imagen_url = siguiente.get("src") or siguiente.get("data-src")
+
+
+        # 📑 Extraer texto y detectar formularios sospechosos
+        texto_elementos = []
+        formulario_detectado = False
+        for elem in entry_content.find_all(['p', 'li', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6']):
+            texto = elem.get_text(strip=True)
+            if texto.lower() in ['si', 'no']:
+                formulario_detectado = True
+                continue
+            texto_elementos.append(texto)
+
+        texto = "\n\n".join(texto_elementos)
+
+        # 📝 Si hay formulario, añadir enlace al final
+        if formulario_detectado:
+            texto += f"\n\n📝 Puedes rellenar el formulario aquí: {url_detalle}"
+
+        return texto, imagen_url
     except Exception as e:
         logging.error(f"❌ Error al obtener contenido de {url_detalle}: {e}")
-        return ""
+        return "", None
 
 # Procesar cada página
 for url in urls:
@@ -91,9 +126,15 @@ for url in urls:
                 resumen_tag = article.find("div", class_="post-content-inner")
                 resumen = resumen_tag.get_text(strip=True) if resumen_tag else ""
 
-                contenido = obtener_contenido_completo(url_noticia)
+                contenido, imagen_detalle = obtener_contenido_completo(url_noticia)
                 if not contenido:
                     contenido = resumen
+
+                imagen_url = imagen_detalle or imagen_url
+
+
+                imagen_url = imagen_detalle or imagen_url  # Prioriza la imagen interna
+
 
                 noticia = {
                     "titulo": titulo,
