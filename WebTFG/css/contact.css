@@ -7,9 +7,8 @@ body {
   background: linear-gradient(90deg, #ffffff, #f5f5f5, #ffffff);
   background-size: 200% 200%;
   animation: shineFlow 10s ease infinite;
-  padding-top: 80px
+  padding-top: 80px;
 }
-
 
 @keyframes shineFlow {
   0% {
@@ -22,7 +21,7 @@ body {
     background-position: 0% 50%;
   }
 }
-@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@600&display=swap");
 
 #fixedHeader {
   position: fixed;
@@ -31,13 +30,13 @@ body {
   width: 100%;
   background: linear-gradient(90deg, #6fdc9b, #38ef7d);
   color: white;
-  font-family: 'Rajdhani', sans-serif;
+  font-family: "Rajdhani", sans-serif;
   font-size: 1.5rem;
   text-align: center;
   padding: 20px 0;
   letter-spacing: 2px;
-  text-shadow: 0 0 10px rgba(0,0,0,0.2);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
   z-index: 1000;
   animation: fadeDown 1s ease-out;
 }
@@ -48,17 +47,21 @@ body {
   padding: 10px 0;
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6);
   transition: all 0.3s ease;
-  text-shadow: 0 0 5px rgba(0,255,180,0.4);
+  text-shadow: 0 0 5px rgba(0, 255, 180, 0.4);
   letter-spacing: 1px;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@800&family=Roboto+Condensed:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@800&family=Roboto+Condensed:wght@300&display=swap");
 
 .banner {
   position: relative;
   padding: 80px 40px;
-  background: 
-    linear-gradient(to bottom, rgba(4, 93, 54, 0) 0%, rgba(4, 93, 54, 0.85) 80%, rgba(12, 165, 107, 0.95) 100%);
+  background: linear-gradient(
+    to bottom,
+    rgba(4, 93, 54, 0) 0%,
+    rgba(4, 93, 54, 0.85) 80%,
+    rgba(12, 165, 107, 0.95) 100%
+  );
   filter: brightness(0.9) contrast(1.1);
   transition: filter 0.3s ease-in-out;
   overflow: hidden;
@@ -78,7 +81,11 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.05), transparent 70%);
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.05),
+    transparent 70%
+  );
   z-index: 0;
 }
 
@@ -108,7 +115,7 @@ body {
 }
 
 .titulo-inscripciones {
-  font-family: 'Cinzel', serif;
+  font-family: "Cinzel", serif;
   font-size: 3.5rem;
   letter-spacing: 5px;
   color: #ffffff;
@@ -118,7 +125,7 @@ body {
 }
 
 .subtitulo-inscripciones {
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: "Roboto Condensed", sans-serif;
   font-size: 1.8rem;
   font-weight: 300;
   letter-spacing: 3px;
@@ -148,7 +155,6 @@ body {
   }
 }
 
-
 .header-content {
   position: relative;
   display: flex;
@@ -159,7 +165,7 @@ body {
 .epic-phrase {
   font-size: 1.4rem;
   font-weight: bold;
-  text-shadow: 0 0 5px rgba(0,255,180,0.4);
+  text-shadow: 0 0 5px rgba(0, 255, 180, 0.4);
 }
 
 .social-icons {
@@ -257,7 +263,7 @@ body {
 }
 
 .sidebar {
-  background: url('https://www.transparenttextures.com/patterns/diamond-upholstery.png');
+  background: url("https://www.transparenttextures.com/patterns/diamond-upholstery.png");
   background-color: #f4f8f6;
   border-right: 1px solid #d7e9e0;
   transition: all 0.3s ease;
@@ -286,7 +292,7 @@ body {
 }
 
 .menu a {
-  font-family: 'Segoe UI', sans-serif;
+  font-family: "Segoe UI", sans-serif;
   font-size: 17px;
   font-weight: 600;
   color: #2e7d32;
@@ -332,7 +338,7 @@ body {
   position: absolute;
   bottom: 0;
   left: 0;
-  background: url('https://www.transparenttextures.com/patterns/diamond-upholstery.png');
+  background: url("https://www.transparenttextures.com/patterns/diamond-upholstery.png");
   background-color: #f4f8f6;
   gap: 10px;
 }
@@ -370,7 +376,6 @@ body {
   transform: translateY(-3px);
 }
 
-
 .footer-banner {
   background-color: #1e1e1e;
   color: white;
@@ -387,12 +392,11 @@ body {
 }
 
 .footer-images img {
-  width: 80px; 
+  width: 80px;
   height: 80px;
-  max-width: 100%; 
+  max-width: 100%;
   transition: transform 0.3s ease;
 }
-
 
 .footer-images .highlighted-image {
   width: 120px;
@@ -408,12 +412,11 @@ body {
   transform: scale(1.05);
 }
 
-
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Roboto+Condensed&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Roboto+Condensed&display=swap");
 
 body {
   margin: 0;
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: "Roboto Condensed", sans-serif;
   color: #f0fdfa;
   display: flex;
   flex-direction: column;
@@ -429,7 +432,7 @@ body {
 }
 
 .header h1 {
-  font-family: 'Cinzel', serif;
+  font-family: "Cinzel", serif;
   font-size: 3rem;
   letter-spacing: 6px;
   margin: 0;
@@ -479,7 +482,7 @@ body {
 }
 
 .contact-card h2 {
-  font-family: 'Cinzel', serif;
+  font-family: "Cinzel", serif;
   font-size: 1.8rem;
   margin-bottom: 10px;
   letter-spacing: 3px;
@@ -518,7 +521,7 @@ body {
   margin: 3rem auto;
   padding: 0 1rem;
   color: white;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .map-container {
@@ -607,8 +610,9 @@ body {
   .contact-faq-section {
     flex-direction: column;
   }
-  
-  .map-container, .faq-section {
+
+  .map-container,
+  .faq-section {
     max-width: 100%;
   }
 }
@@ -620,7 +624,7 @@ body {
   border-radius: 15px;
   box-shadow: 0 0 40px rgba(0, 255, 136, 0.7);
   color: white;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .contact-form-section h2 {

@@ -20,7 +20,7 @@ window.addEventListener("DOMContentLoaded", () => {
   <p><strong>¿Quieres formar parte de este sueño?</strong><br>
   Rellena el formulario y te contactaremos para que vengas a probar. <strong>¡Te estamos esperando!</strong></p>
 `,
-      imagen: "../img/cde-femenino.jpg"
+      imagen: "../img/cde-femenino.jpg",
     },
     f7: {
       titulo: "Equipos de Fútbol 7",
@@ -36,7 +36,7 @@ window.addEventListener("DOMContentLoaded", () => {
 <p>Las plazas son limitadas y su asignación corresponde exclusivamente al <strong>C.D.E. Amistad Alcorcón</strong>. <strong>¡Prepárate para disfrutar del fútbol con nosotros!</strong></p>
 
 `,
-      imagen: "../img/cde-f7.jpg"
+      imagen: "../img/cde-f7.jpg",
     },
     f11: {
       titulo: "Equipos de Fútbol 11",
@@ -52,8 +52,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
 <p>Las plazas son limitadas y su asignación depende exclusivamente del <strong>C.D.E. Amistad</strong>. <strong>¡Te estamos esperando!</strong></p>
 `,
-      imagen: "../img/cde-f11.jpg"
-    }
+      imagen: "../img/cde-f11.jpg",
+    },
   };
 
   const data = contenido[tipo];
@@ -83,16 +83,15 @@ window.addEventListener("scroll", () => {
 const sidebar = document.getElementById("sidebar");
 const toggleBtn = document.getElementById("toggleBtn");
 const arrow = toggleBtn.querySelector(".arrow");
-const icon = toggleBtn.querySelector('i');
+const icon = toggleBtn.querySelector("i");
 
-// Funcionalidad para el menú lateral
 toggleBtn.addEventListener("click", () => {
   sidebar.classList.toggle("collapsed");
-  icon.classList.toggle('fa-arrow-right');
-  icon.classList.toggle('fa-xmark'); // o cualquier otra transformación
-  // Cambia la flecha dependiendo de si el menú está colapsado o no
-  arrow.innerHTML = sidebar.classList.contains("collapsed") ? "&#x25C0;" : "&#x25B6;";
-
+  icon.classList.toggle("fa-arrow-right");
+  icon.classList.toggle("fa-xmark"); 
+  arrow.innerHTML = sidebar.classList.contains("collapsed")
+    ? "&#x25C0;"
+    : "&#x25B6;";
 });
 window.addEventListener("scroll", () => {
   const header = document.getElementById("fixedHeader");

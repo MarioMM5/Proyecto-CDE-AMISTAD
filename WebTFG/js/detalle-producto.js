@@ -98,7 +98,7 @@ const productos = {
   413844537: {
     nombre: "Mochila del Equipo",
     precio: 18.0,
-    tallas: [], // Sin tallas porque es mochila
+    tallas: [], 
     imagen: [
       "../img/mochila.jpg",
       "../img/mochila_2.jpg",
@@ -275,7 +275,6 @@ if (!productId || !productos[productId]) {
   const esConjunto = productId === "413844539";
   const esPack = productId === "413844522";
 
-  // Generamos botones de talla
   const tallasButtons = p.tallas
     .map(
       (t) => `
@@ -397,7 +396,6 @@ if (!productId || !productos[productId]) {
 </div>`;
 }
 
-// --- lógica de selección de opciones ---
 function setupOptionGroup(groupId) {
   const group = document.getElementById(groupId);
   if (!group) return () => "";
@@ -425,32 +423,27 @@ const getSelectedRopa_Juego = setupOptionGroup("ropa-juego");
 const selectedMedias = setupOptionGroup("medias-options");
 const getSelectedSize = setupOptionGroup("size-options");
 
-// Función para obtener carrito desde localStorage
 function getCart() {
   const cartJSON = localStorage.getItem("cart");
   return cartJSON ? JSON.parse(cartJSON) : [];
 }
 
-// Función para guardar carrito en localStorage
 function saveCart(cart) {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
 
-// --- envío del formulario ---
 document
   .getElementById("product-options-form")
   .addEventListener("submit", (e) => {
     e.preventDefault();
     const p = productos[productId];
 
-    // Recuperar valores
     const talla = getSelectedSize();
     const cantidad = parseInt(
       document.getElementById("quantity-input").value,
       10
     );
 
-    // Validaciones
     const requiredSelections = [
       { label: "el conjunto", getter: getSelectedConf },
       { label: "la sudadera", getter: getSelectedSudadera },
@@ -475,7 +468,6 @@ document
       return;
     }
 
-    // Datos adicionales para la camiseta
     let nombreUsuario = "";
     let dorsalUsuario = "";
     if (productId === "413844533") {
@@ -487,7 +479,6 @@ document
       }
     }
 
-    // Datos adicionales para el conjunto
     if (productId === "413844539") {
       if (!getSelectedMedias()) {
         showMessage("Por favor, selecciona una talla de medias.");
@@ -495,7 +486,6 @@ document
       }
     }
 
-    // Construir objeto del producto para añadir al carrito
     const item = {
       id: productId,
       nombre: p.nombre,
@@ -528,7 +518,6 @@ document
     }
     saveCart(cart);
 
-    // Redirigir al catálogo (cambia 'catalogo.html' por la ruta correcta)
     window.location.href = "mercha.html";
   });
 
@@ -549,7 +538,6 @@ function showMessage(text, type = "error", duration = 4000) {
   message.className = `message ${type}`;
   message.textContent = text;
 
-  // Botón cerrar
   const closeBtn = document.createElement("button");
   closeBtn.textContent = "×";
   closeBtn.className = "close-btn";
@@ -558,7 +546,6 @@ function showMessage(text, type = "error", duration = 4000) {
 
   container.appendChild(message);
 
-  // Desaparece automáticamente
   setTimeout(() => {
     if (container.contains(message)) {
       container.removeChild(message);
@@ -579,12 +566,10 @@ window.addEventListener("load", () => {
   img.addEventListener("mousemove", (e) => {
     lens.style.display = "block";
 
-    // calcular posición relativa de cursor respecto a la imagen
     const rect = img.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
 
-    // limitar posición del lente para que no salga de la imagen
     const lensWidth = lens.offsetWidth / 2;
     const lensHeight = lens.offsetHeight / 2;
     let lensX = e.pageX - lensWidth;
@@ -598,10 +583,8 @@ window.addEventListener("load", () => {
     lens.style.left = `${lensX}px`;
     lens.style.top = `${lensY}px`;
 
-    // actualizar imagen de fondo del lente y posición de zoom
     lens.style.backgroundImage = `url('${img.src}')`;
 
-    // calcular porcentaje para posicionar el zoom dentro del lente
     const bgX = (x / rect.width) * 100;
     const bgY = (y / rect.height) * 100;
 
@@ -631,48 +614,13 @@ window.addEventListener("load", () => {
   closeBtn.textContent = "×";
   closeBtn.style.display = "none";
 
-  const prevBtn = document.createElement("button");
-  prevBtn.textContent = "←";
-  prevBtn.style.position = "fixed";
-  prevBtn.style.top = "50%";
-  prevBtn.style.left = "20px";
-  prevBtn.style.transform = "translateY(-50%)";
-  prevBtn.style.fontSize = "3rem";
-  prevBtn.style.color = "#2ecc71";
-  prevBtn.style.background = "transparent";
-  prevBtn.style.border = "none";
-  prevBtn.style.cursor = "pointer";
-  prevBtn.style.zIndex = 2100;
-  prevBtn.style.userSelect = "none";
-  prevBtn.style.display = "none";
-
-  const nextBtn = document.createElement("button");
-  nextBtn.textContent = "→";
-  nextBtn.style.position = "fixed";
-  nextBtn.style.top = "50%";
-  nextBtn.style.right = "20px";
-  nextBtn.style.transform = "translateY(-50%)";
-  nextBtn.style.fontSize = "3rem";
-  nextBtn.style.color = "#2ecc71";
-  nextBtn.style.background = "transparent";
-  nextBtn.style.border = "none";
-  nextBtn.style.cursor = "pointer";
-  nextBtn.style.zIndex = 2100;
-  nextBtn.style.userSelect = "none";
-  nextBtn.style.display = "none";
-
-  // Añadir elementos al body
   document.body.appendChild(overlay);
   document.body.appendChild(closeBtn);
-  document.body.appendChild(prevBtn);
-  document.body.appendChild(nextBtn);
 
-  // Función para actualizar imagen fullscreen
   function updateImage() {
     fullscreenImg.src = images[currentIndex].src;
   }
 
-  // Abrir fullscreen con imagen clicada
   images.forEach((img, i) => {
     img.style.cursor = "pointer";
     img.addEventListener("click", () => {
@@ -686,24 +634,6 @@ window.addEventListener("load", () => {
     });
   });
 
-  // Navegar atrás
-  prevBtn.addEventListener("click", () => {
-    currentIndex--;
-    if (currentIndex < 0) {
-      currentIndex = images.length - 1; // ciclo al final
-    }
-    updateImage();
-  });
-
-  nextBtn.addEventListener("click", () => {
-    currentIndex++;
-    if (currentIndex >= images.length) {
-      currentIndex = 0; // ciclo al inicio
-    }
-    updateImage();
-  });
-
-  // Cerrar fullscreen
   closeBtn.addEventListener("click", () => {
     overlay.style.display = "none";
     closeBtn.style.display = "none";
@@ -712,7 +642,6 @@ window.addEventListener("load", () => {
     document.body.style.overflow = "";
   });
 
-  // Cerrar clicando fuera de la imagen
   overlay.addEventListener("click", (e) => {
     if (e.target === overlay) {
       overlay.style.display = "none";
@@ -726,7 +655,6 @@ window.addEventListener("load", () => {
 
 const p = productos[productId];
 
-// Suponiendo que tienes acceso al array de imágenes p.imagen
 const images = p.imagen;
 let currentIndex = 0;
 
@@ -773,10 +701,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const prevBtn = document.getElementById("prev-btn");
   const nextBtn = document.getElementById("next-btn");
 
-  // Obtener todas las cartas con clase .image-card (no las imágenes directamente)
   const cards = Array.from(photosCard.querySelectorAll(".image-card"));
 
-  // Índice de la imagen seleccionada
   let currentIndex = 0;
 
   function updateCarousel(index) {
@@ -784,20 +710,15 @@ document.addEventListener("DOMContentLoaded", () => {
     if (index >= cards.length) index = 0;
     currentIndex = index;
 
-    // Cambiar imagen grande (usamos la img dentro de la card)
     const img = cards[currentIndex].querySelector("img");
     carouselImage.src = img.src;
     carouselImage.alt = img.alt || "";
 
-    // Quitar clase selected de todas las cartas
     cards.forEach((card) => card.classList.remove("selected"));
-    // Añadir clase selected a la carta actual
     cards[currentIndex].classList.add("selected");
   }
 
-  // Click en cartas
   photosCard.addEventListener("click", (e) => {
-    // Buscar el padre con clase image-card
     const card = e.target.closest(".image-card");
     if (!card) return;
 
@@ -807,10 +728,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Botones flecha
   prevBtn.addEventListener("click", () => updateCarousel(currentIndex - 1));
   nextBtn.addEventListener("click", () => updateCarousel(currentIndex + 1));
 
-  // Inicializar
   updateCarousel(0);
 });

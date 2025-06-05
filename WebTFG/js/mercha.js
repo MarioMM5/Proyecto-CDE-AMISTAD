@@ -11,19 +11,16 @@ const toggleBtn = document.getElementById("toggleBtn");
 const arrow = toggleBtn.querySelector(".arrow");
 const icon = toggleBtn.querySelector("i");
 
-// Funcionalidad para el menú lateral
 toggleBtn.addEventListener("click", () => {
   sidebar.classList.toggle("collapsed");
   icon.classList.toggle("fa-arrow-right");
-  icon.classList.toggle("fa-xmark"); // o cualquier otra transformación
-  // Cambia la flecha dependiendo de si el menú está colapsado o no
+  icon.classList.toggle("fa-xmark");
   arrow.innerHTML = sidebar.classList.contains("collapsed")
     ? "&#x25C0;"
     : "&#x25B6;";
 });
 document.querySelectorAll(".buy-btn").forEach((btn) => {
   btn.addEventListener("click", () => {
-    // Aquí usas el id correspondiente de ese producto
     window.location.href = "detalle-producto.html?id=413844533";
   });
 });
@@ -32,13 +29,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const cartItemsUl = document.getElementById("cart-items");
   const checkoutBtn = document.getElementById("checkout-btn");
 
-  // Cargar carrito desde localStorage
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
   if (cart.length === 0) {
     cartItemsUl.innerHTML = "<li>El carrito está vacío.</li>";
   } else {
-    cartItemsUl.innerHTML = ""; // limpiar
+    cartItemsUl.innerHTML = "";
 
     cart.forEach((item) => {
       const li = document.createElement("li");
@@ -58,13 +54,28 @@ document.addEventListener("DOMContentLoaded", () => {
             Ropa de juego: ${item.ropaJuego}<br>
             Cantidad: ${item.cantidad} <br>
           `;
+      } else if (item.nombre === "Conjunto del Equipo") {
+        li.innerHTML = `
+          <div style="width: 150px; height: 150px; display: flex; align-items: center; justify-content: center; margin: 0 auto;">
+              <img src="${item.imagen[0]}" alt="${
+          item.nombre
+        }" style="max-height: 100%; max-width: 100%; object-fit: contain;">
+            </div>
+            <br>
+          <strong>${item.nombre}</strong> - Talla: ${
+          item.talla || "—"
+        } - Medias: ${item.medias || "—"} - Cantidad: ${item.cantidad}`;
       } else {
         li.innerHTML = `
           <div style="width: 150px; height: 150px; display: flex; align-items: center; justify-content: center; margin: 0 auto;">
-              <img src="${item.imagen[0]}" alt="${item.nombre}" style="max-height: 100%; max-width: 100%; object-fit: contain;">
+              <img src="${item.imagen[0]}" alt="${
+          item.nombre
+        }" style="max-height: 100%; max-width: 100%; object-fit: contain;">
             </div>
             <br>
-          <strong>${item.nombre}</strong> - Talla: ${item.talla || "—"} - Cantidad: ${item.cantidad}`;
+          <strong>${item.nombre}</strong> - Talla: ${
+          item.talla || "—"
+        } - Cantidad: ${item.cantidad}`;
       }
       cartItemsUl.appendChild(li);
     });
@@ -76,16 +87,16 @@ document.addEventListener("DOMContentLoaded", () => {
       alert("El carrito está vacío.");
       return;
     }
-    window.location.href = "checkout.html"; // Redirige a la página de pago
+    window.location.href = "checkout.html";
   });
 });
 document.addEventListener("DOMContentLoaded", () => {
   const clearCartBtn = document.getElementById("clear-cart-btn");
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
   if (cart.length === 0) {
-    clearCartBtn.style.display = "none"; // Oculta el botón si el carrito está vacío
+    clearCartBtn.style.display = "none";
   } else {
-    clearCartBtn.style.display = "block"; // Muestra el botón si hay productos en el carrito
+    clearCartBtn.style.display = "block";
   }
   if (clearCartBtn) {
     clearCartBtn.addEventListener("click", () => {
@@ -95,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (confirmClear) {
         localStorage.removeItem("cart");
         alert("Carrito vaciado.");
-        location.reload(); // recarga para que se actualice la vista
+        location.reload();
       }
     });
   }

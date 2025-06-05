@@ -1,42 +1,36 @@
 const sidebar = document.getElementById("sidebar");
 const toggleBtn = document.getElementById("toggleBtn");
 const arrow = toggleBtn.querySelector(".arrow");
-const icon = toggleBtn.querySelector('i');
+const icon = toggleBtn.querySelector("i");
 
-// Funcionalidad para el menú lateral
 toggleBtn.addEventListener("click", () => {
   sidebar.classList.toggle("collapsed");
-  icon.classList.toggle('fa-arrow-right');
-  icon.classList.toggle('fa-xmark'); // o cualquier otra transformación
-  // Cambia la flecha dependiendo de si el menú está colapsado o no
-  arrow.innerHTML = sidebar.classList.contains("collapsed") ? "&#x25C0;" : "&#x25B6;";
-
+  icon.classList.toggle("fa-arrow-right");
+  icon.classList.toggle("fa-xmark"); 
+  arrow.innerHTML = sidebar.classList.contains("collapsed")
+    ? "&#x25C0;"
+    : "&#x25B6;";
 });
 
-// Carrusel de imágenes
 let currentIndex = 0;
 const carousel = document.getElementById("carousel");
 const images = carousel.querySelectorAll("img");
 const totalImages = images.length;
 
-// Funcionalidad para el botón "Siguiente"
 document.getElementById("nextBtn").addEventListener("click", () => {
   currentIndex = (currentIndex + 1) % totalImages;
   updateCarousel();
 });
 
-// Funcionalidad para el botón "Anterior"
 document.getElementById("prevBtn").addEventListener("click", () => {
   currentIndex = (currentIndex - 1 + totalImages) % totalImages;
   updateCarousel();
 });
 
-// Actualiza la posición del carrusel
 function updateCarousel() {
-  const offset = -currentIndex * 100; // El ancho de las imágenes es 100% del contenedor
-  carousel.style.transform = `translateX(${offset}%)`; // Usamos % para mantener la adaptabilidad
+  const offset = -currentIndex * 100; 
+  carousel.style.transform = `translateX(${offset}%)`; 
 }
-
 
 window.addEventListener("scroll", () => {
   const header = document.getElementById("fixedHeader");
@@ -46,10 +40,10 @@ window.addEventListener("scroll", () => {
     header.classList.remove("scrolled");
   }
 });
-const canvas = document.getElementById('penaltyCanvas');
-const ctx = canvas.getContext('2d');
-const buttons = document.querySelectorAll('.controls button');
-const resultMessage = document.getElementById('resultMessage');
+const canvas = document.getElementById("penaltyCanvas");
+const ctx = canvas.getContext("2d");
+const buttons = document.querySelectorAll(".controls button");
+const resultMessage = document.getElementById("resultMessage");
 
 const goalWidth = 300;
 const goalHeight = 150;
@@ -59,7 +53,7 @@ const goalY = 50;
 function drawGoal() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  ctx.strokeStyle = '#ecf0f1';
+  ctx.strokeStyle = "#ecf0f1";
   ctx.lineWidth = 5;
   ctx.beginPath();
   ctx.rect(goalX, goalY, goalWidth, goalHeight);
@@ -73,19 +67,19 @@ function drawKeeper(offsetX) {
   const keeperY = goalY + goalHeight / 2;
   const radius = 30;
 
-  ctx.fillStyle = '#e74c3c';
+  ctx.fillStyle = "#e74c3c";
   ctx.beginPath();
   ctx.arc(keeperX, keeperY, radius, 0, Math.PI * 2);
   ctx.fill();
 
   // Ojos del portero
-  ctx.fillStyle = 'white';
+  ctx.fillStyle = "white";
   ctx.beginPath();
   ctx.arc(keeperX - 10, keeperY - 5, 5, 0, Math.PI * 2);
   ctx.arc(keeperX + 10, keeperY - 5, 5, 0, Math.PI * 2);
   ctx.fill();
 
-  ctx.fillStyle = 'black';
+  ctx.fillStyle = "black";
   ctx.beginPath();
   ctx.arc(keeperX - 10, keeperY - 5, 2, 0, Math.PI * 2);
   ctx.arc(keeperX + 10, keeperY - 5, 2, 0, Math.PI * 2);
@@ -96,10 +90,16 @@ function animateKeeper(direction, callback) {
   let offsetX = 0;
   let targetOffset = 0;
 
-  switch(direction) {
-    case 'left': targetOffset = -goalWidth / 4; break;
-    case 'center': targetOffset = 0; break;
-    case 'right': targetOffset = goalWidth / 4; break;
+  switch (direction) {
+    case "left":
+      targetOffset = -goalWidth / 4;
+      break;
+    case "center":
+      targetOffset = 0;
+      break;
+    case "right":
+      targetOffset = goalWidth / 4;
+      break;
   }
 
   const frames = 20;
@@ -107,7 +107,7 @@ function animateKeeper(direction, callback) {
 
   function step() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.strokeStyle = '#ecf0f1';
+    ctx.strokeStyle = "#ecf0f1";
     ctx.lineWidth = 5;
     ctx.beginPath();
     ctx.rect(goalX, goalY, goalWidth, goalHeight);
@@ -127,26 +127,26 @@ function animateKeeper(direction, callback) {
 }
 
 function shoot(direction) {
-  const options = ['left', 'center', 'right'];
+  const options = ["left", "center", "right"];
   const keeperChoice = options[Math.floor(Math.random() * options.length)];
 
   animateKeeper(keeperChoice, () => {
     if (direction === keeperChoice) {
       resultMessage.textContent = "¡El portero la PARA! 😱";
-      resultMessage.style.color = '#e74c3c';
+      resultMessage.style.color = "#e74c3c";
     } else {
       resultMessage.textContent = "¡GOLAZO! 🎉";
-      resultMessage.style.color = '#2ecc71';
+      resultMessage.style.color = "#2ecc71";
     }
   });
 }
 
 drawGoal();
 
-buttons.forEach(button => {
-  button.addEventListener('click', () => {
+buttons.forEach((button) => {
+  button.addEventListener("click", () => {
     resultMessage.textContent = "Tirando...";
-    resultMessage.style.color = 'white';
-    shoot(button.getAttribute('data-dir'));
+    resultMessage.style.color = "white";
+    shoot(button.getAttribute("data-dir"));
   });
 });

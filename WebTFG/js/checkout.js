@@ -58,27 +58,24 @@ document.addEventListener("DOMContentLoaded", () => {
     cartContainer.innerHTML = ""; // limpiamos antes
 
     let total = 0;
-cart.forEach((product) => {
-  const item = document.createElement("div");
+    cart.forEach((product) => {
+      const item = document.createElement("div");
 
-  // Calcular subtotal
-  let subtotal = product.precio * product.cantidad;
+      let subtotal = product.precio * product.cantidad;
 
-  // Verificar si es el pack con ropa de juego
-  if (
-    product.nombre === "Pack del Equipo" &&
-    product.ropaJuego === "SI (+35.00€)"
-  ) {
-    subtotal += 35;
-  }
+      if (
+        product.nombre === "Pack del Equipo" &&
+        product.ropaJuego === "SI (+35.00€)"
+      ) {
+        subtotal += 35;
+      }
 
-  // Sumar al total
-  total += subtotal;
+      total += subtotal;
 
-  item.className = "cart-item";
+      item.className = "cart-item";
 
-  if (product.nombre === "Pack del Equipo") {
-    item.innerHTML = `
+      if (product.nombre === "Pack del Equipo") {
+        item.innerHTML = `
       <img src="${product.imagen[0]}" alt="${product.nombre}">
       <div class="cart-item-details">
         <h4>${product.nombre}</h4>
@@ -93,8 +90,18 @@ cart.forEach((product) => {
         <p><strong>Subtotal:</strong> ${subtotal.toFixed(2)} €</p>
       </div>
     `;
-  } else {
-    item.innerHTML = `
+      } else if (product.nombre === "Conjunto del Equipo") {
+        item.innerHTML = `
+        <img src="${product.imagen[0]}" alt="${product.nombre}">
+        <div class="cart-item-details">
+          <h4>${product.nombre}</h4>
+          <p><strong>Cantidad:</strong> ${product.cantidad}</p>
+          <p><strong>Talla:</strong> ${product.talla}</p>
+          <p><strong>Medias:</strong> ${product.medias}</p>
+        </div>
+      `;
+      } else {
+        item.innerHTML = `
       <img src="${product.imagen[0]}" alt="${product.nombre}">
       <div class="cart-item-details">
         <h4>${product.nombre}</h4>
@@ -104,17 +111,17 @@ cart.forEach((product) => {
         <p><strong>Subtotal:</strong> ${subtotal.toFixed(2)} €</p>
       </div>
     `;
-  }
+      }
 
-  cartContainer.appendChild(item);
-});
+      cartContainer.appendChild(item);
+    });
 
     // Mostrar total
     const totalElement = document.createElement("div");
     totalElement.className = "cart-total";
     totalElement.innerHTML = `<h4>Total:</h4><p>${total.toFixed(2)} €</p>`;
     const totalContainer = document.getElementById("cart-total-container");
-    totalContainer.innerHTML = ""; // Limpia si se recarga el carrito
+    totalContainer.innerHTML = ""; 
     totalContainer.appendChild(totalElement);
   }
 });
@@ -138,7 +145,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   btnPaypal.addEventListener("click", () => {
-    // Cambia esta URL por la real si tienes integración con PayPal
     window.location.href = "https://www.paypal.com/checkoutnow";
     formTarjeta.style.display = "none";
   });
@@ -159,7 +165,6 @@ function showMessage(text, type = "error", duration = 4000) {
   message.className = `message ${type}`;
   message.textContent = text;
 
-  // Botón cerrar
   const closeBtn = document.createElement("button");
   closeBtn.textContent = "×";
   closeBtn.className = "close-btn";
@@ -168,7 +173,6 @@ function showMessage(text, type = "error", duration = 4000) {
 
   container.appendChild(message);
 
-  // Desaparece automáticamente
   setTimeout(() => {
     if (container.contains(message)) {
       container.removeChild(message);
