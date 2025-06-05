@@ -55,7 +55,26 @@ async function cargarNoticia(id) {
 
     img.style.margin = "0 auto";
     img.style.display = "block";
-    img.style.maxWidth = "100%"; 
+    img.style.maxWidth = "100%";
+
+    img.onerror = () => {
+      img.src = "../img/placeholder.png";
+      img.alt = "Imagen no disponible";
+      img.style.display = "block";
+      img.src = "../img/placeholder.png";
+      img.alt = "Imagen no disponible";
+      img.style.margin = "0 auto";
+      img.style.maxWidth = "100%";
+      img.style.maxHeight = "300px";
+    };
+  } else {
+    const img = document.getElementById("imagen");
+    img.style.display = "block";
+    img.src = "../img/placeholder.png";
+    img.alt = "Imagen no disponible";
+    img.style.margin = "0 auto";
+    img.style.maxWidth = "100%";
+    img.style.maxHeight = "300px";
   }
 }
 
