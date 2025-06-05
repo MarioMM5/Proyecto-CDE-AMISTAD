@@ -33,13 +33,29 @@ async function cargarNoticia(id) {
     month: "long",
     day: "numeric",
   });
-  document.getElementById("contenido").textContent = data.contenido;
+  function formatearContenido(texto) {
+    const placeholder = "___CDE_AMISTAD___";
+    texto = texto.replace(/C\.D\.E\. Amistad/g, placeholder);
+
+    texto = texto.replace(/(\.|\…)\s+(?=[A-ZÁÉÍÓÚÑ])/g, "$1<br><br>");
+
+    texto = texto.replace(new RegExp(placeholder, "g"), "C.D.E. Amistad");
+    return texto;
+  }
+
+  document.getElementById("contenido").innerHTML = formatearContenido(
+    data.contenido
+  );
 
   if (data.imagen) {
     const img = document.getElementById("imagen");
     img.src = data.imagen;
     img.alt = data.titulo;
     img.style.display = "block";
+
+    img.style.margin = "0 auto";
+    img.style.display = "block";
+    img.style.maxWidth = "100%"; 
   }
 }
 
@@ -64,11 +80,10 @@ const toggleBtn = document.getElementById("toggleBtn");
 const arrow = toggleBtn.querySelector(".arrow");
 const icon = toggleBtn.querySelector("i");
 
-// Funcionalidad para el menú lateral
 toggleBtn.addEventListener("click", () => {
   sidebar.classList.toggle("collapsed");
   icon.classList.toggle("fa-arrow-right");
-  icon.classList.toggle("fa-xmark"); 
+  icon.classList.toggle("fa-xmark");
   arrow.innerHTML = sidebar.classList.contains("collapsed")
     ? "&#x25C0;"
     : "&#x25B6;";
