@@ -16,7 +16,9 @@ class NoticiaCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bool usarImagenDefault = imagenUrl.isEmpty || imagenUrl.startsWith('http') == false;
+    final bool usarImagenDefault = imagenUrl.isEmpty || !imagenUrl.startsWith('http');
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+    final textColor = isDarkMode ? Colors.white : Colors.black;
 
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -32,8 +34,9 @@ class NoticiaCard extends StatelessWidget {
             children: [
               ClipRRect(
                 borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(12),
-                    topRight: Radius.circular(12)),
+                  topLeft: Radius.circular(12),
+                  topRight: Radius.circular(12),
+                ),
                 child: usarImagenDefault
                     ? Image.asset(
                   'assets/imagen_default.jpg',
@@ -55,19 +58,20 @@ class NoticiaCard extends StatelessWidget {
                   children: [
                     Text(
                       titulo,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
+                        color: textColor,
                       ),
                     ),
                     const SizedBox(height: 4),
                     if (fecha != null)
                       Text(
                         '📅 ${fecha!.day}/${fecha!.month}/${fecha!.year}',
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 12,
                           fontStyle: FontStyle.italic,
-                          color: Colors.black54,
+                          color: isDarkMode ? Colors.white70 : Colors.black54,
                         ),
                       ),
                   ],

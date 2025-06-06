@@ -17,6 +17,9 @@ class NoticiaDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bool usarImagenDefault = imagen.isEmpty || !imagen.startsWith('http');
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+    final textColor = isDarkMode ? Colors.white : Colors.black;
+    final contentColor = isDarkMode ? Colors.white70 : Colors.black87;
 
     return Scaffold(
       appBar: PreferredSize(
@@ -24,16 +27,8 @@ class NoticiaDetail extends StatelessWidget {
         child: Container(
           decoration: const BoxDecoration(
             color: Color(0xFF388E3C),
-            borderRadius: BorderRadius.vertical(
-              bottom: Radius.circular(24),
-            ),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black26,
-                blurRadius: 8,
-                offset: Offset(0, 4),
-              ),
-            ],
+            borderRadius: BorderRadius.vertical(bottom: Radius.circular(24)),
+            boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 8, offset: Offset(0, 4))],
           ),
           padding: const EdgeInsets.only(top: 45, left: 10, right: 20),
           child: Row(
@@ -62,9 +57,7 @@ class NoticiaDetail extends StatelessWidget {
               ),
               IconButton(
                 icon: const Icon(Icons.notifications, color: Colors.white),
-                onPressed: () {
-                  // Acción futura
-                },
+                onPressed: () {},
               ),
             ],
           ),
@@ -94,28 +87,28 @@ class NoticiaDetail extends StatelessWidget {
             const SizedBox(height: 20),
             Text(
               titulo,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 28,
                 fontWeight: FontWeight.bold,
-                color: Colors.black,
+                color: textColor,
               ),
             ),
             const SizedBox(height: 8),
             if (fecha != null)
               Text(
                 "${fecha!.day}/${fecha!.month}/${fecha!.year}",
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 14,
-                  color: Colors.grey,
+                  color: isDarkMode ? Colors.grey[300] : Colors.grey[700],
                   fontStyle: FontStyle.italic,
                 ),
               ),
             const SizedBox(height: 20),
             Text(
               contenido,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 16,
-                color: Colors.black87,
+                color: contentColor,
                 height: 1.6,
               ),
             ),
