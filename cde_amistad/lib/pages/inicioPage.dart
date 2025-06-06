@@ -265,7 +265,6 @@ class _InicioPageState extends State<InicioPage> {
                           Text(
                             '📅 ${DateFormat('dd/MM/yyyy').format(fecha)}',
                             style: const TextStyle(fontSize: 11,
-                                color: Colors.black54,
                                 fontStyle: FontStyle.italic),
                           ),
                         ],

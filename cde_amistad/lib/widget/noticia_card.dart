@@ -16,6 +16,7 @@ class NoticiaCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     final bool usarImagenDefault = imagenUrl.isEmpty || !imagenUrl.startsWith('http');
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     final textColor = isDarkMode ? Colors.white : Colors.black;
@@ -66,14 +67,19 @@ class NoticiaCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 4),
                     if (fecha != null)
-                      Text(
-                        '📅 ${fecha!.day}/${fecha!.month}/${fecha!.year}',
-                        style: TextStyle(
-                          fontSize: 12,
-                          fontStyle: FontStyle.italic,
-                          color: isDarkMode ? Colors.white70 : Colors.black54,
-                        ),
+                      Builder(
+                        builder: (context) {
+                          return Text(
+                            '📅 ${fecha!.day}/${fecha!.month}/${fecha!.year}',
+                            style: TextStyle(
+                              fontSize: 12,
+                              fontStyle: FontStyle.italic,
+                              color: Colors.white70,  // forzar blanco
+                            ),
+                          );
+                        },
                       ),
+
                   ],
                 ),
               ),
