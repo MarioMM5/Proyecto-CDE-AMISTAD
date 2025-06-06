@@ -3,41 +3,38 @@
 
 <head>
   <style>
-  .description {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-</style>
+    .description {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  </style>
   <link rel="stylesheet" href="../css/noticias.css" />
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TFG - Noticias</title>
   <script defer src="../js/noticias.js"></script>
-  <!-- Fuentes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link
     href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Merriweather:wght@300;400;700&family=Cormorant+Garamond:wght@400;700&family=Montserrat:wght@300;400;600&family=Poppins:wght@400;700&display=swap"
     rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <!-- Iconos -->
-<header id="fixedHeader">
-  <div class="header-content">
-    <span class="epic-phrase">⚽ CDE Amistad</span>
-    <div class="social-icons">
-      <a href="https://www.facebook.com/CDEAmistad" target="_blank"><i class="fab fa-facebook-f"></i></a>
-      <a href="https://twitter.com/cdeamistad" target="_blank"><i class="fab fa-x-twitter"></i></a>
-      <a href="https://www.instagram.com/cdeamistad/" target="_blank"><i class="fab fa-instagram"></i></a>
+  <header id="fixedHeader">
+    <div class="header-content">
+      <span class="epic-phrase">⚽ CDE Amistad</span>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/CDEAmistad" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://twitter.com/cdeamistad" target="_blank"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://www.instagram.com/cdeamistad/" target="_blank"><i class="fab fa-instagram"></i></a>
+      </div>
     </div>
-  </div>
-</header>
+  </header>
 
 
-  <!-- Sidebar -->
   <div class="sidebar collapsed" id="sidebar">
     <div class="menu">
       <li><a href="index.html">Inicio</a></li>
@@ -46,7 +43,6 @@
       <li><a href="contact.html">Contacto</a></li>
     </div>
 
-    <!-- Redes sociales -->
     <div class="sidebar-social">
       <div class="contact-info">
         <span><i class="fas fa-phone"></i> 633 244 011</span>
@@ -60,33 +56,30 @@
     </div>
   </div>
 
-  <!-- Recuerda tener Font Awesome cargado -->
   <div class="toggle-btn" id="toggleBtn">
     <i class="fas fa-arrow-right"></i>
   </div>
-<!-- Banner Principal -->
-<div class="banner">
-  <div class="banner-background"></div>
-  <div class="contenido">
-    <img src="../img/cropped-escudo-nuevo-cantaros-verdeyblanco-1.jpg" alt="Escudo" class="moving-logo" />
-    <div class="text-content">
-      <h1 class="titulo-inscripciones">Noticias</h1>
+  <div class="banner">
+    <div class="banner-background"></div>
+    <div class="contenido">
+      <img src="../img/cropped-escudo-nuevo-cantaros-verdeyblanco-1.jpg" alt="Escudo" class="moving-logo" />
+      <div class="text-content">
+        <h1 class="titulo-inscripciones">Noticias</h1>
+      </div>
     </div>
   </div>
-</div>
-  <!-- Noticias -->
   <main class="news-container">
-<div style="position: relative;  margin: 30px;">
-  <input type="text" id="newsSearch" placeholder="Buscar noticias..." />
-  <span style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: #27ae60; font-size: 1.2rem; pointer-events: none;">
-    🔍
-  </span>
-</div>
+    <div style="position: relative;  margin: 30px;">
+      <input type="text" id="newsSearch" placeholder="Buscar noticias..." />
+      <span
+        style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: #27ae60; font-size: 1.2rem; pointer-events: none;">
+        🔍
+      </span>
+    </div>
     <div id="noResultsMessage" style="display:none; font-weight:bold; margin-top: 20px; text-align:center;">
       No se encontraron resultados.
     </div>
     <section class="news-grid" id="newsGrid">
-      <!-- Las noticias se cargarán aquí dinámicamente -->
     </section>
     <div class="pagination">
       <button class="pagination-btn" id="prevPage">« Anterior</button>
@@ -113,27 +106,25 @@
         <p>Goles Marcados</p>
       </div>
     </div>
-    <section class="epic-banner">
-      <div class="banner-content">
-        <a href="#" class="btn-epic">Ver Próximos Partidos</a>
-      </div>
+    <section id="calendarioPartidos" class="epic-calendar">
+      <h2><i class="fa-solid fa-calendar-days"></i> Próximos Eventos</h2>
+      <ul id="listaFechas" class="fechas-sagradas"></ul>
     </section>
-
     <div class="epic-quote" id="epicQuote"></div>
 
   </main>
-</body>
-<footer class="footer-banner">
-  <div class="footer-images">
-    <img src="../img/escudo-ada-color.jpg" alt="Escudo 1">
-    <img src="../img/escudo-rffm.jpg" alt="Escudo 2">
-    <img src="../img/Logo-Concejalia.jpg" alt="Escudo 5" class="highlighted-image">
-    <img src="../img/cropped-escudo-nuevo-cantaros-verdeyblanco-1.jpg" alt="Escudo 3">
-    <img src="../img/logo-femaddi.jpg" alt="Escudo 4">
+  </body>
+  <footer class="footer-banner">
+    <div class="footer-images">
+      <img src="../img/escudo-ada-color.jpg" alt="Escudo 1">
+      <img src="../img/escudo-rffm.jpg" alt="Escudo 2">
+      <img src="../img/Logo-Concejalia.jpg" alt="Escudo 5" class="highlighted-image">
+      <img src="../img/cropped-escudo-nuevo-cantaros-verdeyblanco-1.jpg" alt="Escudo 3">
+      <img src="../img/logo-femaddi.jpg" alt="Escudo 4">
 
-  </div>
-  <p>© 2025 C.D.E. Amistad. Todos los derechos reservados.</p>
+    </div>
+    <p>© 2025 C.D.E. Amistad. Todos los derechos reservados.</p>
 
-</footer>
+  </footer>
 
 </html>

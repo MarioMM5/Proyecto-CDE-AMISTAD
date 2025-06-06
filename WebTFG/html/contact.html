@@ -2,168 +2,161 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <title>TFG - Equipo de Fútbol</title>
-    <link rel="stylesheet" href="../css/contact.css">
-    <script defer src="../js/contact.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_vjF4FpY7ztHu6wHyDw3lnk3aVBu4HkA&callback=initMap"
-        async defer></script>
+  <meta charset="UTF-8">
+  <title>TFG - Equipo de Fútbol</title>
+  <link rel="stylesheet" href="../css/contact.css">
+  <script defer src="../js/contact.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_vjF4FpY7ztHu6wHyDw3lnk3aVBu4HkA&callback=initMap"
+    async defer></script>
 
-    <!-- Fuentes -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Merriweather:wght@300;400;700&family=Cormorant+Garamond:wght@400;700&family=Montserrat:wght@300;400;600&family=Poppins:wght@400;700&display=swap"
-        rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Merriweather:wght@300;400;700&family=Cormorant+Garamond:wght@400;700&family=Montserrat:wght@300;400;600&family=Poppins:wght@400;700&display=swap"
+    rel="stylesheet">
 
-    <!-- Iconos -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
-    <header id="fixedHeader">
-        <div class="header-content">
-            <span class="epic-phrase">⚽ CDE Amistad</span>
-            <div class="social-icons">
-                <a href="https://www.facebook.com/CDEAmistad" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://twitter.com/cdeamistad" target="_blank"><i class="fab fa-x-twitter"></i></a>
-                <a href="https://www.instagram.com/cdeamistad/" target="_blank"><i class="fab fa-instagram"></i></a>
-            </div>
-        </div>
-    </header>
+  <header id="fixedHeader">
+    <div class="header-content">
+      <span class="epic-phrase">⚽ CDE Amistad</span>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/CDEAmistad" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://twitter.com/cdeamistad" target="_blank"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://www.instagram.com/cdeamistad/" target="_blank"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </header>
 
 
-    <!-- Sidebar -->
-    <div class="sidebar collapsed" id="sidebar">
-        <div class="menu">
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="noticias.html">Noticias</a></li>
-            <li><a href="mercha.html">Merchandising</a></li>
-            <li><a href="contact.html">Contacto</a></li>
-        </div>
-
-        <!-- Redes sociales -->
-        <div class="sidebar-social">
-            <div class="contact-info">
-                <span><i class="fas fa-phone"></i> 633 244 011</span>
-                <span><i class="fas fa-envelope"></i> info@cdeamistad.com</span>
-            </div>
-            <div class="social-links">
-                <a href="https://www.facebook.com/CDEAmistad" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://twitter.com/cdeamistad" target="_blank"><i class="fab fa-x-twitter"></i></a>
-                <a href="https://www.instagram.com/cdeamistad/" target="_blank"><i class="fab fa-instagram"></i></a>
-            </div>
-        </div>
+  <div class="sidebar collapsed" id="sidebar">
+    <div class="menu">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="noticias.html">Noticias</a></li>
+      <li><a href="mercha.html">Merchandising</a></li>
+      <li><a href="contact.html">Contacto</a></li>
     </div>
 
-    <!-- Recuerda tener Font Awesome cargado -->
-    <div class="toggle-btn" id="toggleBtn">
-        <i class="fas fa-arrow-right"></i>
+    <div class="sidebar-social">
+      <div class="contact-info">
+        <span><i class="fas fa-phone"></i> 633 244 011</span>
+        <span><i class="fas fa-envelope"></i> info@cdeamistad.com</span>
+      </div>
+      <div class="social-links">
+        <a href="https://www.facebook.com/CDEAmistad" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://twitter.com/cdeamistad" target="_blank"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://www.instagram.com/cdeamistad/" target="_blank"><i class="fab fa-instagram"></i></a>
+      </div>
     </div>
-
-
-
-    <!-- Contenido Principal -->
-    <div class="content">
-
-        <!-- Banner Principal -->
-        <div class="banner">
-            <div class="banner-background"></div>
-            <div class="contenido">
-                <img src="../img/cropped-escudo-nuevo-cantaros-verdeyblanco-1.jpg" alt="Escudo" class="moving-logo" />
-                <div class="text-content">
-                    <h1 class="titulo-inscripciones">Contacta con nosotros</h1>
-                </div>
-            </div>
-        </div>
-        <main class="contact-container">
-            <div class="contact-card">
-                <div class="icon">📞</div>
-                <h2>Teléfono</h2>
-                <p><a href="tel:+34123456789">(+34) 633 244 011</a></p>
-            </div>
-
-            <div class="contact-card">
-                <div class="icon">✉️</div>
-                <h2>Correo</h2>
-                <p><a href="mailto:contacto@supremoprogramacion.com">info@cdeamistad.com</a></p>
-            </div>
-
-            <div class="contact-card">
-                <div class="icon">📍</div>
-                <h2>Dirección</h2>
-                <p>Centro Deportivo Vicente Del Bosque
-                    Calle Polvoranca 80, Alcorcón (Madrid)</p>
-            </div>
-
-        </main>
-       <section class="contact-faq-section">
-  <div class="map-container">
-    <div id="map"></div>
   </div>
 
-  <section class="faq-section">
-    <h2>Preguntas Frecuentes</h2>
-    
-    <div class="faq-item">
-      <button class="faq-question" aria-expanded="false">
-        ¿Cómo puedo inscribirme?
-        <span class="arrow">&#x25BC;</span>
-      </button>
-      <div class="faq-answer">
-        Para inscribirte, visita nuestro formulario online y completa tus datos. ¡Te esperamos!
+  <div class="toggle-btn" id="toggleBtn">
+    <i class="fas fa-arrow-right"></i>
+  </div>
+
+
+
+  <div class="content">
+
+    <div class="banner">
+      <div class="banner-background"></div>
+      <div class="contenido">
+        <img src="../img/cropped-escudo-nuevo-cantaros-verdeyblanco-1.jpg" alt="Escudo" class="moving-logo" />
+        <div class="text-content">
+          <h1 class="titulo-inscripciones">Contacta con nosotros</h1>
+        </div>
       </div>
     </div>
-    
-    <div class="faq-item">
-      <button class="faq-question" aria-expanded="false">
-        ¿Cuál es el horario de atención?
-        <span class="arrow">&#x25BC;</span>
-      </button>
-      <div class="faq-answer">
-        Nuestro horario es de lunes a viernes de 9:00 a 18:30 y los viernes hasta las 14:00.
+    <main class="contact-container">
+      <div class="contact-card">
+        <div class="icon">📞</div>
+        <h2>Teléfono</h2>
+        <p><a href="tel:+34123456789">(+34) 633 244 011</a></p>
       </div>
-    </div>
 
-    <div class="faq-item">
-      <button class="faq-question" aria-expanded="false">
-        ¿Dónde está ubicada la sede?
-        <span class="arrow">&#x25BC;</span>
-      </button>
-      <div class="faq-answer">
-        Estamos en la calle Ejemplo, 123, Móstoles. ¡Ven a visitarnos!
+      <div class="contact-card">
+        <div class="icon">✉️</div>
+        <h2>Correo</h2>
+        <p><a href="mailto:contacto@supremoprogramacion.com">info@cdeamistad.com</a></p>
       </div>
-    </div>
-  </section>
-</section>
-<section class="contact-form-section">
-  <h2>Envíanos un Mensaje</h2>
-  <form id="contactForm" action="#" method="POST">
-    <label for="fullName">Nombre Completo</label>
-    <input type="text" id="fullName" name="fullName" placeholder="Tu nombre completo" required />
 
-    <label for="email">Correo Electrónico</label>
-    <input type="email" id="email" name="email" placeholder="tu@correo.com" required />
+      <div class="contact-card">
+        <div class="icon">📍</div>
+        <h2>Dirección</h2>
+        <p>Centro Deportivo Vicente Del Bosque
+          Calle Polvoranca 80, Alcorcón (Madrid)</p>
+      </div>
 
-    <label for="message">Comentario</label>
-    <textarea id="message" name="message" rows="5" placeholder="Escribe tu mensaje aquí..." required></textarea>
+    </main>
+    <section class="contact-faq-section">
+      <div class="map-container">
+        <div id="map"></div>
+      </div>
 
-    <button type="submit">Enviar</button>
-  </form>
-</section>
-        <footer class="footer-banner">
-            <div class="footer-images">
-                <img src="../img/escudo-ada-color.jpg" alt="Escudo 1">
-                <img src="../img/escudo-rffm.jpg" alt="Escudo 2">
-                <img src="../img/Logo-Concejalia.jpg" alt="Escudo 5" class="highlighted-image">
-                <img src="../img/cropped-escudo-nuevo-cantaros-verdeyblanco-1.jpg" alt="Escudo 3">
-                <img src="../img/logo-femaddi.jpg" alt="Escudo 4">
+      <section class="faq-section">
+        <h2>Preguntas Frecuentes</h2>
 
-            </div>
-            <p>© 2025 C.D.E. Amistad. Todos los derechos reservados.</p>
-        </footer>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            ¿Cómo puedo inscribirme?
+            <span class="arrow">&#x25BC;</span>
+          </button>
+          <div class="faq-answer">
+            Para inscribirte, visita nuestro formulario online y completa tus datos. ¡Te esperamos!
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            ¿Cuál es el horario de atención?
+            <span class="arrow">&#x25BC;</span>
+          </button>
+          <div class="faq-answer">
+            Nuestro horario es de lunes a viernes de 9:00 a 18:30 y los viernes hasta las 14:00.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            ¿Dónde está ubicada la sede?
+            <span class="arrow">&#x25BC;</span>
+          </button>
+          <div class="faq-answer">
+            Estamos en la calle Ejemplo, 123, Móstoles. ¡Ven a visitarnos!
+          </div>
+        </div>
+      </section>
+    </section>
+    <section class="contact-form-section">
+      <h2>Envíanos un Mensaje</h2>
+      <form id="contactForm" action="#" method="POST">
+        <label for="fullName">Nombre Completo</label>
+        <input type="text" id="fullName" name="fullName" placeholder="Tu nombre completo" required />
+
+        <label for="email">Correo Electrónico</label>
+        <input type="email" id="email" name="email" placeholder="tu@correo.com" required />
+
+        <label for="message">Comentario</label>
+        <textarea id="message" name="message" rows="5" placeholder="Escribe tu mensaje aquí..." required></textarea>
+
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
+    <footer class="footer-banner">
+      <div class="footer-images">
+        <img src="../img/escudo-ada-color.jpg" alt="Escudo 1">
+        <img src="../img/escudo-rffm.jpg" alt="Escudo 2">
+        <img src="../img/Logo-Concejalia.jpg" alt="Escudo 5" class="highlighted-image">
+        <img src="../img/cropped-escudo-nuevo-cantaros-verdeyblanco-1.jpg" alt="Escudo 3">
+        <img src="../img/logo-femaddi.jpg" alt="Escudo 4">
+
+      </div>
+      <p>© 2025 C.D.E. Amistad. Todos los derechos reservados.</p>
+    </footer>
 
 
-    </div>
+  </div>
 </body>
 
 </html>

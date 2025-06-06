@@ -7,7 +7,7 @@ body {
   background: linear-gradient(90deg, #ffffff, #f5f5f5, #ffffff);
   background-size: 200% 200%;
   animation: shineFlow 10s ease infinite;
-  padding-top: 80px
+  padding-top: 80px;
 }
 
 .product-detail-container {
@@ -29,13 +29,13 @@ body {
   width: 100%;
   background: linear-gradient(90deg, #6fdc9b, #38ef7d);
   color: white;
-  font-family: 'Rajdhani', sans-serif;
+  font-family: "Rajdhani", sans-serif;
   font-size: 1.5rem;
   text-align: center;
   padding: 20px 0;
   letter-spacing: 2px;
-  text-shadow: 0 0 10px rgba(0,0,0,0.2);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
   z-index: 1000;
   animation: fadeDown 1s ease-out;
 }
@@ -46,16 +46,16 @@ body {
   padding: 10px 0;
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6);
   transition: all 0.3s ease;
-  text-shadow: 0 0 5px rgba(0,255,180,0.4);
+  text-shadow: 0 0 5px rgba(0, 255, 180, 0.4);
   letter-spacing: 1px;
 }
 
 .product-image img {
-  width: 100%;
-  max-width: 400px;
-  border-radius: 10px;
-  object-fit: cover;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  height: 400px;
+  object-fit: contain;
+  background-color: white;
+  display: block;
 }
 
 .product-info {
@@ -86,45 +86,41 @@ form label {
   font-weight: bold;
 }
 .footer-banner {
-    background-color: #1e1e1e;
-    color: white;
-    text-align: center;
-    padding: 30px 20px;
-    position: relative;
-  }
-  
-  .footer-images {
-    display: flex;
-    justify-content: center;
-    gap: 90px;
-    margin-bottom: 40px;
-  }
-  
-  .footer-images img {
-    width: 80px; /* Tamaño base de todas las imágenes */
-    height: 80px;
-    max-width: 100%; /* Asegura que no se desborden */
-    transition: transform 0.3s ease;
-
-  }
-  
-  /* Tercer imagen más grande, sin que se haga enorme */
-  .footer-images .highlighted-image {
-    width: 120px; 
-    height: 120px;
-    transition: transform 0.3s ease;
-
+  background-color: #1e1e1e;
+  color: white;
+  text-align: center;
+  padding: 30px 20px;
+  position: relative;
 }
 
+.footer-images {
+  display: flex;
+  justify-content: center;
+  gap: 90px;
+  margin-bottom: 40px;
+}
+
+.footer-images img {
+  width: 80px;
+  height: 80px;
+  max-width: 100%;
+  transition: transform 0.3s ease;
+}
+
+.footer-images .highlighted-image {
+  width: 120px;
+  height: 120px;
+  transition: transform 0.3s ease;
+}
 
 .footer-images .highlighted-image:hover {
   transform: scale(1.2);
 }
 
 .footer-images img:hover {
-  transform: scale(1.05); 
+  transform: scale(1.05);
 }
-  
+
 select,
 input[type="number"] {
   padding: 10px;
@@ -176,7 +172,6 @@ input[type="number"] {
   color: white;
   border-color: #27ae60;
 }
-/* Enlaces y botones */
 .back-link {
   display: inline-flex;
   align-items: center;
@@ -185,15 +180,15 @@ input[type="number"] {
   color: #2ecc71;
   font-weight: bold;
   font-size: 1.5rem;
-  margin-top: 30px;      /* Más abajo */
-  margin-left: 25px;     /* Lo empuja hacia la derecha */
+  margin-top: 30px;
+  margin-left: 25px;
   transition: color 0.3s, text-shadow 0.3s;
   position: relative;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .back-link::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -4px;
   left: 0;
@@ -224,7 +219,6 @@ input[type="number"] {
   transform: translateX(-4px);
 }
 
-
 .product-detail-container {
   display: flex;
   gap: 40px;
@@ -233,27 +227,26 @@ input[type="number"] {
   font-family: Arial, sans-serif;
 }
 
-/* Imagen del producto */
 .product-image {
-  cursor: crosshair;
-  transition: transform 0.3s ease;
+  width: 400px;
+  height: 400px;
+  object-fit: contain;
+  background-color: white;
   display: block;
-  max-width: 100%;
-  position: relative;
 }
 
 .zoom-lens {
   position: absolute;
-  border: 3px solid #2ecc71;  
+  border: 3px solid #2ecc71;
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  background-color: white; 
-  box-shadow: 0 0 10px rgba(46, 204, 113, 0.7); 
+  background-color: white;
+  box-shadow: 0 0 10px rgba(46, 204, 113, 0.7);
   pointer-events: none;
   display: none;
   background-repeat: no-repeat;
-  background-size: 1000% 1000%; 
+  background-size: 1000% 1000%;
   z-index: 1000;
 }
 
@@ -263,7 +256,7 @@ input[type="number"] {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0,0,0,0.85);
+  background-color: rgba(0, 0, 0, 0.85);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -298,8 +291,6 @@ input[type="number"] {
   color: #27ae60;
 }
 
-
-/* Caja de info */
 .product-info-box {
   margin-top: 15px;
   background: #f9f9f9;
@@ -313,7 +304,6 @@ input[type="number"] {
   max-width: 320px;
 }
 
-/* Formulario */
 #product-options-form {
   flex: 1;
   display: flex;
@@ -321,7 +311,6 @@ input[type="number"] {
   gap: 15px;
 }
 
-/* Título y precio */
 .product-title-box {
   text-align: center;
   background: #f1f5f9;
@@ -345,7 +334,6 @@ input[type="number"] {
   margin: 0;
 }
 
-/* Inputs */
 input[type="text"],
 input[type="number"] {
   width: 100%;
@@ -368,7 +356,6 @@ input[type="number"]:focus {
   font-size: 1rem;
 }
 
-/* Sección recomendados */
 .recommended-section {
   margin-top: 30px;
 }
@@ -450,7 +437,7 @@ input[type="number"]:focus {
   position: relative;
   animation: fadeIn 0.3s ease forwards;
   max-width: 280px;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .message.error {
@@ -472,6 +459,49 @@ input[type="number"]:focus {
 }
 
 @keyframes fadeIn {
-  from {opacity: 0; transform: translateY(-10px);}
-  to {opacity: 1; transform: translateY(0);}
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.photos-card {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 1rem 0;
+  max-width: 400px;
+}
+.image-card {
+  flex: 0 0 auto;
+  width: 150px;
+  max-height: 100%;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  scroll-snap-align: start;
+  transition: transform 0.2s;
+  text-align: center;
+  overflow: hidden;
+  white-space: normal;
+}
+
+.image-card:hover {
+  transform: scale(1.05);
+}
+
+.image-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.image-card.selected {
+  border: 3px solid black;
+  border-radius: 8px;
 }

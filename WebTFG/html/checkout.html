@@ -26,65 +26,70 @@
 </header>
 
 <body>
-    
-<a href="javascript:history.back()" class="back-link">
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="24" height="24">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-  </svg>
-  Volver atrás
-</a>
+
+    <a href="mercha.html" class="back-link">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="24"
+            height="24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        Volver atrás
+    </a>
 
 
     <main class="checkout-container">
-        <section id="cart-preview" class="cart-items">
-            <h3>Resumen del carrito</h3>
-            <div id="cart-products"></div>
-        </section>
+        <div id="main-container">
+            <section id="cart-preview" class="cart-items">
+                <h3>Resumen del carrito</h3>
+                <div id="cart-products"></div>
+            </section>
 
-<form id="payment-form" autocomplete="off">
-    <h2>Información de pago</h2>    
-    <div>
-        <label for="name">Nombre completo</label>
-        <input type="text" id="name" name="name" placeholder="Tu nombre y apellidos" />
-    </div>
-
-    <div>
-        <label for="email">Correo electrónico</label>
-        <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" />
-    </div>
-
-    <div>
-        <label for="address">Dirección de envío</label>
-        <input type="text" id="address" name="address" placeholder="Calle, número, ciudad..."/>
-    </div>
-
-    <div id="payment-options" class="payment-options">
-        <button type="button" id="btn-tarjeta">Pagar con Tarjeta</button>
-        <button type="button" id="btn-paypal">Pagar con PayPal</button>
-    </div>
-
-    <div class="credit-card" id="form-tarjeta" style="display: none;">
-        <div>
-            <label for="card-number">Número de tarjeta</label>
-            <input type="text" id="card-number" name="card-number" placeholder="1234 5678 9012 3456"
-                maxlength="16" />
+            <div id="cart-total-container"></div>
         </div>
 
-        <div>
-            <label for="expiry">Fecha de expiración (MM/AA)</label>
-            <input type="text" id="expiry" name="expiry" placeholder="MM/AA" maxlength="5" />
-        </div>  
+        <form id="payment-form" autocomplete="off">
+            <h2>Información de pago</h2>
+            <div>
+                <label for="name">Nombre completo</label>
+                <input type="text" id="name" name="name" placeholder="Tu nombre y apellidos" />
+            </div>
 
-        <div>
-            <label for="cvv">CVV</label>
-            <input type="text" id="cvv" name="cvv" placeholder="123" maxlength="3" />
-        </div>
-        <button type="submit">Confirmar pago</button>
+            <div>
+                <label for="email">Correo electrónico</label>
+                <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" />
+            </div>
 
-    </div>
-<div id="message-container" style="position: fixed; top: 20px; right: 20px; z-index: 9999;"></div>
+            <div>
+                <label for="address">Dirección de envío</label>
+                <input type="text" id="address" name="address" placeholder="Calle, número, ciudad..." />
+            </div>
 
-</form>
+            <div id="payment-options" class="payment-options">
+                <button type="button" id="btn-tarjeta">Pagar con Tarjeta</button>
+                <button type="button" id="btn-paypal">Pagar con PayPal</button>
+            </div>
+
+            <div class="credit-card" id="form-tarjeta" style="display: none;">
+                <div>
+                    <label for="card-number">Número de tarjeta</label>
+                    <input type="text" id="card-number" name="card-number" placeholder="1234 5678 9012 3456"
+                        maxlength="16" />
+                </div>
+
+                <div>
+                    <label for="expiry">Fecha de expiración (MM/AA)</label>
+                    <input type="text" id="expiry" name="expiry" placeholder="MM/AA" maxlength="5" />
+                </div>
+
+                <div>
+                    <label for="cvv">CVV</label>
+                    <input type="text" id="cvv" name="cvv" placeholder="123" maxlength="3" />
+                </div>
+                <button type="submit">Confirmar pago</button>
+
+            </div>
+            <div id="message-container" style="position: fixed; top: 20px; right: 20px; z-index: 9999;"></div>
+
+        </form>
 
     </main>
 

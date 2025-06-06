@@ -1,11 +1,9 @@
-// detalle-producto.js
-
 const productos = {
   413844533: {
     nombre: "Camiseta Oficial",
     precio: 25.0,
     tallas: ["4", "6", "8", "10", "12", "14", "XS", "S", "M", "L", "XL", "XXL"],
-    imagen: ["../img/camiseta.png"],
+    imagen: ["../img/camiseta.png", "../img/camiseta_2.png"],
     info: `
     <strong>Camisetas con diseño exclusivo para el CDE Amistad</strong><br><br>
 
@@ -25,7 +23,11 @@ const productos = {
     nombre: "Sudadera del Equipo",
     precio: 25.0,
     tallas: ["4", "6", "8", "10", "12", "14", "XS", "S", "M", "L", "XL", "XXL"],
-    imagen: ["../img/sudadera.jpg"],
+    imagen: [
+      "../img/sudadera.jpg",
+      "../img/sudadera_2.jpg",
+      "../img/tallas_sudadera.jpg",
+    ],
     info: `
     <strong>Marca:</strong> Gañafote<br><br>
     Sudadera diseñada en exclusiva para el <strong>C.D.E. Amistad</strong> en color verde con detalles en blanco.<br><br>
@@ -44,7 +46,12 @@ const productos = {
     nombre: "Abrigo del Equipo",
     precio: 36.0,
     tallas: ["4", "6", "8", "10", "12", "14", "XS", "S", "M", "L", "XL", "XXL"],
-    imagen: ["../img/abrigo.jpg"],
+    imagen: [
+      "../img/abrigo.jpg",
+      "../img/abrigo_2.jpg",
+      "../img/abrigo_3.jpg",
+      "../img/tallas_abrigo.jpg",
+    ],
     info: `
     <strong>Abrigo color negro fabricado en Poliéster</strong>.<br><br>
     <strong>Especificaciones:</strong><br>
@@ -63,7 +70,14 @@ const productos = {
     nombre: "Chubasquero del Equipo",
     precio: 18.0,
     tallas: ["4", "6", "8", "10", "12", "14", "XS", "S", "M", "L", "XL", "XXL"],
-    imagen: ["../img/chubasquero.jpg"],
+    imagen: [
+      "../img/chubasquero.jpg",
+      "../img/chubasquero_2.jpg",
+      "../img/chubasquero_3.jpg",
+      "../img/chubasquero_4.jpg",
+      "../img/chubasquero_5.jpg",
+      "../img/tallas_abrigo.jpg",
+    ],
     info: `
     <strong>Marca:</strong> Gañafote<br><br>
     
@@ -84,8 +98,12 @@ const productos = {
   413844537: {
     nombre: "Mochila del Equipo",
     precio: 18.0,
-    tallas: [], // Sin tallas porque es mochila
-    imagen: ["../img/mochila.jpg"],
+    tallas: [], 
+    imagen: [
+      "../img/mochila.jpg",
+      "../img/mochila_2.jpg",
+      "../img/mochila_3.jpg",
+    ],
     info: `
     Mochila de color <strong>negro</strong> fabricada en <strong>poliéster</strong>, diseñada para resistir las batallas del día a día con estilo y funcionalidad:<br><br>
 
@@ -99,7 +117,12 @@ const productos = {
     nombre: "Chandal Oficial",
     precio: 45.0,
     tallas: ["4", "6", "8", "10", "12", "14", "XS", "S", "M", "L", "XL", "XXL"],
-    imagen: ["../img/chandal.jpg","../img/chubasquero.jpg"],
+    imagen: [
+      "../img/chandal.jpg",
+      "../img/chandal_2.jpg",
+      "../img/chandal_3.jpg",
+      "../img/tallas.jpg",
+    ],
     info: `
     <strong>El chándal del C.D.E. Amistad</strong> se compone de chaqueta y pantalón.<br><br>
 
@@ -119,7 +142,12 @@ const productos = {
     precio: 30.0,
     tallas: ["4", "6", "8", "10", "12", "14", "XS", "S", "M", "L", "XL", "XXL"],
     medias: ["NO", "25-28", "29-32", "33-36", "27-40", "41-44"],
-    imagen: ["../img/conjunto_entero.jpg"],
+    imagen: [
+      "../img/conjunto_entero.jpg",
+      "../img/conjunto_entero_2.jpg",
+      "../img/calcetines.jpg",
+      "../img/tallas_conjunto.jpg",
+    ],
     info: `
     <strong>Marca:</strong> Gañafote<br><br>
     El Conjunto de entrenamiento del C.D.E. Amistad está compuesto por camiseta, pantalón y medias (opcional).<br><br>
@@ -142,9 +170,14 @@ const productos = {
   },
   413844520: {
     nombre: "Medias del Equipo",
-    precio: 6.50,
+    precio: 6.5,
     tallas: ["25-28", "29-32", "33-36", "27-40", "41-44"],
-    imagen: ["../img/calcetines.jpg"],
+    imagen: [
+      "../img/calcetines.jpg",
+      "../img/calcetines_2.jpg",
+      "../img/calcetines_3.jpg",
+      "../img/calcetines_4.jpg",
+    ],
     info: `
     <strong>Medias personalizadas C.D.E. Amistad</strong><br><br>
 
@@ -160,7 +193,7 @@ const productos = {
     nombre: "Polo del Equipo",
     precio: 25.0,
     tallas: ["4", "6", "8", "10", "12", "14", "XS", "S", "M", "L", "XL", "XXL"],
-    imagen: ["../img/polo.jpg"],
+    imagen: ["../img/polo.jpg", "../img/polo_2.jpg", "../img/tallas_polo.jpg"],
     info: `
     <strong>Marca:</strong> Gañafote<br><br>
     Polo diseñado en <strong>exclusiva</strong> para el <strong>C.D.E. Amistad</strong>.<br><br>
@@ -179,7 +212,15 @@ const productos = {
     precio: 200.0,
     medias: ["25-28", "29-32", "33-36", "27-40", "41-44"],
     tallas: ["4", "6", "8", "10", "12", "14", "XS", "S", "M", "L", "XL", "XXL"],
-    imagen: ["../img/pack.jpg"],
+    imagen: [
+      "../img/pack.jpg",
+      "../img/conjunto_entero.jpg",
+      "../img/camiseta.png",
+      "../img/chandal.jpg",
+      "../img/abrigo.jpg",
+      "../img/chubasquero.jpg",
+      "../img/mochila.jpg",
+    ],
     opciones: ["SI (+35.00€)", "NO"],
     info: `
     <strong>Marca:</strong> Gañafote<br><br>
@@ -217,7 +258,7 @@ function obtenerRecomendados(idActual, productos, cantidad = 3) {
     <div class="recommended-card">
       <a href="detalle-producto.html?id=${id}" title="${prod.nombre}">
         <div class="img-wrapper">
-          <img src="${prod.imagen}" alt="${prod.nombre}" />
+          <img src="${prod.imagen[0]}" alt="${prod.nombre}" />
         </div>
         <p class="recommended-title">${prod.nombre}</p>
       </a>
@@ -234,7 +275,6 @@ if (!productId || !productos[productId]) {
   const esConjunto = productId === "413844539";
   const esPack = productId === "413844522";
 
-  // Generamos botones de talla
   const tallasButtons = p.tallas
     .map(
       (t) => `
@@ -276,7 +316,7 @@ if (!productId || !productos[productId]) {
   }
 
   container.innerHTML = `
-<a href="javascript:history.back()" class="back-link">
+<a href="mercha.html" class="back-link">
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="24" height="24">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
   </svg>
@@ -285,10 +325,14 @@ if (!productId || !productos[productId]) {
 
 <div class="product-detail-container">
  <div style="flex:1;display:flex;flex-direction:column;align-items:center; position: relative;">
-  <img src="${p.imagen[0]}" alt="${p.nombre}" class="product-image" id="carousel-image" />
+  <img src="${p.imagen[0]}" alt="${
+    p.nombre
+  }" class="product-image" id="carousel-image" />
   
-  <button id="prev-btn" style="position:absolute; top:25%; left:5px; transform: translateY(-50%); font-size:2rem; background:none; border:none; color:#2ecc71; cursor:pointer;">&#10094;</button>
-  <button id="next-btn" style="position:absolute; top:25%; right:5px; transform: translateY(-50%); font-size:2rem; background:none; border:none; color:#2ecc71; cursor:pointer;">&#10095;</button>
+  <button id="prev-btn" style="position:absolute; top:25%; left:0px; transform: translateY(-50%); font-size:2rem; background:none; border:none; color:#2ecc71; cursor:pointer;">&#10094;</button>
+  <button id="next-btn" style="position:absolute; top:25%; right:0px; transform: translateY(-50%); font-size:2rem; background:none; border:none; color:#2ecc71; cursor:pointer;">&#10095;</button>
+  
+  <div id="otrasImagenes" class="photos-card" style="margin-top: 1rem;"></div>
 
   <div class="product-info-box">
     <h3 style="margin:0 0 0.5rem;font-size:1.1rem;color:#222;">ℹ️ Información del producto</h3>
@@ -350,10 +394,8 @@ if (!productId || !productos[productId]) {
     </div>
   </form>
 </div>`;
-
 }
 
-// --- lógica de selección de opciones ---
 function setupOptionGroup(groupId) {
   const group = document.getElementById(groupId);
   if (!group) return () => "";
@@ -381,47 +423,43 @@ const getSelectedRopa_Juego = setupOptionGroup("ropa-juego");
 const selectedMedias = setupOptionGroup("medias-options");
 const getSelectedSize = setupOptionGroup("size-options");
 
-// Función para obtener carrito desde localStorage
 function getCart() {
   const cartJSON = localStorage.getItem("cart");
   return cartJSON ? JSON.parse(cartJSON) : [];
 }
 
-// Función para guardar carrito en localStorage
 function saveCart(cart) {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
 
-// --- envío del formulario ---
 document
   .getElementById("product-options-form")
   .addEventListener("submit", (e) => {
     e.preventDefault();
     const p = productos[productId];
 
-    // Recuperar valores
     const talla = getSelectedSize();
     const cantidad = parseInt(
       document.getElementById("quantity-input").value,
       10
     );
 
-    // Validaciones
     const requiredSelections = [
       { label: "el conjunto", getter: getSelectedConf },
       { label: "la sudadera", getter: getSelectedSudadera },
       { label: "el chándal", getter: getSelectedChandal },
       { label: "el abrigo", getter: getSelectedAbrigo },
       { label: "el chubasquero", getter: getSelectedChubasquero },
+      { label: "las medias", getter: getSelectedMedias },
+      { label: "la ropa de juego", getter: getSelectedRopa_Juego },
     ];
 
     if (productId === "413844522") {
       for (const { label, getter } of requiredSelections) {
         if (!getter()) {
           showMessage(`Por favor, selecciona todos los campos.`);
+          return;
         }
-        return;
-
       }
     }
 
@@ -430,7 +468,6 @@ document
       return;
     }
 
-    // Datos adicionales para la camiseta
     let nombreUsuario = "";
     let dorsalUsuario = "";
     if (productId === "413844533") {
@@ -442,7 +479,6 @@ document
       }
     }
 
-    // Datos adicionales para el conjunto
     if (productId === "413844539") {
       if (!getSelectedMedias()) {
         showMessage("Por favor, selecciona una talla de medias.");
@@ -450,7 +486,6 @@ document
       }
     }
 
-    // Construir objeto del producto para añadir al carrito
     const item = {
       id: productId,
       nombre: p.nombre,
@@ -458,6 +493,7 @@ document
       cantidad,
       nombreUsuario: nombreUsuario || null,
       dorsalUsuario: dorsalUsuario || null,
+      conjunto: getSelectedConf() || null,
       medias: getSelectedMedias() || null,
       sudadera: getSelectedSudadera() || null,
       chandal: getSelectedChandal() || null,
@@ -482,12 +518,9 @@ document
     }
     saveCart(cart);
 
-
-
-    // Redirigir al catálogo (cambia 'catalogo.html' por la ruta correcta)
     window.location.href = "mercha.html";
   });
-  
+
 window.addEventListener("scroll", () => {
   const header = document.getElementById("fixedHeader");
   if (window.scrollY > 50) {
@@ -505,7 +538,6 @@ function showMessage(text, type = "error", duration = 4000) {
   message.className = `message ${type}`;
   message.textContent = text;
 
-  // Botón cerrar
   const closeBtn = document.createElement("button");
   closeBtn.textContent = "×";
   closeBtn.className = "close-btn";
@@ -514,7 +546,6 @@ function showMessage(text, type = "error", duration = 4000) {
 
   container.appendChild(message);
 
-  // Desaparece automáticamente
   setTimeout(() => {
     if (container.contains(message)) {
       container.removeChild(message);
@@ -522,162 +553,108 @@ function showMessage(text, type = "error", duration = 4000) {
   }, duration);
 }
 
-window.addEventListener('load', () => {
-  const img = document.querySelector('.product-image');
+window.addEventListener("load", () => {
+  const img = document.querySelector(".product-image");
   if (!img) return;
 
-  const lens = document.createElement('div');
-  lens.classList.add('zoom-lens');
+  const lens = document.createElement("div");
+  lens.classList.add("zoom-lens");
   document.body.appendChild(lens);
 
-  img.style.position = 'relative';
+  img.style.position = "relative";
 
-  img.addEventListener('mousemove', e => {
-    lens.style.display = 'block';
+  img.addEventListener("mousemove", (e) => {
+    lens.style.display = "block";
 
-    // calcular posición relativa de cursor respecto a la imagen
     const rect = img.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
 
-    // limitar posición del lente para que no salga de la imagen
     const lensWidth = lens.offsetWidth / 2;
     const lensHeight = lens.offsetHeight / 2;
     let lensX = e.pageX - lensWidth;
     let lensY = e.pageY - lensHeight;
 
     if (x < 0 || y < 0 || x > rect.width || y > rect.height) {
-      lens.style.display = 'none';
+      lens.style.display = "none";
       return;
     }
 
     lens.style.left = `${lensX}px`;
     lens.style.top = `${lensY}px`;
 
-    // actualizar imagen de fondo del lente y posición de zoom
     lens.style.backgroundImage = `url('${img.src}')`;
 
-    // calcular porcentaje para posicionar el zoom dentro del lente
     const bgX = (x / rect.width) * 100;
     const bgY = (y / rect.height) * 100;
 
     lens.style.backgroundPosition = `${bgX}% ${bgY}%`;
   });
 
-  img.addEventListener('mouseleave', () => {
-    lens.style.display = 'none';
+  img.addEventListener("mouseleave", () => {
+    lens.style.display = "none";
   });
 });
 
-window.addEventListener('load', () => {
-  const images = Array.from(document.querySelectorAll('.product-image'));
+window.addEventListener("load", () => {
+  const images = Array.from(document.querySelectorAll(".product-image"));
   if (images.length === 0) return;
 
   let currentIndex = 0;
 
-  const overlay = document.createElement('div');
-  overlay.classList.add('fullscreen-overlay');
-  overlay.style.display = 'none';
+  const overlay = document.createElement("div");
+  overlay.classList.add("fullscreen-overlay");
+  overlay.style.display = "none";
 
-  const fullscreenImg = document.createElement('img');
+  const fullscreenImg = document.createElement("img");
   overlay.appendChild(fullscreenImg);
 
-  const closeBtn = document.createElement('button');
-  closeBtn.classList.add('fullscreen-close-btn');
-  closeBtn.textContent = '×';
-  closeBtn.style.display = 'none';
+  const closeBtn = document.createElement("button");
+  closeBtn.classList.add("fullscreen-close-btn");
+  closeBtn.textContent = "×";
+  closeBtn.style.display = "none";
 
-  const prevBtn = document.createElement('button');
-  prevBtn.textContent = '←';
-  prevBtn.style.position = 'fixed';
-  prevBtn.style.top = '50%';
-  prevBtn.style.left = '20px';
-  prevBtn.style.transform = 'translateY(-50%)';
-  prevBtn.style.fontSize = '3rem';
-  prevBtn.style.color = '#2ecc71';
-  prevBtn.style.background = 'transparent';
-  prevBtn.style.border = 'none';
-  prevBtn.style.cursor = 'pointer';
-  prevBtn.style.zIndex = 2100;
-  prevBtn.style.userSelect = 'none';
-  prevBtn.style.display = 'none';
-
-  const nextBtn = document.createElement('button');
-  nextBtn.textContent = '→';
-  nextBtn.style.position = 'fixed';
-  nextBtn.style.top = '50%';
-  nextBtn.style.right = '20px';
-  nextBtn.style.transform = 'translateY(-50%)';
-  nextBtn.style.fontSize = '3rem';
-  nextBtn.style.color = '#2ecc71';
-  nextBtn.style.background = 'transparent';
-  nextBtn.style.border = 'none';
-  nextBtn.style.cursor = 'pointer';
-  nextBtn.style.zIndex = 2100;
-  nextBtn.style.userSelect = 'none';
-  nextBtn.style.display = 'none';
-
-  // Añadir elementos al body
   document.body.appendChild(overlay);
   document.body.appendChild(closeBtn);
-  document.body.appendChild(prevBtn);
-  document.body.appendChild(nextBtn);
 
-  // Función para actualizar imagen fullscreen
   function updateImage() {
     fullscreenImg.src = images[currentIndex].src;
   }
 
-  // Abrir fullscreen con imagen clicada
   images.forEach((img, i) => {
-    img.style.cursor = 'pointer';
-    img.addEventListener('click', () => {
+    img.style.cursor = "pointer";
+    img.addEventListener("click", () => {
       currentIndex = i;
       updateImage();
-      overlay.style.display = 'flex';
-      closeBtn.style.display = 'block';
-      prevBtn.style.display = 'block';
-      nextBtn.style.display = 'block';
-      document.body.style.overflow = 'hidden';
+      overlay.style.display = "flex";
+      closeBtn.style.display = "block";
+      prevBtn.style.display = "block";
+      nextBtn.style.display = "block";
+      document.body.style.overflow = "hidden";
     });
   });
 
-  // Navegar atrás
-  prevBtn.addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + images.length) % images.length;
-    updateImage();
+  closeBtn.addEventListener("click", () => {
+    overlay.style.display = "none";
+    closeBtn.style.display = "none";
+    prevBtn.style.display = "none";
+    nextBtn.style.display = "none";
+    document.body.style.overflow = "";
   });
 
-  // Navegar adelante
-  nextBtn.addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % images.length;
-    updateImage();
-  });
-
-  // Cerrar fullscreen
-  closeBtn.addEventListener('click', () => {
-    overlay.style.display = 'none';
-    closeBtn.style.display = 'none';
-    prevBtn.style.display = 'none';
-    nextBtn.style.display = 'none';
-    document.body.style.overflow = '';
-  });
-
-  // Cerrar clicando fuera de la imagen
-  overlay.addEventListener('click', (e) => {
+  overlay.addEventListener("click", (e) => {
     if (e.target === overlay) {
-      overlay.style.display = 'none';
-      closeBtn.style.display = 'none';
-      prevBtn.style.display = 'none';
-      nextBtn.style.display = 'none';
-      document.body.style.overflow = '';
+      overlay.style.display = "none";
+      closeBtn.style.display = "none";
+      prevBtn.style.display = "none";
+      nextBtn.style.display = "none";
+      document.body.style.overflow = "";
     }
   });
 });
- 
+
 const p = productos[productId];
 
-// Suponiendo que tienes acceso al array de imágenes p.imagen
 const images = p.imagen;
 let currentIndex = 0;
 
@@ -693,4 +670,66 @@ prevBtn.addEventListener("click", () => {
 nextBtn.addEventListener("click", () => {
   currentIndex = (currentIndex + 1) % images.length;
   carouselImage.src = images[currentIndex];
+});
+
+const otrasImagenes = document.getElementById("otrasImagenes");
+
+for (let i = 0; i < p.imagen.length; i++) {
+  const card = document.createElement("div");
+  card.className = "image-card";
+
+  const img = document.createElement("img");
+  img.src = p.imagen[i];
+  img.alt = p.nombre;
+  img.style.width = "100%";
+  img.style.borderRadius = "8px";
+
+  const title = document.createElement("p");
+  title.style.textAlign = "center";
+  title.style.marginTop = "0.5rem";
+  title.style.fontSize = "0.9rem";
+  title.style.color = "#444";
+
+  card.appendChild(img);
+  card.appendChild(title);
+  otrasImagenes.appendChild(card);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const carouselImage = document.getElementById("carousel-image");
+  const photosCard = document.getElementById("otrasImagenes");
+  const prevBtn = document.getElementById("prev-btn");
+  const nextBtn = document.getElementById("next-btn");
+
+  const cards = Array.from(photosCard.querySelectorAll(".image-card"));
+
+  let currentIndex = 0;
+
+  function updateCarousel(index) {
+    if (index < 0) index = cards.length - 1;
+    if (index >= cards.length) index = 0;
+    currentIndex = index;
+
+    const img = cards[currentIndex].querySelector("img");
+    carouselImage.src = img.src;
+    carouselImage.alt = img.alt || "";
+
+    cards.forEach((card) => card.classList.remove("selected"));
+    cards[currentIndex].classList.add("selected");
+  }
+
+  photosCard.addEventListener("click", (e) => {
+    const card = e.target.closest(".image-card");
+    if (!card) return;
+
+    const clickedIndex = cards.indexOf(card);
+    if (clickedIndex !== -1) {
+      updateCarousel(clickedIndex);
+    }
+  });
+
+  prevBtn.addEventListener("click", () => updateCarousel(currentIndex - 1));
+  nextBtn.addEventListener("click", () => updateCarousel(currentIndex + 1));
+
+  updateCarousel(0);
 });
