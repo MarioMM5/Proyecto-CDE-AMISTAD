@@ -14,10 +14,6 @@ class _ProtocolosPageState extends State<ProtocolosPage> {
 
   final List<Map<String, String>> _protocolos = const [
     {
-      'titulo': 'Protocolo COVID-19',
-      'url': 'https://www.example.com/protocolo_covid19.pdf',
-    },
-    {
       'titulo': 'Normativa de Uso de Instalaciones',
       'url': 'https://www.example.com/normativa_instalaciones.pdf',
     },
