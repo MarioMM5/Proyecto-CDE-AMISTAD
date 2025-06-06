@@ -160,6 +160,7 @@ class _NoticiasPageState extends State<NoticiasPage> {
                         contenido: contenido,
                         imagen: imagen,
                         fecha: fecha,
+                        onToggleTheme: widget.onToggleTheme,
                       ),
                     ),
                   );

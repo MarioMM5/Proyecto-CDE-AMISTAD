@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
-class NoticiaDetail extends StatelessWidget {
+class NoticiaDetail extends StatefulWidget {
   final String titulo;
   final String contenido;
   final String imagen;
   final DateTime? fecha;
+  final VoidCallback? onToggleTheme;
 
   const NoticiaDetail({
     Key? key,
@@ -12,16 +13,29 @@ class NoticiaDetail extends StatelessWidget {
     required this.contenido,
     required this.imagen,
     required this.fecha,
+    this.onToggleTheme,
   }) : super(key: key);
 
   @override
+  State<NoticiaDetail> createState() => _NoticiaDetailState();
+}
+
+class _NoticiaDetailState extends State<NoticiaDetail> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  void _abrirAjustes() {
+    _scaffoldKey.currentState?.openEndDrawer();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final bool usarImagenDefault = imagen.isEmpty || !imagen.startsWith('http');
+    final bool usarImagenDefault = widget.imagen.isEmpty || !widget.imagen.startsWith('http');
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     final textColor = isDarkMode ? Colors.white : Colors.black;
     final contentColor = isDarkMode ? Colors.white70 : Colors.black87;
 
     return Scaffold(
+      key: _scaffoldKey,
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(80),
         child: Container(
@@ -42,9 +56,9 @@ class NoticiaDetail extends StatelessWidget {
                   ),
                   const SizedBox(width: 5),
                   SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.6,
+                    width: MediaQuery.of(context).size.width * 0.5,
                     child: Text(
-                      titulo,
+                      widget.titulo,
                       style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w600,
@@ -56,8 +70,33 @@ class NoticiaDetail extends StatelessWidget {
                 ],
               ),
               IconButton(
-                icon: const Icon(Icons.notifications, color: Colors.white),
-                onPressed: () {},
+                icon: const Icon(Icons.settings, color: Colors.white),
+                onPressed: _abrirAjustes,
+              ),
+            ],
+          ),
+        ),
+      ),
+      endDrawer: Drawer(
+        child: SafeArea(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Padding(
+                padding: EdgeInsets.all(16.0),
+                child: Text(
+                  'Ajustes',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+              ),
+              const Divider(),
+              ListTile(
+                leading: const Icon(Icons.brightness_6),
+                title: const Text('Cambiar tema'),
+                onTap: () {
+                  widget.onToggleTheme?.call();
+                  Navigator.of(context).pop();
+                },
               ),
             ],
           ),
@@ -78,7 +117,7 @@ class NoticiaDetail extends StatelessWidget {
                 fit: BoxFit.cover,
               )
                   : Image.network(
-                imagen,
+                widget.imagen,
                 width: double.infinity,
                 height: 250,
                 fit: BoxFit.cover,
@@ -86,7 +125,7 @@ class NoticiaDetail extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             Text(
-              titulo,
+              widget.titulo,
               style: TextStyle(
                 fontSize: 28,
                 fontWeight: FontWeight.bold,
@@ -94,9 +133,9 @@ class NoticiaDetail extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 8),
-            if (fecha != null)
+            if (widget.fecha != null)
               Text(
-                "${fecha!.day}/${fecha!.month}/${fecha!.year}",
+                "${widget.fecha!.day}/${widget.fecha!.month}/${widget.fecha!.year}",
                 style: TextStyle(
                   fontSize: 14,
                   color: isDarkMode ? Colors.grey[300] : Colors.grey[700],
@@ -105,7 +144,7 @@ class NoticiaDetail extends StatelessWidget {
               ),
             const SizedBox(height: 20),
             Text(
-              contenido,
+              widget.contenido,
               style: TextStyle(
                 fontSize: 16,
                 color: contentColor,
