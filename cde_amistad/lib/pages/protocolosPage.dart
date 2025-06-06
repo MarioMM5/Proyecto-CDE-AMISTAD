@@ -14,12 +14,8 @@ class _ProtocolosPageState extends State<ProtocolosPage> {
 
   final List<Map<String, String>> _protocolos = const [
     {
-      'titulo': 'Normativa de Uso de Instalaciones',
-      'url': 'https://www.example.com/normativa_instalaciones.pdf',
-    },
-    {
       'titulo': 'Protocolo de Actuación en Lesiones',
-      'url': 'https://www.example.com/protocolo_lesiones.pdf',
+      'url': 'https://rffm-cms.s3.eu-west-1.amazonaws.com/MADRID_PROTOCOLO_DE_ACTUACION_2024_2025_72bf3065bc.pdf',
     },
   ];
 
@@ -28,7 +24,9 @@ class _ProtocolosPageState extends State<ProtocolosPage> {
     if (await canLaunchUrl(uri)) {
       await launchUrl(uri, mode: LaunchMode.externalApplication);
     } else {
-      throw 'No se pudo abrir el PDF: $url';
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('No se pudo abrir el PDF')),
+      );
     }
   }
 
@@ -38,6 +36,8 @@ class _ProtocolosPageState extends State<ProtocolosPage> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Scaffold(
       key: _scaffoldKey,
       appBar: PreferredSize(
@@ -85,28 +85,38 @@ class _ProtocolosPageState extends State<ProtocolosPage> {
                 title: const Text('Cambiar tema'),
                 onTap: () {
                   widget.onToggleTheme?.call();
-                  Navigator.of(context).pop(); // cierra el drawer
+                  Navigator.of(context).pop();
                 },
               ),
             ],
           ),
         ),
       ),
-      body: ListView.builder(
-        itemCount: _protocolos.length,
-        itemBuilder: (context, index) {
-          final protocolo = _protocolos[index];
-          return Card(
-            margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-            child: ListTile(
-              title: Text(protocolo['titulo']!),
-              trailing: IconButton(
-                icon: const Icon(Icons.picture_as_pdf, color: Colors.red),
-                onPressed: () => _abrirPdf(protocolo['url']!),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+        child: ListView.builder(
+          itemCount: _protocolos.length,
+          itemBuilder: (context, index) {
+            final protocolo = _protocolos[index];
+            return Card(
+              elevation: 3,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+              child: ListTile(
+                contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                leading: const Icon(Icons.description_outlined, size: 32, color: Colors.green),
+                title: Text(
+                  protocolo['titulo']!,
+                  style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                ),
+                trailing: IconButton(
+                  icon: const Icon(Icons.picture_as_pdf, color: Colors.redAccent),
+                  onPressed: () => _abrirPdf(protocolo['url']!),
+                  tooltip: 'Abrir PDF',
+                ),
               ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }
