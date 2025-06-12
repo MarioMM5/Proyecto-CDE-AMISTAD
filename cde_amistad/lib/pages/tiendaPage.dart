@@ -203,85 +203,137 @@ class _TiendaPageState extends State<TiendaPage> {
       return double.tryParse(precio.replaceAll('€', '').replaceAll(',', '.').trim()) ?? 0.0;
     }
 
-    // Agrupar los items iguales por producto y talla
-    Map<String, ItemCarrito> carritoAgrupado = {};
-
-    for (var item in _carrito) {
-      String key = '${item.producto.id}_${item.talla ?? "no_talla"}';
-      if (carritoAgrupado.containsKey(key)) {
-        // Incrementamos la cantidad existente
-        var existente = carritoAgrupado[key]!;
-        carritoAgrupado[key] = existente.copyWith(cantidad: existente.cantidad + item.cantidad);
-      } else {
-        carritoAgrupado[key] = item;
-      }
-    }
-
-    // Calcular total sobre el carrito agrupado
-    double total = carritoAgrupado.values.fold(0.0, (sum, item) {
-      return sum + _parsePrecio(item.producto.precio) * item.cantidad;
-    });
-
     showModalBottomSheet(
       context: context,
+      isScrollControlled: true,
       builder: (context) {
-        return Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Text(
-                'Carrito de Compras',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        return StatefulBuilder(
+          builder: (context, setModalState) {
+            // Agrupar items en tiempo real
+            Map<String, ItemCarrito> carritoAgrupado = {};
+
+            for (var item in _carrito) {
+              String key = '${item.producto.id}_${item.talla ?? "no_talla"}';
+              if (carritoAgrupado.containsKey(key)) {
+                var existente = carritoAgrupado[key]!;
+                carritoAgrupado[key] = existente.copyWith(cantidad: existente.cantidad + item.cantidad);
+              } else {
+                carritoAgrupado[key] = item;
+              }
+            }
+
+            double total = carritoAgrupado.values.fold(0.0, (sum, item) {
+              return sum + _parsePrecio(item.producto.precio) * item.cantidad;
+            });
+
+            // Función para eliminar o disminuir cantidad
+            void eliminarItem(ItemCarrito item) {
+              setState(() {
+                // Buscar todos los indices de ese producto+talla en _carrito
+                int index = _carrito.indexWhere((element) =>
+                element.producto.id == item.producto.id &&
+                    element.talla == item.talla);
+
+                if (index != -1) {
+                  if (_carrito[index].cantidad > 1) {
+                    // Disminuir cantidad en el item original
+                    // Como ItemCarrito es inmutable, reemplazamos con copyWith
+                    var actual = _carrito[index];
+                    _carrito[index] = actual.copyWith(cantidad: actual.cantidad - 1);
+                  } else {
+                    // Si cantidad es 1, eliminar el item
+                    _carrito.removeAt(index);
+                  }
+                }
+              });
+
+              // También actualizar el estado del modal para que refresque la UI
+              setModalState(() {});
+            }
+
+            return SafeArea(
+              child: Container(
+                padding: const EdgeInsets.only(bottom: 16),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Text(
+                        'Carrito de Compras',
+                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    const Divider(),
+                    if (carritoAgrupado.isEmpty)
+                      const Padding(
+                        padding: EdgeInsets.all(16.0),
+                        child: Text('El carrito está vacío'),
+                      )
+                    else
+                      Flexible(
+                        child: ListView(
+                          shrinkWrap: true,
+                          children: carritoAgrupado.values.map((item) {
+                            double precioUnitario = _parsePrecio(item.producto.precio);
+                            double subtotal = precioUnitario * item.cantidad;
+
+                            return ListTile(
+                              leading: Image.network(item.producto.imagenes.first,
+                                  width: 50, height: 50, fit: BoxFit.cover),
+                              title: Text(item.producto.nombre),
+                              subtitle: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  if (item.talla != null) Text('Talla: ${item.talla}'),
+                                  Text('Precio unitario: ${precioUnitario.toStringAsFixed(2)}€'),
+                                  Text('Subtotal: ${subtotal.toStringAsFixed(2)}€'),
+                                ],
+                              ),
+                              trailing: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Text('x${item.cantidad}'),
+                                  IconButton(
+                                    icon: const Icon(Icons.delete, color: Colors.red),
+                                    onPressed: () => eliminarItem(item),
+                                    tooltip: 'Eliminar o disminuir cantidad',
+                                  ),
+                                ],
+                              ),
+                            );
+                          }).toList(),
+                        ),
+                      ),
+                    const Divider(),
+                    Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text('Total:', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                          Text('${total.toStringAsFixed(2)}€', style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                        ],
+                      ),
+                    ),
+                    ElevatedButton(
+                      onPressed: carritoAgrupado.isNotEmpty
+                          ? () {
+                        // Acción de pagar aquí
+                      }
+                          : null,
+                      child: const Text('Pagar'),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            const Divider(),
-            if (carritoAgrupado.isEmpty)
-              const Padding(
-                padding: EdgeInsets.all(16.0),
-                child: Text('El carrito está vacío'),
-              )
-            else
-              ...carritoAgrupado.values.map((item) {
-                double precioUnitario = _parsePrecio(item.producto.precio);
-                double subtotal = precioUnitario * item.cantidad;
-                return ListTile(
-                  leading: Image.network(item.producto.imagenes.first, width: 50, height: 50, fit: BoxFit.cover),
-                  title: Text(item.producto.nombre),
-                  subtitle: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      if (item.talla != null) Text('Talla: ${item.talla}'),
-                      Text('Precio unitario: ${precioUnitario.toStringAsFixed(2)}€'),
-                      Text('Subtotal: ${subtotal.toStringAsFixed(2)}€'),
-                    ],
-                  ),
-                  trailing: Text('x${item.cantidad}'),
-                );
-              }).toList(),
-            const Divider(),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text('Total:', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-                  Text('${total.toStringAsFixed(2)}€', style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-                ],
-              ),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                // Acción de pagar aquí
-              },
-              child: const Text('Pagar'),
-            ),
-            const SizedBox(height: 16),
-          ],
+            );
+          },
         );
       },
     );
   }
+
 
 
 
@@ -474,53 +526,6 @@ class _TiendaPageState extends State<TiendaPage> {
             child: const Icon(Icons.shopping_cart),
           ),
           CartBadge(itemCount: _carrito.length),
-        ],
-      ),
-    );
-  }
-}
-
-// Vista del Carrito
-class _CarritoView extends StatelessWidget {
-  final List<ItemCarrito> carrito;
-  final Function(ItemCarrito) onEliminar;
-  final VoidCallback onPagar;
-
-  const _CarritoView({required this.carrito, required this.onEliminar, required this.onPagar});
-
-  @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const Padding(
-            padding: EdgeInsets.all(16.0),
-            child: Text('Tu carrito', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-          ),
-          const Divider(),
-          if (carrito.isEmpty)
-            const Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Text('No hay productos en el carrito'),
-            )
-          else
-            ...carrito.map((item) {
-              return ListTile(
-                title: Text(item.producto.nombre),
-                subtitle: item.talla != null ? Text('Talla: ${item.talla}') : null,
-                trailing: IconButton(
-                  icon: const Icon(Icons.delete),
-                  onPressed: () => onEliminar(item),
-                ),
-              );
-            }).toList(),
-          const SizedBox(height: 12),
-          ElevatedButton(
-            onPressed: carrito.isNotEmpty ? onPagar : null,
-            child: const Text('Pagar'),
-          ),
-          const SizedBox(height: 16),
         ],
       ),
     );
