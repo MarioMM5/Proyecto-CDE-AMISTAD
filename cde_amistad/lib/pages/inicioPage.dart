@@ -364,6 +364,7 @@ class _InicioPageState extends State<InicioPage> {
                   lastDay: DateTime.utc(2030, 12, 31),
                   focusedDay: _focusedDay,
                   selectedDayPredicate: (day) => isSameDay(_selectedDay, day),
+                  startingDayOfWeek: StartingDayOfWeek.monday,
                   onDaySelected: (selectedDay, focusedDay) {
                     setState(() {
                       _selectedDay = selectedDay;
