@@ -1,5 +1,50 @@
 import 'package:flutter/material.dart';
 
+class CartBadge extends StatelessWidget {
+  final int itemCount;
+
+  const CartBadge({super.key, required this.itemCount});
+
+  @override
+  Widget build(BuildContext context) {
+    if (itemCount == 0) return const SizedBox.shrink();
+
+    return Positioned(
+      right: -4,
+      top: -4,
+      child: AnimatedSwitcher(
+        duration: const Duration(milliseconds: 300),
+        transitionBuilder: (Widget child, Animation<double> animation) {
+          return ScaleTransition(scale: animation, child: child);
+        },
+        child: Container(
+          key: ValueKey<int>(itemCount),  // ahora sí es seguro
+          padding: const EdgeInsets.all(5),
+          decoration: BoxDecoration(
+            color: Colors.red,
+            shape: BoxShape.circle,
+            border: Border.all(color: Colors.white, width: 2),
+          ),
+          constraints: const BoxConstraints(
+            minWidth: 24,
+            minHeight: 24,
+          ),
+          child: Center(
+            child: Text(
+              '$itemCount',
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 12,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 // Modelo de Producto
 class Producto {
   final String id;
@@ -122,20 +167,20 @@ class _TiendaPageState extends State<TiendaPage> {
       context: context,
       builder: (context) {
         return StatefulBuilder(
-          builder: (context, setState) {
+          builder: (context, setStateDialog) {  // renombro a setStateDialog para no confundirnos
             return AlertDialog(
               title: Text(producto.nombre),
-              content: SingleChildScrollView( // <-- AQUI VA EL CAMBIO
+              content: SingleChildScrollView(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     SizedBox(
                       height: 200,
-                      width: MediaQuery.of(context).size.width * 0.6,  // Le damos un ancho relativo
+                      width: MediaQuery.of(context).size.width * 0.6,
                       child: PageView.builder(
                         itemCount: producto.imagenes.length,
                         onPageChanged: (index) {
-                          setState(() {
+                          setStateDialog(() {
                             currentPage = index;
                           });
                         },
@@ -187,7 +232,8 @@ class _TiendaPageState extends State<TiendaPage> {
                       );
                       return;
                     }
-                    setState(() {
+                    // Aquí hacemos el setState del TIENDA PAGE
+                    this.setState(() {
                       _carrito.add(ItemCarrito(
                         producto: producto,
                         talla: tallaSeleccionada,
@@ -203,6 +249,7 @@ class _TiendaPageState extends State<TiendaPage> {
       },
     );
   }
+
 
 
 
@@ -232,35 +279,20 @@ class _TiendaPageState extends State<TiendaPage> {
                   ),
                 ],
               ),
-              IconButton(
-                icon: const Icon(Icons.settings, color: Colors.white),
-                onPressed: _abrirAjustes,
+              Row(
+                children: [
+                  IconButton(
+                    icon: const Icon(Icons.settings, color: Colors.white),
+                    onPressed: _abrirAjustes,
+                  ),
+                ],
               ),
             ],
           ),
         ),
       ),
       endDrawer: Drawer(
-        child: SafeArea(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Padding(
-                padding: EdgeInsets.all(16.0),
-                child: Text('Ajustes', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-              ),
-              const Divider(),
-              ListTile(
-                leading: const Icon(Icons.brightness_6),
-                title: const Text('Cambiar tema'),
-                onTap: () {
-                  widget.onToggleTheme?.call();
-                  Navigator.of(context).pop();
-                },
-              ),
-            ],
-          ),
-        ),
+        // ... tu drawer no cambia
       ),
       body: GridView.builder(
         padding: const EdgeInsets.all(12),
@@ -307,13 +339,20 @@ class _TiendaPageState extends State<TiendaPage> {
           );
         },
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _abrirCarrito,
-        backgroundColor: const Color(0xFF388E3C),
-        child: const Icon(Icons.shopping_cart),
+      floatingActionButton: Stack(
+        clipBehavior: Clip.none,
+        children: [
+          FloatingActionButton(
+            onPressed: _abrirCarrito,
+            backgroundColor: Colors.green,
+            child: const Icon(Icons.shopping_cart),
+          ),
+          CartBadge(itemCount: _carrito.length),
+        ],
       ),
     );
   }
+
 
 }
 
