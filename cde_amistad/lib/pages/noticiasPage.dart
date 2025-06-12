@@ -80,21 +80,85 @@ class _NoticiasPageState extends State<NoticiasPage> {
       ),
       endDrawer: Drawer(
         child: SafeArea(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: ListView(
             children: [
-              const Padding(
+              Padding(
                 padding: EdgeInsets.all(16.0),
-                child: Text('Ajustes',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                child: Text('Ajustes', style: TextStyle(
+                    fontSize: 20, fontWeight: FontWeight.bold)),
               ),
-              const Divider(),
+              Divider(),
               ListTile(
-                leading: const Icon(Icons.brightness_6),
-                title: const Text('Cambiar tema'),
+                leading: Icon(Icons.brightness_6),
+                title: Text('Cambiar tema'),
                 onTap: () {
                   widget.onToggleTheme?.call();
                   Navigator.of(context).pop();
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.privacy_tip),
+                title: Text('Política de Privacidad'),
+                onTap: () {
+                  Navigator.of(context).pop();
+                  Future.delayed(Duration.zero, () {
+                    showDialog(
+                      context: context,
+                      builder: (_) => AlertDialog(
+                        title: Text('Política de Privacidad'),
+                        content: SingleChildScrollView(
+                          child: Text(
+                            '''Esta aplicación móvil es propiedad de CDE AMISTAD. Recopilamos el correo electrónico del usuario (si lo proporciona) y gestionamos la sincronización del calendario para añadir eventos deportivos. Los datos se almacenan de forma segura y no se comparten con terceros salvo por obligación legal. Los usuarios pueden ejercer sus derechos de acceso, rectificación o cancelación escribiendo a info@cdeamistad.com.''',
+                          ),
+                        ),
+                        actions: [
+                          TextButton(
+                            onPressed: () => Navigator.pop(context),
+                            child: Text('Cerrar'),
+                          ),
+                        ],
+                      ),
+                    );
+                  });
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.description),
+                title: Text('Términos y Condiciones'),
+                onTap: () {
+                  Navigator.of(context).pop();
+                  Future.delayed(Duration.zero, () {
+                    showDialog(
+                      context: context,
+                      builder: (_) => AlertDialog(
+                        title: Text('Términos y Condiciones'),
+                        content: SingleChildScrollView(
+                          child: Text(
+                            '''Al utilizar esta App, acepta que CDE AMISTAD no se responsabiliza por posibles errores en la información mostrada. El usuario se compromete a un uso responsable. Todos los derechos de propiedad intelectual están reservados. Las disputas serán resueltas bajo las leyes de España y jurisdicción de Alcorcón (Madrid).''',
+                          ),
+                        ),
+                        actions: [
+                          TextButton(
+                            onPressed: () => Navigator.pop(context),
+                            child: Text('Cerrar'),
+                          ),
+                        ],
+                      ),
+                    );
+                  });
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.article),
+                title: Text('Licencias de Software'),
+                onTap: () {
+                  Navigator.of(context).pop();
+                  Future.delayed(Duration.zero, () {
+                    showLicensePage(
+                      context: context,
+                      applicationName: 'CDE AMISTAD',
+                    );
+                  });
                 },
               ),
             ],
