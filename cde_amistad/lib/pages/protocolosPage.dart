@@ -106,19 +106,56 @@ class _ProtocolosPageState extends State<ProtocolosPage> {
           itemBuilder: (context, index) {
             final protocolo = _protocolos[index];
             return Card(
-              elevation: 3,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-              child: ListTile(
-                contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                leading: const Icon(Icons.description_outlined, size: 32, color: Colors.green),
-                title: Text(
-                  protocolo['titulo']!,
-                  style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-                ),
-                trailing: IconButton(
-                  icon: const Icon(Icons.picture_as_pdf, color: Colors.redAccent),
-                  onPressed: () => _abrirPdf(protocolo['url']!),
-                  tooltip: 'Abrir PDF',
+              elevation: 5,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+              margin: const EdgeInsets.symmetric(vertical: 8),
+              child: InkWell(
+                borderRadius: BorderRadius.circular(16),
+                onTap: () => _abrirPdf(protocolo['url']!),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                  child: Row(
+                    children: [
+                      const Icon(Icons.description_outlined, size: 36, color: Colors.green),
+                      const SizedBox(width: 16),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              protocolo['titulo']!,
+                              style: const TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            const SizedBox(height: 6),
+                            Text(
+                              'Toca para abrir el PDF',
+                              style: TextStyle(
+                                fontSize: 13,
+                                color: Colors.grey[600],
+                                fontStyle: FontStyle.italic,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.redAccent.withOpacity(0.1),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: IconButton(
+                          icon: const Icon(Icons.picture_as_pdf, color: Colors.redAccent, size: 30),
+                          onPressed: () => _abrirPdf(protocolo['url']!),
+                          tooltip: 'Abrir PDF',
+                          splashRadius: 28,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             );
