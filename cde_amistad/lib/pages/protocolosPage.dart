@@ -17,6 +17,14 @@ class _ProtocolosPageState extends State<ProtocolosPage> {
       'titulo': 'Protocolo de Actuación en Lesiones',
       'url': 'https://rffm-cms.s3.eu-west-1.amazonaws.com/MADRID_PROTOCOLO_DE_ACTUACION_2024_2025_72bf3065bc.pdf',
     },
+    {
+      'titulo': 'Guía LOVIPI para padres y madres',
+      'url': 'https://rffm-cms.s3.eu-west-1.amazonaws.com/GUIA_LOPIVI_PROGENITORES_0578a966b3.pdf',
+    },
+    {
+      'titulo': 'Protocolo de actuación LOVIPI',
+      'url': 'https://rffm-cms.s3.eu-west-1.amazonaws.com/Protocolo_de_actuacion_de_la_RFFM_para_la_proteccion_integral_a_infancia_y_adolescencia_frente_a_la_violencia_LOPIVI_148c5a1eba.pdf',
+    },
   ];
 
   Future<void> _abrirPdf(String url) async {
