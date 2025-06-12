@@ -12,31 +12,24 @@ class CartBadge extends StatelessWidget {
     return Positioned(
       right: -4,
       top: -4,
-      child: AnimatedSwitcher(
-        duration: const Duration(milliseconds: 300),
-        transitionBuilder: (Widget child, Animation<double> animation) {
-          return ScaleTransition(scale: animation, child: child);
-        },
-        child: Container(
-          key: ValueKey<int>(itemCount),  // ahora sí es seguro
-          padding: const EdgeInsets.all(5),
-          decoration: BoxDecoration(
-            color: Colors.red,
-            shape: BoxShape.circle,
-            border: Border.all(color: Colors.white, width: 2),
-          ),
-          constraints: const BoxConstraints(
-            minWidth: 24,
-            minHeight: 24,
-          ),
-          child: Center(
-            child: Text(
-              '$itemCount',
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 12,
-                fontWeight: FontWeight.bold,
-              ),
+      child: Container(
+        padding: const EdgeInsets.all(5),
+        decoration: BoxDecoration(
+          color: Colors.red,
+          shape: BoxShape.circle,
+          border: Border.all(color: Colors.white, width: 2),
+        ),
+        constraints: const BoxConstraints(
+          minWidth: 24,
+          minHeight: 24,
+        ),
+        child: Center(
+          child: Text(
+            '$itemCount',
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 12,
+              fontWeight: FontWeight.bold,
             ),
           ),
         ),
@@ -44,6 +37,7 @@ class CartBadge extends StatelessWidget {
     );
   }
 }
+
 
 // Modelo de Producto
 class Producto {
@@ -63,13 +57,43 @@ class Producto {
 }
 
 // Modelo de Item en el carrito
+// Modelo de Item en el carrito (INMUTABLE)
 class ItemCarrito {
   final Producto producto;
   final String? talla;
-  int cantidad;
+  final int cantidad;
 
-  ItemCarrito({required this.producto, this.talla, this.cantidad = 1});
+  const ItemCarrito({
+    required this.producto,
+    this.talla,
+    this.cantidad = 1,
+  });
+
+  // Método para copiar el objeto con nueva cantidad
+  ItemCarrito copyWith({int? cantidad}) {
+    return ItemCarrito(
+      producto: producto,
+      talla: talla,
+      cantidad: cantidad ?? this.cantidad,
+    );
+  }
+
+  // Para poder comparar objetos iguales (opcional pero recomendable)
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is ItemCarrito &&
+        other.producto.id == producto.id &&
+        other.talla == talla &&
+        other.cantidad == cantidad;
+  }
+
+  @override
+  int get hashCode => producto.id.hashCode ^ talla.hashCode ^ cantidad.hashCode;
 }
+
+
 
 class TiendaPage extends StatefulWidget {
   final VoidCallback? onToggleTheme;
@@ -175,36 +199,90 @@ class _TiendaPageState extends State<TiendaPage> {
   }
 
   void _abrirCarrito() {
+    double _parsePrecio(String precio) {
+      return double.tryParse(precio.replaceAll('€', '').replaceAll(',', '.').trim()) ?? 0.0;
+    }
+
+    // Agrupar los items iguales por producto y talla
+    Map<String, ItemCarrito> carritoAgrupado = {};
+
+    for (var item in _carrito) {
+      String key = '${item.producto.id}_${item.talla ?? "no_talla"}';
+      if (carritoAgrupado.containsKey(key)) {
+        // Incrementamos la cantidad existente
+        var existente = carritoAgrupado[key]!;
+        carritoAgrupado[key] = existente.copyWith(cantidad: existente.cantidad + item.cantidad);
+      } else {
+        carritoAgrupado[key] = item;
+      }
+    }
+
+    // Calcular total sobre el carrito agrupado
+    double total = carritoAgrupado.values.fold(0.0, (sum, item) {
+      return sum + _parsePrecio(item.producto.precio) * item.cantidad;
+    });
+
     showModalBottomSheet(
       context: context,
-      isScrollControlled: true,  // para que el modal ocupe más espacio si quieres
       builder: (context) {
-        List<ItemCarrito> carritoLocal = List.from(_carrito);
-        return StatefulBuilder(
-          builder: (context, setModalState) {
-            void eliminarItem(ItemCarrito item) {
-              setModalState(() {
-                carritoLocal.remove(item);
-              });
-              setState(() {
-                _carrito.remove(item);
-              });
-            }
-
-            return _CarritoView(
-              carrito: carritoLocal,
-              onEliminar: eliminarItem,
-              onPagar: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Redirigiendo a la pasarela de pago...')),
+        return Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Text(
+                'Carrito de Compras',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+            ),
+            const Divider(),
+            if (carritoAgrupado.isEmpty)
+              const Padding(
+                padding: EdgeInsets.all(16.0),
+                child: Text('El carrito está vacío'),
+              )
+            else
+              ...carritoAgrupado.values.map((item) {
+                double precioUnitario = _parsePrecio(item.producto.precio);
+                double subtotal = precioUnitario * item.cantidad;
+                return ListTile(
+                  leading: Image.network(item.producto.imagenes.first, width: 50, height: 50, fit: BoxFit.cover),
+                  title: Text(item.producto.nombre),
+                  subtitle: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      if (item.talla != null) Text('Talla: ${item.talla}'),
+                      Text('Precio unitario: ${precioUnitario.toStringAsFixed(2)}€'),
+                      Text('Subtotal: ${subtotal.toStringAsFixed(2)}€'),
+                    ],
+                  ),
+                  trailing: Text('x${item.cantidad}'),
                 );
+              }).toList(),
+            const Divider(),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text('Total:', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                  Text('${total.toStringAsFixed(2)}€', style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                ],
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                // Acción de pagar aquí
               },
-            );
-          },
+              child: const Text('Pagar'),
+            ),
+            const SizedBox(height: 16),
+          ],
         );
       },
     );
   }
+
 
 
   void _seleccionarProducto(Producto producto) {
