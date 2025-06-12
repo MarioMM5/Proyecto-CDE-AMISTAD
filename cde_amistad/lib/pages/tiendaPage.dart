@@ -86,14 +86,7 @@ class _TiendaPageState extends State<TiendaPage> {
 
   // Lista de productos
   final List<Producto> _productos = [
-    Producto(
-      id: '1',
-      nombre: 'Camiseta Oficial 2025',
-      precio: '39.99€',
-      imagenes: ['https://sbbddlhuflacpqnrvpyb.supabase.co/storage/v1/object/sign/ropa-vieja/camiseta.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9mMzIzNjVjYi03NWRjLTRkZGEtOWViZC05YjhlNThhN2YzNmUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJyb3BhLXZpZWphL2NhbWlzZXRhLnBuZyIsImlhdCI6MTc0OTc0NDk2NiwiZXhwIjozMzI1NDIwODk2Nn0.vpVBDkQPcM4sweYY2mYdFrU6ZS9fiTA6bT4rPrQAAao',
-      'https://sbbddlhuflacpqnrvpyb.supabase.co/storage/v1/object/sign/ropa-vieja/camiseta_2.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9mMzIzNjVjYi03NWRjLTRkZGEtOWViZC05YjhlNThhN2YzNmUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJyb3BhLXZpZWphL2NhbWlzZXRhXzIucG5nIiwiaWF0IjoxNzQ5NzQ2NjYwLCJleHAiOjE3ODEyODI2NjB9.sj6Qqt9bBaSlZhIyY862n4vpnk3mLtqxBLqv7mzKcjc'],
-      tallasDisponibles: ['S', 'M', 'L', 'XL'],
-    ),
+
     Producto(
       id: '2',
       nombre: 'Conjunto entrenamiento',
@@ -132,6 +125,48 @@ class _TiendaPageState extends State<TiendaPage> {
       'https://sbbddlhuflacpqnrvpyb.supabase.co/storage/v1/object/sign/ropa-vieja/chubasquero_4.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9mMzIzNjVjYi03NWRjLTRkZGEtOWViZC05YjhlNThhN2YzNmUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJyb3BhLXZpZWphL2NodWJhc3F1ZXJvXzQuanBnIiwiaWF0IjoxNzQ5NzQ2ODI2LCJleHAiOjE3ODEyODI4MjZ9.Y9ZylkhFWQeeRV_s7YIZuN2mqIqHG90G7l-2nn2QNEE',
       'https://sbbddlhuflacpqnrvpyb.supabase.co/storage/v1/object/sign/ropa-vieja/chubasquero_5.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9mMzIzNjVjYi03NWRjLTRkZGEtOWViZC05YjhlNThhN2YzNmUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJyb3BhLXZpZWphL2NodWJhc3F1ZXJvXzUuanBnIiwiaWF0IjoxNzQ5NzQ2ODM0LCJleHAiOjE3ODEyODI4MzR9.K-N2sqrF673Z8ZsIP2D-01XAefhxLX-nv6Z3CTqCmxY'],
       tallasDisponibles: ['S', 'M', 'L', 'XL', 'XXL'],
+    ),
+    Producto(
+      id: '7',
+      nombre: 'Abrigo',
+      precio: '36.00€',
+      imagenes: ['https://sbbddlhuflacpqnrvpyb.supabase.co/storage/v1/object/sign/ropa-vieja/abrigo.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9mMzIzNjVjYi03NWRjLTRkZGEtOWViZC05YjhlNThhN2YzNmUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJyb3BhLXZpZWphL2Ficmlnby5qcGciLCJpYXQiOjE3NDk3NjU0MTMsImV4cCI6MTc4MTMwMTQxM30.EvDaAxZkUkFAPw44pACcpxTVcFA6nJBB0xjINxzdNrI',
+        'https://sbbddlhuflacpqnrvpyb.supabase.co/storage/v1/object/sign/ropa-vieja/abrigo_2.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9mMzIzNjVjYi03NWRjLTRkZGEtOWViZC05YjhlNThhN2YzNmUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJyb3BhLXZpZWphL2Ficmlnb18yLmpwZyIsImlhdCI6MTc0OTc2NTQzMywiZXhwIjoxNzgxMzAxNDMzfQ.rFHuyHuDp2-wb0y-UNzQ5_XoJWDvPizsUnOOLV4eZCc',
+        'https://sbbddlhuflacpqnrvpyb.supabase.co/storage/v1/object/sign/ropa-vieja/abrigo_3.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9mMzIzNjVjYi03NWRjLTRkZGEtOWViZC05YjhlNThhN2YzNmUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJyb3BhLXZpZWphL2Ficmlnb18zLmpwZyIsImlhdCI6MTc0OTc2NTQ1MiwiZXhwIjoxNzgxMzAxNDUyfQ.b6Izon9QZ8GZMIB_M83mD0lLtT3rncqe0iRqoFW5tNM'],
+      tallasDisponibles: ['S', 'M', 'L', 'XL', 'XXL'],
+    ),
+    Producto(
+      id: '8',
+      nombre: 'Mochila',
+      precio: '30.00€',
+      imagenes: ['https://sbbddlhuflacpqnrvpyb.supabase.co/storage/v1/object/sign/ropa-vieja/mochila.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9mMzIzNjVjYi03NWRjLTRkZGEtOWViZC05YjhlNThhN2YzNmUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJyb3BhLXZpZWphL21vY2hpbGEuanBnIiwiaWF0IjoxNzQ5NzY1NTMyLCJleHAiOjE3ODEzMDE1MzJ9.HuZYiBRaQOHDXf7U4xRHLg-XvQ-IF_UpQg8u1hyIxzI',
+        'https://sbbddlhuflacpqnrvpyb.supabase.co/storage/v1/object/sign/ropa-vieja/mochila_2.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9mMzIzNjVjYi03NWRjLTRkZGEtOWViZC05YjhlNThhN2YzNmUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJyb3BhLXZpZWphL21vY2hpbGFfMi5qcGciLCJpYXQiOjE3NDk3NjU1MzksImV4cCI6MTc4MTMwMTUzOX0.xACREYWEKbad77USH7lXaV3SpGwNDmoOv6Eq46bzxuc',
+        'https://sbbddlhuflacpqnrvpyb.supabase.co/storage/v1/object/sign/ropa-vieja/mochila_3.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9mMzIzNjVjYi03NWRjLTRkZGEtOWViZC05YjhlNThhN2YzNmUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJyb3BhLXZpZWphL21vY2hpbGFfMy5qcGciLCJpYXQiOjE3NDk3NjU1NDYsImV4cCI6MTc4MTMwMTU0Nn0.Utvt1s2b6ge0cmZ6rMP642dSbpAYeChkqk9dhdOjets'],
+
+    ),
+    Producto(
+      id: '9',
+      nombre: 'Polo',
+      precio: '15.00€',
+      imagenes: ['https://sbbddlhuflacpqnrvpyb.supabase.co/storage/v1/object/sign/ropa-vieja/polo.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9mMzIzNjVjYi03NWRjLTRkZGEtOWViZC05YjhlNThhN2YzNmUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJyb3BhLXZpZWphL3BvbG8uanBnIiwiaWF0IjoxNzQ5NzY1NjQwLCJleHAiOjE3ODEzMDE2NDB9.UIYGlzIu02TNJWnielAv3E7gekDJ8bBhgj_kmzXIBmI',
+        'https://sbbddlhuflacpqnrvpyb.supabase.co/storage/v1/object/sign/ropa-vieja/polo_2.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9mMzIzNjVjYi03NWRjLTRkZGEtOWViZC05YjhlNThhN2YzNmUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJyb3BhLXZpZWphL3BvbG9fMi5qcGciLCJpYXQiOjE3NDk3NjU2NTAsImV4cCI6MTc4MTMwMTY1MH0.mdu4hZt3cxMKJRBOLLGg3w1BQUsk8nfEEMyZmKMsfko'],
+      tallasDisponibles: ['S', 'M', 'L', 'XL', 'XXL'],
+    ),
+    Producto(
+      id: '10',
+      nombre: 'Sudadera',
+      precio: '20.00€',
+      imagenes: ['https://sbbddlhuflacpqnrvpyb.supabase.co/storage/v1/object/sign/ropa-vieja/sudadera.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9mMzIzNjVjYi03NWRjLTRkZGEtOWViZC05YjhlNThhN2YzNmUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJyb3BhLXZpZWphL3N1ZGFkZXJhLmpwZyIsImlhdCI6MTc0OTc2NTY1OCwiZXhwIjoxNzgxMzAxNjU4fQ.qhZs2SydtmD27v1SkxmaetvqKOTQJlBvKeeOFGTYehk',
+        'https://sbbddlhuflacpqnrvpyb.supabase.co/storage/v1/object/sign/ropa-vieja/sudadera_2.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9mMzIzNjVjYi03NWRjLTRkZGEtOWViZC05YjhlNThhN2YzNmUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJyb3BhLXZpZWphL3N1ZGFkZXJhXzIuanBnIiwiaWF0IjoxNzQ5NzY1NjY4LCJleHAiOjE3ODEzMDE2Njh9.4WoYpihc63qP1-VeVj2rAWru2QL3Gxc3qtCete44Hm8'],
+      tallasDisponibles: ['S', 'M', 'L', 'XL', 'XXL'],
+    ),
+    Producto(
+      id: '1',
+      nombre: 'Camiseta Oficial 2025',
+      precio: '39.99€',
+      imagenes: ['https://sbbddlhuflacpqnrvpyb.supabase.co/storage/v1/object/sign/ropa-vieja/camiseta.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9mMzIzNjVjYi03NWRjLTRkZGEtOWViZC05YjhlNThhN2YzNmUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJyb3BhLXZpZWphL2NhbWlzZXRhLnBuZyIsImlhdCI6MTc0OTc0NDk2NiwiZXhwIjozMzI1NDIwODk2Nn0.vpVBDkQPcM4sweYY2mYdFrU6ZS9fiTA6bT4rPrQAAao',
+        'https://sbbddlhuflacpqnrvpyb.supabase.co/storage/v1/object/sign/ropa-vieja/camiseta_2.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9mMzIzNjVjYi03NWRjLTRkZGEtOWViZC05YjhlNThhN2YzNmUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJyb3BhLXZpZWphL2NhbWlzZXRhXzIucG5nIiwiaWF0IjoxNzQ5NzQ2NjYwLCJleHAiOjE3ODEyODI2NjB9.sj6Qqt9bBaSlZhIyY862n4vpnk3mLtqxBLqv7mzKcjc'],
+      tallasDisponibles: ['S', 'M', 'L', 'XL'],
     ),
   ];
 
