@@ -121,6 +121,14 @@ class _NoticiaDetailState extends State<NoticiaDetail> {
                 width: double.infinity,
                 height: 250,
                 fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) {
+                  return Image.asset(
+                    'assets/imagen_default.jpg',
+                    width: double.infinity,
+                    height: 250,
+                    fit: BoxFit.cover,
+                  );
+                },
               ),
             ),
             const SizedBox(height: 20),
