@@ -5,7 +5,9 @@ import 'package:add_2_calendar/add_2_calendar.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:cde_amistad/main.dart';
 import 'package:intl/intl.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:table_calendar/table_calendar.dart';
+
 
 class InicioPage extends StatefulWidget {
   final VoidCallback? onVerNoticias;
@@ -360,6 +362,7 @@ class _InicioPageState extends State<InicioPage> {
                     fontSize: 20, fontWeight: FontWeight.w600)),
                 const SizedBox(height: 10),
                 TableCalendar(
+                  locale: 'es_ES',
                   firstDay: DateTime.utc(2020, 1, 1),
                   lastDay: DateTime.utc(2030, 12, 31),
                   focusedDay: _focusedDay,

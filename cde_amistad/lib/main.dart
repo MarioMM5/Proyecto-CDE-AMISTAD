@@ -6,6 +6,7 @@ import 'package:cde_amistad/pages/tiendaPage.dart';
 import 'package:cde_amistad/pages/protocolosPage.dart';
 import 'package:cde_amistad/pages/masPage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 final GlobalKey<_MyHomePageState> myHomePageKey = GlobalKey<_MyHomePageState>();
 
@@ -49,6 +50,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'CDE AMISTAD',
+
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.green, brightness: Brightness.light),
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
@@ -66,6 +68,16 @@ class _MyAppState extends State<MyApp> {
         ),
       ),
       themeMode: _isDarkMode ? ThemeMode.dark : ThemeMode.light,
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('es', ''), // Español
+        // otras locales si quieres
+      ],
+      locale: const Locale('es', ''), // fuerza español globalmente si quieres
       home: MyHomePage(
         key: myHomePageKey,
         title: 'CDE AMISTAD',
