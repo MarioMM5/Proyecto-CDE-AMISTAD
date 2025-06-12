@@ -62,8 +62,8 @@ class _MyAppState extends State<MyApp> {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.green, brightness: Brightness.dark),
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
           backgroundColor: Colors.green.shade900,
-          selectedItemColor: Colors.green.shade200,
-          unselectedItemColor: Colors.green.shade500,
+          selectedItemColor: Colors.green.shade50,
+          unselectedItemColor: Colors.green.shade200,
         ),
       ),
       themeMode: _isDarkMode ? ThemeMode.dark : ThemeMode.light,
