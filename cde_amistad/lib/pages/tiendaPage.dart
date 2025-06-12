@@ -232,17 +232,9 @@ class _TiendaPageState extends State<TiendaPage> {
                   ),
                 ],
               ),
-              Row(
-                children: [
-                  IconButton(
-                    icon: const Icon(Icons.shopping_cart, color: Colors.white),
-                    onPressed: _abrirCarrito,
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.settings, color: Colors.white),
-                    onPressed: _abrirAjustes,
-                  ),
-                ],
+              IconButton(
+                icon: const Icon(Icons.settings, color: Colors.white),
+                onPressed: _abrirAjustes,
               ),
             ],
           ),
@@ -315,8 +307,14 @@ class _TiendaPageState extends State<TiendaPage> {
           );
         },
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _abrirCarrito,
+        backgroundColor: const Color(0xFF388E3C),
+        child: const Icon(Icons.shopping_cart),
+      ),
     );
   }
+
 }
 
 // Vista del Carrito
