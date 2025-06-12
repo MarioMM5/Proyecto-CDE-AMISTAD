@@ -61,7 +61,7 @@ class _NoticiasPageState extends State<NoticiasPage> {
                   Image.asset('assets/icono.png', height: 30),
                   const SizedBox(width: 10),
                   const Text(
-                    'Sobre nosotros',
+                    'Noticias',
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.w600,
