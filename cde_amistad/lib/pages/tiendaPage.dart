@@ -5,14 +5,14 @@ class Producto {
   final String id;
   final String nombre;
   final String precio;
-  final String imagen;
+  final List<String> imagenes;
   final List<String>? tallasDisponibles;
 
   Producto({
     required this.id,
     required this.nombre,
     required this.precio,
-    required this.imagen,
+    required this.imagenes,
     this.tallasDisponibles,
   });
 }
@@ -45,34 +45,34 @@ class _TiendaPageState extends State<TiendaPage> {
       id: '1',
       nombre: 'Camiseta Oficial 2025',
       precio: '39.99€',
-      imagen: 'https://sbbddlhuflacpqnrvpyb.supabase.co/storage/v1/object/sign/ropa-vieja/camiseta.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9mMzIzNjVjYi03NWRjLTRkZGEtOWViZC05YjhlNThhN2YzNmUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJyb3BhLXZpZWphL2NhbWlzZXRhLnBuZyIsImlhdCI6MTc0OTc0NDk2NiwiZXhwIjozMzI1NDIwODk2Nn0.vpVBDkQPcM4sweYY2mYdFrU6ZS9fiTA6bT4rPrQAAao',
+      imagenes: ['https://sbbddlhuflacpqnrvpyb.supabase.co/storage/v1/object/sign/ropa-vieja/camiseta.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9mMzIzNjVjYi03NWRjLTRkZGEtOWViZC05YjhlNThhN2YzNmUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJyb3BhLXZpZWphL2NhbWlzZXRhLnBuZyIsImlhdCI6MTc0OTc0NDk2NiwiZXhwIjozMzI1NDIwODk2Nn0.vpVBDkQPcM4sweYY2mYdFrU6ZS9fiTA6bT4rPrQAAao'],
       tallasDisponibles: ['S', 'M', 'L', 'XL'],
     ),
     Producto(
       id: '2',
       nombre: 'Conjunto entrenamiento',
       precio: '49.99€',
-      imagen: 'https://sbbddlhuflacpqnrvpyb.supabase.co/storage/v1/object/sign/ropa-vieja/conjunto_entero.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9mMzIzNjVjYi03NWRjLTRkZGEtOWViZC05YjhlNThhN2YzNmUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJyb3BhLXZpZWphL2Nvbmp1bnRvX2VudGVyby5qcGciLCJpYXQiOjE3NDk3NDUwNDQsImV4cCI6MTc4MTI4MTA0NH0.VmU39hweJn5rRCl5oweRTuYydTyRohf8JoWamWgdIPk',
+      imagenes: ['https://sbbddlhuflacpqnrvpyb.supabase.co/storage/v1/object/sign/ropa-vieja/conjunto_entero.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9mMzIzNjVjYi03NWRjLTRkZGEtOWViZC05YjhlNThhN2YzNmUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJyb3BhLXZpZWphL2Nvbmp1bnRvX2VudGVyby5qcGciLCJpYXQiOjE3NDk3NDUwNDQsImV4cCI6MTc4MTI4MTA0NH0.VmU39hweJn5rRCl5oweRTuYydTyRohf8JoWamWgdIPk'],
       tallasDisponibles: ['S', 'M', 'L'],
     ),
     Producto(
       id: '3',
       nombre: 'Medias de partido',
       precio: '15.99€',
-      imagen: 'https://sbbddlhuflacpqnrvpyb.supabase.co/storage/v1/object/sign/ropa-vieja/calcetines_3.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9mMzIzNjVjYi03NWRjLTRkZGEtOWViZC05YjhlNThhN2YzNmUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJyb3BhLXZpZWphL2NhbGNldGluZXNfMy5qcGciLCJpYXQiOjE3NDk3NDUwODEsImV4cCI6MTc4MTI4MTA4MX0.VzSPRDT6KoMQwEFL8R2vcnBglYNvAiHfGYws6tMondU',
+      imagenes: ['https://sbbddlhuflacpqnrvpyb.supabase.co/storage/v1/object/sign/ropa-vieja/calcetines_3.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9mMzIzNjVjYi03NWRjLTRkZGEtOWViZC05YjhlNThhN2YzNmUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJyb3BhLXZpZWphL2NhbGNldGluZXNfMy5qcGciLCJpYXQiOjE3NDk3NDUwODEsImV4cCI6MTc4MTI4MTA4MX0.VzSPRDT6KoMQwEFL8R2vcnBglYNvAiHfGYws6tMondU'],
     ),
     Producto(
       id: '4',
       nombre: 'Chaqueta de chandal',
       precio: '20.00€',
-      imagen: 'https://sbbddlhuflacpqnrvpyb.supabase.co/storage/v1/object/sign/ropa-vieja/chandal.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9mMzIzNjVjYi03NWRjLTRkZGEtOWViZC05YjhlNThhN2YzNmUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJyb3BhLXZpZWphL2NoYW5kYWwuanBnIiwiaWF0IjoxNzQ5NzQ1MTExLCJleHAiOjE3ODEyODExMTF9.dmlKbVruybo2kyNS1Z_MwD3ddEodGbPbDmVWWNh1Kow',
+      imagenes: ['https://sbbddlhuflacpqnrvpyb.supabase.co/storage/v1/object/sign/ropa-vieja/chandal.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9mMzIzNjVjYi03NWRjLTRkZGEtOWViZC05YjhlNThhN2YzNmUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJyb3BhLXZpZWphL2NoYW5kYWwuanBnIiwiaWF0IjoxNzQ5NzQ1MTExLCJleHAiOjE3ODEyODExMTF9.dmlKbVruybo2kyNS1Z_MwD3ddEodGbPbDmVWWNh1Kow'],
       tallasDisponibles: ['S', 'M', 'L', 'XL', 'XXL'],
     ),
     Producto(
       id: '6',
       nombre: 'Pantalon de chandal',
       precio: '20.00€',
-      imagen: 'https://sbbddlhuflacpqnrvpyb.supabase.co/storage/v1/object/sign/ropa-vieja/chandal_3.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9mMzIzNjVjYi03NWRjLTRkZGEtOWViZC05YjhlNThhN2YzNmUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJyb3BhLXZpZWphL2NoYW5kYWxfMy5qcGciLCJpYXQiOjE3NDk3NDUxMzYsImV4cCI6MTc4MTI4MTEzNn0.98M88yoPH4RIslav0csHC6wxdSkxOwUGLyBZIWOccyA',
+      imagenes: ['https://sbbddlhuflacpqnrvpyb.supabase.co/storage/v1/object/sign/ropa-vieja/chandal_3.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9mMzIzNjVjYi03NWRjLTRkZGEtOWViZC05YjhlNThhN2YzNmUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJyb3BhLXZpZWphL2NoYW5kYWxfMy5qcGciLCJpYXQiOjE3NDk3NDUxMzYsImV4cCI6MTc4MTI4MTEzNn0.98M88yoPH4RIslav0csHC6wxdSkxOwUGLyBZIWOccyA'],
       tallasDisponibles: ['S', 'M', 'L', 'XL', 'XXL'],
     ),
   ];
@@ -103,57 +103,95 @@ class _TiendaPageState extends State<TiendaPage> {
 
   void _seleccionarProducto(Producto producto) {
     String? tallaSeleccionada;
+    int currentPage = 0;
 
     showDialog(
       context: context,
       builder: (context) {
-        return AlertDialog(
-          title: Text(producto.nombre),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Image.network(producto.imagen),
-              const SizedBox(height: 12),
-              if (producto.tallasDisponibles != null)
-                DropdownButtonFormField<String>(
-                  decoration: const InputDecoration(labelText: 'Selecciona talla'),
-                  items: producto.tallasDisponibles!
-                      .map((talla) => DropdownMenuItem(value: talla, child: Text(talla)))
-                      .toList(),
-                  onChanged: (value) {
-                    tallaSeleccionada = value;
+        return StatefulBuilder(
+          builder: (context, setState) {
+            return AlertDialog(
+              title: Text(producto.nombre),
+              content: SingleChildScrollView( // <-- AQUI VA EL CAMBIO
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    SizedBox(
+                      height: 200,
+                      width: MediaQuery.of(context).size.width * 0.6,  // Le damos un ancho relativo
+                      child: PageView.builder(
+                        itemCount: producto.imagenes.length,
+                        onPageChanged: (index) {
+                          setState(() {
+                            currentPage = index;
+                          });
+                        },
+                        itemBuilder: (context, index) {
+                          return Image.network(producto.imagenes[index]);
+                        },
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: List.generate(producto.imagenes.length, (index) {
+                        return Container(
+                          margin: const EdgeInsets.symmetric(horizontal: 4),
+                          width: 8,
+                          height: 8,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: currentPage == index ? Colors.green : Colors.grey,
+                          ),
+                        );
+                      }),
+                    ),
+                    const SizedBox(height: 12),
+                    if (producto.tallasDisponibles != null)
+                      DropdownButtonFormField<String>(
+                        decoration: const InputDecoration(labelText: 'Selecciona talla'),
+                        items: producto.tallasDisponibles!
+                            .map((talla) => DropdownMenuItem(value: talla, child: Text(talla)))
+                            .toList(),
+                        onChanged: (value) {
+                          tallaSeleccionada = value;
+                        },
+                      ),
+                  ],
+                ),
+              ),
+              actions: [
+                TextButton(
+                  child: const Text('Cancelar'),
+                  onPressed: () => Navigator.pop(context),
+                ),
+                ElevatedButton(
+                  child: const Text('Añadir al carrito'),
+                  onPressed: () {
+                    if (producto.tallasDisponibles != null && tallaSeleccionada == null) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text('Selecciona una talla')),
+                      );
+                      return;
+                    }
+                    setState(() {
+                      _carrito.add(ItemCarrito(
+                        producto: producto,
+                        talla: tallaSeleccionada,
+                      ));
+                    });
+                    Navigator.pop(context);
                   },
                 ),
-            ],
-          ),
-          actions: [
-            TextButton(
-              child: const Text('Cancelar'),
-              onPressed: () => Navigator.pop(context),
-            ),
-            ElevatedButton(
-              child: const Text('Añadir al carrito'),
-              onPressed: () {
-                if (producto.tallasDisponibles != null && tallaSeleccionada == null) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Selecciona una talla')),
-                  );
-                  return;
-                }
-                setState(() {
-                  _carrito.add(ItemCarrito(
-                    producto: producto,
-                    talla: tallaSeleccionada,
-                  ));
-                });
-                Navigator.pop(context);
-              },
-            ),
-          ],
+              ],
+            );
+          },
         );
       },
     );
   }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -242,7 +280,7 @@ class _TiendaPageState extends State<TiendaPage> {
                     child: ClipRRect(
                       borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
                       child: Image.network(
-                        producto.imagen,
+                        producto.imagenes[0],
                         fit: BoxFit.cover,
                       ),
                     ),
