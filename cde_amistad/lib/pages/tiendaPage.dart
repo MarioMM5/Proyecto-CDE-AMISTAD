@@ -142,22 +142,35 @@ class _TiendaPageState extends State<TiendaPage> {
   void _abrirCarrito() {
     showModalBottomSheet(
       context: context,
-      builder: (context) => _CarritoView(
-        carrito: _carrito,
-        onEliminar: (item) {
-          setState(() {
-            _carrito.remove(item);
-          });
-        },
-        onPagar: () {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Redirigiendo a la pasarela de pago...')),
-          );
-          // Aquí iría la integración con la pasarela de pago
-        },
-      ),
+      isScrollControlled: true,  // para que el modal ocupe más espacio si quieres
+      builder: (context) {
+        List<ItemCarrito> carritoLocal = List.from(_carrito);
+        return StatefulBuilder(
+          builder: (context, setModalState) {
+            void eliminarItem(ItemCarrito item) {
+              setModalState(() {
+                carritoLocal.remove(item);
+              });
+              setState(() {
+                _carrito.remove(item);
+              });
+            }
+
+            return _CarritoView(
+              carrito: carritoLocal,
+              onEliminar: eliminarItem,
+              onPagar: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Redirigiendo a la pasarela de pago...')),
+                );
+              },
+            );
+          },
+        );
+      },
     );
   }
+
 
   void _seleccionarProducto(Producto producto) {
     String? tallaSeleccionada;
@@ -352,8 +365,6 @@ class _TiendaPageState extends State<TiendaPage> {
       ),
     );
   }
-
-
 }
 
 // Vista del Carrito
