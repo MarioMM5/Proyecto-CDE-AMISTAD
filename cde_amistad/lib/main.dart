@@ -4,7 +4,6 @@ import 'package:cde_amistad/pages/inicioPage.dart';
 import 'package:cde_amistad/pages/noticiasPage.dart';
 import 'package:cde_amistad/pages/tiendaPage.dart';
 import 'package:cde_amistad/pages/protocolosPage.dart';
-import 'package:cde_amistad/myApp.dart';
 import 'package:cde_amistad/pages/masPage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
