@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <img src="${item.imagen[0]}" alt="${item.nombre}" style="max-height: 100%; max-width: 100%; object-fit: contain;">
               </div>
               <br>
-            <strong>${item.nombre}</strong><br><br> - Talla: ${item.talla || "—"}<br> - Cantidad: ${cantidadInput}`;
+            <strong>${item.nombre}</strong><br><br> - Talla: ${item.talla || "—"}<br><br> - Cantidad: ${cantidadInput}`;
         }
 
         cartItemsUl.appendChild(li);
