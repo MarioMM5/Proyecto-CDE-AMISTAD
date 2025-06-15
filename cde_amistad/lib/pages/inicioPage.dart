@@ -297,6 +297,7 @@ class _InicioPageState extends State<InicioPage> {
                                   contenido: noticia['contenido'],
                                   imagen: noticia['imagen'],
                                   fecha: fecha,
+                                  onToggleTheme: widget.onToggleTheme,
                                 ),
                           ),
                         );

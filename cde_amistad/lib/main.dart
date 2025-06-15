@@ -75,9 +75,9 @@ class _MyAppState extends State<MyApp> {
       ],
       supportedLocales: const [
         Locale('es', ''), // Español
-        // otras locales si quieres
+
       ],
-      locale: const Locale('es', ''), // fuerza español globalmente si quieres
+      locale: const Locale('es', ''),
       home: MyHomePage(
         key: myHomePageKey,
         title: 'CDE AMISTAD',
@@ -109,7 +109,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    // Pasar la función a InicioPage si quieres usarla en el drawer ahí
+
     _paginas = [
       InicioPage(onToggleTheme: widget.onToggleTheme),
       NoticiasPage(onToggleTheme: widget.onToggleTheme),
