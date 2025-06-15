@@ -148,7 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   btnPaypal.addEventListener("click", () => {
-    window.location.href = "https://www.paypal.com/checkoutnow";
+  window.open("https://www.paypal.com/checkoutnow", "_blank");
     formTarjeta.style.display = "none";
   });
 
