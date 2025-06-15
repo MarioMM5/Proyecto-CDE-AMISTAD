@@ -29,60 +29,72 @@ document.addEventListener("DOMContentLoaded", () => {
   const cartItemsUl = document.getElementById("cart-items");
   const checkoutBtn = document.getElementById("checkout-btn");
 
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-  if (cart.length === 0) {
-    cartItemsUl.innerHTML = "<li>El carrito está vacío.</li>";
-  } else {
-    cartItemsUl.innerHTML = "";
+  function renderCart() {
+    if (cart.length === 0) {
+      cartItemsUl.innerHTML = "<li>El carrito está vacío.</li>";
+    } else {
+      cartItemsUl.innerHTML = "";
 
-    cart.forEach((item) => {
-      const li = document.createElement("li");
-      if (item.nombre === "Pack del Equipo") {
-        li.innerHTML = `
-          <div style="width: 150px; height: 150px; background-color: white; display: flex; align-items: center; justify-content: center; margin: 0 auto;">
-              <img src="${item.imagen[0]}" alt="${item.nombre}" style="max-height: 100%; max-width: 100%; object-fit: contain;">
-            </div>
-            <br>
-            <strong>${item.nombre}</strong><br>
-            Conjunto: ${item.conjunto}<br>
-            Sudadera: ${item.sudadera}<br>
-            Medias: ${item.medias}<br>
-            Chandal: ${item.chandal}<br>
-            Abrigo: ${item.abrigo}<br>
-            Chubasquero: ${item.chubasquero}<br>
-            Ropa de juego: ${item.ropaJuego}<br>
-            Cantidad: ${item.cantidad} <br>
-          `;
-      } else if (item.nombre === "Conjunto del Equipo") {
-        li.innerHTML = `
-          <div style="width: 150px; height: 150px; display: flex; align-items: center; justify-content: center; margin: 0 auto;">
-              <img src="${item.imagen[0]}" alt="${
-          item.nombre
-        }" style="max-height: 100%; max-width: 100%; object-fit: contain;">
-            </div>
-            <br>
-          <strong>${item.nombre}</strong> - Talla: ${
-          item.talla || "—"
-        } - Medias: ${item.medias || "—"} - Cantidad: ${item.cantidad}`;
-      } else {
-        li.innerHTML = `
-          <div style="width: 150px; height: 150px; display: flex; align-items: center; justify-content: center; margin: 0 auto;">
-              <img src="${item.imagen[0]}" alt="${
-          item.nombre
-        }" style="max-height: 100%; max-width: 100%; object-fit: contain;">
-            </div>
-            <br>
-          <strong>${item.nombre}</strong> - Talla: ${
-          item.talla || "—"
-        } - Cantidad: ${item.cantidad}`;
-      }
-      cartItemsUl.appendChild(li);
-    });
+      cart.forEach((item, index) => {
+        const li = document.createElement("li");
+        let cantidadInput = `<input type="number" min="1" value="${item.cantidad}" style="width: 50px;" data-index="${index}" class="cantidad-input" />`;
+
+        if (item.nombre === "Pack del Equipo") {
+          li.innerHTML = `
+            <div style="width: 150px; height: 150px; background-color: white; display: flex; align-items: center; justify-content: center; margin: 0 auto;">
+                <img src="${item.imagen[0]}" alt="${item.nombre}" style="max-height: 100%; max-width: 100%; object-fit: contain;">
+              </div>
+              <br>
+              <strong>${item.nombre}</strong><br><br>
+              Conjunto: ${item.conjunto}<br>
+              Sudadera: ${item.sudadera}<br>
+              Medias: ${item.medias}<br>
+              Chandal: ${item.chandal}<br>
+              Abrigo: ${item.abrigo}<br>
+              Chubasquero: ${item.chubasquero}<br>
+              Ropa de juego: ${item.ropaJuego}<br><br>
+              Cantidad: ${cantidadInput} <br>
+            `;
+        } else if (item.nombre === "Conjunto del Equipo") {
+          li.innerHTML = `
+            <div style="width: 150px; height: 150px; display: flex; align-items: center; justify-content: center; margin: 0 auto;">
+                <img src="${item.imagen[0]}" alt="${item.nombre}" style="max-height: 100%; max-width: 100%; object-fit: contain;">
+              </div>
+              <br>
+            <strong>${item.nombre}</strong><br><br> - Talla: ${item.talla || "—"}<br> - Medias: ${item.medias || "—"}<br><br> - Cantidad: ${cantidadInput}`;
+        } else {
+          li.innerHTML = `
+            <div style="width: 150px; height: 150px; display: flex; align-items: center; justify-content: center; margin: 0 auto;">
+                <img src="${item.imagen[0]}" alt="${item.nombre}" style="max-height: 100%; max-width: 100%; object-fit: contain;">
+              </div>
+              <br>
+            <strong>${item.nombre}</strong><br><br> - Talla: ${item.talla || "—"}<br> - Cantidad: ${cantidadInput}`;
+        }
+
+        cartItemsUl.appendChild(li);
+      });
+
+      document.querySelectorAll(".cantidad-input").forEach(input => {
+        input.addEventListener("change", (e) => {
+          const index = e.target.dataset.index;
+          let newCantidad = parseInt(e.target.value);
+          if (isNaN(newCantidad) || newCantidad < 1) {
+            newCantidad = 1;
+            e.target.value = newCantidad;
+          }
+          cart[index].cantidad = newCantidad;
+          localStorage.setItem("cart", JSON.stringify(cart));
+        });
+      });
+    }
   }
 
+  renderCart();
+
   checkoutBtn.addEventListener("click", () => {
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart = JSON.parse(localStorage.getItem("cart")) || [];
     if (cart.length === 0) {
       alert("El carrito está vacío.");
       return;
@@ -90,6 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = "checkout.html";
   });
 });
+
 
 document.addEventListener("DOMContentLoaded", () => {
   const clearCartBtn = document.getElementById("clear-cart-btn");
