@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (cart.length === 0) {
     cartContainer.innerHTML = "<p>No hay productos en el carrito.</p>";
   } else {
-    cartContainer.innerHTML = ""; // limpiamos antes
+    cartContainer.innerHTML = "";
 
     let total = 0;
     cart.forEach((product) => {
@@ -116,7 +116,6 @@ document.addEventListener("DOMContentLoaded", () => {
       cartContainer.appendChild(item);
     });
 
-    // Mostrar total
     const totalElement = document.createElement("div");
     totalElement.className = "cart-total";
     totalElement.innerHTML = `<h4>Total:</h4><p>${total.toFixed(2)} €</p>`;

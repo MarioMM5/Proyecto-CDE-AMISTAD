@@ -90,6 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = "checkout.html";
   });
 });
+
 document.addEventListener("DOMContentLoaded", () => {
   const clearCartBtn = document.getElementById("clear-cart-btn");
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
