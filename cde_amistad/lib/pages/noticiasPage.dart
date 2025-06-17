@@ -108,8 +108,37 @@ class _NoticiasPageState extends State<NoticiasPage> {
                         title: Text('Política de Privacidad'),
                         content: SingleChildScrollView(
                           child: Text(
-                            '''Esta aplicación móvil es propiedad de CDE AMISTAD. Recopilamos el correo electrónico del usuario (si lo proporciona) y gestionamos la sincronización del calendario para añadir eventos deportivos. Los datos se almacenan de forma segura y no se comparten con terceros salvo por obligación legal. Los usuarios pueden ejercer sus derechos de acceso, rectificación o cancelación escribiendo a info@cdeamistad.com.''',
-                          ),
+                              '''
+Política de Privacidad
+Última actualización: 17 de junio de 2025
+
+En CDE Amistad, respetamos tu privacidad y estamos comprometidos con proteger los datos personales que puedas proporcionarnos al utilizar nuestra aplicación.
+
+1. Información que recopilamos
+- Datos de uso: Recopilamos información anónima sobre cómo utilizas la app (pantallas vistas, eventos abiertos, etc.).
+- Notificaciones: Solo accedemos a datos necesarios para enviarte notificaciones relacionadas con actividades del club (si decides activarlas).
+- Datos personales: En versiones futuras podríamos solicitar nombre, correo o equipo preferido para personalizar tu experiencia. Si eso sucede, se te pedirá permiso explícito.
+
+2. Finalidad del tratamiento
+Utilizamos los datos para:
+- Mejorar la app y su funcionalidad.
+- Enviar notificaciones de noticias, partidos, eventos y otras actividades del club.
+- Garantizar el correcto funcionamiento técnico.
+
+3. Compartición de datos
+No compartimos tus datos personales con terceros, salvo obligación legal o si se trata de servicios estrictamente necesarios para el funcionamiento de la app (como servicios de análisis o notificaciones).
+
+4. Seguridad
+Implementamos medidas técnicas y organizativas para proteger tu información personal frente a accesos no autorizados o pérdida.
+
+5. Derechos del usuario
+Puedes solicitar en cualquier momento:
+- Acceso a tus datos personales.
+- Rectificación o eliminación.
+- Limitación u oposición al tratamiento.
+
+Para ejercer estos derechos, contacta con nosotros en: info@cdeamistad.com
+'''                          ),
                         ),
                         actions: [
                           TextButton(
@@ -134,7 +163,34 @@ class _NoticiasPageState extends State<NoticiasPage> {
                         title: Text('Términos y Condiciones'),
                         content: SingleChildScrollView(
                           child: Text(
-                            '''Al utilizar esta App, acepta que CDE AMISTAD no se responsabiliza por posibles errores en la información mostrada. El usuario se compromete a un uso responsable. Todos los derechos de propiedad intelectual están reservados. Las disputas serán resueltas bajo las leyes de España y jurisdicción de Alcorcón (Madrid).''',
+                            '''
+Términos y Condiciones de Uso
+Última actualización: 17 de junio de 2025
+
+Estos Términos regulan el acceso y uso de la aplicación móvil del CDE Amistad. Al utilizar la app, aceptas cumplir estos términos.
+
+1. Uso permitido
+Esta app está diseñada para:
+- Informar sobre noticias, actividades y eventos del CDE Amistad.
+- Mostrar equipos, jugadores, clasificaciones y partidos.
+- Facilitar la conexión entre el club y sus seguidores.
+
+No está permitido:
+- Utilizar la app para fines ilegales o comerciales no autorizados.
+- Alterar o interferir con el funcionamiento de la app.
+
+2. Propiedad intelectual
+Todos los contenidos (textos, imágenes, logos, etc.) son propiedad del CDE Amistad o de sus respectivos titulares. No se permite su reproducción sin consentimiento previo.
+
+3. Responsabilidad
+La app se proporciona "tal cual". Aunque hacemos esfuerzos para mantener la información actualizada, no garantizamos la exactitud completa de todos los datos (ej. horarios de partidos o clasificaciones).
+
+4. Modificaciones
+Nos reservamos el derecho a modificar estos términos o la política de privacidad. Te notificaremos cualquier cambio relevante a través de la app.
+
+5. Contacto
+Si tienes dudas, escríbenos a: info@cdeamistad.com
+''',
                           ),
                         ),
                         actions: [
@@ -144,19 +200,6 @@ class _NoticiasPageState extends State<NoticiasPage> {
                           ),
                         ],
                       ),
-                    );
-                  });
-                },
-              ),
-              ListTile(
-                leading: Icon(Icons.article),
-                title: Text('Licencias de Software'),
-                onTap: () {
-                  Navigator.of(context).pop();
-                  Future.delayed(Duration.zero, () {
-                    showLicensePage(
-                      context: context,
-                      applicationName: 'CDE AMISTAD',
                     );
                   });
                 },
