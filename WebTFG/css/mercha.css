@@ -560,3 +560,26 @@ body {
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+.cantidad-input {
+  width: 60px;
+  padding: 6px 10px;
+  font-size: 1rem;
+  border: 2px solid #4CAF50; /* Verde bonito */
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(76, 175, 80, 0.3);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  outline: none;
+  appearance: textfield; /* Quita las flechas en algunos navegadores */
+}
+
+.cantidad-input::-webkit-outer-spin-button,
+.cantidad-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.cantidad-input:focus {
+  border-color: #388E3C; /* Verde más oscuro */
+  box-shadow: 0 0 8px rgba(56, 142, 60, 0.7);
+}

@@ -1,6 +1,10 @@
+const SUPABASE_URL = "https://sbbddlhuflacpqnrvpyb.supabase.co";
+const SUPABASE_ANON_KEY =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNiYmRkbGh1ZmxhY3BxbnJ2cHliIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDYxMjUxNzAsImV4cCI6MjA2MTcwMTE3MH0.ZGvT8pasYJoW-2nLfoRyH5gqCsy9c218Cqkoz0XUxtU"; // tu key completa
+const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const params = new URLSearchParams(window.location.search);
+const tipo = params.get("tipo");
 window.addEventListener("DOMContentLoaded", () => {
-  const params = new URLSearchParams(window.location.search);
-  const tipo = params.get("tipo");
 
   const contenido = {
     femenino: {
@@ -88,7 +92,7 @@ const icon = toggleBtn.querySelector("i");
 toggleBtn.addEventListener("click", () => {
   sidebar.classList.toggle("collapsed");
   icon.classList.toggle("fa-arrow-right");
-  icon.classList.toggle("fa-xmark"); 
+  icon.classList.toggle("fa-xmark");
   arrow.innerHTML = sidebar.classList.contains("collapsed")
     ? "&#x25C0;"
     : "&#x25B6;";
@@ -100,4 +104,52 @@ window.addEventListener("scroll", () => {
   } else {
     header.classList.remove("scrolled");
   }
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.querySelector(".formulario-inscripcion form");
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const nombre = form.nombre.value.trim();
+    const fechaNacimiento = form.fecha_nacimiento.value; // YYYY-MM-DD string
+    const telefono = form.telefono.value.trim();
+    const correo = form.correo.value.trim();
+    const categoria = form.categoria.value;
+    const comentarios = form.comentarios.value.trim();
+
+    // Obtener fecha local "YYYY-MM-DD" en Madrid para created_at
+    const fechaLocalStr = new Date().toLocaleDateString("es-ES", {
+      timeZone: "Europe/Madrid",
+    });
+    const [day, month, year] = fechaLocalStr.split("/");
+    const created_at = `${year.padStart(4, "0")}-${month.padStart(
+      2,
+      "0"
+    )}-${day.padStart(2, "0")}`;
+
+    try {
+      const { data, error } = await supabaseClient.from("inscriptions").insert([
+        {
+          nombre,
+          fecha_nacimiento: fechaNacimiento,
+          telefono,
+          correo,
+          categoria,
+          comentarios,
+          tipo,
+          created_at,
+        },
+      ]);
+
+      if (error) throw error;
+
+      alert("¡Inscripción enviada con éxito!");
+      form.reset();
+    } catch (err) {
+      console.error("❌ Error al enviar inscripción:", err);
+      alert("Error al enviar la inscripción. Revisa la consola.");
+    }
+  });
 });

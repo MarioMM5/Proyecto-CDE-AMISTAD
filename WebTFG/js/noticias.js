@@ -165,6 +165,7 @@ function filterCards() {
 }
 
 document.getElementById("newsSearch").addEventListener("input", filterCards);
+
 document
   .getElementById("prevPage")
   .addEventListener("click", () => showPage(currentPage - 1));

@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (cart.length === 0) {
     cartContainer.innerHTML = "<p>No hay productos en el carrito.</p>";
   } else {
-    cartContainer.innerHTML = ""; // limpiamos antes
+    cartContainer.innerHTML = "";
 
     let total = 0;
     cart.forEach((product) => {
@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
         product.nombre === "Pack del Equipo" &&
         product.ropaJuego === "SI (+35.00€)"
       ) {
-        subtotal += 35;
+        subtotal += 35 * product.cantidad;
       }
 
       total += subtotal;
@@ -87,6 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <p><strong>Abrigo:</strong> ${product.abrigo}</p>
         <p><strong>Chubasquero:</strong> ${product.chubasquero}</p>
         <p><strong>Ropa de juego:</strong> ${product.ropaJuego}</p>
+        <p><strong>Precio unidad:</strong> ${product.precio.toFixed(2)} €</p>
         <p><strong>Subtotal:</strong> ${subtotal.toFixed(2)} €</p>
       </div>
     `;
@@ -98,6 +99,9 @@ document.addEventListener("DOMContentLoaded", () => {
           <p><strong>Cantidad:</strong> ${product.cantidad}</p>
           <p><strong>Talla:</strong> ${product.talla}</p>
           <p><strong>Medias:</strong> ${product.medias}</p>
+          <p><strong>Precio unidad:</strong> ${product.precio.toFixed(2)} €</p>
+          <p><strong>Subtotal:</strong> ${subtotal.toFixed(2)} €</p>
+
         </div>
       `;
       } else {
@@ -116,7 +120,6 @@ document.addEventListener("DOMContentLoaded", () => {
       cartContainer.appendChild(item);
     });
 
-    // Mostrar total
     const totalElement = document.createElement("div");
     totalElement.className = "cart-total";
     totalElement.innerHTML = `<h4>Total:</h4><p>${total.toFixed(2)} €</p>`;
@@ -145,7 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   btnPaypal.addEventListener("click", () => {
-    window.location.href = "https://www.paypal.com/checkoutnow";
+  window.open("https://www.paypal.com/checkoutnow", "_blank");
     formTarjeta.style.display = "none";
   });
 
