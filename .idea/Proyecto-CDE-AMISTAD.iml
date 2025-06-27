@@ -6,6 +6,9 @@
       <excludeFolder url="file://$MODULE_DIR$/cde_amistad/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/cde_amistad/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/cde_amistad/build" />
+      <excludeFolder url="file://$MODULE_DIR$/cde_amistad/android/.gradle" />
+      <excludeFolder url="file://$MODULE_DIR$/cde_amistad/android/app/.cxx" />
+      <excludeFolder url="file://$MODULE_DIR$/supabase/.temp" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

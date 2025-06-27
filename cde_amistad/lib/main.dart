@@ -6,17 +6,28 @@ import 'package:cde_amistad/pages/tiendaPage.dart';
 import 'package:cde_amistad/pages/protocolosPage.dart';
 import 'package:cde_amistad/pages/masPage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 final GlobalKey<_MyHomePageState> myHomePageKey = GlobalKey<_MyHomePageState>();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Cargar .env y verificar su existencia
+  try {
+    await dotenv.load(fileName: ".env");
+  } catch (e) {
+    throw Exception('No se pudo cargar el archivo .env: $e');
+  }
+
   final prefs = await SharedPreferences.getInstance();
   final isDarkMode = prefs.getBool('isDarkMode') ?? false;
+
+  // Inicializar Supabase
   await Supabase.initialize(
-    url: 'https://sbbddlhuflacpqnrvpyb.supabase.co',
-    anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNiYmRkbGh1ZmxhY3BxbnJ2cHliIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDYxMjUxNzAsImV4cCI6MjA2MTcwMTE3MH0.ZGvT8pasYJoW-2nLfoRyH5gqCsy9c218Cqkoz0XUxtU',
+      url: 'https://sbbddlhuflacpqnrvpyb.supabase.co',
+      anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNiYmRkbGh1ZmxhY3BxbnJ2cHliIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDYxMjUxNzAsImV4cCI6MjA2MTcwMTE3MH0.ZGvT8pasYJoW-2nLfoRyH5gqCsy9c218Cqkoz0XUxtU',
   );
   runApp(MyApp(isDarkMode: isDarkMode));
 }
