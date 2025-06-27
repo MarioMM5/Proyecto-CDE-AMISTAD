@@ -236,7 +236,29 @@ Si tienes dudas, escríbenos a: info@cdeamistad.com
               style: TextStyle(fontSize: 16),
             ),
             const SizedBox(height: 30),
-
+            const Text(
+              'Citas',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const Divider(),
+            ListTile(
+              leading: const Icon(Icons.email, color: Colors.blue),
+              title: const Text('Fisioterapia'),
+              onTap: () => _launchURL(''),
+            ),
+            ListTile(
+              leading: const Icon(Icons.email, color: Colors.blue),
+              title: const Text('Director Deportivo'),
+              onTap: () => _launchURL(''),
+            ),
+            ListTile(
+              leading: const Icon(Icons.email, color: Colors.blue),
+              title: const Text(''),
+              onTap: () => _launchURL(''),
+            ),
             const Text(
               'Redes Sociales',
               style: TextStyle(

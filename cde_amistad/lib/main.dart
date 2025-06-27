@@ -14,13 +14,6 @@ final GlobalKey<_MyHomePageState> myHomePageKey = GlobalKey<_MyHomePageState>();
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Cargar .env y verificar su existencia
-  try {
-    await dotenv.load(fileName: ".env");
-  } catch (e) {
-    throw Exception('No se pudo cargar el archivo .env: $e');
-  }
-
   final prefs = await SharedPreferences.getInstance();
   final isDarkMode = prefs.getBool('isDarkMode') ?? false;
 
