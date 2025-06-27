@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:cde_amistad/entity/noticiaEntity.dart';
 import 'package:add_2_calendar/add_2_calendar.dart';
@@ -30,6 +31,44 @@ class _InicioPageState extends State<InicioPage> {
   DateTime _focusedDay = DateTime.now();
   DateTime? _selectedDay;
   List<Map<String, dynamic>> _eventos = [];
+  final Map<String, String> enlacesFotos = {
+    'Aficionado A': 'https://photos.app.goo.gl/yyyyy',
+    'Aficionado B': 'https://photos.app.goo.gl/yyyyy',
+    'Aficionado Fem': 'https://photos.app.goo.gl/yyyyy',
+    'Juvenil A': 'https://photos.app.goo.gl/yyyyy',
+    'Juvenil B': 'https://photos.app.goo.gl/yyyyy',
+    'Juvenil C': 'https://photos.app.goo.gl/yyyyy',
+    'Juvenil A Fem': 'https://photos.app.goo.gl/yyyyy',
+    'Juvenil B Fem': 'https://photos.app.goo.gl/yyyyy',
+    'Cadete A': 'https://photos.app.goo.gl/yyyyy',
+    'Cadete B': 'https://photos.app.goo.gl/zzzzz',
+    'Cadete C': 'https://photos.app.goo.gl/zzzzz',
+    'Cadete D': 'https://photos.app.goo.gl/zzzzz',
+    'Cadete A Fem': 'https://photos.app.goo.gl/yyyyy',
+    'Cadete B Fem': 'https://photos.app.goo.gl/yyyyy',
+    'Cadete C Fem': 'https://photos.app.goo.gl/yyyyy',
+    'Infantil A': 'https://photos.app.goo.gl/zzzzz',
+    'Infantil B': 'https://photos.app.goo.gl/zzzzz',
+    'Infantil C': 'https://photos.app.goo.gl/zzzzz',
+    'Infantil D': 'https://photos.app.goo.gl/zzzzz',
+    'Infantil A Fem': 'https://photos.app.goo.gl/zzzzz',
+    'Infantil B Fem': 'https://photos.app.goo.gl/zzzzz',
+    'Infantil C Fem': 'https://photos.app.goo.gl/zzzzz',
+    'Infantil D Fem': 'https://photos.app.goo.gl/zzzzz',
+    'Infantil E Fem': 'https://photos.app.goo.gl/zzzzz',
+    'Infantil F Fem': 'https://photos.app.goo.gl/zzzzz',
+
+  };
+
+// Esta función lanza la URL al navegador
+  void _abrirEnlace(String url) async {
+    final uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    } else {
+      throw 'No se pudo abrir el enlace $url';
+    }
+  }
 
   Future<List<Map<String, dynamic>>> cargarNoticias() async {
     try {
@@ -304,6 +343,7 @@ Si tienes dudas, escríbenos a: info@cdeamistad.com
 
 
       body: FutureBuilder<List<Map<String, dynamic>>>(
+
         future: cargarNoticias(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting)
@@ -401,6 +441,53 @@ Si tienes dudas, escríbenos a: info@cdeamistad.com
                   ),
                 ),
                 const SizedBox(height: 30),
+                const Text('Fotos:', style: TextStyle(
+                    fontSize: 20, fontWeight: FontWeight.w600)),
+                Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const SizedBox(height: 8),
+                      Container(
+                        height: 200, // Altura máxima del bloque
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Scrollbar(
+                          child: GridView.builder(
+                            padding: const EdgeInsets.all(8),
+                            itemCount: enlacesFotos.length,
+                            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 3,
+                              mainAxisSpacing: 8,
+                              crossAxisSpacing: 8,
+                              childAspectRatio: 3.2,
+                            ),
+                            itemBuilder: (context, index) {
+                              final nombreEquipo = enlacesFotos.keys.elementAt(index);
+                              final url = enlacesFotos[nombreEquipo]!;
+                              return ElevatedButton.icon(
+                                onPressed: () => _abrirEnlace(url),
+                                icon: const Icon(Icons.photo, size: 16),
+                                label: Text(nombreEquipo, style: const TextStyle(fontSize: 12)),
+                                style: ElevatedButton.styleFrom(
+                                  padding: const EdgeInsets.symmetric(horizontal: 6),
+                                  backgroundColor: Colors.white,
+                                  foregroundColor: Colors.black87,
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+
+
+                const SizedBox(height: 10),
                 const Text('Eventos en el calendario:', style: TextStyle(
                     fontSize: 20, fontWeight: FontWeight.w600)),
                 const SizedBox(height: 10),
