@@ -6,7 +6,6 @@ import 'package:cde_amistad/pages/tiendaPage.dart';
 import 'package:cde_amistad/pages/protocolosPage.dart';
 import 'package:cde_amistad/pages/masPage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 final GlobalKey<_MyHomePageState> myHomePageKey = GlobalKey<_MyHomePageState>();
