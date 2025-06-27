@@ -209,11 +209,92 @@ Si tienes dudas, escríbenos a: info@cdeamistad.com
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-        child: ListView.builder(
-          itemCount: _protocolos.length,
-          itemBuilder: (context, index) {
-            final protocolo = _protocolos[index];
-            return Card(
+        child: ListView(
+          children: [
+
+            // Pretemporada
+            const Text('🏕️ Pretemporada', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+            const SizedBox(height: 8),
+            Card(
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: const [
+                    Text('La pretemporada comenzará el ...', style: TextStyle(fontSize: 16)),
+                    SizedBox(height: 8),
+                    Text('• Inicio: 12 de agosto'),
+                  ],
+                ),
+              ),
+            ),
+
+            const SizedBox(height: 20),
+
+            // Horarios
+            const Text('🕓 Horarios', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+            const SizedBox(height: 8),
+            Card(
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: const [
+                    Text('Los entrenamientos se realizarán en:', style: TextStyle(fontSize: 16)),
+                    SizedBox(height: 8),
+                  ],
+                ),
+              ),
+            ),
+
+            const SizedBox(height: 20),
+
+            // Precios
+            const Text('💰 Precios', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+            const SizedBox(height: 8),
+            Card(
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: const [
+                    Text('Cuotas para la temporada 2025/2026:', style: TextStyle(fontSize: 16)),
+                    SizedBox(height: 8),
+                  ],
+                ),
+              ),
+            ),
+
+            const SizedBox(height: 20),
+
+            // Documentación + Protocolos
+            const Text('📄 Documentación', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+            const SizedBox(height: 8),
+            Card(
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: const [
+                    Text('Para comenzar la temporada, se necesita:', style: TextStyle(fontSize: 16)),
+                    SizedBox(height: 8),
+                    Text('• Fotocopia del DNI o libro de familia'),
+                    Text('• Reconocimiento médico reciente'),
+                  ],
+                ),
+              ),
+            ),
+
+            const SizedBox(height: 12),
+            const Text('📘 Protocolos', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+            const SizedBox(height: 8),
+
+            // Aquí mantenemos tu lista de protocolos
+            ..._protocolos.map((protocolo) => Card(
               elevation: 5,
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
               margin: const EdgeInsets.symmetric(vertical: 8),
@@ -232,19 +313,12 @@ Si tienes dudas, escríbenos a: info@cdeamistad.com
                           children: [
                             Text(
                               protocolo['titulo']!,
-                              style: const TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w600,
-                              ),
+                              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
                             ),
                             const SizedBox(height: 6),
                             Text(
                               'Toca para abrir el PDF',
-                              style: TextStyle(
-                                fontSize: 13,
-                                color: Colors.grey[600],
-                                fontStyle: FontStyle.italic,
-                              ),
+                              style: TextStyle(fontSize: 13, color: Colors.grey[600], fontStyle: FontStyle.italic),
                             ),
                           ],
                         ),
@@ -266,8 +340,30 @@ Si tienes dudas, escríbenos a: info@cdeamistad.com
                   ),
                 ),
               ),
-            );
-          },
+            )),
+
+            const SizedBox(height: 20),
+
+            // Actividades
+            const Text('⚽ Actividades', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+            const SizedBox(height: 8),
+            Card(
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: const [
+                    Text('Durante el año realizaremos:', style: TextStyle(fontSize: 16)),
+                    SizedBox(height: 8),
+                    Text('• Fiesta de fin de temporada con medallas'),
+                  ],
+                ),
+              ),
+            ),
+
+            const SizedBox(height: 20),
+          ],
         ),
       ),
     );
