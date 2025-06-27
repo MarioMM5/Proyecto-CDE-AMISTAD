@@ -123,9 +123,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
     _paginas = [
       InicioPage(onToggleTheme: widget.onToggleTheme),
+      ProtocolosPage(onToggleTheme: widget.onToggleTheme),
       NoticiasPage(onToggleTheme: widget.onToggleTheme),
       TiendaPage(onToggleTheme: widget.onToggleTheme),
-      ProtocolosPage(onToggleTheme: widget.onToggleTheme),
       MasPage(onToggleTheme: widget.onToggleTheme),
     ];
   }
@@ -146,7 +146,7 @@ class _MyHomePageState extends State<MyHomePage> {
         currentIndex: _indiceActual,
         onTap: cambiarIndice,
         type: BottomNavigationBarType.fixed,
-        backgroundColor: Color(0xFF000000),
+        backgroundColor: Color(0xFF134B18),
         selectedItemColor: bottomNavTheme.selectedItemColor,
         unselectedItemColor: bottomNavTheme.unselectedItemColor,
         items: const [
@@ -155,16 +155,16 @@ class _MyHomePageState extends State<MyHomePage> {
             label: 'Inicio',
           ),
           BottomNavigationBarItem(
+            icon: Icon(Icons.info),
+            label: 'Información',
+          ),
+          BottomNavigationBarItem(
             icon: Icon(Icons.article),
             label: 'Noticias',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.store),
             label: 'Tienda',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shield),
-            label: 'Protocolos',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
