@@ -230,10 +230,10 @@ Si tienes dudas, escríbenos a: info@cdeamistad.com
               ),
             ),
             const SizedBox(height: 8),
-            const Text(
+            Text(
               'Club Deportivo y Cultural Amistad',
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 16, color: Colors.black54),
+              style: TextStyle(fontSize: 16),
             ),
             const SizedBox(height: 30),
 
