@@ -66,8 +66,8 @@ class _MyAppState extends State<MyApp> {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.green, brightness: Brightness.light),
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
           backgroundColor: Colors.green.shade100,
-          selectedItemColor: Colors.green.shade900,
-          unselectedItemColor: Colors.green.shade600,
+          selectedItemColor: Colors.green.shade50,
+          unselectedItemColor: Colors.green.shade200,
         ),
       ),
       darkTheme: ThemeData(
@@ -146,7 +146,7 @@ class _MyHomePageState extends State<MyHomePage> {
         currentIndex: _indiceActual,
         onTap: cambiarIndice,
         type: BottomNavigationBarType.fixed,
-        backgroundColor: bottomNavTheme.backgroundColor,
+        backgroundColor: Color(0xFF000000),
         selectedItemColor: bottomNavTheme.selectedItemColor,
         unselectedItemColor: bottomNavTheme.unselectedItemColor,
         items: const [

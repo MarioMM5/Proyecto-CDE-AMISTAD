@@ -49,7 +49,7 @@ class _MasPageState extends State<MasPage> {
         preferredSize: const Size.fromHeight(80),
         child: Container(
           decoration: const BoxDecoration(
-            color: Color(0xFF388E3C),
+            color: Color(0xFF000000),
             borderRadius: BorderRadius.vertical(bottom: Radius.circular(24)),
             boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 8, offset: Offset(0, 4))],
           ),

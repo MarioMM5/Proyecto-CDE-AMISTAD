@@ -143,7 +143,7 @@ class _InicioPageState extends State<InicioPage> {
         preferredSize: const Size.fromHeight(80),
         child: Container(
           decoration: const BoxDecoration(
-            color: Color(0xFF388E3C),
+            color: Color(0xFF000000),
             borderRadius: BorderRadius.vertical(bottom: Radius.circular(24)),
             boxShadow: [
               BoxShadow(

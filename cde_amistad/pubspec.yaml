@@ -41,7 +41,8 @@ flutter_native_splash:
   image: assets/icono.png
   android: true
   ios: true
-  fullscreen: true
+  android_gravity: fill
+  ios_content_mode: scaleAspectFill
 
 flutter:
   uses-material-design: true
