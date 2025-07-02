@@ -148,7 +148,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.info),
-            label: 'Información',
+            label: 'Info',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.article),
