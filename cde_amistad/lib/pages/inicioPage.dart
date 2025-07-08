@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:cde_amistad/entity/noticiaEntity.dart';
-import 'package:add_2_calendar/add_2_calendar.dart';
+//import 'package:add_2_calendar/add_2_calendar.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:cde_amistad/main.dart';
 import 'package:intl/intl.dart';
-import 'package:table_calendar/table_calendar.dart';
+//import 'package:table_calendar/table_calendar.dart';
 
 
 class InicioPage extends StatefulWidget {
@@ -101,7 +101,7 @@ class _InicioPageState extends State<InicioPage> {
     super.initState();
     cargarEventos();
   }
-
+/*
   Event buildEvent(String titulo, String lugar, DateTime fecha) {
     return Event(
       title: titulo,
@@ -113,7 +113,7 @@ class _InicioPageState extends State<InicioPage> {
       androidParams: const AndroidParams(emailInvites: []),
     );
   }
-
+*/
   DateTime parseFecha(String fechaTexto) {
     try {
       final partes = fechaTexto.split(',');
@@ -141,7 +141,7 @@ class _InicioPageState extends State<InicioPage> {
       return DateTime.now();
     }
   }
-
+/*
   Future<void> solicitarPermisoYAgregar(Event event) async {
     final status = await Permission.calendarFullAccess.request(); // revisar esto
 
@@ -156,7 +156,7 @@ class _InicioPageState extends State<InicioPage> {
       _mostrarSnackBar('Permiso de calendario denegado');
     }
   }
-
+*/
   void _mostrarSnackBar(String mensaje) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text(mensaje)),
@@ -197,8 +197,9 @@ class _InicioPageState extends State<InicioPage> {
                 children: [
                   Image.asset('assets/icono.png', height: 30),
                   const SizedBox(width: 10),
-                  const Text('Inicio', style: TextStyle(fontSize: 24,
+                  const Text('INICIO', style: TextStyle(fontSize: 24,
                       fontWeight: FontWeight.w600,
+                      fontFamily: 'impact',
                       color: Colors.white)),
                 ],
               ),
@@ -346,10 +347,12 @@ Si tienes dudas, escríbenos a: info@cdeamistad.com
 
         future: cargarNoticias(),
         builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting)
+          if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
-          if (snapshot.hasError || snapshot.data == null)
+          }
+          if (snapshot.hasError || snapshot.data == null) {
             return const Center(child: Text('Error al cargar noticias.'));
+          }
 
           final noticias = snapshot.data!;
 
@@ -359,7 +362,9 @@ Si tienes dudas, escríbenos a: info@cdeamistad.com
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text('Últimas noticias:', style: TextStyle(
-                    fontSize: 20, fontWeight: FontWeight.w600)),
+                    fontSize: 20,
+                    fontFamily: 'arial',
+                    fontWeight: FontWeight.w600)),
                 const SizedBox(height: 10),
                 ...noticias.take(3).map((noticia) {
                   final fecha = DateTime.tryParse(noticia['fecha']) ??
@@ -401,7 +406,9 @@ Si tienes dudas, escríbenos a: info@cdeamistad.com
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: const TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 14),
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'bebas neue',
+                            fontSize: 20),
                       ),
                       subtitle: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -437,12 +444,14 @@ Si tienes dudas, escríbenos a: info@cdeamistad.com
                       myHomePageKey.currentState?.cambiarIndice(1);
                     },
                     icon: const Icon(Icons.arrow_forward),
-                    label: const Text('Ver todas las noticias'),
+                    label: const Text('Ver todas las noticias',style: TextStyle(fontFamily: 'arial', fontSize: 16)),
                   ),
                 ),
                 const SizedBox(height: 30),
                 const Text('Fotos:', style: TextStyle(
-                    fontSize: 20, fontWeight: FontWeight.w600)),
+                    fontSize: 20,
+                    fontFamily: 'arial',
+                    fontWeight: FontWeight.w600)),
                 Padding(
                   padding: const EdgeInsets.all(16),
                   child: Column(
@@ -470,7 +479,7 @@ Si tienes dudas, escríbenos a: info@cdeamistad.com
                               return ElevatedButton.icon(
                                 onPressed: () => _abrirEnlace(url),
                                 icon: const Icon(Icons.photo, size: 16),
-                                label: Text(nombreEquipo, style: const TextStyle(fontSize: 12)),
+                                label: Text(nombreEquipo, style: const TextStyle(fontSize: 12,fontFamily: 'arial')),
                                 style: ElevatedButton.styleFrom(
                                   padding: const EdgeInsets.symmetric(horizontal: 6),
                                   backgroundColor: Colors.white,
@@ -486,7 +495,7 @@ Si tienes dudas, escríbenos a: info@cdeamistad.com
                 ),
 
 
-
+/*
                 const SizedBox(height: 10),
                 const Text('Eventos en el calendario:', style: TextStyle(
                     fontSize: 20, fontWeight: FontWeight.w600)),
@@ -585,7 +594,7 @@ Si tienes dudas, escríbenos a: info@cdeamistad.com
                       return null;
                     },
                   ),
-                ),
+                ),*/
               ],
             ),
           );

@@ -61,6 +61,7 @@ class _NoticiaDetailState extends State<NoticiaDetail> {
                       widget.titulo,
                       style: const TextStyle(
                         fontSize: 20,
+                        fontFamily: 'impact',
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
                       ),
@@ -242,6 +243,7 @@ Si tienes dudas, escríbenos a: info@cdeamistad.com
               style: TextStyle(
                 fontSize: 28,
                 fontWeight: FontWeight.bold,
+                fontFamily: 'impact',
                 color: textColor,
               ),
             ),
@@ -261,6 +263,7 @@ Si tienes dudas, escríbenos a: info@cdeamistad.com
               style: TextStyle(
                 fontSize: 16,
                 color: contentColor,
+                fontFamily: 'arial',
                 height: 1.6,
               ),
             ),

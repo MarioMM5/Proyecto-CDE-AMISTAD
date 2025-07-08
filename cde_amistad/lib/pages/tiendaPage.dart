@@ -49,7 +49,10 @@ class _TiendaPageState extends State<TiendaPage> {
                   const SizedBox(width: 10),
                   const Text(
                     'Tienda',
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600, color: Colors.white),
+                    style: TextStyle(fontSize: 24,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white,
+                        fontFamily: 'impact'),
                   ),
                 ],
               ),

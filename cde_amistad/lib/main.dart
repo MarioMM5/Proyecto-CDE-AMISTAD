@@ -136,15 +136,18 @@ class _MyHomePageState extends State<MyHomePage> {
       body: _paginas[_indiceActual],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _indiceActual,
+        selectedLabelStyle: TextStyle(fontFamily: 'arial', fontSize: 18),
+        unselectedLabelStyle: TextStyle(fontFamily: 'arial', fontSize: 16),
         onTap: cambiarIndice,
         type: BottomNavigationBarType.fixed,
         backgroundColor: Color(0xFF134B18),
+
         selectedItemColor: bottomNavTheme.selectedItemColor,
         unselectedItemColor: bottomNavTheme.unselectedItemColor,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: 'Inicio',
+            label: "Inicio",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.info),

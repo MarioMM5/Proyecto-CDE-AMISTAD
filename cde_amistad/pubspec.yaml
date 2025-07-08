@@ -16,9 +16,8 @@ dependencies:
   permission_handler: ^11.0.0
   font_awesome_flutter: ^10.4.0
   supabase_flutter: 2.7.0
-  add_2_calendar: ^2.2.0
+  #add_2_calendar: ^2.2.0
   intl: ^0.19.0
-  flutter_native_splash: ^2.3.5
   flutter_localizations:
     sdk: flutter
   flutter:
@@ -28,6 +27,7 @@ dependencies:
   flutter_dotenv: ^5.2.1
 
 dev_dependencies:
+  flutter_native_splash: ^2.3.5
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
@@ -35,15 +35,23 @@ dev_dependencies:
 flutter_icons:
   android: true
   ios: true
-  image_path: "assets/icono.png"
-
-flutter_native_splash:
-  color: "#ffffff"
-  image: assets/icono.png
+flutter_launcher_icons:
   android: true
   ios: true
-  android_gravity: fill
-  ios_content_mode: scaleAspectFill
+  image_path: "assets/icono.png"
+  remove_alpha_ios: true
+
+flutter_native_splash:
+  image: assets/splash.png
+  background_image: assets/splash.png
+  android: true
+  ios: true
+  fullscreen: true
+  android_12:
+    image: assets/splash.png
+    icon_background_color: "#000000"  # o cualquier color, no se verá
+
+
 
 flutter:
   uses-material-design: true
@@ -53,3 +61,18 @@ flutter:
     - assets/imagen_default.jpg
     - assets/icono.png
     - assets/logo_twitter.png
+    - assets/splash.png
+  fonts:
+    - family : 'impact'
+      fonts:
+        - asset: assets/fonts/Impact.ttf
+    - family : 'brush script'
+      fonts:
+        - asset: assets/fonts/BrushyScript-ALWEg.ttf
+    - family : 'bebas neue'
+      fonts:
+        - asset: assets/fonts/BebasNeue.otf
+    - family : 'arial'
+      fonts:
+        - asset: assets/fonts/ARIAL.ttf
+

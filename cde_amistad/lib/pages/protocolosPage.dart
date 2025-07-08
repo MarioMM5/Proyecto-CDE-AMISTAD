@@ -65,7 +65,10 @@ class _ProtocolosPageState extends State<ProtocolosPage> {
                   const SizedBox(width: 10),
                   const Text(
                     'Protocolos',
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600, color: Colors.white),
+                    style: TextStyle(fontSize: 24,
+                        fontFamily: 'impact',
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white),
                   ),
                 ],
               ),
@@ -84,7 +87,9 @@ class _ProtocolosPageState extends State<ProtocolosPage> {
               Padding(
                 padding: EdgeInsets.all(16.0),
                 child: Text('Ajustes', style: TextStyle(
-                    fontSize: 20, fontWeight: FontWeight.bold)),
+                    fontSize: 20,
+
+                    fontWeight: FontWeight.bold)),
               ),
               Divider(),
               ListTile(

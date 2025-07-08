@@ -29,6 +29,12 @@ class _NoticiaEntityState extends State<NoticiaEntity> {
 
   @override
   Widget build(BuildContext context) {
+    final bool usarImagenDefault = widget.imagen.isEmpty || !widget.imagen.startsWith('http');
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+    final textColor = isDarkMode ? Colors.white : Colors.black;
+    final contentColor = isDarkMode ? Colors.white70 : Colors.black87;
+
+
     return Scaffold(
       key: _scaffoldKey,
       appBar: PreferredSize(
@@ -57,6 +63,7 @@ class _NoticiaEntityState extends State<NoticiaEntity> {
                       style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w600,
+                        fontFamily: 'arial',
                         color: Colors.white,
                       ),
                       overflow: TextOverflow.ellipsis,
@@ -203,23 +210,65 @@ Si tienes dudas, escríbenos a: info@cdeamistad.com
         ),
       ),
       body: SingleChildScrollView(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.network(
-              widget.imagen,
-              width: double.infinity,
-              height: 250,
-              fit: BoxFit.cover,
-            ),
-            const SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Text(
-                widget.contenido,
-                style: const TextStyle(fontSize: 18, height: 1.5),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(16),
+              child: usarImagenDefault
+                  ? Image.asset(
+                'assets/imagen_default.jpg',
+                width: double.infinity,
+                height: 250,
+                fit: BoxFit.cover,
+              )
+                  : Image.network(
+                widget.imagen,
+                width: double.infinity,
+                height: 250,
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) {
+                  return Image.asset(
+                    'assets/imagen_default.jpg',
+                    width: double.infinity,
+                    height: 250,
+                    fit: BoxFit.cover,
+                  );
+                },
               ),
             ),
+            const SizedBox(height: 20),
+            Text(
+              widget.titulo,
+              style: TextStyle(
+                fontSize: 28,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'impact',
+                color: textColor,
+              ),
+            ),
+            const SizedBox(height: 8),
+            if (widget.fecha != null)
+              Text(
+                "${widget.fecha!.day}/${widget.fecha!.month}/${widget.fecha!.year}",
+                style: TextStyle(
+                  fontSize: 14,
+                  color: isDarkMode ? Colors.grey[300] : Colors.grey[700],
+                  fontStyle: FontStyle.italic,
+                ),
+              ),
+            const SizedBox(height: 20),
+            Text(
+              widget.contenido,
+              style: TextStyle(
+                fontSize: 16,
+                color: contentColor,
+                fontFamily: 'arial',
+                height: 1.6,
+              ),
+            ),
+            const SizedBox(height: 30),
           ],
         ),
       ),

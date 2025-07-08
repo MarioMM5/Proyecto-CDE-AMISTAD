@@ -68,6 +68,7 @@ class NoticiaCard extends StatelessWidget {
                       titulo,
                       style: TextStyle(
                         fontSize: 18,
+                        fontFamily: 'bebas neue',
                         fontWeight: FontWeight.bold,
                         color: textColor,
                       ),
@@ -79,6 +80,7 @@ class NoticiaCard extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 12,
                           fontStyle: FontStyle.italic,
+                          fontFamily: 'arial',
                           color: isDarkMode ? Colors.white70 : Colors.black54,
                         ),
                       ),

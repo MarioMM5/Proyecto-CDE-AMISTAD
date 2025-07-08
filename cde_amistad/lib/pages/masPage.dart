@@ -62,8 +62,8 @@ class _MasPageState extends State<MasPage> {
                   Image.asset('assets/icono.png', height: 30),
                   const SizedBox(width: 10),
                   const Text(
-                    'Sobre nosotros',
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600, color: Colors.white),
+                    'SOBRE NOSOSTROS',
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600,fontFamily: 'impact', color: Colors.white),
                   ),
                 ],
               ),
@@ -225,17 +225,19 @@ Si tienes dudas, escríbenos a: info@cdeamistad.com
               'CDE AMISTAD',
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 22,
+                fontSize: 35,
+                fontFamily: 'impact',
                 fontWeight: FontWeight.bold,
               ),
             ),
             const SizedBox(height: 8),
             Text(
-              'Club Deportivo y Cultural Amistad',
+              'Educamos deportistas',
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 16),
+              style: TextStyle(fontSize: 30,
+              fontFamily: 'brush script'),
             ),
-            const SizedBox(height: 30),
+            const SizedBox(height: 25),
             const Text(
               'Citas',
               style: TextStyle(
