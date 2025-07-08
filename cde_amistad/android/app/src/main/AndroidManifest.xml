@@ -9,7 +9,7 @@
         android:enableOnBackInvokedCallback="true">
 
         <activity
-            android:name=".MainActivity"
+            android:name="cde.amistad.cde_amistad.MainActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize">
             <!-- This is the launch theme that is displayed while the Flutter UI initializes.

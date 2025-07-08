@@ -144,25 +144,25 @@ class _MyHomePageState extends State<MyHomePage> {
 
         selectedItemColor: bottomNavTheme.selectedItemColor,
         unselectedItemColor: bottomNavTheme.unselectedItemColor,
-        items: const [
-          BottomNavigationBarItem(
+        items: [
+          const BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: "Inicio",
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.info),
             label: 'Info',
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.article),
             label: 'Noticias',
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.store),
             label: 'Tienda',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
+            icon: Image.asset('assets/icono.png', height: 28, width: 28),
             label: 'Club',
           ),
         ],

@@ -241,37 +241,34 @@ Si tienes dudas, escríbenos a: info@cdeamistad.com
             const Text(
               'Citas',
               style: TextStyle(
-                fontSize: 18,
+                fontSize: 25,
+                fontFamily: 'bebas neue',
                 fontWeight: FontWeight.bold,
               ),
             ),
             const Divider(),
             ListTile(
               leading: const Icon(Icons.email, color: Colors.blue),
-              title: const Text('Fisioterapia'),
+              title: const Text('Fisioterapia',style: TextStyle(fontFamily: 'arial')),
               onTap: () => _launchURL(''),
             ),
             ListTile(
               leading: const Icon(Icons.email, color: Colors.blue),
-              title: const Text('Director Deportivo'),
-              onTap: () => _launchURL(''),
-            ),
-            ListTile(
-              leading: const Icon(Icons.email, color: Colors.blue),
-              title: const Text(''),
+              title: const Text('Director Deportivo',style: TextStyle(fontFamily: 'arial')),
               onTap: () => _launchURL(''),
             ),
             const Text(
               'Redes Sociales',
               style: TextStyle(
-                fontSize: 18,
+                fontSize: 25,
+                fontFamily: 'bebas neue',
                 fontWeight: FontWeight.bold,
               ),
             ),
             const Divider(),
             ListTile(
               leading: const Icon(Icons.facebook, color: Colors.blue),
-              title: const Text('Facebook'),
+              title: const Text('Facebook',style: TextStyle(fontFamily: 'arial')),
               onTap: () => _launchURL('https://www.facebook.com/cdeamistad'),
             ),
             ListTile(
@@ -281,7 +278,7 @@ Si tienes dudas, escríbenos a: info@cdeamistad.com
                 height: 24,
                 fit: BoxFit.contain,
               ),
-              title: const Text('Instagram'),
+              title: const Text('Instagram',style: TextStyle(fontFamily: 'arial')),
               onTap: () => _launchURL('https://instagram.com/cdeamistad'),
             ),
             ListTile(
@@ -291,7 +288,7 @@ Si tienes dudas, escríbenos a: info@cdeamistad.com
                 height: 24,
                 fit: BoxFit.contain,
               ),
-              title: const Text('X'),
+              title: const Text('X',style: TextStyle(fontFamily: 'arial')),
               onTap: () => _launchURL('https://x.com/cdeamistad'),
             ),
 
@@ -300,14 +297,15 @@ Si tienes dudas, escríbenos a: info@cdeamistad.com
             const Text(
               'Contacto',
               style: TextStyle(
-                fontSize: 18,
+                fontSize: 25,
+                fontFamily: 'bebas neue',
                 fontWeight: FontWeight.bold,
               ),
             ),
             const Divider(),
             ListTile(
               leading: const Icon(Icons.email, color: Colors.redAccent),
-              title: const Text('info@cdeamistad.com'),
+              title: const Text('info@cdeamistad.com',style: TextStyle(fontFamily: 'arial')),
               onTap: () => _launchURL('mailto:info@cdeamistad.com'),
             ),
             ListTile(
@@ -317,12 +315,12 @@ Si tienes dudas, escríbenos a: info@cdeamistad.com
                 height: 24,
                 fit: BoxFit.contain,
               ),
-              title: const Text('Enviar mensaje por WhatsApp'),
+              title: const Text('Enviar mensaje por WhatsApp',style: TextStyle(fontFamily: 'arial')),
               onTap: () => _abrirWhatsApp('34633244011'),
             ),
             ListTile(
               leading: const Icon(Icons.location_on, color: Colors.red),
-              title: const Text('Calle Polvoranca 80, Alcorcón'),
+              title: const Text('Calle Polvoranca 80, Alcorcón',style: TextStyle(fontFamily: 'arial')),
               onTap: () => _openMaps('Calle Polvoranca 80, Alcorcón'),
             ),
           ],

@@ -218,7 +218,11 @@ Si tienes dudas, escríbenos a: info@cdeamistad.com
           children: [
 
             // Pretemporada
-            const Text('🏕️ Pretemporada', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+            const Text('🏕️ Pretemporada',
+                style: TextStyle(
+                    fontSize: 25,
+                    fontFamily: 'bebas neue',
+                    fontWeight: FontWeight.bold)),
             const SizedBox(height: 8),
             Card(
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
@@ -238,7 +242,11 @@ Si tienes dudas, escríbenos a: info@cdeamistad.com
             const SizedBox(height: 20),
 
             // Horarios
-            const Text('🕓 Horarios', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+            const Text('🕓 Horarios',
+                style: TextStyle(
+                    fontSize: 25,
+                    fontFamily: 'bebas neue',
+                    fontWeight: FontWeight.bold)),
             const SizedBox(height: 8),
             Card(
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
@@ -257,7 +265,11 @@ Si tienes dudas, escríbenos a: info@cdeamistad.com
             const SizedBox(height: 20),
 
             // Precios
-            const Text('💰 Precios', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+            const Text('💰 Precios',
+                style: TextStyle(
+                    fontSize: 25,
+                    fontFamily: 'bebas neue',
+                    fontWeight: FontWeight.bold)),
             const SizedBox(height: 8),
             Card(
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
@@ -266,7 +278,10 @@ Si tienes dudas, escríbenos a: info@cdeamistad.com
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: const [
-                    Text('Cuotas para la temporada 2025/2026:', style: TextStyle(fontSize: 16)),
+                    Text('Cuotas para la temporada 2025/2026:',
+                        style: TextStyle(
+                            fontFamily: 'arial',
+                            fontSize: 16)),
                     SizedBox(height: 8),
                   ],
                 ),
@@ -276,26 +291,11 @@ Si tienes dudas, escríbenos a: info@cdeamistad.com
             const SizedBox(height: 20),
 
             // Documentación + Protocolos
-            const Text('📄 Documentación', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
-            const SizedBox(height: 8),
-            Card(
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-              child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    Text('Para comenzar la temporada, se necesita:', style: TextStyle(fontSize: 16)),
-                    SizedBox(height: 8),
-                    Text('• Fotocopia del DNI o libro de familia'),
-                    Text('• Reconocimiento médico reciente'),
-                  ],
-                ),
-              ),
-            ),
-
-            const SizedBox(height: 12),
-            const Text('📘 Protocolos', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+            const Text('📄 Documentación',
+                style: TextStyle(
+                    fontSize: 22,
+                    fontFamily: 'bebas neue',
+                    fontWeight: FontWeight.bold)),
             const SizedBox(height: 8),
 
             // Aquí mantenemos tu lista de protocolos
@@ -318,7 +318,10 @@ Si tienes dudas, escríbenos a: info@cdeamistad.com
                           children: [
                             Text(
                               protocolo['titulo']!,
-                              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+                              style: const TextStyle(
+                                  fontSize: 18,
+                                  fontFamily: 'arial',
+                                  fontWeight: FontWeight.w600),
                             ),
                             const SizedBox(height: 6),
                             Text(
@@ -334,12 +337,6 @@ Si tienes dudas, escríbenos a: info@cdeamistad.com
                           color: Colors.redAccent.withAlpha((0.1 * 255).round()),
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        child: IconButton(
-                          icon: const Icon(Icons.picture_as_pdf, color: Colors.redAccent, size: 30),
-                          onPressed: () => _abrirPdf(protocolo['url']!),
-                          tooltip: 'Abrir PDF',
-                          splashRadius: 28,
-                        ),
                       ),
                     ],
                   ),
@@ -350,7 +347,11 @@ Si tienes dudas, escríbenos a: info@cdeamistad.com
             const SizedBox(height: 20),
 
             // Actividades
-            const Text('⚽ Actividades', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+            const Text('⚽ Actividades',
+                style: TextStyle(
+                    fontSize: 25,
+                    fontFamily: 'bebas neue',
+                    fontWeight: FontWeight.bold)),
             const SizedBox(height: 8),
             Card(
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
