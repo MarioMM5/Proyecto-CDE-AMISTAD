@@ -75,7 +75,8 @@ class _TiendaPageState extends State<TiendaPage> {
               Padding(
                 padding: EdgeInsets.all(16.0),
                 child: Text('Ajustes', style: TextStyle(
-                    fontSize: 20, fontWeight: FontWeight.bold)),
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold)),
               ),
               Divider(),
               ListTile(

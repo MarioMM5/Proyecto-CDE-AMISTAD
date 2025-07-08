@@ -2,11 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:cde_amistad/entity/noticiaEntity.dart';
-//import 'package:add_2_calendar/add_2_calendar.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'package:cde_amistad/main.dart';
 import 'package:intl/intl.dart';
-//import 'package:table_calendar/table_calendar.dart';
 
 
 class InicioPage extends StatefulWidget {
@@ -156,13 +153,13 @@ class _InicioPageState extends State<InicioPage> {
       _mostrarSnackBar('Permiso de calendario denegado');
     }
   }
-*/
+
   void _mostrarSnackBar(String mensaje) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text(mensaje)),
     );
   }
-
+*/
   void _abrirAjustes() {
     _scaffoldKey.currentState?.openEndDrawer();
   }
@@ -174,7 +171,7 @@ class _InicioPageState extends State<InicioPage> {
 
   @override
   Widget build(BuildContext context) {
-    final fechasConEventos = obtenerFechasConEventos();
+    //final fechasConEventos = obtenerFechasConEventos();
 
     return Scaffold(
       key: _scaffoldKey,
