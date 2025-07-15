@@ -5,7 +5,7 @@
     <application
         android:label="CDE AMISTAD"
         android:theme="@style/LaunchTheme"
-
+        android:icon="@drawable/icono"
         android:enableOnBackInvokedCallback="true">
 
         <activity
