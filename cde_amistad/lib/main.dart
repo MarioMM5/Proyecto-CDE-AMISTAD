@@ -35,8 +35,6 @@ class SplashLoader extends StatefulWidget {
   State<SplashLoader> createState() => _SplashLoaderState();
 }
 
-// ... tu código original hasta _SplashLoaderState
-
 class _SplashLoaderState extends State<SplashLoader> {
   bool isDarkMode = false;
 
@@ -55,8 +53,6 @@ class _SplashLoaderState extends State<SplashLoader> {
       anonKey:
       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNiYmRkbGh1ZmxhY3BxbnJ2cHliIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDYxMjUxNzAsImV4cCI6MjA2MTcwMTE3MH0.ZGvT8pasYJoW-2nLfoRyH5gqCsy9c218Cqkoz0XUxtU',
     );
-
-    await Future.delayed(const Duration(milliseconds: 300));
 
     if (mounted) {
       // Aquí en lugar de ir directamente a MyApp, vamos a la página del video

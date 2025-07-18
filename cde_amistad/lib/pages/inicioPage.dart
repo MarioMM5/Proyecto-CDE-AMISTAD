@@ -25,8 +25,8 @@ class _InicioPageState extends State<InicioPage> {
     'septiembre': 9, 'octubre': 10, 'noviembre': 11, 'diciembre': 12,
   };
 
-  DateTime _focusedDay = DateTime.now();
-  DateTime? _selectedDay;
+  //DateTime _focusedDay = DateTime.now();
+  //DateTime? _selectedDay;
   List<Map<String, dynamic>> _eventos = [];
   final Map<String, String> enlacesFotos = {
     'Aficionado A': 'https://photos.app.goo.gl/yyyyy',
