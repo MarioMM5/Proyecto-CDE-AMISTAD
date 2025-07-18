@@ -239,7 +239,7 @@ Si tienes dudas, escríbenos a: info@cdeamistad.com
             ),
             const SizedBox(height: 25),
             const Text(
-              'Citas',
+              'Citas (Aun no disponibles)',
               style: TextStyle(
                 fontSize: 25,
                 fontFamily: 'bebas neue',
