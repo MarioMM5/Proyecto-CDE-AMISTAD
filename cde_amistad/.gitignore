@@ -1,8 +1,10 @@
 # Miscellaneous
 *.class
+*.jks
 *.log
 *.pyc
 *.swp
+key.properties
 .DS_Store
 .atom/
 .build/

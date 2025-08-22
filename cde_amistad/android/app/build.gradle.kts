@@ -1,3 +1,6 @@
+import java.util.Properties
+// This file is used to configure the Android build for the Flutter application.
+
 plugins {
     id("com.android.application")
     id("kotlin-android")
@@ -9,6 +12,19 @@ android {
     namespace = "cde.amistad.cde_amistad"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
+
+    signingConfigs {
+        create("release") {
+            val keystoreProperties = Properties().apply {
+                load(File(rootDir, "key.properties").inputStream())
+            }
+
+            storeFile = File(rootDir, keystoreProperties["storeFile"] as String)
+            storePassword = keystoreProperties["storePassword"] as String
+            keyAlias = keystoreProperties["keyAlias"] as String
+            keyPassword = keystoreProperties["keyPassword"] as String
+        }
+    }
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -31,12 +47,23 @@ android {
     }
 
     buildTypes {
-        release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig = signingConfigs.getByName("debug")
+        getByName("release") {
+            isMinifyEnabled = false
+            isShrinkResources = false
+            signingConfig = signingConfigs.getByName("release")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
+}
+dependencies {
+    configurations.all {
+        exclude(group = "com.intellij", module = "annotations")
+    }
+
+    implementation("androidx.room:room-compiler:2.7.2")
 }
 
 flutter {

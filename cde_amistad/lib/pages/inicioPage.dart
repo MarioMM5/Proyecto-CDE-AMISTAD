@@ -438,7 +438,7 @@ Si tienes dudas, escríbenos a: info@cdeamistad.com
                       foregroundColor: Colors.white,
                     ),
                     onPressed: () {
-                      myHomePageKey.currentState?.cambiarIndice(1);
+                      myHomePageKey.currentState?.cambiarIndice(2);
                     },
                     icon: const Icon(Icons.arrow_forward),
                     label: const Text('Ver todas las noticias',style: TextStyle(fontFamily: 'arial', fontSize: 16)),
