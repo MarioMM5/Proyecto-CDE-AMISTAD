@@ -138,28 +138,7 @@ class _InicioPageState extends State<InicioPage> {
       return DateTime.now();
     }
   }
-/*
-  Future<void> solicitarPermisoYAgregar(Event event) async {
-    final status = await Permission.calendarFullAccess.request(); // revisar esto
 
-    if (status.isGranted) {
-      try {
-        await Add2Calendar.addEvent2Cal(event);
-        _mostrarSnackBar('Evento añadido al calendario');
-      } catch (e) {
-        _mostrarSnackBar('Error al añadir evento: $e');
-      }
-    } else {
-      _mostrarSnackBar('Permiso de calendario denegado');
-    }
-  }
-
-  void _mostrarSnackBar(String mensaje) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(mensaje)),
-    );
-  }
-*/
   void _abrirAjustes() {
     _scaffoldKey.currentState?.openEndDrawer();
   }
@@ -171,7 +150,6 @@ class _InicioPageState extends State<InicioPage> {
 
   @override
   Widget build(BuildContext context) {
-    //final fechasConEventos = obtenerFechasConEventos();
 
     return Scaffold(
       key: _scaffoldKey,
@@ -592,6 +570,18 @@ Si tienes dudas, escríbenos a: info@cdeamistad.com
                     },
                   ),
                 ),*/
+                const SizedBox(height: 20),
+                const Text(
+                  'Equipos por categoría:',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+                ),
+
+                const SizedBox(height: 10),
+
+                _CategoriasMenu(
+                  onAbrirEnlace: _abrirEnlace,
+                ),
+
               ],
             ),
           );
@@ -600,3 +590,133 @@ Si tienes dudas, escríbenos a: info@cdeamistad.com
     );
   }
 }
+class _CategoriasMenu extends StatefulWidget {
+  final void Function(String url) onAbrirEnlace;
+
+  const _CategoriasMenu({required this.onAbrirEnlace});
+
+  @override
+  State<_CategoriasMenu> createState() => _CategoriasMenuState();
+}
+
+class _CategoriasMenuState extends State<_CategoriasMenu> {
+  String? categoriaSeleccionada;
+
+  final Map<String, List<String>> categorias = {
+    'Aficionado': [
+      'Aficionado A',
+      'Aficionado B',
+      'Aficionado A Fem',
+    ],
+    'Juvenil': [
+      'Juvenil A',
+      'Juvenil B',
+      'Juvenil C',
+      'Juvenil A Fem',
+      'Juvenil B Fem',
+    ],
+    'Cadete': [
+      'Cadete A',
+      'Cadete B',
+      'Cadete C',
+      'Cadete D',
+      'Cadete A Fem',
+      'Cadete B Fem',
+      'Cadete C Fem',
+    ],
+    'Infantil': [
+      'Infantil A',
+      'Infantil B',
+      'Infantil C',
+      'Infantil D',
+      'Infantil A Fem',
+      'Infantil B Fem',
+      'Infantil C Fem',
+      'Infantil D Fem',
+      'Infantil E Fem',
+      'Infantil F Fem',
+    ],
+  };
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        DropdownButtonFormField<String>(
+          decoration: InputDecoration(
+            labelText: 'Selecciona una categoría',
+            border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+          ),
+          value: categoriaSeleccionada,
+          items: categorias.keys.map((categoria) {
+            return DropdownMenuItem(
+              value: categoria,
+              child: Text(categoria),
+            );
+          }).toList(),
+          onChanged: (valor) {
+            setState(() {
+              categoriaSeleccionada = valor;
+            });
+          },
+        ),
+
+        const SizedBox(height: 15),
+
+        if (categoriaSeleccionada != null)
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Equipos de ${categoriaSeleccionada!}:',
+                style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18
+                ),
+              ),
+              const SizedBox(height: 10),
+
+              ...categorias[categoriaSeleccionada]!.map((equipo) {
+                return Container(
+                  margin: const EdgeInsets.only(bottom: 8),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      final url = widget.onAbrirEnlace.runtimeType == Function
+                          ? null
+                          : null;
+
+                      if (widget.onAbrirEnlace != null &&
+                          widget.onAbrirEnlace is Function) {
+                        final enlaces = {
+
+                          'Aficionado A': 'https://www.rffm.es/competicion/calendario?temporada=21&tipojuego=1&competicion=24037456&grupo=24037460',
+                          // 'Juvenil A': 'https://www.futbolaragon.com/equipoB',
+                        };
+
+                        if (enlaces[equipo] != null) {
+                          widget.onAbrirEnlace(enlaces[equipo]!);
+                        }
+                      }
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.green.shade600,
+                      foregroundColor: Colors.white,
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 12, horizontal: 16
+                      ),
+                    ),
+                    child: Text(
+                      equipo,
+                      style: const TextStyle(fontSize: 14),
+                    ),
+                  ),
+                );
+              }).toList(),
+            ],
+          ),
+      ],
+    );
+  }
+}
+
