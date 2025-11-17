@@ -606,7 +606,7 @@ class _CategoriasMenuState extends State<_CategoriasMenu> {
     'Aficionado': [
       'Aficionado A',
       'Aficionado B',
-      'Aficionado A Fem',
+      'Aficionado Fem',
     ],
     'Juvenil': [
       'Juvenil A',
@@ -691,7 +691,20 @@ class _CategoriasMenuState extends State<_CategoriasMenu> {
                         final enlaces = {
 
                           'Aficionado A': 'https://www.rffm.es/competicion/calendario?temporada=21&tipojuego=1&competicion=24037456&grupo=24037460',
-                          // 'Juvenil A': 'https://www.futbolaragon.com/equipoB',
+                          'Aficionado B': 'https://www.rffm.es/competicion/calendario?temporada=21&tipojuego=1&competicion=24762963&grupo=24762972',
+                          'Aficionado Fem': 'https://www.rffm.es/competicion/clasificaciones?temporada=21&competicion=24038124&grupo=24038126&jornada=8&tipojuego=1',
+                          'Juvenil A': 'https://www.rffm.es/competicion/clasificaciones?temporada=21&competicion=24037496&grupo=24037501&jornada=10&tipojuego=1',
+                          'Juvenil B': 'https://www.rffm.es/competicion/clasificaciones?temporada=21&competicion=24897923&grupo=24897935&jornada=8&tipojuego=1',
+                          'Juvenil C': '',
+                          'Juvenil A Fem': 'https://www.rffm.es/competicion/clasificaciones?temporada=21&competicion=24037735&grupo=24037737&jornada=8&tipojuego=1',
+                          'Juvenil B Fem': '',
+                          'Cadete A': '',
+                          'Cadete B': 'https://www.rffm.es/competicion/clasificaciones?temporada=21&competicion=24037579&grupo=24037604&jornada=6&tipojuego=1',
+                          'Cadete C': '',
+                          'Cadete D': '',
+                          'Cadete A Fem': 'https://www.rffm.es/competicion/clasificaciones?temporada=21&competicion=24038118&grupo=24038119&jornada=8&tipojuego=1',
+                          'Cadete B Fem': '',
+                          'Cadete C Fem': '',
                         };
 
                         if (enlaces[equipo] != null) {
